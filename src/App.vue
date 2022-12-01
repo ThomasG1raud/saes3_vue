@@ -1,12 +1,17 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
+    <HeaderView msg="test"/>
     <router-view/>
   </div>
 </template>
+
+<script>
+import HeaderView from "@/components/HeaderView";
+export default {
+  components: {HeaderView}
+}
+
+</script>
 
 <style>
 #app {
