@@ -21,6 +21,14 @@ export default {
 
 
 <style>
+:root {
+  --light: #FFFFFF;
+  --dark: #333333;
+  --primary: #FF8080;
+  --secondary: #80FF80;
+  --tertiary: #8080FF
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -28,9 +36,9 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
-
-nav {
-  padding: 30px;
+body {
+  margin: 0;
+  padding: 0;
 }
 
 nav a {
@@ -40,5 +48,13 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #42b983;
+}
+
+button {
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: var(--light);
+  color: black;
+  padding: 5px;
 }
 </style>
