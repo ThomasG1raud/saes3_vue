@@ -24,6 +24,11 @@ export default {
 </script>
 
 <style scoped>
+  header {
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+  }
   nav {
     padding: 10px;
     background-color: var(--dark);

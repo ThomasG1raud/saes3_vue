@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <HeaderView msg="test"/>
+    <HeaderView msg="SAÉ"/>
     <router-view/>
     <FooterView/>
   </div>

@@ -1,11 +1,15 @@
 <template>
-  <div class="card">
     <a :href="linkCard" class="linkCard">
-      <img :src="require('../assets/'+imageCard)" alt="image card">
-      <h1 class="titleCard">{{titleCard}}</h1>
-      <p class="textCard">{{textCard}}</p>
+      <div class="max-h">
+        <div class="card">
+          <h1 class="titleCard">{{titleCard}}</h1>
+          <p class="textCard">{{textCard}}</p>
+          <div>
+            <img :src="require('../assets/'+imageCard)" alt="image card">
+          </div>
+        </div>
+      </div>
     </a>
-  </div>
 </template>
 
 <script>
@@ -21,9 +25,13 @@ export default {
 </script>
 
 <style scoped>
+  .max-h {
+    height: 100%;
+    display: flex;
+  }
   .card {
-    margin: 20px;
     background-color: var(--primary);
+    color: var(--light);
     border-radius: 20px;
     padding: 20px;
     transition-duration: 1s;

@@ -4,17 +4,19 @@
       <img class="imgPrincipalVitrine" src="../assets/imagePrincipalVitrine.jpg">
     </div>
 
-    <div class="grid">
-      <CardActivityView image-card="activite.png" title-card="Activités"
-                        text-card="Découvrez les anciennes méthodes de la  sculpture, de la forge ou encore de la caLligraphie"/>
-      <CardActivityView image-card="spectacle.png" title-card="Spectacles"
-                        text-card="Assistez aux combats de preux chevaliers, ecoutez la musique des temps ancienS ou bien encore venez découvrir la vie des habitants du Moyen-age"/>
-      <CardActivityView image-card="boutique.png" title-card="Boutiques, restaurations"
-                        text-card="prenez plaisir à découvrir la cuisine antique et ses saveurs authentique, ou offrez-vous un petit plaisir dans l'une de nos nombreuses boutiques"/>
-    </div>
+    <section>
+      <div class="grid" id="grid">
+        <CardActivityView link-card="#" image-card="activite.png" title-card="Activités"
+                          text-card="Découvrez les anciennes méthodes de la  sculpture, de la forge ou encore de la caLligraphie"/>
+        <CardActivityView link-card="#" image-card="spectacle.png" title-card="Spectacles"
+                          text-card="Assistez aux combats de preux chevaliers, ecoutez la musique des temps ancienS ou bien encore venez découvrir la vie des habitants du Moyen-age"/>
+        <CardActivityView link-card="#" image-card="boutique.png" title-card="Boutiques, restaurations"
+                          text-card="prenez plaisir à découvrir la cuisine antique et ses saveurs authentique, ou offrez-vous un petit plaisir dans l'une de nos nombreuses boutiques"/>
+      </div>
+    </section>
 
     <MapView/>
-<!--    <HelloWorld msg="Welcome to Your Vue.js App"/>-->
+    <!--    <HelloWorld msg="Welcome to Your Vue.js App"/>-->
   </div>
 </template>
 
@@ -35,18 +37,23 @@ export default {
 </script>
 
 <style scoped>
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    margin-left: 10%;
-    margin-right: 10%;
-  }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-row-gap: 50px;
+  grid-column-gap: 50px;
+  margin-left: 10%;
+  margin-right: 10%;
 
-  imagePrincipal {
-    width: 100%;
-  }
-  .imgPrincipalVitrine {
-    width: 100%;
-    height: 50%;
-  }
+  border: 3px solid black;
+}
+
+imagePrincipal {
+  width: 100%;
+}
+
+.imgPrincipalVitrine {
+  width: 100%;
+  height: 50%;
+}
 </style>
