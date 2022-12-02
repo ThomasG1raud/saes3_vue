@@ -1,9 +1,17 @@
 <template>
   <div class="home">
+    <div class="imagePrincipal">
+      <img class="imgPrincipalVitrine" src="../assets/imagePrincipalVitrine.jpg">
+    </div>
+    <MapView/>
+
     <div class="grid">
-      <CardActivityView link-card="#" image-card="activite.png" title-card="Activités" text-card="Découvrez les anciennes méthodes de la  sculpture, de la forge ou encore de la caLligraphie"/>
-      <CardActivityView link-card="#" image-card="boutique.png" title-card="Spectacles" text-card="Assistez aux combats de preux chevaliers, ecoutez la musique des temps ancienS ou bien encore venez découvrir la vie des habitants du Moyen-age"/>
-      <CardActivityView link-card="#" image-card="spectacle.png" title-card="Boutiques, restaurations" text-card="prenez plaisir à découvrir la cuisine antique et ses saveurs authentique, ou offrez-vous un petit plaisir dans l'une de nos nombreuses boutiques"/>
+      <CardActivityView image-card="logo.png" title-card="Activités"
+                        text-card="Découvrez les anciennes méthodes de la  sculpture, de la forge ou encore de la caLligraphie"/>
+      <CardActivityView image-card="logo.png" title-card="Spectacles"
+                        text-card="Assistez aux combats de preux chevaliers, ecoutez la musique des temps ancienS ou bien encore venez découvrir la vie des habitants du Moyen-age"/>
+      <CardActivityView image-card="logo.png" title-card="Boutiques, restaurations"
+                        text-card="prenez plaisir à découvrir la cuisine antique et ses saveurs authentique, ou offrez-vous un petit plaisir dans l'une de nos nombreuses boutiques"/>
     </div>
     <MapView/>
 <!--    <HelloWorld msg="Welcome to Your Vue.js App"/>-->
@@ -32,5 +40,13 @@ export default {
     grid-template-columns: repeat(3, 1fr);
     margin-left: 10%;
     margin-right: 10%;
+  }
+
+  imagePrincipal {
+    width: 100%;
+  }
+  .imgPrincipalVitrine {
+    width: 100%;
+    height: 50%;
   }
 </style>
