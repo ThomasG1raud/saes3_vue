@@ -2,16 +2,23 @@
   <div id="app">
     <HeaderView msg="test"/>
     <router-view/>
+    <FooterView/>
   </div>
 </template>
 
 <script>
+
 import HeaderView from "@/components/HeaderView";
+import FooterView from "@/components/FooterView";
 export default {
-  components: {HeaderView}
+  components: {
+    HeaderView,
+    FooterView
+  }
 }
 
 </script>
+
 
 <style>
 #app {
