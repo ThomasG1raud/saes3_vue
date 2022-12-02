@@ -44,7 +44,7 @@
     </div>
 
     <div class="legal">
-      <p>&copy; 2019 Something. All rights reserved.</p>
+      <p>&copy; 2022 Something. All rights reserved.</p>
 
       <div class="legal__links">
 
