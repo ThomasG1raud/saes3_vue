@@ -8,7 +8,9 @@
 <script>
 import HeaderView from "@/components/HeaderView";
 export default {
-  components: {HeaderView}
+  components: {
+    HeaderView
+  }
 }
 
 </script>
