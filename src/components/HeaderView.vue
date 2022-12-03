@@ -4,7 +4,7 @@
       <a class="item" href="">
         <img src="../assets/logo_sae_white.png" alt="logo_sae_black" id="logo_navbar">
       </a>
-      <a class="item" >Acceuil</a>
+      <a class="item" >Accueil</a>
       <a class="item" >Prestataire</a>
       <a class="item" >Map</a>
       <a class="item">

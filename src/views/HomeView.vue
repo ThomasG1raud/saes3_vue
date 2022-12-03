@@ -45,7 +45,7 @@ export default {
   margin: 20px 10%;
 }
 
-imagePrincipal {
+.imagePrincipal {
   width: 100%;
 }
 
