@@ -42,10 +42,7 @@ export default {
   grid-template-columns: repeat(3, 1fr);
   grid-row-gap: 50px;
   grid-column-gap: 50px;
-  margin-left: 10%;
-  margin-right: 10%;
-
-  border: 3px solid black;
+  margin: 20px 10%;
 }
 
 imagePrincipal {

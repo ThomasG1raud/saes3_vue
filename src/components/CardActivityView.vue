@@ -4,7 +4,7 @@
         <div class="card">
           <h1 class="titleCard">{{titleCard}}</h1>
           <p class="textCard">{{textCard}}</p>
-          <div>
+          <div class="m-auto">
             <img :src="require('../assets/'+imageCard)" alt="image card">
           </div>
         </div>
@@ -35,6 +35,8 @@ export default {
     border-radius: 20px;
     padding: 20px;
     transition-duration: 1s;
+    display: flex;
+    flex-direction: column;
   }
   .card:hover {
     transition-duration: 1s;
@@ -48,6 +50,8 @@ export default {
   }
   img {
     width: 200px;
+  }
+  .m-auto {
     margin: auto;
   }
   a.linkCard {
