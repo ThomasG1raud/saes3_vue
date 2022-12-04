@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div id="card">
+    <h1>Login</h1>
     <form action="/" method="post" id="form-register">
       <div class="div-form">
         <label for="lastname">Nom : </label>
@@ -25,7 +26,7 @@
         Déjà un compte ? <a href="#/login">Connexion</a>
       </p>
       <div class="div-form">
-        <input type="submit" value="Créer un compte">
+        <input type="submit" value="Créer mon compte">
       </div>
     </form>
   </div>
@@ -38,8 +39,16 @@ export default {
 </script>
 
 <style scoped>
+  #card {
+    width: 30%;
+    display: grid;
+    margin: 40px auto;
+    background: none;
+    /*border: 1px solid var(--blue);*/
+    box-shadow: 0 0 10px #cccccc;
+    border-radius: 30px;
+  }
   #form-register {
-    margin: 100px;
     display: flex;
     flex-direction: column;
   }
