@@ -2,7 +2,7 @@
   <div id="app">
     <HeaderView connected="0"/>
     <router-view/>
-    <FooterView/>
+    <FooterView year="2022"/>
   </div>
 </template>
 
