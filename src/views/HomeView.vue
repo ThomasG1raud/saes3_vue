@@ -1,7 +1,6 @@
 <template>
   <div class="home">
     <div class="imagePrincipal">
-      <img class="imgPrincipalVitrine" src="../assets/imagePrincipalVitrine.jpg">
     </div>
 
     <section>
@@ -46,11 +45,14 @@ export default {
 }
 
 .imagePrincipal {
-  width: 100%;
+  display: flex;
+  height: auto;
+  justify-content: end;
+  width: 100vw;
+  aspect-ratio:16/9;
+  background-image: url("../assets/imagePrincipalVitrine.jpg");
+  background-repeat:no-repeat;
+  background-size: contain;
 }
 
-.imgPrincipalVitrine {
-  width: 100%;
-  height: 50%;
-}
 </style>
