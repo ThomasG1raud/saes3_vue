@@ -6,11 +6,11 @@
 
     <section>
       <div class="grid" id="grid">
-        <CardActivityView link-card="#grid" image-card="activite.png" title-card="Activités"
+        <CardActivityView link-card="#" image-card="activite.png" title-card="Activités"
                           text-card="Découvrez les anciennes méthodes de la  sculpture, de la forge ou encore de la caLligraphie"/>
-        <CardActivityView link-card="/" image-card="spectacle.png" title-card="Spectacles"
+        <CardActivityView link-card="#" image-card="spectacle.png" title-card="Spectacles"
                           text-card="Assistez aux combats de preux chevaliers, ecoutez la musique des temps ancienS ou bien encore venez découvrir la vie des habitants du Moyen-age"/>
-        <CardActivityView link-card="/" image-card="boutique.png" title-card="Boutiques, restaurations"
+        <CardActivityView link-card="#" image-card="boutique.png" title-card="Boutiques, restaurations"
                           text-card="prenez plaisir à découvrir la cuisine antique et ses saveurs authentique, ou offrez-vous un petit plaisir dans l'une de nos nombreuses boutiques"/>
       </div>
     </section>
