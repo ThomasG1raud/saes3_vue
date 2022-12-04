@@ -1,22 +1,22 @@
 <template>
   <header>
     <nav>
-      <a class="item" href="">
+      <a class="item" href="/">
         <img src="../assets/logo_sae_white.png" alt="logo_sae_black" id="logo_navbar">
       </a>
-      <a class="item" href="">Accueil</a>
+      <a class="item" href="/">Accueil</a>
       <a class="item" href="#/prestataire">Prestataire</a>
       <a class="item" href="#/map">Map</a>
       <div v-if="connected == 0" class="item">
-        <a href="">
+        <a href="#/login">
           <button>Se connecter</button>
         </a>
-        <a href="">
+        <a href="#/register">
           <button>Créer un compte</button>
         </a>
       </div>
       <div v-else class="item">
-        <a href="">
+        <a href="/">
           <button>Se déconnecter</button>
         </a>
       </div>

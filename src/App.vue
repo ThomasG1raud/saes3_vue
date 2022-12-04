@@ -22,7 +22,7 @@ export default {
 
 <style>
 :root {
-  --light: #FFFFFF;
+  --light: #EEEEEE;
   --dark: #333333;
   --primary: #bb5533;
   --secondary: #c46928;
