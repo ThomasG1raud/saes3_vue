@@ -1,21 +1,44 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-// import PrestataireView from "../views/PrestataireView";
+import LoginView from "@/views/LoginView";
+import RegisterView from "@/views/RegisterView";
+import MapView from "@/components/MapView";
+import PrestataireView from "../views/PrestataireView";
+import AdminView from "@/views/AdminView";
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    name: 'home',
+    path: "/",
+    name: "home",
     component: HomeView
   },
   {
-    path: '/prestataire',
-    name: 'prestataire',
-    // component: PrestataireView
-    component: () => import('../views/PrestataireView')
+    path: "/login",
+    name: "login",
+    component: LoginView
+  },
+  {
+    path: "/register",
+    name: "register",
+    component: RegisterView
+  },
+  {
+    path: "/map",
+    name: "map",
+    component: MapView
+  },
+  {
+    path: "/prestataire",
+    name: "prestataire",
+    component: PrestataireView
+  },
+  {
+    path: "/admin",
+    name: "admin",
+    component: AdminView
   },
   {
     path: '/about',

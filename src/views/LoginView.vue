@@ -1,14 +1,12 @@
 <template>
   <div>
-    <h1>
-      C'est la view de prestataire
-    </h1>
+    C'est la view de login
   </div>
 </template>
 
 <script>
 export default {
-  name: "PrestataireView"
+  name: "LoginView"
 }
 </script>
 
