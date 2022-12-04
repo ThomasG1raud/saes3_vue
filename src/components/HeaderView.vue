@@ -1,15 +1,25 @@
 <template>
   <header>
     <nav>
-      <a class="item" href="">
+      <a class="item" href="/">
         <img src="../assets/logo_sae_white.png" alt="logo_sae_black" id="logo_navbar">
       </a>
-      <a class="item" >Accueil</a>
-      <a class="item" >Prestataire</a>
-      <a class="item" >Map</a>
-      <a class="item">
-        <button>Se connecter</button>
-      </a>
+      <a class="item" href="/">Accueil</a>
+      <a class="item" href="/prestataire">Prestataire</a>
+      <a class="item" href="/">Map</a>
+      <div v-if="connected == 0" class="item">
+        <a href="/">
+          <button>Se connecter</button>
+        </a>
+        <a href="/">
+          <button>Créer un compte</button>
+        </a>
+      </div>
+      <div v-else class="item">
+        <a href="/">
+          <button>Se déconnecter</button>
+        </a>
+      </div>
     </nav>
   </header>
 </template>
@@ -18,16 +28,14 @@
 export default {
   name: "HeaderView",
   props: {
-    msg: String
+    connected: Number
   }
 }
 </script>
 
 <style scoped>
   header {
-    position: fixed;
     width: 100%;
-    z-index: 100;
   }
   nav {
     padding: 10px;
@@ -60,5 +68,8 @@ export default {
   }
   .item:last-child {
     margin-right: 50px;
+  }
+  .item:last-child > a {
+    margin-left: 10px;
   }
 </style>
