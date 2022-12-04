@@ -2,7 +2,7 @@
   <div id="app">
     <HeaderView msg="test"/>
     <router-view/>
-    <FooterView/>
+    <FooterView year="2022"/>
   </div>
 </template>
 
