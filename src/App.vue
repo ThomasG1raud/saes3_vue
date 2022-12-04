@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <HeaderView msg="test"/>
+    <HeaderView msg="SAÉ"/>
     <router-view/>
     <FooterView year="2022"/>
   </div>
@@ -25,8 +25,8 @@ export default {
   --light: #FFFFFF;
   --dark: #333333;
   --primary: #bb5533;
-  --secondary: #80FF80;
-  --tertiary: #8080FF
+  --secondary: #c46928;
+  --tertiary: #8f5d1c
 }
 
 #app {
