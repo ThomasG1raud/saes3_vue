@@ -5,7 +5,7 @@
     </div>
     <div>
       <CardPrestataireView link-card="/" image-card="prestataire.png" title-card="Prestataire"
-                        text-card="C'est le meilleur prestataire de la ville."/>
+                        text-card="C'est le meilleur prestataire du parc."/>
     </div>
   </div>
 </template>
