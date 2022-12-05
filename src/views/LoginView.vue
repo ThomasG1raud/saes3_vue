@@ -1,105 +1,77 @@
 <template>
-  <div class="main">
-    <section id="image gauche"></section>
-    <div id="rond"></div>
-    <section>
-        <div class="login">
-          <h1> Log in </h1>
-          <hr id="hrLogin">
-          <div>
-            <img src="../assets/instagram.png">
-            <img src="../assets/twitter.png">
-            <img src="../assets/facebook.webp">
 
-          </div>
-        </div>
-        <div>
-          <label for="E-mail"> E-mail </label>
-          <input type="email" id="e-mailId" name="utilisateur" placeholder="Entrez votre E-mail">
-          <hr>
-        </div>
-
-        <div>
-          <label for="password"> Mot de passe </label>
-          <input type="password" id="passwordId" name="passwordUtilisateur" placeholder="Entrez votre Mot de passe">
-          <hr>
-        </div>
-
-        <div id="submit">
-          <input type="submit" id="submitButton" name="submit" value="se connecter">
-        </div>
-    </section>
-
+  <div class="card">
+    <h1>Login</h1>
+    <form action="/" method="post" id="form-register">
+      <div class="div-form">
+        <label for="email">Email : </label>
+        <input type="email" name="email" id="email" required placeholder="Email">
+      </div>
+      <div class="div-form">
+        <label for="password">Mot de passe : </label>
+        <input type="password" name="password" id="password" required placeholder="Mot de passe">
+      </div>
+      <p>
+        Toujours pas de compte ? <a href="#/login">S'inscrire</a>
+      </p>
+      <div class="div-form">
+        <input type="submit" value="Se connecter">
+      </div>
+    </form>
   </div>
 </template>
 
 <script>
 export default {
-  name: "LoginView"
+  name: "RegisterView"
 }
 </script>
 
 <style scoped>
+.card {
+  width: 30%;
+  display: grid;
+  margin: 40px auto;
+  background: none;
+  /*border: 1px solid var(--blue);*/
+  box-shadow: 0 0 10px #cccccc;
+  border-radius: 30px;
+}
 
-.main {
-  width: 100%;
-  height: 90vh;
+#form-register {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
 }
 
-h1 {
-  margin-bottom: 0;
+.div-form {
+  margin: 0 auto;
+  width: fit-content;
 }
 
-
-#hrLogin {
-  width: 10%;
-  margin-top: 0;
-  margin-bottom: 25px;
+input {
+  display: block;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid var(--light);
+  color: var(--dark);
+  box-shadow: 0 0 1px;
+  margin-bottom: 20px;
+  margin-top: 10px;
 }
 
-section {
-  width:25%;
-  height: 50%;
-  border: solid;
-
-
+input::placeholder {
+  color: var(--dark);
 }
 
-.login {
-  margin: 10% 0;
+input[type=submit] {
+  background-color: var(--light);
+  color: var(--blue);
+  border-color: var(--blue);
+  border-radius: 25px;
 }
 
-hr {
-  width: 100%;
-}
-
-div {
-  margin: 25px;
-}
-
-input{
-  width: 50%;
-  height: 100%;
-
-}
-
-#submit {
-  height: 10%;
-}
-#submitButton {
-  border-radius: 50px;
-}
-
-#rond {
-  position: absolute;
-  margin: 0;
-  border: solid;
-  width: 3%;
-  height: 5%;
-  border-radius:100px;
-  border: solid;
+label {
+  display: block;
+  text-align: left;
 }
 </style>
