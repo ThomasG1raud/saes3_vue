@@ -44,7 +44,6 @@ export default {
     display: grid;
     margin: 40px auto;
     background: none;
-    /*border: 1px solid var(--blue);*/
     box-shadow: 0 0 10px #cccccc;
     border-radius: 30px;
   }

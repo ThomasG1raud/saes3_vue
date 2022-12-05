@@ -45,7 +45,6 @@ export default {
   height: 500px;
   display: grid;
   background: none;
-  /*border: 1px solid var(--blue);*/
   box-shadow: 0 0 10px #cccccc;
   border-radius: 0 30px 30px 0;
 }
@@ -57,7 +56,6 @@ export default {
   width: 30%;
   height: 500px;
   background: none;
-  /*border: 1px solid var(--blue);*/
   box-shadow: 0 0 10px #cccccc;
   border-radius: 30px 0 0 30px;
   overflow: hidden;
@@ -95,6 +93,10 @@ input[type=submit] {
   border-color: var(--blue);
   border-radius: 25px;
 }
+input[type=submit]:hover {
+  background-color: var(--blue);
+  color: var(--light);
+}
 
 label {
   display: block;
@@ -105,14 +107,11 @@ label {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding:200px ;
+  padding:150px ;
 }
 
 img {
   height: 100%;
-  background: none;
-  /*border: 1px solid var(--blue);*/
-  box-shadow: 0 0 10px #cccccc;
   border-radius: 30px;
 }
 

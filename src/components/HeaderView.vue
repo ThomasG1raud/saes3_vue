@@ -57,12 +57,21 @@ export default {
   }
 
   button {
-    background: none;
+    background: var(--dark);
     border: 1px solid var(--light);
     color: var(--light);
     font-size: x-large;
   }
-
+  button:hover {
+    background: var(--light);
+    color: var(--dark);
+  }
+  a.item {
+    text-decoration: none;
+  }
+  a.item:hover {
+    text-decoration: underline;
+  }
   .item {
     margin: auto;
   }
