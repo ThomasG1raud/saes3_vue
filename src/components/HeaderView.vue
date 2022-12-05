@@ -36,6 +36,9 @@ export default {
 <style scoped>
   header {
     width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
   }
   nav {
     padding: 10px;

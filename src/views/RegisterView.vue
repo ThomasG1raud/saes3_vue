@@ -40,7 +40,7 @@ export default {
 
 <style scoped>
   #card {
-    width: 30%;
+    max-width: 600px;
     display: grid;
     margin: 40px auto;
     background: none;

@@ -1,16 +1,17 @@
 <template>
   <div class="home">
     <div class="imagePrincipal">
+<!--      <h1>PARC MÉDÉVIAL</h1>-->
     </div>
 
     <section>
       <div class="grid" id="grid">
         <CardActivityView link-card="#" image-card="activite.png" title-card="Activités"
-                          text-card="Découvrez les anciennes méthodes de la  sculpture, de la forge ou encore de la caLligraphie"/>
+                          text-card="Découvrez les anciennes méthodes de la  sculpture, de la forge ou encore de la caligraphie"/>
         <CardActivityView link-card="#" image-card="spectacle.png" title-card="Spectacles"
-                          text-card="Assistez aux combats de preux chevaliers, ecoutez la musique des temps ancienS ou bien encore venez découvrir la vie des habitants du Moyen-age"/>
-        <CardActivityView link-card="#" image-card="boutique.png" title-card="Boutiques, restaurations"
-                          text-card="prenez plaisir à découvrir la cuisine antique et ses saveurs authentique, ou offrez-vous un petit plaisir dans l'une de nos nombreuses boutiques"/>
+                          text-card="Assistez aux combats de preux chevaliers, ecoutez la musique des temps anciens ou bien encore venez découvrir la vie des habitants du Moyen-age"/>
+        <CardActivityView link-card="#" image-card="boutique.png" title-card="Boutiques, restauration"
+                          text-card="Prenez plaisir à découvrir la cuisine antique et ses saveurs authentique, ou offrez-vous un petit plaisir dans l'une de nos nombreuses boutiques"/>
       </div>
     </section>
 
@@ -43,8 +44,17 @@ export default {
   grid-column-gap: 50px;
   margin: 20px 10%;
 }
-
+.imagePrincipal > h1 {
+  display: grid;
+  margin: auto;
+  translate: 0 -400px;
+  font-size: 10em;
+  font-family: 'Pacifico', cursive;
+  color: var(--dark);
+  -webkit-text-stroke: 3px var(--light);
+}
 .imagePrincipal {
+  position: static;
   display: flex;
   height: auto;
   justify-content: end;
