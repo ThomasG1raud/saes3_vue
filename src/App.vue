@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <HeaderView connected="0"/>
+    <HeaderView connected="1"/>
     <router-view/>
     <FooterView/>
   </div>

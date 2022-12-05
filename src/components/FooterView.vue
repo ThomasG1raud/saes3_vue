@@ -2,7 +2,7 @@
   <footer class="footer">
 
     <section class="section" id="section1">
-      <img src="../assets/logo_sae_white.png" alt="logo du site">
+      <img src="@/assets/logo_sae_white.png" alt="logo du site">
     </section>
 
     <section class="section" id="section2">
@@ -16,9 +16,9 @@
     </section>
 
     <section class="section" id="section3">
-      <img class="imageResaux" src="../assets/facebook.webp">
-      <img class="imageResaux" src="../assets/twitter.png">
-      <img class="imageResaux" src="../assets/instagram.png">
+      <img class="imageResaux" src="@/assets/facebook.webp">
+      <img class="imageResaux" src="@/assets/twitter.png">
+      <img class="imageResaux" src="@/assets/instagram.png">
     </section>
 
     <section class="section" id="section4">

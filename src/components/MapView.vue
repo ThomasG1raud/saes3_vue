@@ -1,7 +1,7 @@
 <template>
   <div class="max">
     <div class="div-carte">
-      <img src="../assets/carte.png" alt="carte" id="carte">
+      <img src="@/assets/carte.png" alt="carte" id="carte">
     </div>
     <div>
       <CardPrestataireView link-card="#/" image-card="prestataire.png" title-card="Prestataire"

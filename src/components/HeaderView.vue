@@ -1,24 +1,50 @@
 <template>
   <header>
     <nav>
-      <a class="item" href="/">
-        <img src="../assets/logo_sae_white.png" alt="logo_sae_black" id="logo_navbar">
-      </a>
-      <a class="item" href="#/">Accueil</a>
-      <a class="item" href="#/prestataire">Prestataire</a>
-      <a class="item" href="#/map">Map</a>
-      <div v-if="connected == 0" class="item">
-        <a href="#/login">
-          <button>Se connecter</button>
+<!--      Login with prestataire-->
+      <div class="div-nav" v-if="connected == 1">
+        <a class="item" href="/">
+          <img src="@/assets/logo_sae_white.png" alt="logo_sae_black" id="logo_navbar">
         </a>
-        <a href="#/register">
-          <button>Créer un compte</button>
-        </a>
+        <a class="item" href="#/prestataire/profile">Profile</a>
+        <a class="item" href="#/prestataire/statistique">Statistique</a>
+        <a class="item" href="#/map">Map</a>
+        <div class="item">
+          <a href="/">
+            <button>Se déconnecter</button>
+          </a>
+        </div>
       </div>
-      <div v-else class="item">
-        <a href="/">
-          <button>Se déconnecter</button>
+<!--      Login with admin-->
+      <div class="div-nav" v-else-if="connected == 2">
+        <a class="item" href="/">
+          <img src="@/assets/logo_sae_white.png" alt="logo_sae_black" id="logo_navbar">
         </a>
+        <a class="item" href="#/">Accueil</a>
+        <a class="item" href="#/prestataire">Prestataire</a>
+        <a class="item" href="#/map">Map</a>
+        <div class="item">
+          <a href="/">
+            <button>Se déconnecter</button>
+          </a>
+        </div>
+      </div>
+<!--      No login-->
+      <div class="div-nav" v-else>
+        <a class="item" href="/">
+          <img src="@/assets/logo_sae_white.png" alt="logo_sae_black" id="logo_navbar">
+        </a>
+        <a class="item" href="#/">Accueil</a>
+        <a class="item" href="#/prestataire">Prestataire</a>
+        <a class="item" href="#/map">Map</a>
+        <div class="item">
+          <a href="#/login">
+            <button>Se connecter</button>
+          </a>
+          <a href="#/register">
+            <button>Créer un compte</button>
+          </a>
+        </div>
       </div>
     </nav>
   </header>
@@ -40,13 +66,15 @@ export default {
     top: 0;
     z-index: 1000;
   }
-  nav {
+  nav, .div-nav {
     padding: 10px;
     background-color: var(--dark);
     display: flex;
   }
-
-  nav > * {
+  .div-nav {
+    width: 100%;
+  }
+  nav, .div-nav > * {
     color: var(--light);
     font-size: x-large;
   }
@@ -73,10 +101,11 @@ export default {
     text-decoration: underline;
   }
   .item {
-    margin: auto;
+    margin: auto 50px;
   }
   .item:first-child {
     margin-left: 0;
+    margin-right: auto;
   }
   .item:last-child {
     margin-right: 50px;
