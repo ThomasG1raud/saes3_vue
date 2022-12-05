@@ -1,6 +1,6 @@
 <template>
   <div id="card">
-    <h1>Login</h1>
+    <h1>Créer un compte</h1>
     <form action="/" method="post" id="form-register">
       <div class="div-form">
         <label for="lastname">Nom : </label>
@@ -74,6 +74,10 @@ export default {
     color: var(--blue);
     border-color: var(--blue);
     border-radius: 25px;
+  }
+  input[type=submit]:hover {
+    background-color: var(--blue);
+    color: var(--light);
   }
   label {
     display: block;
