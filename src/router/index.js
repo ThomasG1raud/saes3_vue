@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+
 import LoginView from "@/views/LoginView";
 import RegisterView from "@/views/RegisterView";
 
@@ -8,7 +9,7 @@ import VitrineActiviteView from "@/views/VitrineActiviteView";
 import MapView from "@/components/MapView";
 
 import PrestataireView from "@/views/VitrinePrestataireView";
-import PrestataireProfileView from "@/views/PrestataireProfileView";
+import PrestataireProfilView from "@/views/PrestataireProfilView";
 import PrestataireStatistiqueView from "@/views/PrestataireStatistiqueView";
 
 import AdminView from "@/views/AdminView";
@@ -52,9 +53,9 @@ const routes = [
     component: PrestataireView
   },
   {
-    path: "/prestataire/profile",
-    name: "profile",
-    component: PrestataireProfileView
+    path: "/prestataire/profil",
+    name: "profil",
+    component: PrestataireProfilView
   },
   {
     path: "/prestataire/statistique",
@@ -94,6 +95,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
+  mode: "history",
   routes
 })
 

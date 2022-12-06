@@ -1,5 +1,5 @@
 <template>
-    <a :href="linkCard" class="linkCard">
+    <router-link to="linkCard" class="linkCard">
       <div class="max-h">
         <div class="card">
           <h1 class="titleCard">{{titleCard}}</h1>
@@ -9,7 +9,7 @@
           </div>
         </div>
       </div>
-    </a>
+    </router-link>
 </template>
 
 <script>

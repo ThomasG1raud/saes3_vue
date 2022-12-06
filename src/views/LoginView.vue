@@ -22,7 +22,7 @@
           <input type="password" name="password" id="password" required placeholder="Mot de passe">
         </div>
         <p>
-          Toujours pas de compte ? <a href="#/register">S'inscrire</a>
+          Toujours pas de compte ? <router-link to="/register">S'inscrire</router-link>
         </p>
         <div class="div-form">
           <input type="submit" value="Se connecter">

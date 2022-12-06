@@ -23,7 +23,7 @@
         <input type="password" name="confirm-password" id="confirm-password" required placeholder="Confirmer le mot de passe">
       </div>
       <p>
-        Déjà un compte ? <a href="#/login">Connexion</a>
+        Déjà un compte ? <router-link to="/login">Connexion</router-link>
       </p>
       <div class="div-form">
         <input type="submit" value="Créer mon compte">

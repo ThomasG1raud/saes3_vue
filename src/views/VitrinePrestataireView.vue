@@ -4,7 +4,7 @@
       Liste des prestataires
     </h1>
     <div class="grid">
-      <a v-for="(prestataire, index) in getAllPrestataire" :key="index" class="linkCard" :href="'#/prestataire/'+prestataire.id">
+      <router-link v-for="(prestataire, index) in getAllPrestataire" :key="index" class="linkCard" :to="'/prestataire/'+prestataire.id">
         <div class="card">
           <div class="stand">
             <img :src="require('../assets/'+prestataire.imageStand)" alt="image stand" class="stand">
@@ -17,7 +17,7 @@
             <p class="textCard">{{ prestataire.text }}</p>
           </div>
         </div>
-      </a>
+      </router-link>
     </div>
   </div>
 </template>

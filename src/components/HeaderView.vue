@@ -2,48 +2,50 @@
   <header>
     <nav>
 <!--      Login with prestataire-->
-      <div class="div-nav" v-if="$store.state.connected == 1">
-        <a class="item" href="/">
+      <div class="div-nav" v-if="$store.state.connected === 1">
+        <router-link class="item" to="/">
           <img src="@/assets/logo_sae_white.png" alt="logo_sae_black" id="logo_navbar">
-        </a>
-        <a class="item" href="#/prestataire/profile">Profile</a>
-        <a class="item" href="#/prestataire/statistique">Statistique</a>
-        <a class="item" href="#/map">Map</a>
+        </router-link>
+        <router-link class="item" to="/prestataire/profil">Profil</router-link>
+        <router-link class="item" to="/prestataire/statistique">Statistique</router-link>
+        <router-link class="item" to="/map">Map</router-link>
         <div class="item">
-          <a href="/">
+          <p>Vous êtes un prestataire</p>
+          <router-link to="/">
             <button>Se déconnecter</button>
-          </a>
+          </router-link>
         </div>
       </div>
 <!--      Login with admin-->
-      <div class="div-nav" v-else-if="$store.state.connected == 2">
-        <a class="item" href="/">
+      <div class="div-nav" v-else-if="$store.state.connected === 2">
+        <router-link class="item" to="/">
           <img src="@/assets/logo_sae_white.png" alt="logo_sae_black" id="logo_navbar">
-        </a>
-        <a class="item" href="#/admin/stand">Stand</a>
-        <a class="item" href="#/admin/prestataire">Prestataire</a>
-        <a class="item" href="#/admin/map">Map</a>
+        </router-link>
+        <router-link class="item" to="/admin/stand">Stand</router-link>
+        <router-link class="item" to="/admin/prestataire">Prestataire</router-link>
+        <router-link class="item" to="/admin/map">Map</router-link>
         <div class="item">
-          <a href="/">
+          <p>Vous êtes un admin</p>
+          <router-link to="/">
             <button>Se déconnecter</button>
-          </a>
+          </router-link>
         </div>
       </div>
 <!--      No login-->
       <div class="div-nav" v-else>
-        <a class="item" href="/">
+        <router-link class="item" to="/">
           <img src="@/assets/logo_sae_white.png" alt="logo_sae_black" id="logo_navbar">
-        </a>
-        <a class="item" href="#/">Accueil</a>
-        <a class="item" href="#/prestataire">Prestataire</a>
-        <a class="item" href="#/map">Map</a>
+        </router-link>
+        <router-link class="item" to="/">Accueil</router-link>
+        <router-link class="item" to="/prestataire">Prestataire</router-link>
+        <router-link class="item" to="/map">Map</router-link>
         <div class="item">
-          <a href="#/login">
+          <router-link to="/login">
             <button>Se connecter</button>
-          </a>
-          <a href="#/register">
+          </router-link>
+          <router-link to="/register">
             <button>Créer un compte</button>
-          </a>
+          </router-link>
         </div>
       </div>
     </nav>
@@ -96,6 +98,10 @@ export default {
   }
   a.item:hover {
     text-decoration: underline;
+  }
+  div.item {
+    display: flex;
+    align-items: center;
   }
   .item {
     margin: auto 50px;

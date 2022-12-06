@@ -1,5 +1,5 @@
 <template>
-  <a :href="linkCard" class="linkCard">
+  <router-link to="linkCard" class="linkCard">
     <div class="max-h">
       <div class="card">
         <div class="m-auto">
@@ -11,7 +11,7 @@
         </div>
       </div>
     </div>
-  </a>
+  </router-link>
 </template>
 
 <script>

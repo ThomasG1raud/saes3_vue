@@ -15,9 +15,9 @@
         <pre type="text" id="text-presentation" placeholder="Mot de passe">{{ prestatire.text }}</pre>
       </div>
       <div class="div-form">
-        <label for="confirm-password">Image de profile : </label>
-        <input type="file" name="image-profile" id="image-profile" required accept="image/png, image/jpg, image/jpeg">
-        <img :src="require('@/assets/'+prestatire.imagePrestataire)" alt="image du profile">
+        <label for="confirm-password">Image de profil : </label>
+        <input type="file" name="image-profil" id="image-profil" required accept="image/png, image/jpg, image/jpeg">
+        <img :src="require('@/assets/'+prestatire.imagePrestataire)" alt="image du profil">
       </div>
       <div class="div-form">
         <label for="confirm-password">Image du stand : </label>
@@ -33,7 +33,7 @@
 
 <script>
 export default {
-  name: "PrestataireProfileView",
+  name: "PrestataireProfilView",
   data: () => ({
     prestatire: {
       name: "Nom du prestataire",
