@@ -7,10 +7,10 @@
       <router-link v-for="(prestataire, index) in getAllPrestataire" :key="index" class="linkCard" :to="'/prestataire/'+prestataire.id">
         <div class="card">
           <div class="stand">
-            <img :src="require('../assets/'+prestataire.imageStand)" alt="image stand" class="stand">
+            <img :src="require('@/assets/'+prestataire.imageStand)" alt="image stand" class="stand">
           </div>
           <div class="prestataire">
-            <img :src="require('../assets/'+prestataire.imagePrestataire)" alt="image prestataire">
+            <img :src="require('@/assets/'+prestataire.imagePrestataire)" alt="image prestataire">
           </div>
           <div class="p-20">
             <h1 class="titleCard">{{ prestataire.name }}</h1>

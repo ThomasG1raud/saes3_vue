@@ -60,7 +60,7 @@ export default {
   justify-content: end;
   width: 100vw;
   aspect-ratio:16/9;
-  background-image: url("../assets/imagePrincipalVitrine.jpg");
+  background-image: url("@/assets/imagePrincipalVitrine.jpg");
   background-repeat:no-repeat;
   background-size: contain;
 }

@@ -6,7 +6,7 @@
           <h1 class="titleCard">{{titleCard}}</h1>
           <p class="textCard">{{textCard}}</p>
           <div>
-            <img :src="require('../assets/'+imageCard)" alt="image card">
+            <img :src="require('@/assets/'+imageCard)" alt="image card">
           </div>
         </div>
       </div>
