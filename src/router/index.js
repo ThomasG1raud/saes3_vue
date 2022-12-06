@@ -11,6 +11,9 @@ import PrestataireProfileView from "@/views/PrestataireProfileView";
 import PrestataireStatistiqueView from "@/views/PrestataireStatistiqueView";
 
 import AdminView from "@/views/AdminView";
+import AdminMapView from "@/views/AdminMapView";
+import AdminPrestataireView from "@/views/AdminPrestataireView";
+import AdminStandView from "@/views/AdminStandView";
 
 Vue.use(VueRouter)
 
@@ -57,6 +60,21 @@ const routes = [
     path: "/admin",
     name: "admin",
     component: AdminView
+  },
+  {
+    path: "/admin/map",
+    name: "map",
+    component: AdminMapView
+  },
+  {
+    path: "/admin/prestataire",
+    name: "prestataire",
+    component: AdminPrestataireView
+  },
+  {
+    path: "/admin/stand",
+    name: "stand",
+    component: AdminStandView
   },
 
   {

@@ -11,20 +11,18 @@
         <input type="email" name="email" id="email" required placeholder="Email" :value="prestatire.email">
       </div>
       <div class="div-form">
-        <label for="password">Text de présentation : </label>
-        <pre type="text" id="text-presentation" placeholder="Mot de passe">
-          {{ prestatire.text }}
-        </pre>
+        <label for="password">Texte de présentation : </label>
+        <pre type="text" id="text-presentation" placeholder="Mot de passe">{{ prestatire.text }}</pre>
       </div>
       <div class="div-form">
         <label for="confirm-password">Image de profile : </label>
+        <input type="file" name="image-profile" id="image-profile" required accept="image/png, image/jpg, image/jpeg">
         <img :src="require('@/assets/'+prestatire.imagePrestataire)" alt="image du profile">
-        <input type="file" name="image-profile" id="image-profile" required placeholder="Confirmer le mot de passe">
       </div>
       <div class="div-form">
         <label for="confirm-password">Image du stand : </label>
+        <input type="file" name="image-stand" id="image-stand" required accept="image/png, image/jpg, image/jpeg">
         <img :src="require('@/assets/'+prestatire.imageStand)" alt="image du stand">
-        <input type="file" name="image-stand" id="image-stand" required placeholder="Confirmer le mot de passe">
       </div>
       <div class="div-form">
         <input type="submit" value="Mettre à jour les informations du compte">
@@ -40,7 +38,7 @@ export default {
     prestatire: {
       name: "Nom du prestataire",
       email: "email@exemple.fr",
-      text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
       imagePrestataire: "prestataire.png",
       imageStand: "stand.png"
     }
@@ -100,5 +98,6 @@ export default {
   pre {
     word-break: break-all;
     white-space: break-spaces;
+    text-align: justify;
   }
 </style>

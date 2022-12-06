@@ -20,9 +20,9 @@
         <a class="item" href="/">
           <img src="@/assets/logo_sae_white.png" alt="logo_sae_black" id="logo_navbar">
         </a>
-        <a class="item" href="#/">Accueil</a>
-        <a class="item" href="#/prestataire">Prestataire</a>
-        <a class="item" href="#/map">Map</a>
+        <a class="item" href="#/admin/stand">Stand</a>
+        <a class="item" href="#/admin/prestataire">Prestataire</a>
+        <a class="item" href="#/admin/map">Map</a>
         <div class="item">
           <a href="/">
             <button>Se déconnecter</button>
