@@ -2,7 +2,7 @@
   <header>
     <nav>
 <!--      Login with prestataire-->
-      <div class="div-nav" v-if="connected == 1">
+      <div class="div-nav" v-if="$store.state.connected == 1">
         <a class="item" href="/">
           <img src="@/assets/logo_sae_white.png" alt="logo_sae_black" id="logo_navbar">
         </a>
@@ -16,7 +16,7 @@
         </div>
       </div>
 <!--      Login with admin-->
-      <div class="div-nav" v-else-if="connected == 2">
+      <div class="div-nav" v-else-if="$store.state.connected == 2">
         <a class="item" href="/">
           <img src="@/assets/logo_sae_white.png" alt="logo_sae_black" id="logo_navbar">
         </a>
@@ -52,10 +52,7 @@
 
 <script>
 export default {
-  name: "HeaderView",
-  props: {
-    connected: Number
-  }
+  name: "HeaderView"
 }
 </script>
 

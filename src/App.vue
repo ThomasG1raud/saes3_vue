@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <HeaderView connected="1"/>
+    <HeaderView/>
     <router-view/>
     <FooterView/>
   </div>
@@ -27,8 +27,8 @@ export default {
   --grey: #808080;
   --blue: #0080ff;
   --primary: #bb5533;
-  --secondary: #c46928;
-  --tertiary: #8f5d1c
+  --secondary: #c6bb9d;
+  --tertiary: #c7ccb8
 }
 
 #app {
