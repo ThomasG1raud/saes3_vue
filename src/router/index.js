@@ -4,9 +4,10 @@ import LoginView from "@/views/LoginView";
 import RegisterView from "@/views/RegisterView";
 
 import HomeView from '@/views/HomeView.vue'
+import VitrineActiviteView from "@/views/VitrineActiviteView";
 import MapView from "@/components/MapView";
 
-import PrestataireView from "@/views/PrestataireView";
+import PrestataireView from "@/views/VitrinePrestataireView";
 import PrestataireProfileView from "@/views/PrestataireProfileView";
 import PrestataireStatistiqueView from "@/views/PrestataireStatistiqueView";
 
@@ -33,6 +34,11 @@ const routes = [
     path: "/",
     name: "home",
     component: HomeView
+  },
+  {
+    path: "/activite",
+    name: "activite",
+    component: VitrineActiviteView
   },
   {
     path: "/map",

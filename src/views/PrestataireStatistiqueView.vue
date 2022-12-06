@@ -1,6 +1,9 @@
 <template>
   <div>
-    <h1>Page statistique tu prestataire</h1>
+    <h1>
+<!--      TODO-->
+      Page statistique tu prestataire
+    </h1>
   </div>
 </template>
 

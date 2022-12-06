@@ -1,6 +1,9 @@
 <template>
   <div>
-    <h1>vue de admin map</h1>
+    <h1>
+<!--      TODO-->
+      view de admin map
+    </h1>
   </div>
 </template>
 

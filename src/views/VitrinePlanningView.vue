@@ -2,14 +2,14 @@
   <div>
     <h1>
 <!--      TODO-->
-      vue de admin prestataire
+      view de planning
     </h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: "AdminPrestataireView"
+  name: "VitrinePlanningView"
 }
 </script>
 

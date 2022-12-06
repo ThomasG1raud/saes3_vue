@@ -1,7 +1,8 @@
 <template>
   <div>
     <h1>
-      C'est la view de admin
+<!--      TODO-->
+      view de admin
     </h1>
   </div>
 </template>
