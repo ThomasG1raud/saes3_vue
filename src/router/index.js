@@ -6,7 +6,7 @@ import RegisterView from "@/views/RegisterView";
 
 import HomeView from '@/views/HomeView.vue'
 import VitrineActiviteView from "@/views/VitrineActiviteView";
-import MapView from "@/components/MapView";
+import VitrineMapView from "@/views/VitrineMapView";
 
 import PrestataireView from "@/views/VitrinePrestataireView";
 import PrestataireProfilView from "@/views/PrestataireProfilView";
@@ -44,7 +44,18 @@ const routes = [
   {
     path: "/map",
     name: "map",
-    component: MapView
+    component: VitrineMapView,
+    children: [{
+      path: ":idPrestataire",
+      component: () => import('../components/CardPrestataireView'),
+      props: route => ({
+        idPrestataire: route.params.idPrestataire,
+        linkCard: "/prestataire/"+route.params.idPrestataire,
+        imageCard: "prestataire.png",
+        titleCard: "Prestataire",
+        textCard: "C'est le meilleur prestataire du parc."
+      })
+    }]
   },
 
   {

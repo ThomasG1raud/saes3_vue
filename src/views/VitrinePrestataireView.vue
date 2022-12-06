@@ -3,6 +3,7 @@
     <h1>
       Liste des prestataires
     </h1>
+    <router-view/>
     <div class="grid">
       <router-link v-for="(prestataire, index) in getAllPrestataire" :key="index" class="linkCard" :to="'/prestataire/'+prestataire.id">
         <div class="card">
