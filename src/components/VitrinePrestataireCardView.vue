@@ -1,18 +1,20 @@
 <template>
-  <router-link class="linkCard" :to="'/prestataire/'+prestataire.id">
-    <div class="card">
-      <div class="stand">
-        <img :src="require('@/assets/'+prestataire.imageStand)" alt="image stand" class="stand">
+  <div>
+    <router-link class="linkCard" :to="'/prestataire/'+prestataire.id">
+      <div class="card" :class="prestataire.type">
+        <div class="stand">
+          <img :src="require('@/assets/'+prestataire.imageStand)" alt="image stand" class="stand">
+        </div>
+        <div class="prestataire">
+          <img :src="require('@/assets/'+prestataire.imagePrestataire)" alt="image prestataire">
+        </div>
+        <div class="p-20">
+          <h1 class="titleCard">{{ prestataire.name }}</h1>
+          <p class="textCard">{{ prestataire.text }}</p>
+        </div>
       </div>
-      <div class="prestataire">
-        <img :src="require('@/assets/'+prestataire.imagePrestataire)" alt="image prestataire">
-      </div>
-      <div class="p-20">
-        <h1 class="titleCard">{{ prestataire.name }}</h1>
-        <p class="textCard">{{ prestataire.text }}</p>
-      </div>
-    </div>
-  </router-link>
+    </router-link>
+  </div>
 </template>
 
 <script>
@@ -73,5 +75,14 @@ export default {
   }
   .p-20 {
     padding: 20px;
+  }
+  .activite {
+    background-color: var(--primary);
+  }
+  .spectacle {
+    background-color: var(--secondary);
+  }
+  .restauration {
+    background-color: var(--tertiary);
   }
 </style>
