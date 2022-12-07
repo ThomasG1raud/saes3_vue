@@ -3,69 +3,136 @@
     <h1>
       Liste des prestataires
     </h1>
+    <div class="carousel-div">
+
+      <section class="carousel" aria-label="Gallery">
+        <ol class="carousel__viewport">
+          <li id="carousel__slide1"
+              tabindex="0"
+              class="carousel__slide">
+            <div class="carousel__snapper">
+              <a href="#carousel__slide4"
+                 class="carousel__prev">Go to last slide</a>
+              <a href="#carousel__slide2"
+                 class="carousel__next">Go to next slide</a>
+            </div>
+          </li>
+          <li id="carousel__slide2"
+              tabindex="0"
+              class="carousel__slide">
+            <div class="carousel__snapper"></div>
+            <a href="#carousel__slide1"
+               class="carousel__prev">Go to previous slide</a>
+            <a href="#carousel__slide3"
+               class="carousel__next">Go to next slide</a>
+          </li>
+          <li id="carousel__slide3"
+              tabindex="0"
+              class="carousel__slide">
+            <div class="carousel__snapper"></div>
+            <a href="#carousel__slide2"
+               class="carousel__prev">Go to previous slide</a>
+            <a href="#carousel__slide4"
+               class="carousel__next">Go to next slide</a>
+          </li>
+          <li id="carousel__slide4"
+              tabindex="0"
+              class="carousel__slide">
+            <div class="carousel__snapper"></div>
+            <a href="#carousel__slide3"
+               class="carousel__prev">Go to previous slide</a>
+            <a href="#carousel__slide1"
+               class="carousel__next">Go to first slide</a>
+          </li>
+        </ol>
+        <aside class="carousel__navigation">
+          <ol class="carousel__navigation-list">
+            <li class="carousel__navigation-item">
+              <a href="#carousel__slide1"
+                 class="carousel__navigation-button">Go to slide 1</a>
+            </li>
+            <li class="carousel__navigation-item">
+              <a href="#carousel__slide2"
+                 class="carousel__navigation-button">Go to slide 2</a>
+            </li>
+            <li class="carousel__navigation-item">
+              <a href="#carousel__slide3"
+                 class="carousel__navigation-button">Go to slide 3</a>
+            </li>
+            <li class="carousel__navigation-item">
+              <a href="#carousel__slide4"
+                 class="carousel__navigation-button">Go to slide 4</a>
+            </li>
+          </ol>
+        </aside>
+      </section>
+
+    </div>
     <div class="grid">
-      <router-link v-for="(prestataire, index) in getAllPrestataire" :key="index" class="linkCard" :to="'/prestataire/'+prestataire.id">
-        <div class="card">
-          <div class="stand">
-            <img :src="require('@/assets/'+prestataire.imageStand)" alt="image stand" class="stand">
-          </div>
-          <div class="prestataire">
-            <img :src="require('@/assets/'+prestataire.imagePrestataire)" alt="image prestataire">
-          </div>
-          <div class="p-20">
-            <h1 class="titleCard">{{ prestataire.name }}</h1>
-            <p class="textCard">{{ prestataire.text }}</p>
-          </div>
-        </div>
-      </router-link>
+      <VitrinePrestataireCardView v-for="(prestataire, index) in allPrestataire" :key="index"
+                                  :prestataire="prestataire"/>
     </div>
   </div>
 </template>
 
 <script>
+import VitrinePrestataireCardView from "@/components/VitrinePrestataireCardView";
 export default {
   name: "PrestataireView",
-  computed: {
-    getAllPrestataire() {
-      const allPrestataire = [
-        {
-          name: "Nom du prestataire",
-          text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-          imagePrestataire: "prestataire.png",
-          imageStand: "stand.png",
-          id: "1"
-        },
-        {
-          name: "Nom du prestataire",
-          text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-          imagePrestataire: "prestataire.png",
-          imageStand: "stand.png",
-          id: "2"
-        },
-        {
-          name: "Nom du prestataire",
-          text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-          imagePrestataire: "prestataire.png",
-          imageStand: "stand.png",
-          id: "3"
-        },
-        {
-          name: "Nom du prestataire",
-          text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-          imagePrestataire: "prestataire.png",
-          imageStand: "stand.png",
-          id: "4"
-        },
-        {
-          name: "Nom du prestataire",
-          text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-          imagePrestataire: "prestataire.png",
-          imageStand: "stand.png",
-          id: "5"
-        }
-      ]
-      return allPrestataire;
-    }
+  data: () => ({
+    test: {
+      name: "Nom du prestataire",
+      text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      imagePrestataire: "prestataire.png",
+      imageStand: "stand.png",
+      type: "activite",
+      id: 1
+    },
+    allPrestataire: [
+      {
+        name: "Nom du prestataire",
+        text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        imagePrestataire: "prestataire.png",
+        imageStand: "stand.png",
+        type: "activite",
+        id: 1
+      },
+      {
+        name: "Nom du prestataire",
+        text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        imagePrestataire: "prestataire.png",
+        imageStand: "stand.png",
+        type: "restauration",
+        id: 2
+      },
+      {
+        name: "Nom du prestataire",
+        text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        imagePrestataire: "prestataire.png",
+        imageStand: "stand.png",
+        type: "restauration",
+        id: 3
+      },
+      {
+        name: "Nom du prestataire",
+        text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        imagePrestataire: "prestataire.png",
+        imageStand: "stand.png",
+        type: "spectacle",
+        id: 4
+      },
+      {
+        name: "Nom du prestataire",
+        text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        imagePrestataire: "prestataire.png",
+        imageStand: "stand.png",
+        type: "activite",
+        id: 5
+      }
+    ]
+  }),
+  components: {
+    VitrinePrestataireCardView
   }
 }
 </script>
@@ -74,51 +141,243 @@ export default {
   .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-column: auto;
     grid-row-gap: 50px;
     grid-column-gap: 50px;
     margin: 20px 10%;
   }
-  .card {
-    height: 100%;
-    max-width: max-content;
+
+  .carousel-div {
     background-color: var(--light);
-    color: var(--dark);
-    border-radius: 60px 60px 50px 50px;
-    transition-duration: 1s;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 0 10px var(--dark);
-    position: relative;
   }
-  .textCard {
-    padding-left: 20px;
-    padding-right: 20px;
-    text-align: justify;
+
+
+  @keyframes tonext {
+    75% {
+      left: 0;
+    }
+    95% {
+      left: 100%;
+    }
+    98% {
+      left: 100%;
+    }
+    99% {
+      left: 0;
+    }
   }
-  img {
-    width: 100%;
+
+  @keyframes tostart {
+    75% {
+      left: 0;
+    }
+    95% {
+      left: -300%;
+    }
+    98% {
+      left: -300%;
+    }
+    99% {
+      left: 0;
+    }
   }
-  .prestataire {
-    width: 50%;
-    aspect-ratio: 1;
-    overflow: hidden;
-    border-radius: 50%;
+
+  @keyframes snap {
+    96% {
+      scroll-snap-align: center;
+    }
+    97% {
+      scroll-snap-align: none;
+    }
+    99% {
+      scroll-snap-align: none;
+    }
+    100% {
+      scroll-snap-align: center;
+    }
+  }
+
+  body {
+    max-width: 37.5rem;
     margin: 0 auto;
+    padding: 0 1.25rem;
+    font-family: 'Lato', sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+    scrollbar-color: transparent transparent; /* thumb and track color */
+    scrollbar-width: 0px;
+  }
+
+  *::-webkit-scrollbar {
+    width: 0;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: transparent;
+    border: none;
+  }
+
+  * {
+    -ms-overflow-style: none;
+  }
+
+  ol, li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .carousel {
+    position: relative;
+    padding-top: 400px;
+    filter: drop-shadow(0 0 10px #0003);
+    perspective: 100px;
+  }
+
+  .carousel__viewport {
     position: absolute;
-    left: 25%;
-    top: 175px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    overflow-x: scroll;
+    counter-reset: item;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
   }
-  a.linkCard {
-    text-decoration: none;
-    color: var(--light);
+
+  .carousel__slide {
+    position: relative;
+    flex: 0 0 100%;
+    width: 100%;
+    background-color: #f99;
+    counter-increment: item;
   }
-  div.stand {
-    margin-bottom: 60px;
+
+  .carousel__slide:nth-child(even) {
+    background-color: #99f;
   }
-  img.stand {
-    border-radius: 50px 50px 0 0;
+
+  .carousel__slide:before {
+    content: counter(item);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%,-40%,70px);
+    color: #fff;
+    font-size: 2em;
   }
-  .p-20 {
-    padding: 20px;
+
+  .carousel__snapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    scroll-snap-align: center;
+  }
+
+  @media (hover: hover) {
+    .carousel__snapper {
+      animation-name: tonext, snap;
+      animation-timing-function: ease;
+      animation-duration: 4s;
+      animation-iteration-count: infinite;
+    }
+
+    .carousel__slide:last-child .carousel__snapper {
+      animation-name: tostart, snap;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .carousel__snapper {
+      animation-name: none;
+    }
+  }
+
+  .carousel:hover .carousel__snapper,
+  .carousel:focus-within .carousel__snapper {
+    animation-name: none;
+  }
+
+  .carousel__navigation {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+  }
+
+  .carousel__navigation-list,
+  .carousel__navigation-item {
+    display: inline-block;
+  }
+
+  .carousel__navigation-button {
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: #333;
+    background-clip: content-box;
+    border: 0.25rem solid transparent;
+    border-radius: 50%;
+    font-size: 0;
+    transition: transform 0.1s;
+  }
+
+  .carousel::before,
+  .carousel::after,
+  .carousel__prev,
+  .carousel__next {
+    position: absolute;
+    top: 0;
+    margin-top: 200px;
+    width: 4rem;
+    height: 4rem;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    font-size: 0;
+    outline: 0;
+  }
+
+  .carousel::before,
+  .carousel__prev {
+    left: -1rem;
+  }
+
+  .carousel::after,
+  .carousel__next {
+    right: -1rem;
+  }
+
+  .carousel::before,
+  .carousel::after {
+    content: '';
+    z-index: 1;
+    background-color: #333;
+    background-size: 1.5rem 1.5rem;
+    background-repeat: no-repeat;
+    background-position: center center;
+    color: #fff;
+    font-size: 2.5rem;
+    line-height: 4rem;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  .carousel::before {
+    /*background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='0,50 80,100 80,0' fill='%23fff'/%3E%3C/svg%3E");*/
+  }
+
+  .carousel::after {
+    /*background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='100,50 20,100 20,0' fill='%23fff'/%3E%3C/svg%3E");*/
   }
 </style>

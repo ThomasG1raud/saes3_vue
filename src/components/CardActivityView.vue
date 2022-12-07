@@ -1,5 +1,5 @@
 <template>
-    <router-link to="linkCard" class="linkCard">
+    <router-link to="/activite" class="linkCard">
       <div class="max-h">
         <div class="card">
           <h1 class="titleCard">{{titleCard}}</h1>

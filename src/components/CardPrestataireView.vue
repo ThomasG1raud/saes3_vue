@@ -18,6 +18,7 @@
 export default {
   name: "CardPrestataireView",
   props: {
+    idPrestataire: Number,
     linkCard: String,
     imageCard: String,
     titleCard: String,
