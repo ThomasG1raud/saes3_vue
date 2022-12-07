@@ -26,9 +26,9 @@ export default {
   --dark: #333333;
   --grey: #808080;
   --blue: #0080ff;
-  --primary: #bb5533;
-  --secondary: #c6bb9d;
-  --tertiary: #c7ccb8
+  --primary: #c4ba9b;
+  --secondary: #cdccba;
+  --tertiary: #e6d4bc;
 }
 
 #app {

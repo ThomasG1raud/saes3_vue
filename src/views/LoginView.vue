@@ -10,7 +10,7 @@
     </div>
 
 
-    <div class="card">
+    <div id="cardRight">
       <h1>Login</h1>
       <form action="/" method="post" id="form-register">
         <div class="div-form">
@@ -40,88 +40,82 @@ export default {
 </script>
 
 <style scoped>
-.card {
-  width: 30%;
-  height: 500px;
-  display: grid;
-  background: none;
-  box-shadow: 0 0 10px #cccccc;
-  border-radius: 0 30px 30px 0;
-}
+  #cardRight {
+    display: grid;
+    border-radius: 0 30px 30px 0;
+  }
+  #cardLeft {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px 0 0 30px;
+    overflow: hidden;
+  }
+  #cardLeft, #cardRight {
+    background: none;
+    box-shadow: 0 0 10px #cccccc;
+    height: 500px;
+    width: 30%;
+  }
 
-#cardLeft {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 30%;
-  height: 500px;
-  background: none;
-  box-shadow: 0 0 10px #cccccc;
-  border-radius: 30px 0 0 30px;
-  overflow: hidden;
+  #form-register {
+    display: flex;
+    flex-direction: column;
+  }
 
-}
+  .div-form {
+    margin: 0 auto;
+    width: fit-content;
+  }
 
-#form-register {
-  display: flex;
-  flex-direction: column;
-}
+  input {
+    display: block;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid var(--light);
+    color: var(--dark);
+    box-shadow: 0 0 1px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+  }
 
-.div-form {
-  margin: 0 auto;
-  width: fit-content;
-}
+  input::placeholder {
+    color: var(--dark);
+  }
 
-input {
-  display: block;
-  padding: 10px;
-  border-radius: 10px;
-  border: 2px solid var(--light);
-  color: var(--dark);
-  box-shadow: 0 0 1px;
-  margin-bottom: 20px;
-  margin-top: 10px;
-}
+  input[type=submit] {
+    background-color: var(--light);
+    color: var(--blue);
+    border-color: var(--blue);
+    border-radius: 25px;
+  }
+  input[type=submit]:hover {
+    background-color: var(--blue);
+    color: var(--light);
+  }
 
-input::placeholder {
-  color: var(--dark);
-}
+  label {
+    display: block;
+    text-align: left;
+  }
 
-input[type=submit] {
-  background-color: var(--light);
-  color: var(--blue);
-  border-color: var(--blue);
-  border-radius: 25px;
-}
-input[type=submit]:hover {
-  background-color: var(--blue);
-  color: var(--light);
-}
+  #bigDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:150px ;
+  }
 
-label {
-  display: block;
-  text-align: left;
-}
+  img {
+    height: 100%;
+    border-radius: 30px;
+  }
 
-#bigDiv {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding:150px ;
-}
-
-img {
-  height: 100%;
-  border-radius: 30px;
-}
-
-#rond {
-  position: absolute;
-  height: 50px;
-  width: 50px;
-  border-radius: 100%;
-  background-color: white;
-}
-
-
+  #rond {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    background-color: white;
+  }
 </style>

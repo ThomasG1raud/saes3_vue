@@ -1,5 +1,10 @@
 <template>
-  <div> voici les stands pour admin</div>
+  <div>
+    <h1>
+      <!--      TODO-->
+      view de admin stand
+    </h1>
+  </div>
 </template>
 
 <script>
