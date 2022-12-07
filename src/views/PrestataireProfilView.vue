@@ -1,33 +1,57 @@
 <template>
   <div id="card">
-    <h1>Information du compte</h1>
-    <form action="/" method="post" id="form-register">
-      <div class="div-form">
-        <label for="name">Nom : </label>
-        <input type="text" name="name" id="name" required placeholder="Nom" :value="prestataire.name">
+      <div id="divImage-info">
+        <div id="divImage">
+          <img src="../assets/prestataire.png">
+        </div>
+        <div id="divInfo">
+          <div class="section">
+            <div class="partie">
+              <div class="reponse">
+                <p> Prenom :</p>
+                <p> Julien</p>
+              </div>
+              <hr>
+            </div>
+            <div class="partie">
+              <div class="reponse">
+                <p> nom de votre stand :</p>
+                <p> Les mont d'Or de michel</p>
+              </div>
+              <hr>
+            </div>
+          </div>
+          <div class="section">
+            <div class ="partie">
+              <div class="reponse">
+                <p> Nom de famille :</p>
+                <p> Merveaux</p>
+              </div>
+              <hr>
+
+            </div>
+          </div>
+          <div class="section">
+            <div class="partie">
+              <div class="reponse">
+                <p> E-mail :</p>
+                <p> Julien.merveaux@hotmail.fr</p>
+              </div>
+
+
+            </div>
+            <div class="partie">
+              <div class="reponse">
+                <p>Numéro de siren :</p>
+                <p> 2467354253</p>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="div-form">
-        <label for="email">Email : </label>
-        <input type="email" name="email" id="email" required placeholder="Email" :value="prestataire.email">
-      </div>
-      <div class="div-form">
-        <label for="password">Texte de présentation : </label>
-        <pre type="text" id="text-presentation" placeholder="Mot de passe">{{ prestataire.text }}</pre>
-      </div>
-      <div class="div-form">
-        <label for="confirm-password">Image de profil : </label>
-        <input type="file" name="image-profil" id="image-profil" required accept="image/png, image/jpg, image/jpeg">
-        <img :src="require('@/assets/'+prestataire.imagePrestataire)" alt="image du profil">
-      </div>
-      <div class="div-form">
-        <label for="confirm-password">Image du stand : </label>
-        <input type="file" name="image-stand" id="image-stand" required accept="image/png, image/jpg, image/jpeg">
-        <img :src="require('@/assets/'+prestataire.imageStand)" alt="image du stand">
-      </div>
-      <div class="div-form">
-        <input type="submit" value="Mettre à jour les informations du compte">
-      </div>
-    </form>
+      <div id = "divService"></div>
   </div>
 </template>
 
@@ -48,56 +72,84 @@ export default {
 
 <style scoped>
   #card {
-    max-width: 1000px;
-    display: grid;
-    margin: 40px auto;
-    background: none;
-    box-shadow: 0 0 10px #cccccc;
-    border-radius: 30px;
+    height: 500px;
+    margin: 100px;
   }
-  #form-register {
+
+  #divImage-info {
     display: flex;
+    width: 100%;
+    height: 50%;
+
+    border-radius: 20px;
+  }
+
+  #divImage {
+    aspect-ratio:1 ;
+    height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    border:solid
+
+
+  }
+
+  #divInfo {
+    display: flex;
+    flex-wrap: wrap;
+    width: 75%;
+    margin-left: 5%;
+    border-radius: 20px;
+    border:solid
+
+  }
+
+  #divService {
+    width: 100%;
+    height: 36%;
+    border-radius: 20px;
+    border:solid;
+    margin-top: 5%;
+  }
+
+  img{
+    width: 100%;
+  }
+
+  .section {
+    display: flex;
+    width: 100%;
+    margin: 10px;
+
+  }
+
+  .partie {
+    display: flex;
+    justify-content: start;
+    align-items: center;
     flex-direction: column;
+    height: 100%;
+    width: 50%;
+    margin-left: 10px;
   }
-  .div-form {
-    margin: 0 auto;
-    width: fit-content;
-    padding-left: 50px;
-    padding-right: 50px;
+
+  hr {
+    width: 70%;
+    margin-left: 0;
   }
-  input {
-    display: block;
-    padding: 10px;
-    border-radius: 10px;
-    border: 2px solid var(--light);
-    color: var(--dark);
-    box-shadow: 0 0 1px;
-    margin-bottom: 20px;
-    margin-top: 10px;
+
+  p {
+    display: flex;
+    justify-content: start;
+    margin-right: 20px;
   }
-  input::placeholder {
-    color: var(--dark);
+
+  .reponse {
+    display: flex;
+    width: 100%;
   }
-  input[type=file] {
-    display: none;
-  }
-  input[type=submit] {
-    background-color: var(--light);
-    color: var(--blue);
-    border-color: var(--blue);
-    border-radius: 25px;
-  }
-  input[type=submit]:hover {
-    background-color: var(--blue);
-    color: var(--light);
-  }
-  label {
-    display: block;
-    text-align: left;
-  }
-  pre {
-    word-break: break-all;
-    white-space: break-spaces;
-    text-align: justify;
-  }
+
+
+
+
 </style>
