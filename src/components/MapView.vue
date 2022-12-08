@@ -1,6 +1,8 @@
 	<template>
 	<l-map
 		:zoom="zoom"
+		:min-zoom="minZoom"
+		:crs="crs"
 		:max-bounds="maxbounds"
 		class="map"
 		ref="map"
@@ -10,6 +12,8 @@
 	>
 		<l-image-overlay
 		:url="url"
+		:bounds="bounds"
+
 		>
 		</l-image-overlay>
 		</l-map>
@@ -17,6 +21,7 @@
 	
 	<script>
 	import { LMap, LImageOverlay } from 'vue2-leaflet';
+	import { CRS } from "leaflet";
 	import 'leaflet/dist/leaflet.css';
 	
 	export default {
@@ -26,13 +31,13 @@
 	},
 	data () {
 		return {
-		url: 'https://cdn.discordapp.com/attachments/540088970059448341/1050070287493902398/carte.png',
-		zoom: 0	,
-		maxbounds:[
-			[0,0], 
-		[0,1080], 
-		[0,1920],
-		[1080,1920]]
+		url: 'https://cdn.discordapp.com/attachments/540088970059448341/1050395342933344366/map.png',
+		minZoom: -1,
+		zoom: -1,
+		crs: CRS.Simple,
+		bounds: [[-540, -910], [540, 910]],
+		maxbounds: [[-540, -910], [540, 910]],
+			
 		}
 	},
 	methods: {
