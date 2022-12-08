@@ -1,22 +1,27 @@
 	<template>
-	<l-map
-		:zoom="zoom"
-		:min-zoom="minZoom"
-		:crs="crs"
-		:max-bounds="maxbounds"
-		class="map"
-		ref="map"
-		@update:zoom="zoomUpdated"
-		@update:center="centerUpdated"
-		style="height: 540px; width: 910px;"
-	>
-		<l-image-overlay
-		:url="url"
-		:bounds="bounds"
+		<div class="max">
+			<div class="div-carte">
+			<l-map
+				:zoom="zoom"
+				:min-zoom="minZoom"
+				:crs="crs"
+				:max-bounds="maxbounds"
+				class="map"
+				ref="map"
+				@update:zoom="zoomUpdated"
+				@update:center="centerUpdated"
+				style="height: 540px; width: 910px;"
+			>
+				<l-image-overlay
+				:url="url"
+				:bounds="bounds"
 
-		>
-		</l-image-overlay>
-		</l-map>
+				>
+				</l-image-overlay>
+				</l-map>
+			</div>
+			<router-view/>		
+	</div>
 	</template>
 	
 	<script>
@@ -53,10 +58,10 @@
 	</script>
 	
 	<style>
-	.map {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		overflow :hidden
+	.max {
+		height: 560px;
+		width: 100px;
+		display: flex;
+		margin: 20px 10%;
 	}
 	</style>
