@@ -1,7 +1,7 @@
 <template>
     <router-link to="/activite" class="linkCard">
       <div class="max-h">
-        <div class="card">
+        <div class="card" :class="type">
           <h1 class="titleCard">{{titleCard}}</h1>
           <p class="textCard">{{textCard}}</p>
           <div class="m-auto">
@@ -17,6 +17,7 @@ export default {
   name: "CardActivityView",
   props: {
     linkCard: String,
+    type: String,
     imageCard: String,
     titleCard: String,
     textCard: String
@@ -30,7 +31,6 @@ export default {
     display: flex;
   }
   .card {
-    background-color: var(--primary);
     color: var(--very-very-light);
     border-radius: 20px;
     padding: 20px;

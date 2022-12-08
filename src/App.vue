@@ -39,6 +39,10 @@ export default {
   --background: #D4C8BB;
   --brown: #4A3D32;
   --blue: #0080ff;
+
+  --activite: var(--primary);
+  --spectacle: var(--secondary);
+  --restauration: var(--tertiary);
 }
 
 #app {
@@ -47,6 +51,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
 }
+
 body {
   margin: 0;
   padding: 0;
@@ -63,6 +68,7 @@ button {
   border-radius: 5px;
   padding: 5px;
 }
+
 button:hover {
   border: 2px solid var(--defined-color-primary);
   background-color: var(--defined-color-secondary);
@@ -71,4 +77,13 @@ button:hover {
   padding: 5px;
 }
 
+div.activite {
+  background-color: var(--activite);
+}
+div.spectacle {
+  background-color: var(--spectacle);
+}
+div.restauration {
+  background-color: var(--restauration);
+}
 </style>
