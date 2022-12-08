@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="imagePrincipal">
-<!--      <h1>PARC MÉDÉVIAL</h1>-->
+      <h1 id="title">PARC MÉDIÉVAL</h1>
     </div>
 
     <section>
@@ -43,15 +43,6 @@ export default {
   grid-column-gap: 50px;
   margin: 20px 10%;
 }
-.imagePrincipal > h1 {
-  display: grid;
-  margin: auto;
-  translate: 0 -400px;
-  font-size: 10em;
-  font-family: 'Pacifico', cursive;
-  color: var(--dark);
-  -webkit-text-stroke: 3px var(--light);
-}
 .imagePrincipal {
   position: static;
   display: flex;
@@ -63,5 +54,25 @@ export default {
   background-repeat:no-repeat;
   background-size: contain;
 }
-
+#title {
+  display: grid;
+  margin: auto;
+  translate: 0 -400px;
+  font-size: 10em;
+  font-family: 'Pacifico', cursive;
+  color: var(--dark);
+  -webkit-text-stroke: 3px var(--light);
+  scale: 1;
+  animation: 1s zoom;
+}
+@keyframes zoom {
+  0% {
+    opacity: 0;
+    scale: 0;
+  }
+  100% {
+    opacity: 1;
+    scale: 100%;
+  }
+}
 </style>

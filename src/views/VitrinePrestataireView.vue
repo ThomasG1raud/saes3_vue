@@ -9,7 +9,7 @@
         <VitrinePrestataireCardView :prestataire="prestataire"/>
       </div>
     </div>
-
+    <div v-if="!research.length"><h1>Aucun prestataire n'as été trouver</h1></div>
     <div id="scroll" onclick="window.scroll({top: 0,behavior: 'smooth'});"></div>
 
   </div>
