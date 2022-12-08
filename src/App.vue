@@ -22,13 +22,23 @@ export default {
 
 <style>
 :root {
-  --light: #EEEEEE;
-  --dark: #333333;
-  --grey: #808080;
+  --defined-color-primary: var(--very-very-light);
+  --defined-color-secondary: var(--very-very-dark);
+
+  --very-very-light: #EEEEEE;
+  --very-light: #E2E2E2;
+  --light: #D9D9D9;
+  --grey: #898888;
+  --dark: #383636;
+  --very-dark: #333333;
+  --very-very-dark: #242322;
+
+  --primary: #5C554A;
+  --secondary: #A39C88;
+  --tertiary: #878272;
+  --background: #D4C8BB;
+  --brown: #4A3D32;
   --blue: #0080ff;
-  --primary: #c4ba9b;
-  --secondary: #cdccba;
-  --tertiary: #e6d4bc;
 }
 
 #app {
@@ -36,7 +46,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
 }
 body {
   margin: 0;
@@ -45,18 +54,21 @@ body {
 
 nav a {
   font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
 }
 
 button {
-  border: 2px solid black;
+  border: 2px solid var(--defined-color-secondary);
+  background-color: var(--defined-color-primary);
+  color: var(--defined-color-secondary);
   border-radius: 5px;
-  background-color: var(--light);
-  color: black;
   padding: 5px;
 }
+button:hover {
+  border: 2px solid var(--defined-color-primary);
+  background-color: var(--defined-color-secondary);
+  color: var(--defined-color-primary);
+  border-radius: 5px;
+  padding: 5px;
+}
+
 </style>

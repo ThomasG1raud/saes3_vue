@@ -34,7 +34,7 @@ export default {
 }
 .card {
   background-color: var(--secondary);
-  color: var(--light);
+  color: var(--very-very-light);
   border-radius: 20px;
   padding: 20px;
   transition-duration: 1s;
@@ -60,6 +60,6 @@ img {
 }
 a.linkCard {
   text-decoration: none;
-  color: var(--light);
+  color: var(--very-very-light);
 }
 </style>

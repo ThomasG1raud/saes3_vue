@@ -61,7 +61,7 @@ export default {
   font-size: 10em;
   font-family: 'Pacifico', cursive;
   color: var(--dark);
-  -webkit-text-stroke: 3px var(--light);
+  -webkit-text-stroke: 3px var(--very-very-light);
   scale: 1;
   animation: 1s zoom;
 }

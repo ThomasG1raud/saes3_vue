@@ -101,7 +101,7 @@ export default {
     display: flex;
     padding: 10px;
     border-radius: 10px;
-    border: 2px solid var(--light);
+    border: 2px solid var(--very-very-light);
     color: var(--dark);
     box-shadow: 0 0 1px;
     margin: 20px auto 30px auto;
@@ -113,12 +113,12 @@ export default {
     height: 64px;
     width: 64px;
     border-radius: 50%;
-    background-image: url("@/assets/keyboard_double_arrow_up.svg");
+    background-image: url("@/assets/keyboard_double_arrow_up_white.svg");
     background-size: contain;
     display: flex;
     margin-left: auto;
     margin-right: 40px;
     translate: 0 32px;
-    background-color: #383636;
+    background-color: var(--dark);
   }
 </style>

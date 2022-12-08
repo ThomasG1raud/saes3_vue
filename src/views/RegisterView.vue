@@ -59,7 +59,7 @@ export default {
     display: block;
     padding: 10px;
     border-radius: 10px;
-    border: 2px solid var(--light);
+    border: 2px solid var(--very-very-light);
     color: var(--dark);
     box-shadow: 0 0 1px;
     margin-bottom: 20px;
@@ -69,14 +69,14 @@ export default {
     color: var(--dark);
   }
   input[type=submit] {
-    background-color: var(--light);
+    background-color: var(--very-very-light);
     color: var(--blue);
     border-color: var(--blue);
     border-radius: 25px;
   }
   input[type=submit]:hover {
     background-color: var(--blue);
-    color: var(--light);
+    color: var(--very-very-light);
   }
   label {
     display: block;

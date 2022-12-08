@@ -36,7 +36,7 @@ export default {
   .card {
     height: 100%;
     max-width: max-content;
-    background-color: var(--light);
+    background-color: var(--very-very-light);
     color: var(--dark);
     border-radius: 60px 60px 50px 50px;
     transition-duration: 1s;
@@ -44,6 +44,11 @@ export default {
     flex-direction: column;
     box-shadow: 0 0 10px var(--dark);
     position: relative;
+  }
+  .card:hover {
+    transition-duration: 1s;
+    scale: 1.02;
+    box-shadow: 0 0 15px var(--dark);
   }
   .textCard {
     padding-left: 20px;
@@ -65,7 +70,7 @@ export default {
   }
   a.linkCard {
     text-decoration: none;
-    color: var(--light);
+    color: var(--very-very-light);
   }
   div.stand {
     margin-bottom: 60px;

@@ -74,7 +74,7 @@ export default {
     width: 100%;
   }
   nav, .div-nav > * {
-    color: var(--light);
+    color: var(--very-very-light);
     font-size: x-large;
   }
 
@@ -82,16 +82,14 @@ export default {
     height: 64px;
     width: 64px;
   }
-
   button {
-    background: var(--dark);
-    border: 1px solid var(--light);
-    color: var(--light);
+    color: white;
+    --defined-color-primary: var(--very-dark);
+    --defined-color-secondary: var(--very-very-light);
     font-size: x-large;
   }
   button:hover {
-    background: var(--light);
-    color: var(--dark);
+    border-color: var(--very-very-light);
   }
   a.item {
     text-decoration: none;

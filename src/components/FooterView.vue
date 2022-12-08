@@ -57,8 +57,8 @@ footer {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: #383636;
-  color: #FFFFFF;
+  background-color: var(--dark);
+  color: var(--very-very-light);
 }
 
 section {
@@ -85,8 +85,8 @@ section {
 }
 
 #section5 {
-  background-color: #2a2929;
-  color: #FFFFFF;
+  background-color: var(--very-very-dark);
+  color: var(--very-very-light);
 }
 
 img {
