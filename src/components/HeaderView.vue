@@ -1,6 +1,13 @@
 <template>
   <header>
     <nav>
+      <div class="item">
+        <select id="connected-selected">
+          <option value="0" @click="$store.state.connected = 0">Vitrine</option>
+          <option value="1" @click="$store.state.connected = 1">Prestataire</option>
+          <option value="2" @click="$store.state.connected = 2">Admin</option>
+        </select>
+      </div>
 <!--      Login with prestataire-->
       <div class="div-nav" v-if="$store.state.connected === 1">
         <router-link class="item" to="/">
@@ -10,7 +17,6 @@
         <router-link class="item" to="/prestataire/statistique">Statistique</router-link>
         <router-link class="item" to="/map">Map</router-link>
         <div class="item">
-          <p>Vous êtes un prestataire</p>
           <router-link to="/">
             <button>Se déconnecter</button>
           </router-link>
@@ -25,7 +31,6 @@
         <router-link class="item" to="/admin/prestataire">Prestataire</router-link>
         <router-link class="item" to="/admin/map">Map</router-link>
         <div class="item">
-          <p>Vous êtes un admin</p>
           <router-link to="/">
             <button>Se déconnecter</button>
           </router-link>
