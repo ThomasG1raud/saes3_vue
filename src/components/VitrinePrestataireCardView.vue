@@ -1,20 +1,32 @@
 <template>
-  <div>
     <router-link class="linkCard" :to="'/prestataire/'+prestataire.id">
-      <div class="card" :class="prestataire.type">
-        <div class="stand">
-          <img :src="require('@/assets/'+prestataire.imageStand)" alt="image stand" class="stand">
+      <div class="card">
+        <div class="divImage">
+          <img src="../assets/prestataire.png">
         </div>
-        <div class="prestataire">
-          <img :src="require('@/assets/'+prestataire.imagePrestataire)" alt="image prestataire">
+        <div class="divInfo">
+          <div class="infoStand">
+            <p>12h23 - 16h45</p>
+            <h2> la bonne saucisse de michelle</h2>
+          </div>
+          <div class="infoPrestataire">
+            <div class="info">
+              <p>Nom :</p>
+              <p>Merveaux</p>
+            </div>
+            <hr>
+            <div class="info">
+              <p>prenom</p>
+              <p>Julien</p>
+            </div>
+            <hr>
+          </div>
         </div>
-        <div class="p-20">
-          <h1 class="titleCard">{{ prestataire.name }}</h1>
-          <p class="textCard">{{ prestataire.text }}</p>
+        <div class="divTextPresentation">
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
         </div>
       </div>
     </router-link>
-  </div>
 </template>
 
 <script>
@@ -33,51 +45,49 @@ export default {
 </script>
 
 <style scoped>
-  .card {
-    height: 100%;
-    max-width: max-content;
-    color: var(--dark);
-    border-radius: 60px 60px 50px 50px;
-    transition-duration: 1s;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 0 10px var(--dark);
-    position: relative;
-  }
-  .card:hover {
-    transition-duration: 1s;
-    scale: 1.02;
-    box-shadow: 0 0 15px var(--dark);
-  }
-  .textCard {
-    padding-left: 20px;
-    padding-right: 20px;
-    text-align: justify;
-  }
-  img {
-    width: 100%;
-  }
-  .prestataire {
-    width: 50%;
-    aspect-ratio: 1;
-    overflow: hidden;
-    border-radius: 50%;
-    margin: 0 auto;
-    position: absolute;
-    left: 25%;
-    top: 175px;
-  }
-  a.linkCard {
-    text-decoration: none;
-    color: var(--very-very-light);
-  }
-  div.stand {
-    margin-bottom: 60px;
-  }
-  img.stand {
-    border-radius: 50px 50px 0 0;
-  }
-  .p-20 {
-    padding: 20px;
-  }
+
+.card {
+  width: 450px;
+  border-radius: 20px;
+  border: solid;
+  margin: 30px;
+}
+
+.divImage {
+  aspect-ratio: 1;
+  height: 450px;
+  border-radius: 20px;
+  overflow: hidden;
+
+}
+
+img {
+  width: 100%;
+}
+
+.infoPrestataire {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+hr {
+  width: 70%;
+  margin: 0;
+}
+
+p {
+  margin: 10px 0 20px 10px;
+}
+
+.info {
+  display: flex;
+}
+
+
 </style>

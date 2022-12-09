@@ -1,12 +1,19 @@
 <template>
   <div id="PlusGrandDiv">
-    <img class="flecheGauche" src="../assets/keyboard_double_arrow_up_black.svg">
-    <div id="grandDiv">
-      <div v-for="(prestataire, index) in research" :key="index">
-        <VitrinePrestataireCardView :prestataire="prestataire"/>
+    <div  v-for="(c,i) in $store.state.allCategory" :key="i">
+      <div id="categorie">
+        <div class="entete">
+          <p class="pCategorie">{{ c }}</p>
+          <hr>
+        </div>
+      </div>
+      <div id="grandDiv">
+        <div v-for="(prestataire, index) in getAllActivite" :key="index">
+          <VitrinePrestataireCardView :prestataire="prestataire"/>
+        </div>
       </div>
     </div>
-    <img src="../assets/keyboard_double_arrow_up_black.svg">
+
   </div>
 
 </template>
@@ -25,7 +32,10 @@ export default {
         if (prestataire.type.toLowerCase().startsWith(this.filter.toLowerCase())) return true
         return false
       });
-    }
+    },
+    getAllActivite() {return this.$store.state.allPrestataire.filter(prestataire => prestataire.type==="activite");},
+    getAllSpectacle() {return this.$store.state.allPrestataire.filter(prestataire => prestataire.type==="spectacle");},
+    getAllRestauration() {return this.$store.state.allPrestataire.filter(prestataire => prestataire.type==="restauration");}
   },
   components: {
     VitrinePrestataireCardView
@@ -35,37 +45,22 @@ export default {
 
 <style scoped>
 
+
+/*#carre {*/
+/*  width: 25%;*/
+/*  height: 100%;*/
+/*  border: solid white ;*/
+/*  background: black;*/
+/*  z-index: -10;*/
+/*}*/
+
+
+
 #grandDiv {
   display: flex;
-  height: 500px;
-  width: 900px;
-  border:solid;
-  overflow:scroll;
-}
-
-#PlusGrandDiv {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-
-img {
-  height: 100px;
-  width: 100px;
-  rotate: 90deg;
-}
-
-.flecheGauche {
-  rotate: 270deg;
-}
-
-VitrinePrestataireCardView{
-  height: 10px;
+  overflow: scroll;
 
 }
-
-
 
 
 
@@ -104,5 +99,35 @@ input::placeholder {
   margin-right: 40px;
   translate: 0 32px;
   background-color: var(--dark);
+}
+
+#categorie {
+
+  justify-content: start;
+  align-items: center;
+  margin-top: 20px;
+  width: 90%;
+  background: #333333;
+  color: #cccccc;
+  border-radius: 0 50px 50px 0;
+}
+
+.pCategorie {
+  font-size: 50px;
+  margin: 10px;
+}
+
+.entete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+hr{
+  height: 10px;
+  width: 100%;
+  background: white;
+  margin-left:10px ;
 }
 </style>
