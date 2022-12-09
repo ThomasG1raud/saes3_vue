@@ -36,7 +36,7 @@ export default {
   .card {
     height: 100%;
     max-width: max-content;
-    color: var(--dark);
+    color: var(--very-very-light);
     border-radius: 60px 60px 50px 50px;
     transition-duration: 1s;
     display: flex;
