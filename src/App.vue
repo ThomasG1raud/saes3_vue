@@ -40,9 +40,9 @@ export default {
   --brown: #4A3D32;
   --blue: #0080ff;
 
-  --activite: var(--primary);
-  --spectacle: var(--secondary);
-  --restauration: var(--tertiary);
+  --activite: #70321d;
+  --spectacle: #af5031;
+  --restauration: #e1673e;
 }
 
 #app {
@@ -50,6 +50,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  background-color: var(--very-very-light);
 }
 
 body {
