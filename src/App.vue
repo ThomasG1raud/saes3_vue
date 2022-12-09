@@ -86,4 +86,14 @@ div.spectacle {
 div.restauration {
   background-color: var(--restauration);
 }
+@keyframes displayZoom {
+  0% {
+    opacity: 0;
+    scale: 0;
+  }
+  100% {
+    opacity: 1;
+    scale: 100%;
+  }
+}
 </style>

@@ -106,9 +106,8 @@ export default {
     margin-top: 5%;
     text-align: start;
     padding: 20px;
-
+    animation: 1s displayZoom;
   }
-
   img{
     width: 100%;
   }

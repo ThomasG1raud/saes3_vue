@@ -62,17 +62,6 @@ export default {
   font-family: 'Pacifico', cursive;
   color: var(--dark);
   -webkit-text-stroke: 3px var(--very-very-light);
-  scale: 1;
-  animation: 1s zoom;
-}
-@keyframes zoom {
-  0% {
-    opacity: 0;
-    scale: 0;
-  }
-  100% {
-    opacity: 1;
-    scale: 100%;
-  }
+  animation: 1s displayZoom;
 }
 </style>
