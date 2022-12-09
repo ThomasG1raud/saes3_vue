@@ -30,6 +30,7 @@
 	import { LMap, LImageOverlay} from 'vue2-leaflet';
 	import L from "leaflet";
 	import 'leaflet/dist/leaflet.css';
+	import router from '@/router';
 	
 	export default {
 	components: {
@@ -50,12 +51,6 @@
 			L.latLng(47.413220, 200),
 			L.latLng(47.414, -200),
 		]
-		/*places: [
-			{ name: "Sol", lat: 0.0, lng: 0.0 },
-			{ name: "Sol1", lat: -200.0, lng: -200.0 },
-			{ name: "Sol2", lat: 200.0, lng: 200.0 },
-		],*/	
-		//markerLatLng: this.map.layerPointToLatLng(this.map.containerPointToLayerPoint(200,200))
 		}
 	},
 	mounted() {
@@ -76,7 +71,8 @@
 			for (var i=0; i<this.markers.length; i++){
 				L.marker(this.markers[i]).addTo(this.$refs.map.mapObject).on('click', function(e) {
 					console.log(e)
-					this.$routes.push("/map/1")
+					//console.log(router);
+					router.push("/map/1")
 				});
 			}
 		},
