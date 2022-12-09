@@ -44,7 +44,7 @@ export default {
     display: grid;
     margin: 40px auto;
     background: none;
-    box-shadow: 0 0 10px #cccccc;
+    box-shadow: 0 0 10px var(--light);
     border-radius: 30px;
   }
   #form-register {

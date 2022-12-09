@@ -66,8 +66,8 @@ export default {
   align-items: center;
   margin-top: 20px;
   width: 90%;
-  background: #333333;
-  color: #cccccc;
+  background: var(--very-dark);
+  color: var(--very-very-light);
   border-radius: 0 50px 50px 0;
 }
 

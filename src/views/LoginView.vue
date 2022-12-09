@@ -53,7 +53,7 @@ export default {
   }
   #cardLeft, #cardRight {
     background: none;
-    box-shadow: 0 0 10px #cccccc;
+    box-shadow: 0 0 10px var(--light);
     height: 500px;
     width: 30%;
   }
