@@ -56,7 +56,7 @@ export default {
 .divImage {
   aspect-ratio: 1;
   height: 450px;
-  border-radius: 20px;
+  border-radius: 20px 20px 0 0;
   overflow: hidden;
 
 }
