@@ -39,6 +39,10 @@ export default {
   --background: #D4C8BB;
   --brown: #4A3D32;
   --blue: #0080ff;
+
+  --activite: #70321d;
+  --spectacle: #af5031;
+  --restauration: #e1673e;
 }
 
 #app {
@@ -46,7 +50,9 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  background-color: var(--very-very-light);
 }
+
 body {
   margin: 0;
   padding: 0;
@@ -63,6 +69,7 @@ button {
   border-radius: 5px;
   padding: 5px;
 }
+
 button:hover {
   border: 2px solid var(--defined-color-primary);
   background-color: var(--defined-color-secondary);
@@ -71,4 +78,23 @@ button:hover {
   padding: 5px;
 }
 
+div.activite {
+  background-color: var(--activite);
+}
+div.spectacle {
+  background-color: var(--spectacle);
+}
+div.restauration {
+  background-color: var(--restauration);
+}
+@keyframes displayZoom {
+  0% {
+    opacity: 0;
+    scale: 0;
+  }
+  100% {
+    opacity: 1;
+    scale: 100%;
+  }
+}
 </style>

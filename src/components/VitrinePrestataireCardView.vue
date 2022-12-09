@@ -36,8 +36,7 @@ export default {
   .card {
     height: 100%;
     max-width: max-content;
-    background-color: var(--very-very-light);
-    color: var(--dark);
+    color: var(--very-very-light);
     border-radius: 60px 60px 50px 50px;
     transition-duration: 1s;
     display: flex;
@@ -80,14 +79,5 @@ export default {
   }
   .p-20 {
     padding: 20px;
-  }
-  .activite {
-    background-color: var(--primary);
-  }
-  .spectacle {
-    background-color: var(--secondary);
-  }
-  .restauration {
-    background-color: var(--tertiary);
   }
 </style>

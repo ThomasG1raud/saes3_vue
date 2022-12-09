@@ -6,11 +6,11 @@
 
     <section>
       <div class="grid" id="grid">
-        <CardActivityView link-card="/activite" image-card="activite.png" title-card="Activités"
+        <CardActivityView link-card="/activite" type="activite" image-card="activite.png" title-card="Activités"
                           text-card="Découvrez les anciennes méthodes de la  sculpture, de la forge ou encore de la caligraphie"/>
-        <CardActivityView link-card="/activite" image-card="spectacle.png" title-card="Spectacles"
+        <CardActivityView link-card="/spectacle" type="spectacle" image-card="spectacle.png" title-card="Spectacles"
                           text-card="Assistez aux combats de preux chevaliers, ecoutez la musique des temps anciens ou bien encore venez découvrir la vie des habitants du Moyen-age"/>
-        <CardActivityView link-card="/activite" image-card="boutique.png" title-card="Boutiques, restauration"
+        <CardActivityView link-card="/restauration" type="restauration" image-card="boutique.png" title-card="Boutiques, restauration"
                           text-card="Prenez plaisir à découvrir la cuisine antique et ses saveurs authentique, ou offrez-vous un petit plaisir dans l'une de nos nombreuses boutiques"/>
       </div>
     </section>
@@ -62,17 +62,6 @@ export default {
   font-family: 'Pacifico', cursive;
   color: var(--dark);
   -webkit-text-stroke: 3px var(--very-very-light);
-  scale: 1;
-  animation: 1s zoom;
-}
-@keyframes zoom {
-  0% {
-    opacity: 0;
-    scale: 0;
-  }
-  100% {
-    opacity: 1;
-    scale: 100%;
-  }
+  animation: 1s displayZoom;
 }
 </style>
