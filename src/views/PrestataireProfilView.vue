@@ -117,7 +117,9 @@ export default {
 
   hr {
     width: 70%;
-    margin-left: 0;
+    height: 1px;
+    margin-left: 5px;
+    background-color: black;
   }
 
   p {
