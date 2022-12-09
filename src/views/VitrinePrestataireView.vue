@@ -1,17 +1,14 @@
 <template>
-  <div>
-    <h1>
-      Liste des prestataires
-    </h1>
-    <input type="search" v-model="filter" value="">
-    <div class="grid">
+  <div id="PlusGrandDiv">
+    <img class="flecheGauche" src="../assets/keyboard_double_arrow_up_black.svg">
+    <div id="grandDiv">
       <div v-for="(prestataire, index) in research" :key="index">
         <VitrinePrestataireCardView :prestataire="prestataire"/>
       </div>
     </div>
-    <div v-if="!research.length"><h1>Aucun prestataire n'as été trouver</h1></div>
-    <div id="scroll" onclick="window.scroll({top: 0,behavior: 'smooth'});"></div>
+    <img src="../assets/keyboard_double_arrow_up_black.svg">
   </div>
+
 </template>
 
 <script>
@@ -19,7 +16,7 @@ import VitrinePrestataireCardView from "@/components/VitrinePrestataireCardView"
 export default {
   name: "PrestataireView",
   data: () => ({
-    filter: ""
+    filter: "",
   }),
   computed: {
     research() {
@@ -37,6 +34,42 @@ export default {
 </script>
 
 <style scoped>
+
+#grandDiv {
+  display: flex;
+  height: 500px;
+  width: 900px;
+  border:solid;
+  overflow:scroll;
+}
+
+#PlusGrandDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+img {
+  height: 100px;
+  width: 100px;
+  rotate: 90deg;
+}
+
+.flecheGauche {
+  rotate: 270deg;
+}
+
+VitrinePrestataireCardView{
+  height: 10px;
+
+}
+
+
+
+
+
+
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
