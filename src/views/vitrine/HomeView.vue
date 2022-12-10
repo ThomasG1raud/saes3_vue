@@ -22,8 +22,8 @@
 
 <script>
 // @ is an alias to /src
-import MapView from "@/components/MapView";
-import CardActivityView from "@/components/CardActivityView";
+import MapView from "@/components/map/MapView";
+import CardActivityView from "@/components/vitrine/CardActivityView";
 
 export default {
   name: 'HomeView',

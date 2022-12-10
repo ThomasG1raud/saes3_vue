@@ -1,21 +1,21 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import LoginView from "@/views/LoginView";
-import RegisterView from "@/views/RegisterView";
+import LoginView from "@/views/vitrine/LoginView";
+import RegisterView from "@/views/vitrine/RegisterView";
 
-import HomeView from '@/views/HomeView.vue'
-import VitrineActiviteView from "@/views/VitrineActiviteView";
-import VitrineMapView from "@/views/VitrineMapView";
+import HomeView from '@/views/vitrine/HomeView.vue'
+import VitrineActiviteView from "@/views/vitrine/VitrineActiviteView";
+import VitrineMapView from "@/views/vitrine/VitrineMapView";
 
-import PrestataireView from "@/views/VitrinePrestataireView";
-import PrestataireProfilView from "@/views/PrestataireProfilView";
-import PrestataireStatistiqueView from "@/views/PrestataireStatistiqueView";
+import PrestataireView from "@/views/vitrine/VitrinePrestataireView";
+import PrestataireProfilView from "@/views/prestataire/PrestataireProfilView";
+import PrestataireStatistiqueView from "@/views/prestataire/PrestataireStatistiqueView";
 
-import AdminView from "@/views/AdminView";
-import AdminMapView from "@/views/AdminMapView";
-import AdminPrestataireView from "@/views/AdminPrestataireView";
-import AdminStandView from "@/views/AdminStandView";
+import AdminView from "@/views/admin/AdminView";
+import AdminMapView from "@/views/admin/AdminMapView";
+import AdminPrestataireView from "@/views/admin/AdminPrestataireView";
+import AdminStandView from "@/views/admin/AdminStandView";
 
 Vue.use(VueRouter)
 
@@ -47,7 +47,7 @@ const routes = [
     component: VitrineMapView,
     children: [{
       path: ":idPrestataire",
-      component: () => import('../components/CardPrestataireView'),
+      component: () => import('../components/vitrine/CardPrestataireView'),
       props: route => ({
         idPrestataire: route.params.idPrestataire,
         linkCard: "/prestataire/"+route.params.idPrestataire,

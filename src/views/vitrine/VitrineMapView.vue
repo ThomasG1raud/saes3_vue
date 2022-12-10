@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import MapView from "@/components/MapView";
+import MapView from "@/components/map/MapView";
 export default {
   name: "VitrineMapView",
   components: {

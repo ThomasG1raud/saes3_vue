@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import VitrinePrestataireCardView from "@/components/VitrinePrestataireCardView";
+import VitrinePrestataireCardView from "@/components/vitrine/VitrinePrestataireCardView";
 export default {
   name: "PrestataireView",
   data: () => ({

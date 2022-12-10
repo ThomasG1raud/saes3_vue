@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import AdminPrestataireCardView from "@/components/AdminPrestataireCardView.vue";
+import AdminPrestataireCardView from "@/components/admin/AdminPrestataireCardView.vue";
 
 export default {
   name: "AdminPrestataireView",
