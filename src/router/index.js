@@ -47,7 +47,7 @@ const routes = [
     component: VitrineMapView,
     children: [{
       path: ":idPrestataire",
-      component: () => import('../components/vitrine/CardPrestataireView'),
+      component: () => import('../components/map/CardPrestataireView'),
       props: route => ({
         idPrestataire: route.params.idPrestataire,
         linkCard: "/prestataire/"+route.params.idPrestataire,

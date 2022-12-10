@@ -1,18 +1,22 @@
 <template>
-  <div>
-    <h1>
-<!--      TODO-->
-      view de admin map
-    </h1>
-  </div>
+  <div><!--      <MapView></MapView>-->
+      <CardPrestataireForAdminView texte="lol" imagePrestataire="prestataire.png" imageStand="prestataire" type="Restauration" id="3" />
+    </div>
 </template>
 
 <script>
+// import MapView from "@/components/map/MapView";
+import CardPrestataireForAdminView from "@/components/map/CardPrestataireForAdminView";
 export default {
-  name: "AdminMapView"
+  name: "AdminMapView",
+  components: {
+    // MapView,
+    CardPrestataireForAdminView
+  },
 }
 </script>
 
 <style scoped>
+
 
 </style>
