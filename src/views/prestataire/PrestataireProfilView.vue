@@ -52,30 +52,20 @@
 <script>
 export default {
   name: "PrestataireProfilView",
-  // props: {
-  //   prestataire: {
-  //     name: String,
-  //     text: String,
-  //     imagePrestataire: String,
-  //     imageStand: String,
-  //     nomStand : String,
-  //     type: String,
-  //     id: Number
-  //   }
-  // },
-  data: () => ({
+  props: {
     prestataire: {
-      name: "Nom du prestataire 1",
-      text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-      imagePrestataire: "prestataire.png",
-      imageStand: "stand.png",
-      nomStand:" la bonne saucisse de michelle",
-      idStand:1,
-      type: "activite",
-      email: "prestataire1@tgmail.com",
-      siren: 123456789,
-      id: 1
-    },
+      name: String,
+      text: String,
+      imagePrestataire: String,
+      imageStand: String,
+      nomStand : String,
+      type: String,
+      email: String,
+      siren: Number,
+      id: Number
+    }
+  },
+  data: () => ({
     bool:false
   })
 }

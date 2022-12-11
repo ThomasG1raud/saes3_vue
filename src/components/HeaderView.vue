@@ -13,7 +13,7 @@
         <router-link class="item" to="/">
           <img src="@/assets/logo_sae_white.png" alt="logo_sae_white" id="logo_navbar">
         </router-link>
-        <router-link class="item" to="/prestataire/profil">Profil</router-link>
+        <router-link class="item" to="/prestataire/profil/1">Profil</router-link>
         <router-link class="item" to="/prestataire/statistique">Statistique</router-link>
         <router-link class="item" to="/map">Map</router-link>
         <div class="item">

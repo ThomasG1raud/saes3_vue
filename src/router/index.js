@@ -73,7 +73,20 @@ const routes = [
     path: "/prestataire/profil/:idPrestataire",
     name: "profil",
     component: PrestataireProfilView,
-    props: "prestataire"
+    props: (route) => ({
+      prestataire: {
+        name: "Nom du prestataire 1",
+        text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        imagePrestataire: "prestataire.png",
+        imageStand: "stand.png",
+        nomStand:" la bonne saucisse de michelle",
+        idStand:1,
+        type: "activite",
+        email: "prestataire1@tgmail.com",
+        siren: 123456789,
+        id: route.params.idPrestataire
+      }
+    })
   },
   {
     path: "/prestataire/statistique",
@@ -101,7 +114,10 @@ const routes = [
           imagePrestataire: "prestataire.png",
           imageStand: "stand.png",
           nomStand:" la bonne saucisse de michelle",
+          idStand:1,
           type: "activite",
+          email: "prestataire1@tgmail.com",
+          siren: 123456789,
           id: route.params.idPrestataire
         },
         // prestataire: (route.params.idPrestataire),
