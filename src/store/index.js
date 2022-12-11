@@ -18,6 +18,7 @@ export default new Vuex.Store({
                 imagePrestataire: "prestataire.png",
                 imageStand: "stand.png",
                 nomStand:" la bonne saucisse de michelle",
+                idStand:1,
                 type: "activite",
                 id: 1
             },
@@ -27,6 +28,7 @@ export default new Vuex.Store({
                 imagePrestataire: "prestataire.png",
                 imageStand: "stand.png",
                 nomStand:" la bonne saucisse de michelle",
+                idStand:1,
                 type: "restauration",
                 id: 2
             },
@@ -35,6 +37,8 @@ export default new Vuex.Store({
                 text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
                 imagePrestataire: "prestataire.png",
                 imageStand: "stand.png",
+                nomStand:" la bonne saucisse de michelle",
+                idStand:1,
                 type: "restauration",
                 id: 3
             },
@@ -44,6 +48,7 @@ export default new Vuex.Store({
                 imagePrestataire: "prestataire.png",
                 imageStand: "stand.png",
                 nomStand:" la bonne saucisse de michelle",
+                idStand:2,
                 type: "spectacle",
                 id: 4
             },
@@ -53,6 +58,7 @@ export default new Vuex.Store({
                 imagePrestataire: "prestataire.png",
                 imageStand: "stand.png",
                 nomStand:" la bonne saucisse de michelle",
+                idStand:2,
                 type: "activite",
                 id: 5
             },
@@ -62,6 +68,7 @@ export default new Vuex.Store({
                 imagePrestataire: "prestataire.png",
                 imageStand: "stand.png",
                 nomStand:" la bonne saucisse de michelle",
+                idStand:3,
                 type: "activite",
                 id: 6
             },
@@ -70,6 +77,7 @@ export default new Vuex.Store({
                 text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
                 imagePrestataire: "prestataire.png",
                 imageStand: "stand.png",
+                idStand: undefined,
                 type: "activite",
                 id: 7
             },
@@ -79,6 +87,7 @@ export default new Vuex.Store({
                 imagePrestataire: "prestataire.png",
                 imageStand: "stand.png",
                 nomStand:" la bonne saucisse de michelle",
+                idStand:3,
                 type: "activite",
                 id: 8
             },
@@ -88,6 +97,7 @@ export default new Vuex.Store({
                 imagePrestataire: "prestataire.png",
                 imageStand: "stand.png",
                 nomStand:" la bonne saucisse de michelle",
+                idStand:2,
                 type: "activite",
                 id: 9
             },
@@ -97,6 +107,7 @@ export default new Vuex.Store({
                 imagePrestataire: "prestataire.png",
                 imageStand: "stand.png",
                 nomStand:" la bonne saucisse de michelle",
+                idStand:undefined,
                 type: "activite",
                 id: 10
             }
@@ -105,6 +116,9 @@ export default new Vuex.Store({
     getters: {
         getInfoPrestataire:(state)=> (id) => {
             return state.allPrestataire.find(prestataire => prestataire.id === id)
+        },
+        getAllPrestataire:(state) => {
+            return state.allPrestataire
         }
     },
     mutations: {},
