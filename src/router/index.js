@@ -69,11 +69,11 @@ const routes = [
     component: PrestataireView
   },
   {
-    path: "/prestataire/profil",
-    // path: "/prestataire/profil/:idPrestataire",
+    // path: "/prestataire/profil",
+    path: "/prestataire/profil/:idPrestataire",
     name: "profil",
     component: PrestataireProfilView,
-    // props: "prestataire"
+    props: "prestataire"
   },
   {
     path: "/prestataire/statistique",

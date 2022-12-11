@@ -51,7 +51,8 @@ export default {
   text-align: center;
   --background: var(--very-very-light);
   background-color: var(--background);
-  /*background-image: url('https://thumbs.dreamstime.com/b/medieval-background-8533426.jpg');*/
+  /*background-image: url("https://media.istockphoto.com/id/1166351631/photo/japanese-new-year-vintage-gold-color-paper-texture-or-grunge-background.jpg?s=612x612&w=0&k=20&c=FdDCRDB2Mq5x5sM488E1KBb430cu4vGrGVDYOBskb6Y=");*/
+  /*background-size: 100% auto;*/
   /*background-repeat: repeat;*/
 }
 
@@ -70,6 +71,7 @@ button, a>button, input[type=submit], #connected-selected {
   color: var(--defined-color-secondary);
   border-radius: 5px;
   padding: 5px;
+  text-align: center;
 }
 
 button:hover, a>button:hover, input[type=submit]:hover, #connected-selected:hover{
@@ -78,6 +80,7 @@ button:hover, a>button:hover, input[type=submit]:hover, #connected-selected:hove
   color: var(--defined-color-primary);
   border-radius: 5px;
   padding: 5px;
+  text-align: center;
 }
 
 div.activite {

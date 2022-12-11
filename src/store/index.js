@@ -20,6 +20,8 @@ export default new Vuex.Store({
                 nomStand:" la bonne saucisse de michelle",
                 idStand:1,
                 type: "activite",
+                email: "prestataire1@tgmail.com",
+                siren: 123456789,
                 id: 1
             },
             {
@@ -30,6 +32,8 @@ export default new Vuex.Store({
                 nomStand:" la bonne saucisse de michelle",
                 idStand:1,
                 type: "restauration",
+                email: "prestataire2@tgmail.com",
+                siren: 123456789,
                 id: 2
             },
             {
@@ -40,6 +44,8 @@ export default new Vuex.Store({
                 nomStand:" la bonne saucisse de michelle",
                 idStand:1,
                 type: "restauration",
+                email: "prestataire3@tgmail.com",
+                siren: 123456789,
                 id: 3
             },
             {
@@ -50,6 +56,8 @@ export default new Vuex.Store({
                 nomStand:" la bonne saucisse de michelle",
                 idStand:2,
                 type: "spectacle",
+                email: "prestataire4@tgmail.com",
+                siren: 987654321,
                 id: 4
             },
             {
@@ -60,6 +68,8 @@ export default new Vuex.Store({
                 nomStand:" la bonne saucisse de michelle",
                 idStand:2,
                 type: "activite",
+                email: "prestataire5@tgmail.com",
+                siren: 567891234,
                 id: 5
             },
             {
@@ -70,6 +80,8 @@ export default new Vuex.Store({
                 nomStand:" la bonne saucisse de michelle",
                 idStand:3,
                 type: "activite",
+                email: "prestataire6@tgmail.com",
+                siren: 987654321,
                 id: 6
             },
             {
@@ -79,6 +91,8 @@ export default new Vuex.Store({
                 imageStand: "stand.png",
                 idStand: undefined,
                 type: "activite",
+                email: "prestataire7@tgmail.com",
+                siren: 567891234,
                 id: 7
             },
             {
@@ -89,6 +103,8 @@ export default new Vuex.Store({
                 nomStand:" la bonne saucisse de michelle",
                 idStand:3,
                 type: "activite",
+                email: "prestataire8@tgmail.com",
+                siren: 432198765,
                 id: 8
             },
             {
@@ -99,6 +115,8 @@ export default new Vuex.Store({
                 nomStand:" la bonne saucisse de michelle",
                 idStand:2,
                 type: "activite",
+                email: "prestataire9@tgmail.com",
+                siren: 135792468,
                 id: 9
             },
             {
@@ -109,6 +127,8 @@ export default new Vuex.Store({
                 nomStand:" la bonne saucisse de michelle",
                 idStand:undefined,
                 type: "activite",
+                email: "prestataire10@tgmail.com",
+                siren: 246813579,
                 id: 10
             }
         ]

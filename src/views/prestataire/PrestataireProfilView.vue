@@ -6,36 +6,36 @@
       </div>
       <div id="divInfo">
         <div class="partie">
-          <p> Prenom :</p>
-          <p> Julien </p>
+          <p> Nom :</p>
+          <p class="text-capitalize"> {{ prestataire.name }} </p>
         </div>
 
         <hr>
 
         <div class="partie">
-          <p> Nom de famille :</p>
-          <p> Merveaux </p>
+          <p> Categorie :</p>
+          <p class="text-capitalize"> {{ prestataire.type }} </p>
         </div>
 
         <hr>
 
         <div class="partie">
           <p> E-mail:</p>
-          <p> Julien.Merveaux@hotmail.de </p>
+          <p> {{ prestataire.email }} </p>
         </div>
 
         <hr>
 
         <div class="partie">
           <p> Nom de votre stand : </p>
-          <p> La bonne saucisse de michelle </p>
+          <p class="text-capitalize"> {{ prestataire.nomStand }} </p>
         </div>
 
         <hr>
 
         <div class="partie">
           <p> siren</p>
-          <p> 17265301 </p>
+          <p class="text-capitalize"> {{ prestataire.siren }} </p>
         </div>
       </div>
     </div>
@@ -52,13 +52,29 @@
 <script>
 export default {
   name: "PrestataireProfilView",
+  // props: {
+  //   prestataire: {
+  //     name: String,
+  //     text: String,
+  //     imagePrestataire: String,
+  //     imageStand: String,
+  //     nomStand : String,
+  //     type: String,
+  //     id: Number
+  //   }
+  // },
   data: () => ({
     prestataire: {
-      name: "Nom du prestataire",
-      email: "email@exemple.fr",
-      text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      name: "Nom du prestataire 1",
+      text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
       imagePrestataire: "prestataire.png",
-      imageStand: "stand.png"
+      imageStand: "stand.png",
+      nomStand:" la bonne saucisse de michelle",
+      idStand:1,
+      type: "activite",
+      email: "prestataire1@tgmail.com",
+      siren: 123456789,
+      id: 1
     },
     bool:false
   })
@@ -145,6 +161,9 @@ export default {
     display: flex;
     width: 90%;
     margin: 20px;
+  }
+  .text-capitalize {
+    text-transform: capitalize;
   }
 
 </style>
