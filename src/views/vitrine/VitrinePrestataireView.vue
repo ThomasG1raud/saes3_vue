@@ -3,7 +3,7 @@
     <div  v-for="(c,i) in $store.state.allCategory" :key="i">
       <div id="categorie">
         <div class="entete">
-          <p class="pCategorie">{{ c }}</p>
+          <p class="pCategorie" :id="c">{{ c }}</p>
           <hr>
         </div>
       </div>
@@ -74,6 +74,7 @@ export default {
 .pCategorie {
   font-size: 50px;
   margin: 10px;
+  text-transform: capitalize;
 }
 
 .entete {

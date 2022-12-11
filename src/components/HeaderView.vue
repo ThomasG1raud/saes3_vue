@@ -42,6 +42,7 @@
           <img src="@/assets/logo_sae_white.png" alt="logo_sae_black" id="logo_navbar">
         </router-link>
         <router-link class="item" to="/">Accueil</router-link>
+        <router-link class="item" to="/calendrier">Calendrier</router-link>
         <router-link class="item" to="/prestataire">Prestataire</router-link>
         <router-link class="item" to="/map">Map</router-link>
         <div class="item">
@@ -95,6 +96,9 @@ export default {
   }
   button:hover {
     border-color: var(--very-very-light);
+  }
+  a.item.router-link-exact-active {
+    text-decoration: underline;
   }
   a.item {
     text-decoration: none;
