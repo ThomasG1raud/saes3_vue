@@ -11,7 +11,7 @@
 <!--      Login with prestataire-->
       <div class="div-nav" v-if="$store.state.connected === 1">
         <router-link class="item" to="/">
-          <img src="@/assets/logo_sae_white.png" alt="logo_sae_black" id="logo_navbar">
+          <img src="@/assets/logo_sae_white.png" alt="logo_sae_white" id="logo_navbar">
         </router-link>
         <router-link class="item" to="/prestataire/profil">Profil</router-link>
         <router-link class="item" to="/prestataire/statistique">Statistique</router-link>
@@ -25,7 +25,7 @@
 <!--      Login with admin-->
       <div class="div-nav" v-else-if="$store.state.connected === 2">
         <router-link class="item" to="/">
-          <img src="@/assets/logo_sae_white.png" alt="logo_sae_black" id="logo_navbar">
+          <img src="@/assets/logo_sae_white.png" alt="logo_sae_white" id="logo_navbar">
         </router-link>
         <router-link class="item" to="/admin/stand">Stand</router-link>
         <router-link class="item" to="/admin/prestataire">Prestataire</router-link>
@@ -39,7 +39,7 @@
 <!--      No login-->
       <div class="div-nav" v-else>
         <router-link class="item" to="/">
-          <img src="@/assets/logo_sae_white.png" alt="logo_sae_black" id="logo_navbar">
+          <img src="@/assets/logo_sae_white.png" alt="logo_sae_white" id="logo_navbar">
         </router-link>
         <router-link class="item" to="/">Accueil</router-link>
         <router-link class="item" to="/calendrier">Calendrier</router-link>
@@ -88,13 +88,11 @@ export default {
     height: 64px;
     width: 64px;
   }
-  button {
-    color: white;
+  button, #connected-selected{
     --defined-color-primary: var(--very-dark);
     --defined-color-secondary: var(--very-very-light);
-    font-size: x-large;
   }
-  button:hover {
+  button:hover, #connected-selected:hover {
     border-color: var(--very-very-light);
   }
   a.item.router-link-exact-active {

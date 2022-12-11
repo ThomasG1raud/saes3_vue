@@ -118,7 +118,7 @@ export default {
     width: 70%;
     height: 1px;
     margin-left: 5px;
-    background-color: black;
+    background-color: var(--very-very-dark);
   }
 
   p {
@@ -132,7 +132,7 @@ export default {
     translate: 900px -50px;
     height: 100px;
     width: 100px;
-    background-color: white;
+    background-color: var(--background);
     border:solid;
     border-radius: 50%;
   }

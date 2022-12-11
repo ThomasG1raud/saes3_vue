@@ -116,6 +116,6 @@ export default {
     height: 50px;
     width: 50px;
     border-radius: 100%;
-    background-color: white;
+    background-color: var(--very-very-light);
   }
 </style>

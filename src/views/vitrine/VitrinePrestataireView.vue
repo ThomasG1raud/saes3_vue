@@ -87,7 +87,7 @@ export default {
 hr{
   height: 10px;
   width: 100%;
-  background: white;
+  background: var(--very-very-light);
   margin-left:10px ;
 }
 </style>

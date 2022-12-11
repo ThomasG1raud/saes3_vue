@@ -73,7 +73,7 @@ img {
 
 a {
   text-decoration: none;
-  color: black;
+  color: var(--very-very-dark);
 }
 
 hr {

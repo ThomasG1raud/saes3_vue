@@ -49,7 +49,10 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  background-color: var(--very-very-light);
+  --background: var(--very-very-light);
+  background-color: var(--background);
+  /*background-image: url('https://thumbs.dreamstime.com/b/medieval-background-8533426.jpg');*/
+  /*background-repeat: repeat;*/
 }
 
 body {
@@ -61,7 +64,7 @@ nav a {
   font-weight: bold;
 }
 
-button {
+button, a>button, input[type=submit], #connected-selected {
   border: 2px solid var(--defined-color-secondary);
   background-color: var(--defined-color-primary);
   color: var(--defined-color-secondary);
@@ -69,7 +72,7 @@ button {
   padding: 5px;
 }
 
-button:hover {
+button:hover, a>button:hover, input[type=submit]:hover, #connected-selected:hover{
   border: 2px solid var(--defined-color-primary);
   background-color: var(--defined-color-secondary);
   color: var(--defined-color-primary);

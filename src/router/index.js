@@ -18,8 +18,6 @@ import AdminMapView from "@/views/admin/AdminMapView";
 import AdminPrestataireView from "@/views/admin/AdminPrestataireView";
 import AdminStandView from "@/views/admin/AdminStandView";
 
-// import Vuetify from "vuetify";
-// Vue.use(Vuetify)
 Vue.use(VueRouter)
 
 const routes = [
@@ -72,8 +70,10 @@ const routes = [
   },
   {
     path: "/prestataire/profil",
+    // path: "/prestataire/profil/:idPrestataire",
     name: "profil",
-    component: PrestataireProfilView
+    component: PrestataireProfilView,
+    // props: "prestataire"
   },
   {
     path: "/prestataire/statistique",
