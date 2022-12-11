@@ -82,7 +82,27 @@ const routes = [
   {
     path: "/admin/map",
     name: "map",
-    component: AdminMapView
+    component: AdminMapView,
+    children: [{
+      path: ":idPrestataire",
+      component: () => import('../components/map/CardPrestataireForAdminView'),
+      props: (route) => ({
+        // prestataire: this.$store.getters.getInfoPrestataire(route.params.idPrestataire),
+        prestataire: {
+          name: "Nom du prestataire 1",
+          text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+          imagePrestataire: "prestataire.png",
+          imageStand: "stand.png",
+          nomStand:" la bonne saucisse de michelle",
+          type: "activite",
+          id: route.params.idPrestataire
+        },
+        // prestataire: (route.params.idPrestataire),
+        // prestataire: (route.params.idPrestataire),
+        // prestataire: this.$store.getters.getInfoPrestataire(route.params.idPrestataire),
+        // prestataire: this.$store.getters.getInfoPrestataire(1),
+      })
+    }]
   },
   {
     path: "/admin/prestataire",

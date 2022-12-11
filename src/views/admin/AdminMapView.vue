@@ -1,18 +1,26 @@
 <template>
-  <div><!--      <MapView></MapView>-->
-      <CardPrestataireForAdminView texte="lol" imagePrestataire="prestataire.png" imageStand="prestataire" type="Restauration" id="3" />
-    </div>
+  <div>
+    <!--      <MapView/>-->
+    <router-view/>
+<!--    <CardPrestataireForAdminView :prestataire="getInfoPrestataire(1)"/>-->
+  </div>
 </template>
 
 <script>
 // import MapView from "@/components/map/MapView";
-import CardPrestataireForAdminView from "@/components/map/CardPrestataireForAdminView";
+// import CardPrestataireForAdminView from "@/components/map/CardPrestataireForAdminView";
+// import {mapGetters} from "vuex"
+
 export default {
   name: "AdminMapView",
-  components: {
-    // MapView,
-    CardPrestataireForAdminView
-  },
+  // computed:{
+  //   ...mapGetters(['getInfoPrestataire']),
+  // },
+components: {
+  // MapView,
+  // CardPrestataireForAdminView
+}
+,
 }
 </script>
 

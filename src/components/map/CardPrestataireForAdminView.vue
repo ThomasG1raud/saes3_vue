@@ -1,29 +1,30 @@
 <template>
   <router-link class="linkCard" :to="'/prestataire/'+prestataire.id">
     <div class="card">
+<!--      {{prestataire}}-->
       <div class="divImage">
-        <img src="../../assets/prestataire.png">
+        <img :src="require('../../assets/'+prestataire.imagePrestataire)">
       </div>
       <div class="divInfo">
         <div class="infoStand">
           <p>12h23 - 16h45</p>
-          <h2> la bonne saucisse de michelle</h2>
+          <h2> {{ prestataire.nomStand }}</h2>
         </div>
         <div class="infoPrestataire">
           <div class="info">
             <p>Nom :</p>
-            <p>Merveaux</p>
+            <p>{{ prestataire.name }}</p>
           </div>
           <hr>
           <div class="info">
-            <p>prenom</p>
-            <p>Julien</p>
+            <p>Categorie :</p>
+            <p>{{ prestataire.type }}</p>
           </div>
           <hr>
         </div>
       </div>
       <div class="divTextPresentation">
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        <p>{{prestataire.text}}</p>
       </div>
     </div>
   </router-link>
@@ -34,9 +35,11 @@ export default {
   name: "CardPrestataireForAdminView",
   props: {
     prestataire: {
+      name: String,
       text: String,
       imagePrestataire: String,
       imageStand: String,
+      nomStand : String,
       type: String,
       id: Number
     }
