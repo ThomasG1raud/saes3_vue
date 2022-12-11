@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import L  from 'leaflet'
+import vuetify from "@/plugins/vuetify";
 Vue.config.productionTip = false
 
 delete L.Icon.Default.prototype._getIconUrl  
@@ -14,6 +15,7 @@ L.Icon.Default.mergeOptions({
 })
 
 new Vue({
+  vuetify,
   router,
   store,
   render: h => h(App)

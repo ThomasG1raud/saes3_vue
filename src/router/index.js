@@ -7,6 +7,7 @@ import RegisterView from "@/views/vitrine/RegisterView";
 import HomeView from '@/views/vitrine/HomeView.vue'
 import VitrineActiviteView from "@/views/vitrine/VitrineActiviteView";
 import VitrineMapView from "@/views/vitrine/VitrineMapView";
+import VitrineCalendrierView from "@/views/vitrine/VitrineCalendrierView.vue";
 
 import PrestataireView from "@/views/vitrine/VitrinePrestataireView";
 import PrestataireProfilView from "@/views/prestataire/PrestataireProfilView";
@@ -17,6 +18,8 @@ import AdminMapView from "@/views/admin/AdminMapView";
 import AdminPrestataireView from "@/views/admin/AdminPrestataireView";
 import AdminStandView from "@/views/admin/AdminStandView";
 
+// import Vuetify from "vuetify";
+// Vue.use(Vuetify)
 Vue.use(VueRouter)
 
 const routes = [
@@ -57,7 +60,11 @@ const routes = [
       })
     }]
   },
-
+  {
+    path: "/calendrier",
+    name: "calendrier",
+    component: VitrineCalendrierView
+  },
   {
     path: "/prestataire",
     name: "prestataire",
