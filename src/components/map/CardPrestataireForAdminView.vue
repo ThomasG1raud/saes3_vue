@@ -50,15 +50,16 @@ export default {
 <style scoped>
 
 .card {
-  width: 450px;
+  width: 80%;
+  height: 96%;
   border-radius: 20px;
   border: solid;
-  margin: 30px;
+  margin: 10px 30px 30px 30px;
 }
 
 .divImage {
   aspect-ratio: 1;
-  height: 450px;
+  height: auto;
   border-radius: 20px 20px 0 0;
   overflow: hidden;
 
@@ -90,6 +91,11 @@ p {
 
 .info {
   display: flex;
+}
+
+.divTextPresentation {
+  overflow: scroll;
+  height: 15%;
 }
 
 

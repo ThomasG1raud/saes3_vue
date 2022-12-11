@@ -22,7 +22,7 @@
 				</l-image-overlay>
 				</l-map>
 			</div>
-			<router-view/>		
+			<router-view/>
 	</div>
 	</template>
 	
@@ -72,7 +72,7 @@
 				L.marker(this.markers[i]).addTo(this.$refs.map.mapObject).on('click', function(e) {
 					console.log(e)
 					//console.log(router);
-					router.push("/map/1")
+					router.push("/admin/map/1")
 				});
 			}
 		},
@@ -88,13 +88,16 @@
 	</script>
 	
 	<style>
-	.max {
-		height: 560px;
-		width: 100px;
-		display: flex;
-		margin: 20px 10%;
-	}
 	.leaflet-control-attribution {
 	display: none;
+  }
+
+  .div-carte {
+    display: flex;
+    align-items: center;
+  }
+  .max {
+    display: flex;
+    height: 100%;
   }
 	</style>
