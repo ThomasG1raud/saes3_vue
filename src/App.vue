@@ -16,7 +16,6 @@ export default {
     FooterView
   }
 }
-
 </script>
 
 
