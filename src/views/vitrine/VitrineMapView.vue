@@ -4,9 +4,7 @@
       <div id="formulaire">
         <select @change="onChange($event)" name="prestataire" id="prestataire-select">
           <option value="">--Please choose an Category--</option>
-          <option value="restauration">Restauration</option>
-          <option value="spectacle">Spectacle</option>
-          <option value="activite">Activité</option>
+          <option v-for="(category, index) in getAllCategory" :key="index" :value="category">{{category}}</option>
         </select>
         <div id="listePrestataire">
           <div v-for="(prestataire,index) in research" :key="index">
@@ -35,25 +33,12 @@ export default {
     filter: "",
   }),
   computed: {
-    ...mapGetters(['getAllPrestataire']),
+    ...mapGetters(['getAllPrestataire', 'getAllCategory']),
     research() {
-      switch (this.$store.state.allPrestataire.type) {
-        case 'spectacle':
-          return this.getAllPrestataire.filter(prestataire => (prestataire.type != undefined) === (this.filter === "spectacle"))
-          // eslint-disable-next-line no-unreachable
-          break;
-        case 'restauration':
-          return this.getAllPrestataire.filter(prestataire => (prestataire.type != undefined) === (this.filter === "restauration"))
-          // eslint-disable-next-line no-unreachable
-          break
-        case 'activite':
-          return this.getAllPrestataire.filter(prestataire => (prestataire.type != undefined) === (this.filter === "activite"))
-          // eslint-disable-next-line no-unreachable
-          break
-          // expected output: "Mangoes and papayas are $2.79 a pound."
-        default:
-          return this.getAllPrestataire
+      if (!this.filter.length) {
+        return this.getAllPrestataire
       }
+      return this.getAllPrestataire.filter(prestataire => (prestataire.type === this.filter))
     }
     //   if (this.filter === "") {
     //     console.log("a")
