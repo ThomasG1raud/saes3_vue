@@ -1,33 +1,38 @@
 <template>
-  <router-link class="linkCard" :to="'/prestataire/'+prestataire.id">
-    <div class="card">
-<!--      {{prestataire}}-->
-      <div class="divImage">
-        <img :src="require('../../assets/'+prestataire.imagePrestataire)">
-      </div>
-      <div class="divInfo">
-        <div class="infoStand">
-          <p>12h23 - 16h45</p>
-          <h2> {{ prestataire.nomStand }}</h2>
+  <div>
+    <router-link class="linkCard" :to="'/admin/prestataire/'+prestataire.id">
+      <div class="card">
+        <!--      {{prestataire}}-->
+        <div class="divImage">
+          <img :src="require('../../assets/'+prestataire.imagePrestataire)">
         </div>
-        <div class="infoPrestataire">
-          <div class="info">
-            <p>Nom :</p>
-            <p>{{ prestataire.name }}</p>
+        <div class="divInfo">
+          <div class="infoStand">
+            <p>12h23 - 16h45</p>
+            <h2> {{ prestataire.nomStand }}</h2>
           </div>
-          <hr>
-          <div class="info">
-            <p>Categorie :</p>
-            <p>{{ prestataire.type }}</p>
+          <div class="infoPrestataire">
+            <div class="info">
+              <p>Nom :</p>
+              <p>{{ prestataire.name }}</p>
+            </div>
+            <hr>
+            <div class="info">
+              <p>Categorie :</p>
+              <p>{{ prestataire.type }}</p>
+            </div>
+            <hr>
           </div>
-          <hr>
+        </div>
+        <div class="divTextPresentation">
+          <p>{{prestataire.text}}</p>
         </div>
       </div>
-      <div class="divTextPresentation">
-        <p>{{prestataire.text}}</p>
-      </div>
-    </div>
-  </router-link>
+    </router-link>
+    <button id="delete">Delete</button>
+  </div>
+
+
 </template>
 
 <script>
@@ -54,7 +59,7 @@ export default {
   height: 96%;
   border-radius: 20px;
   border: solid;
-  margin: 10px 30px 30px 30px;
+  margin: 10px 30px 0 30px;
 }
 
 .divImage {
@@ -98,5 +103,25 @@ p {
   height: 15%;
 }
 
+#delete {
+  position: relative;
+  top: -20px;
+  width: 200px;
+  background-color: var(--very-very-light);
+  border: solid;
+}
+
+#delete:hover {
+  background-color: var(--very-dark);
+  border-color: var(--very-dark);
+}
+
+
+
+button {
+   
+  --defined-color-primary: var(--very-very-light);
+  --defined-color-secondary: var(--very-dark);
+}
 
 </style>
