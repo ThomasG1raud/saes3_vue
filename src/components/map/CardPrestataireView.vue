@@ -1,12 +1,12 @@
 <template>
-  <router-link to="linkCard" class="linkCard">
+  <router-link :to="'/prestataire/profile/'+curentPrestataire.id" class="linkCard">
     <div class="max-h">
       <div class="card">
         <div class="m-auto">
-          <h1 class="titleCard">{{titleCard}}</h1>
-          <p class="textCard">{{textCard}}</p>
+          <h1 class="titleCard">{{curentPrestataire.name}}</h1>
+          <p class="textCard">{{curentPrestataire.text}}</p>
           <div>
-            <img :src="require('@/assets/'+imageCard)" alt="image card">
+            <img :src="require('@/assets/'+curentPrestataire.imagePrestataire)" alt="image card">
           </div>
         </div>
       </div>
@@ -15,14 +15,18 @@
 </template>
 
 <script>
+import {mapGetters} from "vuex";
+
 export default {
   name: "CardPrestataireView",
   props: {
-    idPrestataire: Number,
-    linkCard: String,
-    imageCard: String,
-    titleCard: String,
-    textCard: String
+    idPrestataire: Number
+  },
+  computed :{
+    ...mapGetters(["getInfoPrestataire"]),
+    curentPrestataire() {
+      return this.getInfoPrestataire(this.idPrestataire)
+    }
   }
 }
 </script>

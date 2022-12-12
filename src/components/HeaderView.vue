@@ -15,7 +15,7 @@
         </router-link>
         <router-link class="item" to="/prestataire/profil/1">Profil</router-link>
         <router-link class="item" to="/prestataire/statistique">Statistique</router-link>
-        <router-link class="item" to="/map">Map</router-link>
+        <router-link class="item" to="/map/1">Map</router-link>
         <div class="item">
           <router-link to="/">
             <button>Se déconnecter</button>

@@ -2,7 +2,7 @@
   <router-link class="linkCard" :to="'/admin/prestataire/'+curentPrestataire.id">
     <div class="card">
       <div class="divImage">
-        <img :src="require('../../assets/'+curentPrestataire.imagePrestataire)">
+        <img :src="require('@/assets/'+curentPrestataire.imagePrestataire)">
       </div>
       <div class="divInfo">
         <div class="infoStand">

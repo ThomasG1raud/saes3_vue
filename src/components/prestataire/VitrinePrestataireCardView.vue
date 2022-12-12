@@ -2,7 +2,7 @@
     <router-link class="linkCard" :to="'/prestataire/'+prestataire.id">
       <div class="card">
         <div class="divImage">
-          <img src="../../assets/prestataire.png">
+          <img src="@/assets/prestataire.png">
         </div>
         <div class="divInfo">
           <div class="infoStand">

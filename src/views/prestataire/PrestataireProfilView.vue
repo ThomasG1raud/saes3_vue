@@ -2,7 +2,7 @@
   <div id="card">
     <div id="divImage-info">
       <div id="divImage">
-        <img :src="require('../../assets/'+curentPrestataire.imagePrestataire)" alt="image du prestataire">
+        <img :src="require('@/assets/'+curentPrestataire.imagePrestataire)" alt="image du prestataire">
       </div>
       <div id="divInfo">
         <div class="partie">
@@ -50,7 +50,7 @@
       </div>
     </div>
     <div class="rond" v-on:click="bool =!bool">
-      <img class="fleche" src="../../assets/keyboard_double_arrow_up_black.svg">
+      <img class="fleche" src="@/assets/keyboard_double_arrow_up_black.svg">
     </div>
 
     <div id="divService" v-if="bool">

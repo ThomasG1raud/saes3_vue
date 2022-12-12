@@ -48,7 +48,7 @@ const routes = [
     component: VitrineMapView,
     children: [{
       path: ":idPrestataire",
-      component: () => import('../components/map/CardPrestataireView'),
+      component: () => import('@/components/map/CardPrestataireView'),
       props: route => ({
         idPrestataire: parseInt(route.params.idPrestataire)
       })
@@ -90,7 +90,7 @@ const routes = [
     component: AdminMapView,
     children: [{
       path: ":idPrestataire",
-      component: () => import('../components/map/CardPrestataireForAdminView'),
+      component: () => import('@/components/map/CardPrestataireForAdminView'),
       props: (route) => ({
         idPrestataire: parseInt(route.params.idPrestataire)
       })
