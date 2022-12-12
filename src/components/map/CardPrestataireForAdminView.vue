@@ -1,7 +1,6 @@
 <template>
-  <router-link class="linkCard" :to="'/prestataire/'+curentPrestataire.id">
+  <router-link class="linkCard" :to="'/admin/prestataire/'+curentPrestataire.id">
     <div class="card">
-<!--      {{prestataire}}-->
       <div class="divImage">
         <img :src="require('../../assets/'+curentPrestataire.imagePrestataire)">
       </div>
@@ -36,12 +35,12 @@ import {mapGetters} from "vuex";
 export default {
   name: "CardPrestataireForAdminView",
   props: {
-    id: Number
+    idPrestataire: Number
   },
   computed :{
     ...mapGetters(["getInfoPrestataire"]),
     curentPrestataire() {
-      return this.getInfoPrestataire(this.id)
+      return this.getInfoPrestataire(this.idPrestataire)
     }
   }
 }

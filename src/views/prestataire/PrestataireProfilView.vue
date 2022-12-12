@@ -2,12 +2,12 @@
   <div id="card">
     <div id="divImage-info">
       <div id="divImage">
-        <img src="../../assets/prestataire.png">
+        <img :src="require('../../assets/'+curentPrestataire.imagePrestataire)" alt="image du prestataire">
       </div>
       <div id="divInfo">
         <div class="partie">
           <p> Nom :</p>
-          <p class="text-capitalize"> {{ prestataire.name }} </p>
+          <p class="text-capitalize"> {{ curentPrestataire.name }} </p>
         </div>
 
         <hr>
@@ -17,8 +17,8 @@
             Categorie :
           </p>
           <p class="text-capitalize">
-            <router-link :to="'/prestataire/#'+prestataire.type">
-              {{ prestataire.type }}
+            <router-link :to="'/prestataire/#'+curentPrestataire.type">
+              {{ curentPrestataire.type }}
             </router-link>
           </p>
         </div>
@@ -27,7 +27,7 @@
 
         <div class="partie">
           <p> E-mail:</p>
-          <p> {{ prestataire.email }} </p>
+          <p> {{ curentPrestataire.email }} </p>
         </div>
 
         <hr>
@@ -35,8 +35,8 @@
         <div class="partie">
           <p> Nom de votre stand : </p>
           <p class="text-capitalize">
-            <router-link :to="'/map/'+prestataire.idStand">
-              {{ prestataire.nomStand }}
+            <router-link :to="'/map/'+curentPrestataire.idStand">
+              {{ curentPrestataire.nomStand }}
             </router-link>
           </p>
         </div>
@@ -45,7 +45,7 @@
 
         <div class="partie">
           <p> siren</p>
-          <p class="text-capitalize"> {{ prestataire.siren }} </p>
+          <p class="text-capitalize"> {{ curentPrestataire.siren }} </p>
         </div>
       </div>
     </div>
@@ -60,25 +60,22 @@
 </template>
 
 <script>
+import {mapGetters} from "vuex";
+
 export default {
   name: "PrestataireProfilView",
   props: {
-    prestataire: {
-      name: String,
-      text: String,
-      imagePrestataire: String,
-      imageStand: String,
-      nomStand : String,
-      idStand: Number,
-      type: String,
-      email: String,
-      siren: Number,
-      id: Number
-    }
+    idPrestataire: Number
   },
   data: () => ({
     bool:false
-  })
+  }),
+  computed :{
+    ...mapGetters(["getInfoPrestataire"]),
+    curentPrestataire() {
+      return this.getInfoPrestataire(this.idPrestataire)
+    }
+  }
 }
 </script>
 

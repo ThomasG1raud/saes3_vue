@@ -50,11 +50,7 @@ const routes = [
       path: ":idPrestataire",
       component: () => import('../components/map/CardPrestataireView'),
       props: route => ({
-        idPrestataire: route.params.idPrestataire,
-        linkCard: "/prestataire/"+route.params.idPrestataire,
-        imageCard: "prestataire.png",
-        titleCard: "Prestataire",
-        textCard: "C'est le meilleur prestataire du parc."
+        idPrestataire: parseInt(route.params.idPrestataire)
       })
     }]
   },
@@ -74,18 +70,7 @@ const routes = [
     name: "profil",
     component: PrestataireProfilView,
     props: (route) => ({
-      prestataire: {
-        name: "Nom du prestataire 1",
-        text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-        imagePrestataire: "prestataire.png",
-        imageStand: "stand.png",
-        nomStand:" la bonne saucisse de michelle",
-        idStand:1,
-        type: "activite",
-        email: "prestataire1@tgmail.com",
-        siren: 123456789,
-        id: route.params.idPrestataire
-      }
+      idPrestataire: parseInt(route.params.idPrestataire)
     })
   },
   {
@@ -107,7 +92,7 @@ const routes = [
       path: ":idPrestataire",
       component: () => import('../components/map/CardPrestataireForAdminView'),
       props: (route) => ({
-        id: parseInt(route.params.idPrestataire)
+        idPrestataire: parseInt(route.params.idPrestataire)
       })
     }]
   },
