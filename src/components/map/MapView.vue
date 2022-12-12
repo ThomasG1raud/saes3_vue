@@ -72,7 +72,7 @@
 				L.marker(this.markers[i]).addTo(this.$refs.map.mapObject).on('click', function(e) {
 					console.log(e)
 					//console.log(router);
-					router.push("/admin/map/1")
+					router.push("/map/1")
 				});
 			}
 		},
