@@ -139,6 +139,9 @@ export default new Vuex.Store({
         },
         getAllPrestataire:(state) => {
             return state.allPrestataire
+        },
+        getAllCategory: (state) => {
+            return state.allCategory
         }
     },
     mutations: {},

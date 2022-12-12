@@ -1,9 +1,11 @@
 <template>
   <div class="home">
     <div class="imagePrincipal">
-      <h1 id="title">PARC MÉDIÉVAL</h1>
     </div>
+    <div id="carre">
+      <h1 id="title">PARC MÉDIÉVAL</h1>
 
+    </div>
     <section>
       <div class="grid" id="grid">
         <CardActivityView :link-card="{path: '/prestataire', hash:'activite'}" type="activite" image-card="activite.png" title-card="Activités"
@@ -50,18 +52,30 @@ export default {
   justify-content: end;
   width: 100vw;
   aspect-ratio:16/9;
-  background-image: url("@/assets/imagePrincipalVitrine.jpg");
+  background-image: url("@/assets/chateauContruction.jpg");
   background-repeat:no-repeat;
   background-size: contain;
 }
 #title {
-  display: grid;
-  margin: auto;
-  translate: 0 -400px;
   font-size: 10em;
   font-family: 'Pacifico', cursive;
-  color: var(--dark);
-  -webkit-text-stroke: 3px var(--very-very-light);
-  animation: 1s displayZoom;
+
+
+}
+
+#carre {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 443px;
+  width: 900px;
+  background-color: var(--very-very-light);
+  border: solid ;
+  border-radius: 30px;
+  top: 700px;
+  right: 470px;
+  opacity: 0.8;
 }
 </style>
+

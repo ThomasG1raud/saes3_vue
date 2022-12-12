@@ -1,24 +1,27 @@
 <template>
-  <div>
-    <h1>
-      Liste des prestataires
-    </h1>
-    <input type="search" v-model="filter" value="">
-    <div class="grid">
-      <div v-for="(prestataire, index) in research" :key="index">
-        <AdminPrestataireCardView :prestataire="prestataire"/>
+  <div id="PlusGrandDiv">
+    <div  v-for="(c,i) in $store.state.allCategory" :key="i">
+      <div id="categorie">
+        <div class="entete">
+          <p class="pCategorie" :id="c">{{ c }}</p>
+          <hr>
+        </div>
+      </div>
+      <div id="grandDiv">
+        <div v-for="(prestataire, index) in $store.state.allPrestataire.filter(prestataire => prestataire.type===c)" :key="index">
+          <VitrinePrestataireCardView :prestataire="prestataire"/>
+        </div>
       </div>
     </div>
-    <div v-if="!research.length"><h1>Aucun prestataire n'as été trouver</h1></div>
     <div id="scroll" onclick="window.scroll({top: 0,behavior: 'smooth'});"></div>
   </div>
+
 </template>
 
 <script>
-import AdminPrestataireCardView from "@/components/admin/AdminPrestataireCardView.vue";
-
+import VitrinePrestataireCardView from "@/components/prestataire/VitrinePrestataireCardView";
 export default {
-  name: "AdminPrestataireView",
+  name: "PrestataireView",
   data: () => ({
     filter: ""
   }),
@@ -26,44 +29,24 @@ export default {
     research() {
       return this.$store.state.allPrestataire.filter(prestataire => {
         if (prestataire.name.toLowerCase().includes(this.filter.toLowerCase())) return true
-        if (prestataire.text.toLowerCase().includes(this.filter.toLowerCase())) return true
-        if (prestataire.imagePrestataire.toLowerCase().includes(this.filter.toLowerCase())) return true
-        if (prestataire.imageStand.toLowerCase().includes(this.filter.toLowerCase())) return true
-        if (prestataire.type.toLowerCase().includes(this.filter.toLowerCase())) return true
+        if (prestataire.type.toLowerCase().startsWith(this.filter.toLowerCase())) return true
         return false
       });
     }
   },
   components: {
-    AdminPrestataireCardView
+    VitrinePrestataireCardView
   }
 }
 </script>
 
 <style scoped>
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-column: auto;
-  grid-row-gap: 50px;
-  grid-column-gap: 50px;
-  margin: 20px 10%;
-}
 
-input {
+#grandDiv {
   display: flex;
-  padding: 10px;
-  border-radius: 10px;
-  border: 2px solid var(--very-very-light);
-  color: var(--dark);
-  box-shadow: 0 0 1px;
-  margin: 20px auto 30px auto;
-}
+  overflow: scroll;
 
-input::placeholder {
-  color: var(--dark);
 }
-
 #scroll {
   height: 64px;
   width: 64px;
@@ -75,5 +58,36 @@ input::placeholder {
   margin-right: 40px;
   translate: 0 32px;
   background-color: var(--dark);
+}
+
+#categorie {
+
+  justify-content: start;
+  align-items: center;
+  margin-top: 20px;
+  width: 90%;
+  background: var(--very-dark);
+  color: var(--very-very-light);
+  border-radius: 0 50px 50px 0;
+}
+
+.pCategorie {
+  font-size: 50px;
+  margin: 10px;
+  text-transform: capitalize;
+}
+
+.entete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+hr{
+  height: 10px;
+  width: 100%;
+  background: var(--very-very-light);
+  margin-left:10px ;
 }
 </style>

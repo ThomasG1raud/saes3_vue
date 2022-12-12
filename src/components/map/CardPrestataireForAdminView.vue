@@ -54,7 +54,7 @@ export default {
   height: 96%;
   border-radius: 20px;
   border: solid;
-  margin: 10px 30px 30px 30px;
+  margin: 10px 30px 0 30px;
 }
 
 .divImage {
@@ -98,5 +98,25 @@ p {
   height: 15%;
 }
 
+#delete {
+  position: relative;
+  top: -20px;
+  width: 200px;
+  background-color: var(--very-very-light);
+  border: solid;
+}
+
+#delete:hover {
+  background-color: var(--very-dark);
+  border-color: var(--very-dark);
+}
+
+
+
+button {
+
+  --defined-color-primary: var(--very-very-light);
+  --defined-color-secondary: var(--very-dark);
+}
 
 </style>

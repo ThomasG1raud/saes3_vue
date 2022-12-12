@@ -95,6 +95,7 @@
   .div-carte {
     display: flex;
     align-items: center;
+    margin:10px;
   }
   .max {
     display: flex;

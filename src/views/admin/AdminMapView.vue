@@ -60,9 +60,9 @@ export default {
 
 
 #divForm {
+  padding: 10px 0;
   display: flex;
   width: 100%;
-  height: 70%;
   boder: solid white;
 }
 
@@ -72,9 +72,8 @@ export default {
   flex-direction: column;
   align-items: center;
   width: 30%;
-  height: 100%;
-  border: solid;
-  background-color: var(--very-dark);
+  padding: 10px;
+  background-color: var(--dark);
 }
 
 #map {
@@ -83,18 +82,35 @@ export default {
   align-items: center;
   width: 100%;
   height: 692px;
-  border: solid;
 }
 
 .namePrestataire{
   width: 500px;
+  height: 50px;
   border: solid;
   margin-top: 10px;
-  background-color: var(--very-very-dark);
+  background-color: var(--dark);
   color: var(--very-very-light);
 }
 #listePrestataire {
   overflow: scroll;
+}
+
+p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+select {
+  --defined-color-primary: var(--dark);
+  --defined-color-secondary: var(--light);
+  border-style: solid;
+}
+
+select:hover{
+  border-color: var(--light);
 }
 
 </style>
