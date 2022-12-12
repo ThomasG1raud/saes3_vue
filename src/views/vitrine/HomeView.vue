@@ -6,7 +6,7 @@
 
     <section>
       <div class="grid" id="grid">
-        <CardActivityView link-card="/prestataire/#activite" type="activite" image-card="activite.png" title-card="Activités"
+        <CardActivityView :link-card="{path: '/prestataire', hash:'activite'}" type="activite" image-card="activite.png" title-card="Activités"
                           text-card="Découvrez les anciennes méthodes de la  sculpture, de la forge ou encore de la caligraphie"/>
         <CardActivityView link-card="/prestataire/#spectacle" type="spectacle" image-card="spectacle.png" title-card="Spectacles"
                           text-card="Assistez aux combats de preux chevaliers, ecoutez la musique des temps anciens ou bien encore venez découvrir la vie des habitants du Moyen-age"/>

@@ -107,23 +107,7 @@ const routes = [
       path: ":idPrestataire",
       component: () => import('../components/map/CardPrestataireForAdminView'),
       props: (route) => ({
-        // prestataire: this.$store.getters.getInfoPrestataire(route.params.idPrestataire),
-        prestataire: {
-          name: "Nom du prestataire 1",
-          text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-          imagePrestataire: "prestataire.png",
-          imageStand: "stand.png",
-          nomStand:" la bonne saucisse de michelle",
-          idStand:1,
-          type: "activite",
-          email: "prestataire1@tgmail.com",
-          siren: 123456789,
-          id: route.params.idPrestataire
-        },
-        // prestataire: (route.params.idPrestataire),
-        // prestataire: (route.params.idPrestataire),
-        // prestataire: this.$store.getters.getInfoPrestataire(route.params.idPrestataire),
-        // prestataire: this.$store.getters.getInfoPrestataire(1),
+        id: parseInt(route.params.idPrestataire)
       })
     }]
   },
@@ -142,8 +126,13 @@ const routes = [
 const router = new VueRouter({
   mode: "history",
   scrollBehavior: function (to) {
-    if (to.hash) return
-    return { x: 0, y: 0 }
+    console.log(to.hash)
+    if (to.hash) return new Promise((resolve)=> {
+      setTimeout(()=>{
+        resolve ({ el: to.hash })
+      }, 1000)
+    })
+    return {x: 0, y: 0}
   },
   routes
 })

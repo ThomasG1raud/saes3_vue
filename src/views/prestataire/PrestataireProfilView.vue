@@ -13,8 +13,14 @@
         <hr>
 
         <div class="partie">
-          <p> Categorie :</p>
-          <p class="text-capitalize"> {{ prestataire.type }} </p>
+          <p>
+            Categorie :
+          </p>
+          <p class="text-capitalize">
+            <router-link :to="'/prestataire/#'+prestataire.type">
+              {{ prestataire.type }}
+            </router-link>
+          </p>
         </div>
 
         <hr>
@@ -28,7 +34,11 @@
 
         <div class="partie">
           <p> Nom de votre stand : </p>
-          <p class="text-capitalize"> {{ prestataire.nomStand }} </p>
+          <p class="text-capitalize">
+            <router-link :to="'/map/'+prestataire.idStand">
+              {{ prestataire.nomStand }}
+            </router-link>
+          </p>
         </div>
 
         <hr>
@@ -59,6 +69,7 @@ export default {
       imagePrestataire: String,
       imageStand: String,
       nomStand : String,
+      idStand: Number,
       type: String,
       email: String,
       siren: Number,
