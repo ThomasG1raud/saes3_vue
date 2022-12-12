@@ -65,10 +65,14 @@ export default {
 
 #carre {
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 443px;
   width: 900px;
   background-color: var(--very-very-light);
-  border: solid;
+  border: solid ;
+  border-radius: 30px;
   top: 700px;
   right: 470px;
   opacity: 0.8;
