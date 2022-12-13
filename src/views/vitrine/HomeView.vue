@@ -8,16 +8,16 @@
     </div>
     <section>
       <div class="grid" id="grid">
-        <CardActivityView :link-card="{path: '/prestataire', hash:'activite'}" type="activite" image-card="activite.png" title-card="Activités"
+        <CardActivityView :link-card="{path: '/prestataire/', hash:'activite'}" type="activite" image-card="activite.png" title-card="Activités"
                           text-card="Découvrez les anciennes méthodes de la  sculpture, de la forge ou encore de la caligraphie"/>
-        <CardActivityView link-card="/prestataire/#spectacle" type="spectacle" image-card="spectacle.png" title-card="Spectacles"
+        <CardActivityView :link-card="{path: '/prestataire/', hash:'spectacle'}" type="spectacle" image-card="spectacle.png" title-card="Spectacles"
                           text-card="Assistez aux combats de preux chevaliers, ecoutez la musique des temps anciens ou bien encore venez découvrir la vie des habitants du Moyen-age"/>
-        <CardActivityView link-card="/prestataire/#restauration" type="restauration" image-card="boutique.png" title-card="Boutiques, restauration"
+        <CardActivityView :link-card="{path: '/prestataire/', hash:'restauration'}" type="restauration" image-card="boutique.png" title-card="Boutiques, restauration"
                           text-card="Prenez plaisir à découvrir la cuisine antique et ses saveurs authentique, ou offrez-vous un petit plaisir dans l'une de nos nombreuses boutiques"/>
       </div>
     </section>
 
-    <MapView/>
+    <MapView :height="540" :width="910" :zoomRatio="-1"/>
     <!--    <HelloWorld msg="Welcome to Your Vue.js App"/>-->
   </div>
 </template>

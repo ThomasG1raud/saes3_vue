@@ -11,7 +11,7 @@
 				ref="map"
 				@update:zoom="zoomUpdated"
 				@update:center="centerUpdated"
-				style="height: 540px; width: 910px;"
+				:style="{'width': width+'px', 'height': height+'px'}"
 			>
 				<l-image-overlay
 				:url="url"
@@ -37,12 +37,17 @@
 		LMap,
 		LImageOverlay,
 	},
+	props: {
+		height: Number,
+		width: Number,
+		zoomRatio: Number,
+		urlPresta: String
+	},
 	data () {
 		return this.map = {
 		url: 'https://cdn.discordapp.com/attachments/540088970059448341/1050395342933344366/map.png',
 		minZoom: -1,
 		maxZoom: 1,
-		zoom: -1,
 		crs: L.CRS.Simple,
 		bounds: [[-540, -910], [540, 910]],
 		maxbounds: [[-540, -910], [540, 910]],
@@ -55,7 +60,7 @@
 	},
 	mounted() {
 		this.addMarker(); 
-		this.$refs.map.mapObject.setView([-540, 910], -1);
+		this.$refs.map.mapObject.setView([-540, 910], this.zoomRatio);
 	},
 	methods: {
 		onClick(){
