@@ -19,7 +19,7 @@
       </div>
     </section>
 
-    <MapView/>
+    <MapView :height="540" :width="910" :zoomRatio="-1"/>
     <!--    <HelloWorld msg="Welcome to Your Vue.js App"/>-->
   </div>
 </template>
