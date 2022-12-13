@@ -2,7 +2,7 @@
   <div id="bigDiv">
 
     <div id="cardLeft">
-      <img src="@/assets/imagePrincipalVitrine.jpg">
+      <img src="@/assets/imageVitrinePrincipal.jpg">
     </div>
 
     <div id="rond">

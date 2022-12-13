@@ -46,36 +46,38 @@ export default {
   margin: 20px 10%;
 }
 .imagePrincipal {
-  position: static;
   display: flex;
-  height: auto;
   justify-content: end;
-  width: 100vw;
-  aspect-ratio:16/9;
-  background-image: url("@/assets/chateauContruction.jpg");
+  width: 100%;
+  height: 830px;
+  background-image: url("@/assets/imageVitrinePrincipal.jpg");
   background-repeat:no-repeat;
-  background-size: contain;
+  background-size: cover;
+  margin-bottom: 150px;
 }
 #title {
-  font-size: 10em;
+  font-size:80px;
   font-family: 'Pacifico', cursive;
-
-
+  rotate: -45deg;
+  color: black;
 }
+
+
 
 #carre {
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 443px;
-  width: 900px;
-  background-color: var(--very-very-light);
+  height: 400px;
+  width: 400px;
+  background-color: rgba(200, 200, 200, 0.4);
   border: solid ;
-  border-radius: 30px;
-  top: 700px;
-  right: 470px;
-  opacity: 0.8;
+  border-radius: 10px;
+  top: 200px;
+  right:16%;
+  box-shadow: 5px 5px 3px var(--very-very-dark);
+  rotate: 45deg;
 }
 </style>
 
