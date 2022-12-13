@@ -1,5 +1,6 @@
 <template>
-    <router-link class="linkCard" :to="'/prestataire/'+prestataire.id">
+<!--    <router-link class="linkCard" :to="'/prestataire/'+prestataire.id">-->
+    <router-link class="linkCard" :to="'/prestataire/'+idPrestataire">
       <div class="card">
         <div class="divImage">
           <img src="@/assets/prestataire.png">
@@ -33,12 +34,19 @@
 export default {
   name: "VitrinePrestataireCardView",
   props: {
-    prestataire: {
-      text: String,
-      imagePrestataire: String,
-      imageStand: String,
-      type: String,
-      id: Number
+    idPrestataire: Number
+  },
+  mounted() {
+    console.log(this.$route.hash)
+    let hash = this.$route.hash
+    if (hash) {
+      hash = hash.slice(1) // enleve le # au début pour obtenir le vrai nom de l'ancre
+      setTimeout(()=>{
+      const el = this.$refs[hash] // on récupère l'élément du DOM avec le même nom
+      console.clear()
+      console.log(hash, el)
+      // el.scrollIntoView() // on scrolle
+      }, 1000)
     }
   }
 }

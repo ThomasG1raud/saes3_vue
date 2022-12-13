@@ -2,7 +2,7 @@
 		<div class="max">
 			<div class="div-carte">
 			<l-map
-				:zoom="zoom"
+				:zoom="zoomRatio"
 				:min-zoom="minZoom"
 				:max-zoom="maxZoom"
 				:crs="crs"

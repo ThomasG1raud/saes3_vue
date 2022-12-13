@@ -135,7 +135,7 @@ export default new Vuex.Store({
     },
     getters: {
         getInfoPrestataire:(state)=> (id) => {
-            return state.allPrestataire.find(prestataire => prestataire.id === id)
+            return state.allPrestataire.find(prestataire => parseInt(prestataire.id) === parseInt(id))
         },
         getAllPrestataire:(state) => {
             return state.allPrestataire

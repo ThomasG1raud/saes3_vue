@@ -110,13 +110,7 @@ const routes = [
 
 const router = new VueRouter({
   mode: "history",
-  scrollBehavior: function (to) {
-    console.log(to.hash)
-    if (to.hash) return new Promise((resolve)=> {
-      setTimeout(()=>{
-        resolve ({ el: to.hash })
-      }, 1000)
-    })
+  scrollBehavior: function () {
     return {x: 0, y: 0}
   },
   routes

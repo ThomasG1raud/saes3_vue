@@ -7,7 +7,7 @@
       <div class="divInfo">
         <div class="infoStand">
           <p>12h23 - 16h45</p>
-          <h2> {{ curentPrestataire.nomStand }}</h2>
+          <h2>{{ curentPrestataire.nomStand }}</h2>
         </div>
         <div class="infoPrestataire">
           <div class="info">
@@ -23,7 +23,7 @@
         </div>
       </div>
       <div class="divTextPresentation">
-        <p>{{curentPrestataire.text}}</p>
+        <p>{{ curentPrestataire.text }}</p>
       </div>
     </div>
   </router-link>

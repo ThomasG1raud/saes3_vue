@@ -1,6 +1,6 @@
 <template>
   <div id="PlusGrandDiv">
-    <div  v-for="(c,i) in $store.state.allCategory" :key="i">
+    <div v-for="(c,i) in $store.state.allCategory" :key="i">
       <div id="categorie">
         <div class="entete">
           <p class="pCategorie" :id="c">{{ c }}</p>
@@ -8,8 +8,9 @@
         </div>
       </div>
       <div id="grandDiv">
-        <div v-for="(prestataire, index) in $store.state.allPrestataire.filter(prestataire => prestataire.type===c)" :key="index">
-          <VitrinePrestataireCardView :prestataire="prestataire"/>
+        <div v-for="(prestataire, index) in $store.state.allPrestataire.filter(prestataire => prestataire.type===c)"
+             :key="index">
+          <VitrinePrestataireCardView :idPrestataire="prestataire.id"/>
         </div>
       </div>
     </div>
@@ -20,20 +21,12 @@
 
 <script>
 import VitrinePrestataireCardView from "@/components/prestataire/VitrinePrestataireCardView";
+
 export default {
   name: "PrestataireView",
   data: () => ({
     filter: ""
   }),
-  computed: {
-    research() {
-      return this.$store.state.allPrestataire.filter(prestataire => {
-        if (prestataire.name.toLowerCase().includes(this.filter.toLowerCase())) return true
-        if (prestataire.type.toLowerCase().startsWith(this.filter.toLowerCase())) return true
-        return false
-      });
-    }
-  },
   components: {
     VitrinePrestataireCardView
   }
@@ -47,6 +40,7 @@ export default {
   overflow: scroll;
 
 }
+
 #scroll {
   height: 64px;
   width: 64px;
@@ -84,10 +78,10 @@ export default {
   width: 100%;
 }
 
-hr{
+hr {
   height: 10px;
   width: 100%;
   background: var(--very-very-light);
-  margin-left:10px ;
+  margin-left: 10px;
 }
 </style>

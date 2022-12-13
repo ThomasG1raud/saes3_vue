@@ -16,7 +16,7 @@
 export default {
   name: "CardActivityView",
   props: {
-    linkCard: String,
+    linkCard: Object,
     type: String,
     imageCard: String,
     titleCard: String,

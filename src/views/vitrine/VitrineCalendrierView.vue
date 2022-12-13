@@ -1,24 +1,39 @@
 <template>
   <v-row>
     <v-col>
-      <v-sheet height="1200px">
+      <v-sheet height="calc(100vh - 120px)">
         <v-calendar
             ref="calendar"
-            :now="today"
-            :value="today"
-            :events="events"
+            :now="now"
+            :value="now"
+
             color="primary"
             type="week"
         ></v-calendar>
+        <!--            :events="events"-->
       </v-sheet>
     </v-col>
+    <br style="margin: 20px">{{now}}
   </v-row>
 </template>
 
 <script>
 
 export default {
-  name: "VitrineCalendrierView"
+  name: "VitrineCalendrierView",
+  data: () => ({
+    // events: ""
+  }),
+  computed: {
+    now() {
+      let date = new Date();
+      const d = date.getDate()
+      const m = date.getMonth()
+      const y = date.getFullYear()
+      // return new Date().getFullYear()
+      return `${y}-${m}-${d}`;
+    }
+  }
 }
 </script>
 
