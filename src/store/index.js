@@ -29,7 +29,8 @@ export default new Vuex.Store({
                 type: "activite",
                 email: "prestataire1@gmail.com",
                 siren: 123456789,
-                id: 1
+                id: 1,
+                password: "prestataire1"
             },
             {
                 name: "Nom du prestataire 2",
@@ -41,7 +42,8 @@ export default new Vuex.Store({
                 type: "restauration",
                 email: "prestataire2@gmail.com",
                 siren: 123456789,
-                id: 2
+                id: 2,
+                password: "prestataire2"
             },
             {
                 name: "Nom du prestataire 3",
@@ -53,7 +55,8 @@ export default new Vuex.Store({
                 type: "restauration",
                 email: "prestataire3@gmail.com",
                 siren: 123456789,
-                id: 3
+                id: 3,
+                password: "prestataire3"
             },
             {
                 name: "Nom du prestataire 4",
@@ -65,7 +68,8 @@ export default new Vuex.Store({
                 type: "spectacle",
                 email: "prestataire4@gmail.com",
                 siren: 987654321,
-                id: 4
+                id: 4,
+                password: "prestataire4"
             },
             {
                 name: "Nom du prestataire 5",
@@ -77,7 +81,8 @@ export default new Vuex.Store({
                 type: "activite",
                 email: "prestataire5@gmail.com",
                 siren: 567891234,
-                id: 5
+                id: 5,
+                password: "prestataire5"
             },
             {
                 name: "Nom du prestataire 6",
@@ -89,7 +94,8 @@ export default new Vuex.Store({
                 type: "activite",
                 email: "prestataire6@gmail.com",
                 siren: 987654321,
-                id: 6
+                id: 6,
+                password: "prestataire6"
             },
             {
                 name: "Nom du prestataire 7",
@@ -100,7 +106,8 @@ export default new Vuex.Store({
                 type: "activite",
                 email: "prestataire7@gmail.com",
                 siren: 567891234,
-                id: 7
+                id: 7,
+                password: "prestataire7"
             },
             {
                 name: "Nom du prestataire 8",
@@ -112,7 +119,8 @@ export default new Vuex.Store({
                 type: "activite",
                 email: "prestataire8@gmail.com",
                 siren: 432198765,
-                id: 8
+                id: 8,
+                password: "prestataire8"
             },
             {
                 name: "Nom du prestataire 9",
@@ -124,7 +132,8 @@ export default new Vuex.Store({
                 type: "activite",
                 email: "prestataire9@gmail.com",
                 siren: 135792468,
-                id: 9
+                id: 9,
+                password: "prestataire9"
             },
             {
                 name: "Nom du prestataire 10",
@@ -136,7 +145,8 @@ export default new Vuex.Store({
                 type: "activite",
                 email: "prestataire10@gmail.com",
                 siren: 246813579,
-                id: 10
+                id: 10,
+                password: "prestataire10"
             }
         ]
     },
@@ -144,10 +154,8 @@ export default new Vuex.Store({
         getInfoPrestataire:(state)=> (id) => {
             return state.allPrestataire.find(prestataire => parseInt(prestataire.id) === parseInt(id))
         },
-        getIDPrestataireWithEmail:(state)=> (email) => {
-            // console.log(email, state)
-            // return 1
-            return state.allPrestataire.find(prestataire => prestataire.email === email)
+        getIDPrestataireWithEmail:(state)=> (email, password) => {
+            return state.allPrestataire.find(prestataire => (prestataire.email === email && prestataire.password === password))
         },
         getAllPrestataire:(state) => {
             return state.allPrestataire

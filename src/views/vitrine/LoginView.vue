@@ -50,7 +50,7 @@ export default {
   methods: {
     ...mapMutations(["setAccountId", "setAccountType"]),
     onsubmit() {
-      const prestaire = this.getIDPrestataireWithEmail(this.email);
+      const prestaire = this.getIDPrestataireWithEmail(this.email, this.password);
       if (!prestaire) {
         if (this.getIsAdmin(this.email, this.password)) {
           this.setAccountId(99);
