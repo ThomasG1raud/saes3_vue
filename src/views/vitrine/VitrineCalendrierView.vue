@@ -13,7 +13,7 @@
         <!--            :events="events"-->
       </v-sheet>
     </v-col>
-    <br style="margin: 20px">{{now}}
+    <br style="margin: 100px">{{now}}
   </v-row>
 </template>
 
@@ -30,7 +30,6 @@ export default {
       const d = date.getDate()
       const m = date.getMonth()
       const y = date.getFullYear()
-      // return new Date().getFullYear()
       return `${y}-${m}-${d}`;
     }
   }

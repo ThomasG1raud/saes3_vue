@@ -12,17 +12,18 @@
 
     <div id="cardRight">
       <h1>Login</h1>
-      <form action="/" method="post" id="form-register">
+      <form action="/" method="post" id="form-register" @submit.prevent="onsubmit">
         <div class="div-form">
           <label for="email">Email : </label>
-          <input type="email" name="email" id="email" required placeholder="Email">
+          <input type="email" name="email" id="email" required placeholder="Email" v-model="email">
         </div>
         <div class="div-form">
           <label for="password">Mot de passe : </label>
-          <input type="password" name="password" id="password" required placeholder="Mot de passe">
+          <input type="password" name="password" id="password" required placeholder="Mot de passe" v-model="password">
         </div>
         <p>
-          Toujours pas de compte ? <router-link to="/register">S'inscrire</router-link>
+          Toujours pas de compte ?
+          <router-link to="/register">S'inscrire</router-link>
         </p>
         <div class="div-form">
           <input type="submit" value="Se connecter">
@@ -34,88 +35,121 @@
 </template>
 
 <script>
+import router from "@/router";
+import {mapGetters, mapMutations} from "vuex";
+
 export default {
-  name: "RegisterView"
+  name: "RegisterView",
+  data: () => ({
+    email: "",
+    password: ""
+  }),
+  computed: {
+    ...mapGetters(["getIDPrestataireWithEmail", "getIsAdmin"])
+  },
+  methods: {
+    ...mapMutations(["setAccountId", "setAccountType"]),
+    onsubmit() {
+      const prestaire = this.getIDPrestataireWithEmail(this.email);
+      if (!prestaire) {
+        if (this.getIsAdmin(this.email, this.password)) {
+          this.setAccountId(99);
+          this.setAccountType(2);
+          router.push("/admin");
+          return;
+        }
+        return alert("non");
+      }
+      const id = prestaire.id;
+      this.setAccountId(id)
+      this.setAccountType(1)
+      router.push("/prestataire")
+    }
+  }
 }
 </script>
 
 <style scoped>
-  #cardRight {
-    display: grid;
-    border-radius: 0 30px 30px 0;
-  }
-  #cardLeft {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 30px 0 0 30px;
-    overflow: hidden;
-  }
-  #cardLeft, #cardRight {
-    background: none;
-    box-shadow: 0 0 10px var(--dark);
-    height: 500px;
-    width: 30%;
-  }
+#cardRight {
+  display: grid;
+  border-radius: 0 30px 30px 0;
+}
 
-  #form-register {
-    display: flex;
-    flex-direction: column;
-  }
+#cardLeft {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px 0 0 30px;
+  overflow: hidden;
+}
 
-  .div-form {
-    margin: 0 auto;
-    width: fit-content;
-  }
+#cardLeft, #cardRight {
+  background: none;
+  box-shadow: 0 0 10px var(--dark);
+  height: 500px;
+  width: 30%;
+}
 
-  input {
-    display: block;
-    padding: 10px;
-    border-radius: 10px;
-    border: 2px solid var(--very-very-light);
-    color: var(--dark);
-    box-shadow: 0 0 1px;
-    margin-bottom: 20px;
-    margin-top: 10px;
-  }
+#form-register {
+  display: flex;
+  flex-direction: column;
+}
 
-  input::placeholder {
-    color: var(--dark);
-  }
+.div-form {
+  margin: 0 auto;
+  width: fit-content;
+}
 
-  input[type=submit] {
-    background-color: var(--very-very-light);
-    color: var(--blue);
-    border-color: var(--blue);
-    border-radius: 25px;
-  }
-  input[type=submit]:hover {
-    background-color: var(--blue);
-    color: var(--very-very-light);
-  }
+input {
+  display: block;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid var(--very-very-light);
+  color: var(--dark);
+  box-shadow: 0 0 1px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
 
-  label {
-    display: block;
-    text-align: left;
-  }
+input::placeholder {
+  color: var(--dark);
+}
 
-  #bigDiv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding:150px ;
-  }
+input[type=submit] {
+  background-color: var(--very-very-light);
+  color: var(--blue);
+  border-color: var(--blue);
+  border-radius: 25px;
+  padding: 10px;
+}
 
-  img {
-    height: 100%;
-    border-radius: 30px;
-  }
+input[type=submit]:hover {
+  background-color: var(--blue);
+  color: var(--very-very-light);
+}
 
-  #rond {
-    position: absolute;
-    height: 50px;
-    width: 50px;
-    border-radius: 100%;
-    background-color: var(--very-very-light);
-  }
+label {
+  display: block;
+  text-align: left;
+}
+
+#bigDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 150px;
+}
+
+img {
+  height: 100%;
+  border-radius: 30px;
+}
+
+#rond {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  background-color: var(--very-very-light);
+}
 </style>

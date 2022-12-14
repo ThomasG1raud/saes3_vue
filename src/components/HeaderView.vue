@@ -1,29 +1,31 @@
 <template>
   <header>
     <nav>
+      <div>
+        <p>id:{{getAccountId}}</p>
+        <p>connected:{{getConnected}}</p>
+      </div>
       <div class="item">
         <select id="connected-selected">
-          <option value="0" @click="$store.state.connected = 0">Vitrine</option>
-          <option value="1" @click="$store.state.connected = 1">Prestataire</option>
-          <option value="2" @click="$store.state.connected = 2">Admin</option>
+          <option value="0" @click="logout" :selected="getConnected===0">Vitrine</option>
+          <option value="1" @click="loginPrestataire" :selected="getConnected===1">Prestataire</option>
+          <option value="2" @click="loginAdmin" :selected="getConnected===2">Admin</option>
         </select>
       </div>
 <!--      Login with prestataire-->
-      <div class="div-nav" v-if="$store.state.connected === 1">
+      <div class="div-nav" v-if="getConnected === 1">
         <router-link class="item" to="/">
           <img src="@/assets/logo_sae_white.png" alt="logo_sae_white" id="logo_navbar">
         </router-link>
-        <router-link class="item" to="/prestataire/profil/1">Profil</router-link>
+        <router-link class="item" :to="'/prestataire/'+getAccountId">Profil</router-link>
         <router-link class="item" to="/prestataire/statistique">Statistique</router-link>
-        <router-link class="item" to="/map/1">Map</router-link>
+        <router-link class="item" :to="'/map/'+getAccountId">Map</router-link>
         <div class="item">
-          <router-link to="/">
-            <button>Se déconnecter</button>
-          </router-link>
+          <button class="btn" @click="logout">Se déconnecter</button>
         </div>
       </div>
 <!--      Login with admin-->
-      <div class="div-nav" v-else-if="$store.state.connected === 2">
+      <div class="div-nav" v-else-if="getConnected === 2">
         <router-link class="item" to="/">
           <img src="@/assets/logo_sae_white.png" alt="logo_sae_white" id="logo_navbar">
         </router-link>
@@ -31,9 +33,7 @@
         <router-link class="item" to="/admin/prestataire">Prestataire</router-link>
         <router-link class="item" to="/admin/map">Map</router-link>
         <div class="item">
-          <router-link to="/">
-            <button>Se déconnecter</button>
-          </router-link>
+          <button class="btn" @click="logout">Se déconnecter</button>
         </div>
       </div>
 <!--      No login-->
@@ -43,14 +43,14 @@
         </router-link>
         <router-link class="item" to="/">Accueil</router-link>
         <router-link class="item" to="/calendrier">Calendrier</router-link>
-        <router-link class="item" to="/prestataire">Prestataire</router-link>
+        <router-link class="item" to="/liste_prestataire">Prestataire</router-link>
         <router-link class="item" to="/map">Map</router-link>
         <div class="item">
           <router-link to="/login">
-            <button>Se connecter</button>
+            <button class="btn">Se connecter</button>
           </router-link>
           <router-link to="/register">
-            <button>Créer un compte</button>
+            <button class="btn">Créer un compte</button>
           </router-link>
         </div>
       </div>
@@ -59,8 +59,32 @@
 </template>
 
 <script>
+import {mapGetters, mapMutations} from "vuex";
+import router from "@/router";
+
 export default {
-  name: "HeaderView"
+  name: "HeaderView",
+  computed :{
+    ...mapGetters(["getConnected", "getAccountId"]),
+  },
+  methods: {
+    ...mapMutations(["setAccountId", "setAccountType"]),
+    logout() {
+      this.setAccountId(0);
+      this.setAccountType(0);
+      router.push("/");
+    },
+    loginPrestataire() {
+      this.setAccountId(1);
+      this.setAccountType(1);
+      router.push("/prestataire");
+    },
+    loginAdmin() {
+      this.setAccountId(99);
+      this.setAccountType(2);
+      router.push("/admin");
+    }
+  }
 }
 </script>
 
@@ -120,5 +144,8 @@ export default {
   }
   .item:last-child > a {
     margin-left: 10px;
+  }
+  nav a, button {
+    font-weight: bold;
   }
 </style>

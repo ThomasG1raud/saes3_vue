@@ -73,6 +73,7 @@ export default {
     color: var(--blue);
     border-color: var(--blue);
     border-radius: 25px;
+    padding: 10px;
   }
   input[type=submit]:hover {
     background-color: var(--blue);

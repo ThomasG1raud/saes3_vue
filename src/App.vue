@@ -61,11 +61,7 @@ body {
   padding: 0;
 }
 
-nav a {
-  font-weight: bold;
-}
-
-button, a>button, input[type=submit], #connected-selected,select {
+button, button.btn, input[type=submit], #connected-selected,select {
   border: 2px solid var(--defined-color-secondary);
   background-color: var(--defined-color-primary);
   color: var(--defined-color-secondary);
@@ -74,8 +70,8 @@ button, a>button, input[type=submit], #connected-selected,select {
   text-align: center;
 }
 
-button:hover, a>button:hover, input[type=submit]:hover, #connected-selected:hover,select:hover{
-  border: 2px solid var(--defined-color-primary);
+button:hover, button.btn:hover, input[type=submit]:hover, #connected-selected:hover,select:hover{
+  border: 2px solid var(--defined-color-secondary);
   background-color: var(--defined-color-secondary);
   color: var(--defined-color-primary);
   border-radius: 5px;

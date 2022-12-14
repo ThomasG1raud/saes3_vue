@@ -60,13 +60,18 @@ const routes = [
     component: VitrineCalendrierView
   },
   {
-    path: "/prestataire",
-    name: "prestataire",
+    path: "/liste_prestataire",
+    name: "liste_prestataire",
     component: PrestataireView
   },
+
   {
-    // path: "/prestataire/profil",
-    path: "/prestataire/profil/:idPrestataire",
+    path: "/prestataire",
+    name: "prestataire",
+    component: HomeView
+  },
+  {
+    path: "/prestataire/:idPrestataire",
     name: "profil",
     component: PrestataireProfilView,
     props: (route) => ({
