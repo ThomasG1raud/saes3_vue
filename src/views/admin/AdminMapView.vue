@@ -5,7 +5,7 @@
         <select @change="onChange($event)" name="prestataire" id="prestataire-select">
           <option value="">--Please choose an option--</option>
           <option value="PrestataireAssigné">voir les prestataires assignés</option>
-          <option value="addPrestataire">Assigner un prestataire</option>
+          <option value="PrestataireNonAssigné">Assigner un prestataire</option>
         </select>
         <div id="listePrestataire">
           <div v-for="(prestataire,index) in research" :key="index">
@@ -37,6 +37,7 @@ export default {
     ...mapGetters(['getAllPrestataire']),
     research() {
       if (this.filter === "") {
+        console.log(this.getAllPrestataire[this.getAllPrestataire.length-1].id)
         return this.getAllPrestataire
       }
       return this.getAllPrestataire.filter(prestataire => (prestataire.idStand != undefined) === (this.filter === "PrestataireAssigné"))

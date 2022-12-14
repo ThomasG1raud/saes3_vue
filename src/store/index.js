@@ -7,6 +7,7 @@ export default new Vuex.Store({
     state: {
         connected: 0,
         accountId: 0,
+        lastInsertId: 10,
         allCategory: [
             "activite",
             "spectacle",
@@ -24,8 +25,8 @@ export default new Vuex.Store({
                 text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
                 imagePrestataire: "prestataire.png",
                 imageStand: "stand.png",
-                nomStand:" la bonne saucisse de michelle",
-                idStand:1,
+                nomStand: " la bonne saucisse de michelle",
+                idStand: 1,
                 type: "activite",
                 email: "prestataire1@gmail.com",
                 siren: 123456789,
@@ -37,8 +38,8 @@ export default new Vuex.Store({
                 text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
                 imagePrestataire: "prestataire.png",
                 imageStand: "stand.png",
-                nomStand:" la bonne saucisse de michelle",
-                idStand:1,
+                nomStand: " la bonne saucisse de michelle",
+                idStand: 1,
                 type: "restauration",
                 email: "prestataire2@gmail.com",
                 siren: 123456789,
@@ -50,8 +51,8 @@ export default new Vuex.Store({
                 text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
                 imagePrestataire: "prestataire.png",
                 imageStand: "stand.png",
-                nomStand:" la bonne saucisse de michelle",
-                idStand:1,
+                nomStand: " la bonne saucisse de michelle",
+                idStand: 1,
                 type: "restauration",
                 email: "prestataire3@gmail.com",
                 siren: 123456789,
@@ -63,8 +64,8 @@ export default new Vuex.Store({
                 text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
                 imagePrestataire: "prestataire.png",
                 imageStand: "stand.png",
-                nomStand:" la bonne saucisse de michelle",
-                idStand:2,
+                nomStand: " la bonne saucisse de michelle",
+                idStand: 2,
                 type: "spectacle",
                 email: "prestataire4@gmail.com",
                 siren: 987654321,
@@ -76,8 +77,8 @@ export default new Vuex.Store({
                 text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
                 imagePrestataire: "prestataire.png",
                 imageStand: "stand.png",
-                nomStand:" la bonne saucisse de michelle",
-                idStand:2,
+                nomStand: " la bonne saucisse de michelle",
+                idStand: 2,
                 type: "activite",
                 email: "prestataire5@gmail.com",
                 siren: 567891234,
@@ -89,8 +90,8 @@ export default new Vuex.Store({
                 text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
                 imagePrestataire: "prestataire.png",
                 imageStand: "stand.png",
-                nomStand:" la bonne saucisse de michelle",
-                idStand:3,
+                nomStand: " la bonne saucisse de michelle",
+                idStand: 3,
                 type: "activite",
                 email: "prestataire6@gmail.com",
                 siren: 987654321,
@@ -114,8 +115,8 @@ export default new Vuex.Store({
                 text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
                 imagePrestataire: "prestataire.png",
                 imageStand: "stand.png",
-                nomStand:" la bonne saucisse de michelle",
-                idStand:3,
+                nomStand: " la bonne saucisse de michelle",
+                idStand: 3,
                 type: "activite",
                 email: "prestataire8@gmail.com",
                 siren: 432198765,
@@ -127,8 +128,8 @@ export default new Vuex.Store({
                 text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
                 imagePrestataire: "prestataire.png",
                 imageStand: "stand.png",
-                nomStand:" la bonne saucisse de michelle",
-                idStand:2,
+                nomStand: " la bonne saucisse de michelle",
+                idStand: 2,
                 type: "activite",
                 email: "prestataire9@gmail.com",
                 siren: 135792468,
@@ -140,8 +141,8 @@ export default new Vuex.Store({
                 text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
                 imagePrestataire: "prestataire.png",
                 imageStand: "stand.png",
-                nomStand:" la bonne saucisse de michelle",
-                idStand:undefined,
+                nomStand: " la bonne saucisse de michelle",
+                idStand: undefined,
                 type: "activite",
                 email: "prestataire10@gmail.com",
                 siren: 246813579,
@@ -151,17 +152,21 @@ export default new Vuex.Store({
         ]
     },
     getters: {
-        getInfoPrestataire:(state)=> (id) => {
+        getInfoPrestataire: (state) => (id) => {
             return state.allPrestataire.find(prestataire => parseInt(prestataire.id) === parseInt(id))
         },
-        getIDPrestataireWithEmail:(state)=> (email, password) => {
+        getIDPrestataireWithEmail: (state) => (email, password) => {
             return state.allPrestataire.find(prestataire => (prestataire.email === email && prestataire.password === password))
         },
-        getAllPrestataire:(state) => {
+        getAllPrestataire: (state) => {
             return state.allPrestataire
         },
         getAllCategory: (state) => {
             return state.allCategory
+        },
+
+        isAlreadyAnAccound: (state) => (email) => {
+            return state.allPrestataire.map(prestataire => prestataire.email).includes(email) || state.admin.email === email;
         },
 
         getIsAdmin: (state) => (email, password) => {
@@ -172,16 +177,47 @@ export default new Vuex.Store({
         },
         getAccountId: (state) => {
             return state.accountId
+        },
+
+        getLastInsertId: (state) => {
+            return state.lastInsertId;
         }
     },
     mutations: {
+        increment (state) {
+            state.lastInsertId++
+        },
         setAccountId: (state, id) => {
-            state.accountId = id;
+            state.accountId = parseInt(id);
         },
         setAccountType: (state, type) => {
             state.connected = type;
+        },
+        addPrestataire: (state, prestataire) => {
+            state.allPrestataire.push(prestataire);
         }
     },
-    actions: {},
+    actions: {
+        createPrestataire: ({getters, commit}, prestataire) => {
+            const idPrestataire = getters.getLastInsertId + 1;
+            const {lastname, firstname, email, password} = prestataire;
+            commit("addPrestataire", {
+                name: `${lastname} ${firstname}`,
+                text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+                imagePrestataire: "prestataire.png",
+                imageStand: "stand.png",
+                nomStand: " la bonne saucisse de michelle",
+                idStand: undefined,
+                type: "activite",
+                email: email,
+                siren: 123456789,
+                id: idPrestataire,
+                password: password
+            })
+            commit("increment");
+            commit("setAccountId", idPrestataire);
+            commit('setAccountType', 1);
+        }
+    },
     modules: {},
 })

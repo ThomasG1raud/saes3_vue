@@ -1,27 +1,27 @@
 <template>
   <div id="card">
     <h1>Créer un compte</h1>
-    <form action="/" method="post" id="form-register">
+    <form action="/" method="post" id="form-register" @submit.prevent="onsubmit">
       <div class="div-form">
         <label for="lastname">Nom : </label>
-        <input type="text" name="lastname" id="lastname" required placeholder="Nom">
+        <input type="text" name="lastname" id="lastname" required placeholder="Nom" v-model="lastname">
       </div>
       <div class="div-form">
         <label for="firstname">Prénom : </label>
-        <input type="text" name="firstname" id="firstname" required placeholder="Prénom">
+        <input type="text" name="firstname" id="firstname" required placeholder="Prénom" v-model="firstname">
       </div>
       <div class="div-form">
         <label for="email">Email : </label>
-        <input type="email" name="email" id="email" required placeholder="Email">
+        <input type="email" name="email" id="email" required placeholder="Email" v-model="email">
       </div>
       <div class="div-form">
         <label for="password">Mot de passe : </label>
-        <input type="password" name="password" id="password" required placeholder="Mot de passe">
+        <input type="password" name="password" id="password" required placeholder="Mot de passe" v-model="password">
       </div>
       <div class="div-form">
         <label for="confirm-password">Confirmer le mot de passe : </label>
         <input type="password" name="confirm-password" id="confirm-password" required
-               placeholder="Confirmer le mot de passe">
+               placeholder="Confirmer le mot de passe" v-model="confirmPassword">
       </div>
       <p>
         Déjà un compte ?
@@ -35,8 +35,41 @@
 </template>
 
 <script>
+import {mapActions, mapGetters} from "vuex";
+import router from "@/router";
+
 export default {
-  name: "RegisterView"
+  name: "RegisterView",
+  data: () => ({
+    lastname: "a",
+    firstname: "a",
+    email: "a@gmail.com",
+    password: "a",
+    confirmPassword: "a"
+  }),
+  computed: {
+    ...mapGetters(["isAlreadyAnAccound", "getAllPrestataire", "getLastInsertId"])
+  },
+  methods: {
+    ...mapActions(["createPrestataire"]),
+    onsubmit() {
+      console.clear();
+      if (this.password !== this.confirmPassword) {
+        return alert("Le mot de passe doit être identique");
+      }
+      if (this.isAlreadyAnAccound(this.email)) {
+        return alert("C'est déjà un compte existant");
+      }
+      const prestataire = {
+        lastname: this.lastname,
+        firstname: this.firstname,
+        email: this.email,
+        password: this.password
+      }
+      this.createPrestataire(prestataire);
+      router.push("/prestataire");
+    }
+  }
 }
 </script>
 

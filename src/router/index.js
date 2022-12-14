@@ -91,7 +91,7 @@ const routes = [
   },
   {
     path: "/admin/map",
-    name: "map",
+    name: "admin_map",
     component: AdminMapView,
     children: [{
       path: ":idPrestataire",
@@ -103,7 +103,7 @@ const routes = [
   },
   {
     path: "/admin/prestataire",
-    name: "prestataire",
+    name: "admin_prestataire",
     component: AdminPrestataireView
   },
   {
