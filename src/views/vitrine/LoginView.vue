@@ -26,7 +26,7 @@
           <router-link to="/register">S'inscrire</router-link>
         </p>
         <div class="div-form">
-          <input type="submit" value="Se connecter">
+          <input class="btn" type="submit" value="Se connecter">
         </div>
       </form>
     </div>
@@ -126,6 +126,9 @@ input[type=submit] {
 input[type=submit]:hover {
   background-color: var(--blue);
   color: var(--very-very-light);
+  border-color: var(--blue);
+  border-radius: 25px;
+  padding: 10px;
 }
 
 label {

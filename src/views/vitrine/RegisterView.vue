@@ -20,10 +20,12 @@
       </div>
       <div class="div-form">
         <label for="confirm-password">Confirmer le mot de passe : </label>
-        <input type="password" name="confirm-password" id="confirm-password" required placeholder="Confirmer le mot de passe">
+        <input type="password" name="confirm-password" id="confirm-password" required
+               placeholder="Confirmer le mot de passe">
       </div>
       <p>
-        Déjà un compte ? <router-link to="/login">Connexion</router-link>
+        Déjà un compte ?
+        <router-link to="/login">Connexion</router-link>
       </p>
       <div class="div-form">
         <input type="submit" value="Créer mon compte">
@@ -39,48 +41,58 @@ export default {
 </script>
 
 <style scoped>
-  #card {
-    max-width: 600px;
-    display: grid;
-    margin: 40px auto;
-    background: none;
-    box-shadow: 0 0 10px var(--dark);
-    border-radius: 30px;
-  }
-  #form-register {
-    display: flex;
-    flex-direction: column;
-  }
-  .div-form {
-    margin: 0 auto;
-    width: fit-content;
-  }
-  input {
-    display: block;
-    padding: 10px;
-    border-radius: 10px;
-    border: 2px solid var(--very-very-light);
-    color: var(--dark);
-    box-shadow: 0 0 1px;
-    margin-bottom: 20px;
-    margin-top: 10px;
-  }
-  input::placeholder {
-    color: var(--dark);
-  }
-  input[type=submit] {
-    background-color: var(--very-very-light);
-    color: var(--blue);
-    border-color: var(--blue);
-    border-radius: 25px;
-    padding: 10px;
-  }
-  input[type=submit]:hover {
-    background-color: var(--blue);
-    color: var(--very-very-light);
-  }
-  label {
-    display: block;
-    text-align: left;
-  }
+#card {
+  max-width: 600px;
+  display: grid;
+  margin: 40px auto;
+  background: none;
+  box-shadow: 0 0 10px var(--dark);
+  border-radius: 30px;
+}
+
+#form-register {
+  display: flex;
+  flex-direction: column;
+}
+
+.div-form {
+  margin: 0 auto;
+  width: fit-content;
+}
+
+input {
+  display: block;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid var(--very-very-light);
+  color: var(--dark);
+  box-shadow: 0 0 1px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+input::placeholder {
+  color: var(--dark);
+}
+
+input[type=submit] {
+  background-color: var(--very-very-light);
+  color: var(--blue);
+  border-color: var(--blue);
+  border-radius: 25px;
+  padding: 10px;
+}
+
+input[type=submit]:hover {
+  background-color: var(--blue);
+  color: var(--very-very-light);
+  border-color: var(--blue);
+  border-radius: 25px;
+  padding: 10px;
+}
+
+label {
+  display: block;
+  text-align: left;
+}
 </style>
