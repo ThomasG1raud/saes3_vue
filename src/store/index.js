@@ -13,6 +13,24 @@ export default new Vuex.Store({
             "spectacle",
             "restauration"
         ],
+        allHoraire: [
+            // {
+            //     id: 1,
+            //     start: "2022-12-08 16:30:00",
+            //     time: "2022-12-09 17:30:00",
+            //     title: "Activité"
+            // },
+            {
+                name: "Activité",
+                start: "2022-12-08 16:30:00",
+                end: "2022-12-08 16:30:00",
+                timed: false,
+            }
+            // {
+            //     id: 2,
+            //     date: "2022-12-15 16:30:00"
+            // }
+        ],
         admin: {
             email: "admin@gmail.com",
             login: "admin",
@@ -181,6 +199,10 @@ export default new Vuex.Store({
 
         getLastInsertId: (state) => {
             return state.lastInsertId;
+        },
+
+        getAllHoraire: (state) => {
+            return state.allHoraire;
         }
     },
     mutations: {
