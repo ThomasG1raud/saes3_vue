@@ -17,7 +17,7 @@
 
       </div>
       <div id="map">
-        <MapView></MapView>
+        <MapView :height="700" :width="800" :zoomRatio="0"></MapView>
       </div>
     </div>
   </div>
