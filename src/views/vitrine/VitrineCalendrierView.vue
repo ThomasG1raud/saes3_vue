@@ -1,19 +1,30 @@
 <template>
   <v-row>
     <v-col>
-      <v-sheet height="calc(100vh - 120px)">
+      <v-sheet height="<!--calc(100vh - 120px)-->">
         <v-calendar
             ref="calendar"
-            :now="now"
-            :value="now"
+            :now="'2022-12-14 16:30:00'"
 
-            color="primary"
+            :weekdays="[1,2,3,4,5,6,0]"
+            :first-interval="8-1"
+            :interval-count="12+2"
+            color="var(--blue)"
             type="week"
-        ></v-calendar>
+        >
+
+          <template v-slot:day-body="{ date, week }">
+            <div
+                class="v-current-time"
+                :class="{ first: date === week[0].date }"
+                :style="{ top: nowY }"
+            ></div>
+          </template>
+
+        </v-calendar>
         <!--            :events="events"-->
       </v-sheet>
     </v-col>
-    <br style="margin: 100px">{{now}}
   </v-row>
 </template>
 
