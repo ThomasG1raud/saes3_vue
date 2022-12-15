@@ -41,7 +41,8 @@
 		height: Number,
 		width: Number,
 		zoomRatio: Number,
-		urlPresta: String
+		urlPresta: String,
+		catMarker: Number
 	},
 	data () {
 		return this.map = {
@@ -62,8 +63,7 @@
 			L.latLng(-210, -120),
 			L.latLng(115, -440),
 			L.latLng(-175, -525),
-		]
-		}
+		]}
 	},
 	mounted() {
 		this.addMarker(); 
@@ -84,7 +84,7 @@
 				L.marker(this.markers[i]).addTo(this.$refs.map.mapObject).on('click', function(e) {
 					console.log(e)
 					//console.log(router);
-					router.push("/map/1")
+					router.push(`/map/${i}`)
 				});
 			}
 		},
