@@ -83,7 +83,6 @@
 			for (var i=0; i<this.markers.length; i++){
 				L.marker(this.markers[i]).addTo(this.$refs.map.mapObject).on('click', function(e) {
 					console.log(e)
-					//console.log(router);
 					router.push(`/map/${i}`)
 				});
 			}
