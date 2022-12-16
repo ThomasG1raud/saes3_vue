@@ -3,7 +3,7 @@
     <v-col>
       <v-sheet height="64">
         <v-toolbar flat color="white">
-          <v-btn color="primary" dark @click.stop="dialog = true">
+          <v-btn color="var(--primary)" dark @click.stop="dialog = true">
             New Event
           </v-btn>
           <v-btn outlined class="mr-4" @click="setToday">
@@ -51,7 +51,7 @@
               <v-text-field v-model="start" type="date" label="start (required)"></v-text-field>
               <v-text-field v-model="end" type="date" label="end (required)"></v-text-field>
               <v-text-field v-model="color" type="color" label="color (click to open color menu)"></v-text-field>
-              <v-btn type="submit" color="primary" class="mr-4" @click.stop="dialog = false">
+              <v-btn type="submit" color="var(--primary)" class="mr-4" @click.stop="dialog = false">
                 create event
               </v-btn>
             </v-form>
@@ -68,7 +68,7 @@
               <v-text-field v-model="start" type="date" label="start (required)"></v-text-field>
               <v-text-field v-model="end" type="date" label="end (required)"></v-text-field>
               <v-text-field v-model="color" type="color" label="color (click to open color menu)"></v-text-field>
-              <v-btn type="submit" color="primary" class="mr-4" @click.stop="dialog = false">
+              <v-btn type="submit" color="var(--primary)" class="mr-4" @click.stop="dialog = false">
                 create event
               </v-btn>
             </v-form>
@@ -123,7 +123,7 @@
             </v-card-text>
 
             <v-card-actions>
-              <v-btn text color="secondary" @click="selectedOpen = false">
+              <v-btn text color="var(--secondary)" @click="selectedOpen = false">
                 close
               </v-btn>
               <v-btn v-if="currentlyEditing !== selectedEvent.id" text @click.prevent="editEvent(selectedEvent)">
@@ -142,7 +142,8 @@
 
 <script>
 import { db } from '@/main'
-import {mapGetters} from "vuex";
+import {mapActions, mapGetters} from "vuex";
+import 'vuetify/dist/vuetify.min.css';
 
 export default {
   name: "VitrineCalendrierView",
@@ -171,7 +172,7 @@ export default {
     dialogDate: false
   }),
   mounted () {
-    console.clear()
+    // console.clear()
     // this.getEvents()
     this.goStart()
   },
@@ -208,6 +209,7 @@ export default {
   },
   methods: {
     ...mapGetters(["getAllHoraire"]),
+    ...mapActions(["createHoraire"]),
     goStart() {
       const allHoraire = this.getAllHoraire();
       const events = []
@@ -248,14 +250,18 @@ export default {
     },
     async addEvent () {
       if (this.name && this.start && this.end) {
-        await db.collection("calEvent").add({
+        const horaire = {
           name: this.name,
           details: this.details,
           start: this.start,
           end: this.end,
           color: this.color
-        })
-        this.getEvents()
+        }
+        this.createHoraire(horaire)
+        console.log(this.getAllHoraire())
+        // await db.collection("calEvent").add(horaire)
+        // this.getEvents()
+        this.goStart()
         this.name = '',
             this.details = '',
             this.start = '',
@@ -269,16 +275,19 @@ export default {
       this.currentlyEditing = ev.id
     },
     async updateEvent (ev) {
-      await db.collection('calEvent').doc(this.currentlyEditing).update({
-        details: ev.details
-      })
-      this.selectedOpen = false,
-          this.currentlyEditing = null
+      // await db.collection('calEvent').doc(this.currentlyEditing).update({
+      //   details: ev.details
+      // })
+      console.log(ev)
+      this.selectedOpen = false
+      this.currentlyEditing = null
     },
     async deleteEvent (ev) {
-      await db.collection("calEvent").doc(ev).delete()
-      this.selectedOpen = false,
-          this.getEvents()
+      // await db.collection("calEvent").doc(ev).delete()
+      console.log(ev)
+      this.selectedOpen = false
+      // this.getEvents()
+      this.goStart();
     },
     showEvent ({ nativeEvent, event }) {
       const open = () => {
@@ -307,3 +316,12 @@ export default {
 }
 </script>
 
+<style scoped>
+:root, * {
+  --primary: var(--blue);
+  --secondary: var(--secondary);
+}
+.v-dialog__container {
+  display: block;
+}
+</style>

@@ -14,22 +14,13 @@ export default new Vuex.Store({
             "restauration"
         ],
         allHoraire: [
-            // {
-            //     id: 1,
-            //     start: "2022-12-08 16:30:00",
-            //     time: "2022-12-09 17:30:00",
-            //     title: "Activité"
-            // },
             {
                 name: "Activité",
                 start: "2022-12-08 16:30:00",
                 end: "2022-12-08 16:30:00",
                 timed: false,
+                color: "var(--primary)"
             }
-            // {
-            //     id: 2,
-            //     date: "2022-12-15 16:30:00"
-            // }
         ],
         admin: {
             email: "admin@gmail.com",
@@ -217,6 +208,9 @@ export default new Vuex.Store({
         },
         addPrestataire: (state, prestataire) => {
             state.allPrestataire.push(prestataire);
+        },
+        addHoraire: (state, horaire) => {
+            state.allHoraire.push(horaire);
         }
     },
     actions: {
@@ -239,6 +233,9 @@ export default new Vuex.Store({
             commit("increment");
             commit("setAccountId", idPrestataire);
             commit('setAccountType', 1);
+        },
+        createHoraire: ({commit}, horaire) => {
+            commit("addHoraire", horaire);
         }
     },
     modules: {},
