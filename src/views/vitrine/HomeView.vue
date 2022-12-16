@@ -40,6 +40,10 @@ export default {
 </script>
 
 <style scoped>
+@font-face {
+  font-family: myFirstFont;
+  src: url('../../assets/JackPirate.ttf');
+}
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -61,7 +65,7 @@ export default {
 
 #title {
   font-size: 80px;
-  font-family: 'Pacifico', cursive;
+  font-family: myFirstFont;
   rotate: -45deg;
   color: black;
 }
