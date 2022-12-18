@@ -14,6 +14,9 @@ export default {
   components: {
     HeaderView,
     FooterView
+  },
+  created() {
+    document.title = "Parc Médiéval"
   }
 }
 </script>

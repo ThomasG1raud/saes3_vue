@@ -16,8 +16,8 @@ export default new Vuex.Store({
         allHoraire: [
             {
                 name: "Activité",
-                start: "2022-12-08 16:30:00",
-                end: "2022-12-08 16:30:00",
+                start: "2022-12-18 16:30:00",
+                end: "2022-12-18 16:30:00",
                 timed: false,
                 color: "var(--primary)"
             }
@@ -211,6 +211,9 @@ export default new Vuex.Store({
         },
         addHoraire: (state, horaire) => {
             state.allHoraire.push(horaire);
+        },
+        removeHoraire: (state, horaire, index) => {
+            state.allHoraire.remove(index, 1);
         }
     },
     actions: {
@@ -233,6 +236,10 @@ export default new Vuex.Store({
             commit("increment");
             commit("setAccountId", idPrestataire);
             commit('setAccountType', 1);
+        },
+        deleteHoraire: ({getters, commit}, horaire) => {
+            const idexDelete = getters.getAllHoraire.indexOf(horaire);
+            commit("removeHoraire", idexDelete);
         },
         createHoraire: ({commit}, horaire) => {
             commit("addHoraire", horaire);
