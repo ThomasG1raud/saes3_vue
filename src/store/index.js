@@ -17,6 +17,7 @@ export default new Vuex.Store({
             {
                 id: 1,
                 name: "Activité",
+                details: "C'est une Activité",
                 start: "2022-12-18 16:30:00",
                 end: "2022-12-18 16:30:00",
                 timed: false,
@@ -25,6 +26,7 @@ export default new Vuex.Store({
             {
                 id: 2,
                 name: "Spectacle",
+                details: "C'est un Spectacle",
                 start: "2022-12-19 16:30:00",
                 end: "2022-12-19 16:30:00",
                 timed: false,
@@ -33,6 +35,7 @@ export default new Vuex.Store({
             {
                 id: 3,
                 name: "Restautation",
+                details: "C'est de la Restautation",
                 start: "2022-12-20 16:30:00",
                 end: "2022-12-20 16:30:00",
                 timed: false,
@@ -230,8 +233,10 @@ export default new Vuex.Store({
             state.allHoraire.push(horaire);
         },
         removeHoraire: (state, indexDelete) => {
-            console.log(indexDelete)
             state.allHoraire.splice(indexDelete, 1);
+        },
+        updateDetails: (state, indexUpdate, ev) => {
+            state.allHoraire.splice(indexUpdate, 1, ev);
         }
     },
     actions: {
@@ -261,6 +266,10 @@ export default new Vuex.Store({
         },
         createHoraire: ({commit}, horaire) => {
             commit("addHoraire", horaire);
+        },
+        editDetails: ({getters, commit}, ev) => {
+            const indexDelete = getters.getAllHoraire.findIndex(horaire => horaire.id === parseInt(ev.id))
+            commit("updateDetails", indexDelete, ev)
         }
     },
     modules: {},

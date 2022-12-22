@@ -116,13 +116,11 @@
                     {{ selectedEvent.details }}
                   </form>
                   <form v-else>
-                    <textarea-autosize
+                    <v-textarea
                         v-model="selectedEvent.details"
-                        type="text"
-                        style="width: 100%"
-                        :min-height="100"
-                        placeholder="add note">
-                    </textarea-autosize>
+                        clearable
+                        clear-icon="mdi-close-circle"
+                    ></v-textarea>
                   </form>
                 </v-card-text>
 
@@ -214,7 +212,7 @@ export default {
   },
   methods: {
     ...mapGetters(["getAllHoraire"]),
-    ...mapActions(["createHoraire", "deleteHoraire"]),
+    ...mapActions(["createHoraire", "deleteHoraire", "editDetails"]),
     reloadHoraire() {
       const allHoraire = this.getAllHoraire();
       const events = []
@@ -280,19 +278,13 @@ export default {
       this.currentlyEditing = ev.id
     },
     async updateEvent (ev) {
-      // await db.collection('calEvent').doc(this.currentlyEditing).update({
-      //   details: ev.details
-      // })
-      console.log(ev)
+      this.editDetails(ev)
       this.selectedOpen = false
       this.currentlyEditing = null
     },
     async deleteEvent (ev) {
-      // await db.collection("calEvent").doc(ev).delete()
-      console.log("A suprimer : "+ev)
       this.deleteHoraire(ev)
       this.selectedOpen = false
-      // this.getEvents()
       this.reloadHoraire();
     },
     showEvent ({ nativeEvent, event }) {
@@ -329,13 +321,4 @@ export default {
   --defined-color-primary: var(--light);
   --defined-color-secondary:  var(--blue);
 }
-/*.v-dialog__container, .v-dialog {*/
-/*  display: block;*/
-/*}*/
-/*.v-menu {*/
-/*  display: block;*/
-/*}*/
-/*.v-outside {*/
-/*  background: none;*/
-/*}*/
 </style>
