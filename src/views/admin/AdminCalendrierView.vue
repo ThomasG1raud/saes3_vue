@@ -7,7 +7,7 @@
         <v-col>
           <v-sheet height="64">
             <v-toolbar flat color="white">
-              <v-btn color="var(--primary)" dark @click.stop="dialog = true">
+              <v-btn color="var(--primary)" dark @click.stop="dialog = true;start=null;end=null;">
                 New Event
               </v-btn>
               <v-btn outlined class="mr-4" @click="setToday">
@@ -119,6 +119,7 @@
                     <v-textarea
                         v-model="selectedEvent.details"
                         clearable
+                        auto-grow
                         clear-icon="mdi-close-circle"
                     ></v-textarea>
                   </form>
@@ -175,8 +176,6 @@ export default {
     dialogDate: false
   }),
   mounted () {
-    // console.clear()
-    // this.getEvents()
     this.reloadHoraire()
   },
   computed: {
@@ -222,8 +221,8 @@ export default {
       this.events = events
     },
     setDialogDate( { date }) {
-      this.start = date
-      this.end = date
+      this.start = null;
+      this.end = null;
       this.dialogDate = true
       this.focus = date
     },
@@ -271,7 +270,7 @@ export default {
       this.currentlyEditing = ev.id
     },
     async updateEvent (ev) {
-      this.editDetails(ev)
+      this.currentlyEditing = ev; // this.editDetails(ev)
       this.selectedOpen = false
       this.currentlyEditing = null
     },

@@ -96,8 +96,7 @@
 </template>
 
 <script>
-import {mapActions, mapGetters} from "vuex";
-// import 'vuetify/dist/vuetify.min.css'
+import {mapGetters} from "vuex";
 
 export default {
   name: "VitrineCalendrierView",
@@ -161,7 +160,6 @@ export default {
   },
   methods: {
     ...mapGetters(["getAllHoraire"]),
-    ...mapActions(["createHoraire", "deleteHoraire", "editDetails"]),
     reloadHoraire() {
       const allHoraire = this.getAllHoraire();
       const events = []
