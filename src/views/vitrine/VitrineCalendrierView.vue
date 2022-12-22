@@ -46,7 +46,7 @@
             </v-toolbar>
           </v-sheet>
 
-          <v-dialog v-model="dialog" max-width="500">
+          <v-dialog v-model="dialog" max-width="500"> <!--button create-->
             <v-card>
               <v-container>
                 <v-form @submit.prevent="addEvent">
@@ -63,7 +63,7 @@
             </v-card>
           </v-dialog>
 
-          <v-dialog v-model="dialogDate" max-width="500">
+          <v-dialog v-model="dialogDate" max-width="500"> <!--click on day-->
             <v-card>
               <v-container>
                 <v-form @submit.prevent="addEvent">
@@ -232,6 +232,8 @@ export default {
       this.events = events
     }*/
     setDialogDate( { date }) {
+      this.start = date
+      this.end = date
       this.dialogDate = true
       this.focus = date
     },
