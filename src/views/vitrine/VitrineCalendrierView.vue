@@ -179,7 +179,7 @@ export default {
   mounted () {
     // console.clear()
     // this.getEvents()
-    this.goStart()
+    this.reloadHoraire()
   },
   computed: {
     title () {
@@ -215,7 +215,7 @@ export default {
   methods: {
     ...mapGetters(["getAllHoraire"]),
     ...mapActions(["createHoraire", "deleteHoraire"]),
-    goStart() {
+    reloadHoraire() {
       const allHoraire = this.getAllHoraire();
       const events = []
       allHoraire.forEach(horaire => {
@@ -266,7 +266,7 @@ export default {
         console.log(this.getAllHoraire())
         // await db.collection("calEvent").add(horaire)
         // this.getEvents()
-        this.goStart()
+        this.reloadHoraire()
         this.name = '',
             this.details = '',
             this.start = '',
@@ -293,7 +293,7 @@ export default {
       this.deleteHoraire(ev)
       this.selectedOpen = false
       // this.getEvents()
-      this.goStart();
+      this.reloadHoraire();
     },
     showEvent ({ nativeEvent, event }) {
       const open = () => {
