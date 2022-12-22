@@ -7,6 +7,9 @@
         <v-col>
           <v-sheet height="64">
             <v-toolbar flat color="white">
+              <v-btn color="var(--primary)" dark @click.stop="dialog = true">
+                New Event
+              </v-btn>
               <v-btn outlined class="mr-4" @click="setToday">
                 Today
               </v-btn>
@@ -42,6 +45,41 @@
               </v-menu>
             </v-toolbar>
           </v-sheet>
+
+          <v-dialog v-model="dialog" max-width="500"> <!--button create-->
+            <v-card>
+              <v-container>
+                <v-form @submit.prevent="addEvent">
+                  <v-text-field v-model="name" type="text" label="event name (required)"></v-text-field>
+                  <v-text-field v-model="details" type="text" label="detail"></v-text-field>
+                  <v-text-field v-model="start" type="datetime-local" label="start (required)"></v-text-field>
+                  <v-text-field v-model="end" type="datetime-local" label="end (required)"></v-text-field>
+                  <v-text-field v-model="color" type="color" label="color (click to open color menu)"></v-text-field>
+                  <v-btn type="submit" color="var(--primary)" class="mr-4" @click.stop="dialog = false">
+                    create event
+                  </v-btn>
+                </v-form>
+              </v-container>
+            </v-card>
+          </v-dialog>
+
+          <v-dialog v-model="dialogDate" max-width="500"> <!--click on day-->
+            <v-card>
+              <v-container>
+                <v-form @submit.prevent="addEvent">
+                  <v-text-field v-model="name" type="text" label="event name (required)"></v-text-field>
+                  <v-text-field v-model="details" type="text" label="detail"></v-text-field>
+                  <v-text-field v-model="start" type="datetime-local" label="start (required)"></v-text-field>
+                  <v-text-field v-model="end" type="datetime-local" label="end (required)"></v-text-field>
+                  <v-text-field v-model="color" type="color" label="color (click to open color menu)"></v-text-field>
+                  <v-btn type="submit" color="var(--primary)" class="mr-4" @click.stop="dialogDate = false">
+                    create event
+                  </v-btn>
+                </v-form>
+              </v-container>
+            </v-card>
+          </v-dialog>
+
           <v-sheet height="600">
             <v-calendar
                 ref="calendar"
@@ -54,6 +92,7 @@
                 :type="type"
                 @click:event="showEvent"
                 @click:more="viewDay"
+                @click:date="setDialogDate"
                 @change="updateRange"
             ></v-calendar>
             <v-menu
@@ -65,9 +104,13 @@
               <!--            full-width-->
               <v-card color="grey lighten-4" :width="350" flat>
                 <v-toolbar :color="selectedEvent.color" dark>
+                  <v-btn @click="deleteEvent(selectedEvent.id)" icon>
+                    <v-icon>mdi-delete</v-icon>
+                  </v-btn>
                   <v-toolbar-title v-html="selectedEvent.name"></v-toolbar-title>
                   <div class="flex-grow-1"></div>
                 </v-toolbar>
+
                 <v-card-text>
                   <form v-if="currentlyEditing !== selectedEvent.id">
                     {{ selectedEvent.details }}
@@ -85,6 +128,12 @@
                   <v-btn text color="var(--secondary)" @click="selectedOpen = false">
                     close
                   </v-btn>
+                  <v-btn v-if="currentlyEditing !== selectedEvent.id" text @click.prevent="editEvent(selectedEvent)">
+                    edit
+                  </v-btn>
+                  <v-btn text v-else type="submit" @click.prevent="updateEvent(selectedEvent)">
+                    Save
+                  </v-btn>
                 </v-card-actions>
               </v-card>
             </v-menu>
@@ -100,10 +149,10 @@ import {mapActions, mapGetters} from "vuex";
 // import 'vuetify/dist/vuetify.min.css'
 
 export default {
-  name: "VitrineCalendrierView",
+  name: "AdminCalendrierView",
   data: () => ({
-    today: new Date().toISOString().substr(0, 10),
-    focus: new Date().toISOString().substr(0, 10),
+    today: new Date().toISOString().substr(0, 16),
+    focus: new Date().toISOString().substr(0, 16),
     type: 'month',
     typeToLabel: {
       month: 'Month',
@@ -122,6 +171,8 @@ export default {
     selectedElement: null,
     selectedOpen: false,
     events: [],
+    dialog: false,
+    dialogDate: false
   }),
   mounted () {
     // console.clear()
@@ -170,6 +221,12 @@ export default {
       })
       this.events = events
     },
+    setDialogDate( { date }) {
+      this.start = date
+      this.end = date
+      this.dialogDate = true
+      this.focus = date
+    },
     viewDay ({ date }) {
       this.focus = date
       this.type = 'day'
@@ -185,6 +242,43 @@ export default {
     },
     next () {
       this.$refs.calendar.next()
+    },
+    async addEvent () {
+      console.log("test :",this.start)
+      if (this.name && this.start && this.end) {
+        const horaire = {
+          name: this.name,
+          details: this.details,
+          start: this.start,
+          end: this.end,
+          color: this.color
+        }
+        this.createHoraire(horaire)
+        console.log(this.getAllHoraire())
+        // await db.collection("calEvent").add(horaire)
+        // this.getEvents()
+        this.reloadHoraire()
+        this.name = '',
+            this.details = '',
+            this.start = '',
+            this.end = '',
+            this.color = ''
+      } else {
+        alert('You must enter event name, start, and end time')
+      }
+    },
+    editEvent (ev) {
+      this.currentlyEditing = ev.id
+    },
+    async updateEvent (ev) {
+      this.editDetails(ev)
+      this.selectedOpen = false
+      this.currentlyEditing = null
+    },
+    async deleteEvent (ev) {
+      this.deleteHoraire(ev)
+      this.selectedOpen = false
+      this.reloadHoraire();
     },
     showEvent ({ nativeEvent, event }) {
       const open = () => {

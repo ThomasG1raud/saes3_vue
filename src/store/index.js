@@ -18,8 +18,8 @@ export default new Vuex.Store({
                 id: 1,
                 name: "Activité",
                 details: "C'est une Activité",
-                start: "2022-12-18 16:30:00",
-                end: "2022-12-18 16:30:00",
+                start: "2022-12-18T16:30",
+                end: "2022-12-18T16:30",
                 timed: false,
                 color: "var(--primary)"
             },
@@ -27,8 +27,8 @@ export default new Vuex.Store({
                 id: 2,
                 name: "Spectacle",
                 details: "C'est un Spectacle",
-                start: "2022-12-19 16:30:00",
-                end: "2022-12-19 16:30:00",
+                start: "2022-12-19T16:30",
+                end: "2022-12-19T16:30",
                 timed: false,
                 color: "var(--primary)"
             },
@@ -36,8 +36,8 @@ export default new Vuex.Store({
                 id: 3,
                 name: "Restautation",
                 details: "C'est de la Restautation",
-                start: "2022-12-20 16:30:00",
-                end: "2022-12-20 16:30:00",
+                start: "2022-12-22T06:00",
+                end: "2022-12-22T16:00",
                 timed: false,
                 color: "var(--primary)"
             }

@@ -17,6 +17,7 @@ import AdminView from "@/views/admin/AdminView";
 import AdminMapView from "@/views/admin/AdminMapView";
 import AdminPrestataireView from "@/views/admin/AdminPrestataireView";
 import AdminStandView from "@/views/admin/AdminStandView";
+import AdminCalendrierView from "@/views/admin/AdminCalendrierView.vue";
 
 Vue.use(VueRouter)
 
@@ -88,6 +89,11 @@ const routes = [
     path: "/admin",
     name: "admin",
     component: AdminView
+  },
+  {
+    path: "/admin/calendrier",
+    name: "admin_calendrier",
+    component: AdminCalendrierView
   },
   {
     path: "/admin/map",

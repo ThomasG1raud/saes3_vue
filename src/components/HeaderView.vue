@@ -29,6 +29,7 @@
         <router-link class="item" to="/">
           <img src="@/assets/logo_sae_white.png" alt="logo_sae_white" id="logo_navbar">
         </router-link>
+        <router-link class="item" to="/admin/calendrier">Calendrier</router-link>
         <router-link class="item" to="/admin/stand">Stand</router-link>
         <router-link class="item" to="/admin/prestataire">Prestataire</router-link>
         <router-link class="item" to="/admin/map">Map</router-link>
