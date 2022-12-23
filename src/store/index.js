@@ -16,6 +16,7 @@ export default new Vuex.Store({
         allHoraire: [
             {
                 id: 1,
+                idPrestataire: 1,
                 name: "Activité",
                 details: "C'est une Activité",
                 start: "2022-12-18T16:30",
@@ -25,6 +26,7 @@ export default new Vuex.Store({
             },
             {
                 id: 2,
+                idPrestataire: 1,
                 name: "Spectacle",
                 details: "C'est un Spectacle",
                 start: "2022-12-19T16:30",
@@ -34,6 +36,7 @@ export default new Vuex.Store({
             },
             {
                 id: 3,
+                idPrestataire: 5,
                 name: "Restautation",
                 details: "C'est de la Restautation",
                 start: "2022-12-22T06:00",
@@ -132,6 +135,7 @@ export default new Vuex.Store({
                 text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
                 imagePrestataire: "prestataire.png",
                 imageStand: "stand.png",
+                nomStand: " la bonne saucisse de michelle",
                 idStand: undefined,
                 type: "activite",
                 email: "prestataire7@gmail.com",
@@ -181,8 +185,11 @@ export default new Vuex.Store({
         ]
     },
     getters: {
-        getInfoPrestataire: (state) => (id) => {
-            return state.allPrestataire.find(prestataire => parseInt(prestataire.id) === parseInt(id))
+        getInfoPrestataire: (state) => (idPrestataire) => {
+            return state.allPrestataire.find(prestataire => parseInt(prestataire.id) === parseInt(idPrestataire))
+        },
+        getHoraireByIdPrestataire: (state) => (idPrestataire) => {
+            return state.allHoraire.filter(horaire => parseInt(horaire.idPrestataire) === parseInt(idPrestataire))
         },
         getIDPrestataireWithEmail: (state) => (email, password) => {
             return state.allPrestataire.find(prestataire => (prestataire.email === email && prestataire.password === password))

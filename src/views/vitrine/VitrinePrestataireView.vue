@@ -1,15 +1,14 @@
 <template>
   <div id="PlusGrandDiv">
-    <div v-for="(c,i) in $store.state.allCategory" :key="i">
+    <div v-for="(category,i) in getAllCategory" :key="i">
       <div id="categorie">
         <div class="entete">
-          <p class="pCategorie" :id="c">{{ c }}</p>
+          <p class="pCategorie" :id="category">{{ category }}</p>
           <hr>
         </div>
       </div>
       <div id="grandDiv">
-        <div v-for="(prestataire, index) in $store.state.allPrestataire.filter(prestataire => prestataire.type===c)"
-             :key="index">
+        <div v-for="(prestataire, index) in getAllPrestataire.filter(prestataire => prestataire.type===category)" :key="index">
           <VitrinePrestataireCardView :idPrestataire="prestataire.id"/>
         </div>
       </div>
@@ -21,6 +20,7 @@
 
 <script>
 import VitrinePrestataireCardView from "@/components/prestataire/VitrinePrestataireCardView";
+import {mapGetters} from "vuex";
 
 export default {
   name: "PrestataireView",
@@ -29,6 +29,9 @@ export default {
   }),
   components: {
     VitrinePrestataireCardView
+  },
+  computed: {
+    ...mapGetters(["getAllCategory", "getAllPrestataire"])
   }
 }
 </script>
