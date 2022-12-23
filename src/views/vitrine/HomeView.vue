@@ -42,7 +42,7 @@ export default {
 <style scoped>
 @font-face {
   font-family: myFirstFont;
-  src: url('../../assets/JackPirate.ttf');
+  src: url('@/assets/JackPirate.ttf');
 }
 .grid {
   display: grid;

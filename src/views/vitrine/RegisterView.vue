@@ -28,7 +28,16 @@
         <router-link to="/login">Connexion</router-link>
       </p>
       <div class="div-form">
-        <input type="submit" value="Créer mon compte">
+        <v-alert
+            v-if="isWrong"
+            outlined
+            text
+            color="#FF0000"
+            type="error"
+        >
+          {{ errorRegister }}
+        </v-alert>
+        <input type="submit" value="Créer mon compte" v-else>
       </div>
     </form>
   </div>
@@ -41,6 +50,8 @@ import router from "@/router";
 export default {
   name: "RegisterView",
   data: () => ({
+    isWrong: false,
+    errorRegister: "Error register",
     lastname: "a",
     firstname: "a",
     email: "a@gmail.com",
@@ -52,13 +63,20 @@ export default {
   },
   methods: {
     ...mapActions(["createPrestataire"]),
+    alertPopUp(errorText) {
+      this.errorRegister = errorText;
+      this.isWrong = true
+      setTimeout(() => {this.isWrong=false}, 3000);
+    },
     onsubmit() {
       console.clear();
       if (this.password !== this.confirmPassword) {
-        return alert("Le mot de passe doit être identique");
+        this.alertPopUp("Le mot de passe doit être identique");
+        return;
       }
       if (this.isAlreadyAnAccound(this.email)) {
-        return alert("C'est déjà un compte existant");
+        this.alertPopUp("C'est déjà un compte existant");
+        return;
       }
       const prestataire = {
         lastname: this.lastname,
@@ -127,5 +145,8 @@ input[type=submit]:hover {
 label {
   display: block;
   text-align: left;
+}
+.v-alert {
+  margin-top: 10px;
 }
 </style>

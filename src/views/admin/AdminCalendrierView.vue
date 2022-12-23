@@ -1,7 +1,5 @@
 <template>
   <v-app id="calendar">
-<!--    <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">-->
-    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
     <template>
       <v-row class="fill-height">
         <v-col>
@@ -101,7 +99,6 @@
                 :activator="selectedElement"
                 offset-x
             >
-              <!--            full-width-->
               <v-card color="grey lighten-4" :width="350" flat>
                 <v-toolbar :color="selectedEvent.color" dark>
                   <v-btn @click="deleteEvent(selectedEvent.id)" icon>
@@ -124,7 +121,6 @@
                     ></v-textarea>
                   </form>
                 </v-card-text>
-
                 <v-card-actions>
                   <v-btn text color="var(--secondary)" @click="selectedOpen = false">
                     close
@@ -147,7 +143,6 @@
 
 <script>
 import {mapActions, mapGetters} from "vuex";
-// import 'vuetify/dist/vuetify.min.css'
 
 export default {
   name: "AdminCalendrierView",
@@ -165,7 +160,6 @@ export default {
     details: null,
     start: null,
     end: null,
-    // color: '#1976D2', // default event color
     color: '#FF0000',
     currentlyEditing: null,
     selectedEvent: {},
@@ -254,14 +248,12 @@ export default {
         }
         this.createHoraire(horaire)
         console.log(this.getAllHoraire())
-        // await db.collection("calEvent").add(horaire)
-        // this.getEvents()
         this.reloadHoraire()
-        this.name = '',
-            this.details = '',
-            this.start = '',
-            this.end = '',
-            this.color = ''
+        this.name = ''
+        this.details = ''
+        this.start = ''
+        this.end = ''
+        this.color = ''
       } else {
         alert('You must enter event name, start, and end time')
       }

@@ -26,7 +26,17 @@
           <router-link to="/register">S'inscrire</router-link>
         </p>
         <div class="div-form">
-          <input class="btn" type="submit" value="Se connecter">
+          <v-alert
+            v-if="isWrong"
+            outlined
+            text
+            color="#FF0000"
+            type="error"
+          >
+            Email ou mot de passe incorrect
+          </v-alert>
+          <input class="btn" type="submit" value="Se connecter" v-else>
+<!--          <input class="btn" type="submit" value="Se connecter">-->
         </div>
       </form>
     </div>
@@ -41,6 +51,7 @@ import {mapGetters, mapMutations} from "vuex";
 export default {
   name: "RegisterView",
   data: () => ({
+    isWrong: false,
     email: "",
     password: ""
   }),
@@ -56,14 +67,16 @@ export default {
           this.setAccountId(99);
           this.setAccountType(2);
           router.push("/admin");
-          return;
+        } else {
+          this.isWrong = true
+          setTimeout(() => {this.isWrong=false}, 3000);
         }
-        return alert("non");
+      } else {
+        const id = prestaire.id;
+        this.setAccountId(id)
+        this.setAccountType(1)
+        router.push("/prestataire")
       }
-      const id = prestaire.id;
-      this.setAccountId(id)
-      this.setAccountType(1)
-      router.push("/prestataire")
     }
   }
 }
@@ -154,5 +167,8 @@ img {
   width: 50px;
   border-radius: 100%;
   background-color: var(--very-very-light);
+}
+.v-alert {
+  margin-top: 10px;
 }
 </style>

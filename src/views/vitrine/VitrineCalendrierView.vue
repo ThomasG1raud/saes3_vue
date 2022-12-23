@@ -1,7 +1,5 @@
 <template>
   <v-app id="calendar">
-<!--    <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">-->
-    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
     <template>
       <v-row class="fill-height">
         <v-col>
@@ -114,7 +112,6 @@ export default {
     details: null,
     start: null,
     end: null,
-    // color: '#1976D2', // default event color
     color: '#FF0000',
     currentlyEditing: null,
     selectedEvent: {},
@@ -123,8 +120,6 @@ export default {
     events: [],
   }),
   mounted () {
-    // console.clear()
-    // this.getEvents()
     this.reloadHoraire()
   },
   computed: {
