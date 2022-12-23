@@ -25,6 +25,16 @@
 
         <hr>
 
+        <div class="partie" v-if="curentHoraire.length">
+          <p> Horaire : </p>
+          <router-link to="/calendrier">
+            <p v-for="(horaire, index) in curentHoraire" :key="index">
+              {{ horaire.start.substr(11, 5) }} - {{ horaire.end.substr(11, 5) }}
+            </p>
+          </router-link>
+        </div>
+        <hr v-if="curentHoraire.length">
+
         <div class="partie">
           <p> E-mail:</p>
           <p> {{ curentPrestataire.email }} </p>
@@ -33,7 +43,7 @@
         <hr>
 
         <div class="partie">
-          <p> Nom de votre stand : </p>
+          <p> Nom du stand : </p>
           <p class="text-capitalize">
             <router-link :to="'/map/'+curentPrestataire.idStand">
               {{ curentPrestataire.nomStand }}
@@ -71,9 +81,12 @@ export default {
     bool:false
   }),
   computed :{
-    ...mapGetters(["getInfoPrestataire"]),
+    ...mapGetters(["getInfoPrestataire", "getHoraireByIdPrestataire"]),
     curentPrestataire() {
       return this.getInfoPrestataire(this.idPrestataire)
+    },
+    curentHoraire() {
+      return this.getHoraireByIdPrestataire(this.idPrestataire)
     }
   }
 }
