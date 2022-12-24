@@ -62,9 +62,6 @@
     <div class="rond" v-on:click="bool =!bool">
       <img class="fleche" src="@/assets/keyboard_double_arrow_up_black.svg">
     </div>
-    <div class="btn-edit">
-      <button class="btn btn-edit" @click="edit_profil">Edit</button>
-    </div>
 
     <div id="divService" v-if="bool">
       <p id="paragraphe">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
@@ -74,14 +71,9 @@
 
 <script>
 import {mapGetters} from "vuex";
-import router from "@/router";
+
 export default {
-  name: "PrestataireProfilView",
-  methods: {
-    edit_profil() {
-      router.push("/prestataire/edit/"+this.idPrestataire)
-    }
-  },
+  name: "VitrinePrestataireProfilView",
   props: {
     idPrestataire: Number
   },
@@ -184,14 +176,5 @@ export default {
   .text-capitalize {
     text-transform: capitalize;
   }
-  div.btn-edit {
-    position: absolute;
-    translate: 1050px -25px;
-    height: 100px;
-    width: 100px;
-  }
-  button.btn-edit {
-    height: 50px;
-    width: 100px;
-  }
+
 </style>

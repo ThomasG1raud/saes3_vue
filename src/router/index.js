@@ -18,6 +18,8 @@ import AdminMapView from "@/views/admin/AdminMapView";
 import AdminPrestataireView from "@/views/admin/AdminPrestataireView";
 import AdminStandView from "@/views/admin/AdminStandView";
 import AdminCalendrierView from "@/views/admin/AdminCalendrierView.vue";
+import VitrinePrestataireProfilView from "@/views/vitrine/VitrinePrestataireProfilView.vue";
+import PrestataireEditProfilView from "@/views/prestataire/PrestataireEditProfilView.vue";
 
 Vue.use(VueRouter)
 
@@ -73,8 +75,24 @@ const routes = [
   },
   {
     path: "/prestataire/:idPrestataire",
-    name: "profil",
+    name: "vitrine_profil",
+    component: VitrinePrestataireProfilView,
+    props: (route) => ({
+      idPrestataire: parseInt(route.params.idPrestataire)
+    })
+  },
+  {
+    path: "/prestataire/profil/:idPrestataire",
+    name: "prestataire_profil",
     component: PrestataireProfilView,
+    props: (route) => ({
+      idPrestataire: parseInt(route.params.idPrestataire)
+    })
+  },
+  {
+    path: "prestataire/edit/:idPrestataire",
+    name: "prestataire_edit_profil",
+    component: PrestataireEditProfilView,
     props: (route) => ({
       idPrestataire: parseInt(route.params.idPrestataire)
     })

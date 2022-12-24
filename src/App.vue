@@ -42,6 +42,8 @@ export default {
   --background: #D4C8BB;
   --brown: #4A3D32;
   --blue: #0080ff;
+  --red: #e12626;
+  --green: #19dc22;
 
   --activite: #70321d;
   --spectacle: #af5031;
@@ -65,7 +67,7 @@ body {
   padding: 0;
 }
 
-button, .btn, input[type=submit], #connected-selected,select {
+button.btn, .btn, input[type=submit], #connected-selected,select {
   border: 2px solid var(--defined-color-secondary);
   background-color: var(--defined-color-primary);
   color: var(--defined-color-secondary);
@@ -74,13 +76,17 @@ button, .btn, input[type=submit], #connected-selected,select {
   text-align: center;
 }
 
-button:hover, .btn:hover, input[type=submit]:hover, #connected-selected:hover,select:hover{
+button.btn:hover, .btn:hover, input[type=submit]:hover, #connected-selected:hover,select:hover{
   border: 2px solid var(--defined-color-secondary);
   background-color: var(--defined-color-secondary);
   color: var(--defined-color-primary);
   border-radius: 5px;
   padding: 5px;
   text-align: center;
+}
+button.btn-edit {
+  --defined-color-primary: var(--green);
+  --defined-color-secondary: var(--very-very-dark);
 }
 
 div.activite {

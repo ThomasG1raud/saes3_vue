@@ -17,7 +17,7 @@
         <router-link class="item" to="/">
           <img src="@/assets/logo_sae_white.png" alt="logo_sae_white" id="logo_navbar">
         </router-link>
-        <router-link class="item" :to="'/prestataire/'+getAccountId">Profil</router-link>
+        <router-link class="item" :to="'/prestataire/profil/'+getAccountId">Profil</router-link>
         <router-link class="item" to="/prestataire/statistique">Statistique</router-link>
         <router-link class="item" :to="'/map/'+getStandId(getAccountId)">Map</router-link>
         <div class="item">
