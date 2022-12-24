@@ -44,6 +44,7 @@ export default {
   --blue: #0080ff;
   --red: #e12626;
   --green: #19dc22;
+  --orange: #e09431;
 
   --activite: #70321d;
   --spectacle: #af5031;
