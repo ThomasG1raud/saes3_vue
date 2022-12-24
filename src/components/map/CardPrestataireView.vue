@@ -35,12 +35,12 @@ import {mapGetters} from "vuex";
 export default {
   name: "CardPrestataireView",
   props: {
-    idPrestataire: Number
+    idStand: Number
   },
   computed :{
-    ...mapGetters(["getInfoPrestataire"]),
+    ...mapGetters(["getInfoPrestataireByIdStand"]),
     curentPrestataire() {
-      return this.getInfoPrestataire(this.idPrestataire)
+      return this.getInfoPrestataireByIdStand(this.idStand)
     }
   }
 }

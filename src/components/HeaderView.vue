@@ -19,7 +19,7 @@
         </router-link>
         <router-link class="item" :to="'/prestataire/'+getAccountId">Profil</router-link>
         <router-link class="item" to="/prestataire/statistique">Statistique</router-link>
-        <router-link class="item" :to="'/map/'+getAccountId">Map</router-link>
+        <router-link class="item" :to="'/map/'+getStandId(getAccountId)">Map</router-link>
         <div class="item">
           <button class="btn" @click="logout">Se déconnecter</button>
         </div>
@@ -66,7 +66,7 @@ import router from "@/router";
 export default {
   name: "HeaderView",
   computed :{
-    ...mapGetters(["getConnected", "getAccountId"]),
+    ...mapGetters(["getConnected", "getAccountId", "getStandId"]),
   },
   methods: {
     ...mapMutations(["setAccountId", "setAccountType"]),

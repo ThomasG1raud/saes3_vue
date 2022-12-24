@@ -185,8 +185,11 @@ export default new Vuex.Store({
         ]
     },
     getters: {
-        getInfoPrestataire: (state) => (idPrestataire) => {
+        getInfoPrestataireByIdPrestataire: (state) => (idPrestataire) => {
             return state.allPrestataire.find(prestataire => parseInt(prestataire.id) === parseInt(idPrestataire))
+        },
+        getInfoPrestataireByIdStand: (state) => (idStand) => {
+            return state.allPrestataire.find(prestataire => parseInt(prestataire.idStand) === parseInt(idStand))
         },
         getHoraireByIdPrestataire: (state) => (idPrestataire) => {
             return state.allHoraire.filter(horaire => parseInt(horaire.idPrestataire) === parseInt(idPrestataire))
@@ -199,6 +202,9 @@ export default new Vuex.Store({
         },
         getAllCategory: (state) => {
             return state.allCategory
+        },
+        getStandId: (state) => (idPrestataire) =>  {
+            return  state.standId = state.allPrestataire.find(prestataire => parseInt(prestataire.id) === parseInt(idPrestataire)).idStand;
         },
 
         isAlreadyAnAccound: (state) => (email) => {

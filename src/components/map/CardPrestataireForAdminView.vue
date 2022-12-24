@@ -38,9 +38,9 @@ export default {
     idPrestataire: Number
   },
   computed :{
-    ...mapGetters(["getInfoPrestataire"]),
+    ...mapGetters(["getInfoPrestataireByIdPrestataire"]),
     curentPrestataire() {
-      return this.getInfoPrestataire(this.idPrestataire)
+      return this.getInfoPrestataireByIdPrestataire(this.idPrestataire)
     }
   }
 }

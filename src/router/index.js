@@ -48,10 +48,10 @@ const routes = [
     name: "map",
     component: VitrineMapView,
     children: [{
-      path: ":idPrestataire",
+      path: ":idStand",
       component: () => import('@/components/map/CardPrestataireView'),
       props: route => ({
-        idPrestataire: parseInt(route.params.idPrestataire)
+        idStand: parseInt(route.params.idStand)
       })
     }]
   },

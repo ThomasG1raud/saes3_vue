@@ -8,9 +8,13 @@
         </select>
         <div id="listePrestataire">
           <div v-for="(prestataire,index) in research" :key="index">
-            <div class="namePrestataire">
-              <p> {{ prestataire.name }}</p>
-            </div>
+            <router-link :to="'/map/'+prestataire.idStand">
+              <div class="namePrestataire">
+                <p :class="prestataire.type">
+                  <span>{{ prestataire.name }}</span>, {{ prestataire.nomStand }}
+                </p>
+              </div>
+            </router-link>
           </div>
         </div>
 
@@ -24,7 +28,6 @@
 
 <script>
 import MapView from "@/components/map/MapView";
-// import CardPrestataireForAdminView from "@/components/map/CardPrestataireForAdminView";
 import {mapGetters} from "vuex"
 
 export default {
@@ -36,28 +39,13 @@ export default {
     ...mapGetters(['getAllPrestataire', 'getAllCategory']),
     research() {
       if (!this.filter.length) {
-        return this.getAllPrestataire
+        return this.getAllPrestataire.filter(prestataire => prestataire.idStand)
       }
-      return this.getAllPrestataire.filter(prestataire => (prestataire.type === this.filter))
+      return this.getAllPrestataire.filter(prestataire => (prestataire.idStand && prestataire.type === this.filter))
     }
-    //   if (this.filter === "") {
-    //     console.log("a")
-    //     return this.getAllPrestataire
-    //   }
-    //   else if (this.filter === "restauration"){
-    //     console.log("a")
-    //      return this.getAllPrestataire.filter(prestataire => (prestataire.type != undefined) === (this.filter === "restauration"))
-    //   }
-    //   else {
-    //     console.log("a")
-    //     this.getAllPrestataire.filter(prestataire => (prestataire.type != undefined) === (this.filter === "activite"))
-    //   }
-    //   return this.getAllPrestataire.filter(prestataire => (prestataire.type != undefined) === (this.filter === "spectacle"))
-    // }
   },
   components: {
     MapView,
-    // CardPrestataireForAdminView
   },
   methods: {
     onChange: function (evenement) {
@@ -125,4 +113,16 @@ select:hover {
   border-color: var(--light);
 }
 
+p.activite {
+  background-color: var(--activite);
+}
+p.spectacle {
+  background-color: var(--spectacle);
+}
+p.restauration {
+  background-color: var(--restauration);
+}
+a {
+  text-decoration: none;
+}
 </style>
