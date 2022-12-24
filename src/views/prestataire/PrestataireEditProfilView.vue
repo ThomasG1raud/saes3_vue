@@ -21,21 +21,42 @@
 
       <v-textarea
           v-model="text"
+          :rules="textRules"
+          counter
           outlined
           filled
           auto-grow
       ></v-textarea>
 
-      <v-select
-          v-model="current_type_category"
-          :items="all_type_category"
-          :rules="[v => !!v || 'Item is required']"
-          :menu-props="{ top: true, offsetY: true }"
-          label="Category"
+<!--      <v-select-->
+<!--          v-model="type"-->
+<!--          :items="getAllCategory"-->
+<!--          label="Category"-->
+<!--          required-->
+<!--      ></v-select>-->
+      <v-radio-group v-model="type">
+        <v-radio
+            v-for="category in getAllCategory"
+            :color="`var(--${category})`"
+            :key="category"
+            :label="`${category}`"
+            :value="category"
+        ></v-radio>
+      </v-radio-group>
+
+      <v-text-field
+          :class="isValid ? 'd-none': ''"
+          v-model="password"
+          :rules="passwordRules"
+          label="Password"
           required
-      ></v-select>
+          :type="showPassword ? 'text' : 'password'"
+          :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+          @click:append="showPassword = !showPassword"
+      ></v-text-field>
+
       <v-btn
-          :disabled="false /*!valid*/"
+          :disabled="!valid || isValid || !password"
           color="var(--blue)"
           class="mr-4"
           @click="validate_edit"
@@ -58,11 +79,8 @@
         Cancel
       </v-btn>
     </v-form>
-    {{current_type_category}}
-    {{all_type_category}}
   </div>
 </template>
-<!--      {{ curentPrestataire.type }}-->
 
 <script>
 import {mapGetters} from "vuex";
@@ -74,22 +92,45 @@ export default {
     idPrestataire: Number
   },
   data: () => ({
-    valid: false,
-    all_type_category: [ "activite", "spectacle", "restauration", "test" ],
-    current_type_category: "Activite",
+    valid: true,
+    showPassword: false,
+
     text: "",
     nomStand: "",
     type: "",
     email: "",
     password: "",
+
+    nameRules: [
+      v => !!v || 'Name is required',
+      v => /\D+/.test(v) || 'The name must not contain a number',
+    ],
+    emailRules: [
+      v => !!v || 'E-mail is required',
+      v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+    ],
+    textRules: [
+      v => !!v || 'Text is required',
+      v => (v && v.length > 50) || 'Name must be less than 50 characters',
+    ],
+    passwordRules: [
+      v => !!v || 'Password is required',
+    ]
   }),
   created() {
     this.resetForm();
   },
   computed :{
-    ...mapGetters(["getInfoPrestataireByIdPrestataire", "getAllCategory"]),
+    ...mapGetters(["getInfoPrestataireByIdPrestataire", "getAllCategory", "isCorectPassword"]),
     curentPrestataire() {
       return this.getInfoPrestataireByIdPrestataire(this.idPrestataire)
+    },
+    isValid() {
+      const prestataire = this.getInfoPrestataireByIdPrestataire(this.idPrestataire);
+      return this.text === prestataire.text
+          && this.nomStand === prestataire.nomStand
+          && this.type === prestataire.type
+          && this.email === prestataire.email
     }
   },
   methods: {
@@ -97,22 +138,15 @@ export default {
       router.push("/prestataire/profil/"+this.idPrestataire)
     },
     resetForm() {
-      // this.all_type_category = this.getAllCategory;
       const prestataire = this.getInfoPrestataireByIdPrestataire(this.idPrestataire);
-      this.current_type_category = prestataire.type;
       this.text = prestataire.text;
       this.nomStand = prestataire.nomStand;
       this.type = prestataire.type;
       this.email = prestataire.email;
     },
     validate_edit() {
-
-    },
-    nameRules() {
-
-    },
-    emailRules() {
-
+      const a = this.isCorectPassword(this.idPrestataire, this.password)
+      console.log(a)
     }
   }
 }
@@ -127,5 +161,8 @@ export default {
 }
 form {
   padding: 20px;
+}
+.d-none {
+  display: none;
 }
 </style>
