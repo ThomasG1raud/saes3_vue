@@ -1,15 +1,26 @@
 <template>
-  <router-link class="linkCard" :to="'/admin/prestataire/'+curentPrestataire.id">
-    <div class="card" :class="curentPrestataire.type">
-      <div class="stand">
-        <img :src="require('@/assets/'+curentPrestataire.imageStand)" alt="image stand" class="stand">
+  <router-link class="linkCard" :to="'/admin/prestataire/'+idPrestataire">
+    <div class="card">
+      <div class="divImage">
+        <img :src="require('@/assets/'+curentPrestataire.imagePrestataire)">
       </div>
-      <div class="prestataire">
-        <img :src="require('@/assets/'+curentPrestataire.imagePrestataire)" alt="image prestataire">
+      <div class="divInfo">
+        <div class="infoStand">
+          <p v-for="(horaire, index) in curentHoraire" :key="index">
+            {{ horaire.start.substr(11, 5) }} - {{ horaire.end.substr(11, 5) }}
+          </p>
+          <h2>{{ curentPrestataire.nomStand }}</h2>
+        </div>
+        <div class="infoPrestataire">
+          <div class="info">
+            <p>Nom :</p>
+            <p>{{ curentPrestataire.name }}</p>
+          </div>
+          <hr>
+        </div>
       </div>
-      <div class="p-20">
-        <h1 class="titleCard">{{ curentPrestataire.name }}</h1>
-        <p class="textCard">{{ curentPrestataire.text }}</p>
+      <div class="divTextPresentation">
+        <p>{{ curentPrestataire.text }}</p>
       </div>
     </div>
   </router-link>
@@ -36,51 +47,50 @@ export default {
 </script>
 
 <style scoped>
+
 .card {
-  height: 100%;
-  max-width: max-content;
-  color: var(--dark);
-  border-radius: 60px 60px 50px 50px;
-  transition-duration: 1s;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 0 10px var(--dark);
-  position: relative;
+  width: 450px;
+  border-radius: 20px;
+  border: solid;
+  margin: 30px;
 }
-.card:hover {
-  transition-duration: 1s;
-  scale: 1.02;
-  box-shadow: 0 0 15px var(--dark);
+
+.divImage {
+  aspect-ratio: 1;
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
+
 }
-.textCard {
-  padding-left: 20px;
-  padding-right: 20px;
-  text-align: justify;
-}
+
 img {
   width: 100%;
 }
-.prestataire {
-  width: 50%;
-  aspect-ratio: 1;
-  overflow: hidden;
-  border-radius: 50%;
-  margin: 0 auto;
-  position: absolute;
-  left: 25%;
-  top: 175px;
+
+.infoPrestataire {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
 }
-a.linkCard {
+
+a {
   text-decoration: none;
-  color: var(--very-very-light);
+  color: var(--very-very-dark);
 }
-div.stand {
-  margin-bottom: 60px;
+
+hr {
+  width: 70%;
+  margin: 0;
 }
-img.stand {
-  border-radius: 50px 50px 0 0;
+
+p {
+  margin: 10px 0 20px 10px;
 }
-.p-20 {
-  padding: 20px;
+
+.info {
+  display: flex;
 }
+.infoStand {
+  margin-top: 10px;
+}
+
 </style>

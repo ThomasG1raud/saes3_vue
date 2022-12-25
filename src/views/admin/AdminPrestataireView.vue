@@ -9,7 +9,7 @@
       </div>
       <div id="grandDiv">
         <div v-for="(prestataire, index) in $store.state.allPrestataire.filter(prestataire => prestataire.type===c)" :key="index">
-          <VitrinePrestataireCardView :idPrestataire="prestataire.id"/>
+          <AdminPrestataireCardView :idPrestataire="prestataire.id"/>
         </div>
       </div>
     </div>
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import VitrinePrestataireCardView from "@/components/prestataire/VitrinePrestataireCardView";
+import AdminPrestataireCardView from "@/components/admin/AdminPrestataireCardView.vue";
 export default {
   name: "PrestataireView",
   data: () => ({
@@ -35,7 +35,7 @@ export default {
     }
   },
   components: {
-    VitrinePrestataireCardView
+    AdminPrestataireCardView
   }
 }
 </script>
