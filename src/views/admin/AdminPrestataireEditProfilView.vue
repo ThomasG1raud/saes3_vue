@@ -6,6 +6,13 @@
         lazy-validation
     >
       <v-text-field
+          v-model="nomPrestataire"
+          :rules="nameRules"
+          label="Nom du prestataire"
+          required
+      ></v-text-field>
+
+      <v-text-field
           v-model="nomStand"
           :rules="nameRules"
           label="Nom du stand"
@@ -13,9 +20,10 @@
       ></v-text-field>
 
       <v-text-field
-          v-model="email"
-          :rules="emailRules"
-          label="E-mail"
+          v-model="siren"
+          :rules="sirenRules"
+          type="number"
+          label="Numéro de siren"
           required
       ></v-text-field>
 
@@ -38,29 +46,8 @@
         ></v-radio>
       </v-radio-group>
 
-      <v-text-field
-          :class="isValid ? 'd-none': ''"
-          v-model="password"
-          :rules="passwordRules"
-          label="Password"
-          required
-          :type="showPassword ? 'text' : 'password'"
-          :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-          @click:append="showPassword = !showPassword"
-      ></v-text-field>
-
-      <v-alert
-          v-if="isWrong"
-          outlined
-          text
-          color="#FF0000"
-          type="error"
-      >
-        Wrong password
-      </v-alert>
-
       <v-btn
-          :disabled="!valid || isValid || !password"
+          :disabled="!valid || isValid"
           color="var(--blue)"
           class="mr-4"
           @click="validate_edit"
@@ -98,15 +85,18 @@ export default {
   },
   data: () => ({
     valid: true,
-    showPassword: false,
-    isWrong: false,
 
+    nomPrestataire: "",
+    siren: "",
     text: "",
     nomStand: "",
     type: "",
     email: "",
-    password: "",
 
+    sirenRules: [
+      v => !!v || 'Siren is required',
+      v => (v && v.length === 9) || 'Siren must be 9 characters',
+    ],
     nameRules: [
       v => !!v || 'Name is required',
       v => /\D+/.test(v) || 'The name must not contain a number',
@@ -119,49 +109,47 @@ export default {
       v => !!v || 'Text is required',
       v => (v && v.length > 50) || 'Name must be less than 50 characters',
     ],
-    passwordRules: [
-      v => !!v || 'Password is required',
-    ]
   }),
   created() {
     this.resetForm();
   },
   computed :{
-    ...mapGetters(["getInfoPrestataireByIdPrestataire", "getAllCategory", "isCorectPassword"]),
+    ...mapGetters(["getInfoPrestataireByIdPrestataire", "getAllCategory"]),
     curentPrestataire() {
       return this.getInfoPrestataireByIdPrestataire(this.idPrestataire)
     },
     isValid() {
       const prestataire = this.getInfoPrestataireByIdPrestataire(this.idPrestataire);
-      return this.text === prestataire.text
+      return this.nomPrestataire === prestataire.name
+          && this.text === prestataire.text
           && this.nomStand === prestataire.nomStand
           && this.type === prestataire.type
           && this.email === prestataire.email
+          && this.siren === prestataire.siren
     }
   },
   methods: {
     cancelEdit() {
-      router.push("/prestataire/profil/"+this.idPrestataire)
+      router.push("/admin/prestataire/"+this.idPrestataire)
     },
     resetForm() {
       const prestataire = this.getInfoPrestataireByIdPrestataire(this.idPrestataire);
+      this.nomPrestataire = prestataire.name;
       this.text = prestataire.text;
       this.nomStand = prestataire.nomStand;
       this.type = prestataire.type;
       this.email = prestataire.email;
+      this.siren = prestataire.siren;
     },
     validate_edit() {
-      if (this.isCorectPassword(this.idPrestataire, this.password)) {
-        let prestataire = this.getInfoPrestataireByIdPrestataire(this.idPrestataire);
-        prestataire.text = this.text;
-        prestataire.nomStand = this.nomStand;
-        prestataire.type = this.type;
-        prestataire.email = this.email;
-        router.push("/prestataire/profil/"+this.idPrestataire);
-      } else {
-        this.isWrong = true
-        setTimeout(() => {this.isWrong=false}, 3000);
-      }
+      let prestataire = this.getInfoPrestataireByIdPrestataire(this.idPrestataire);
+      prestataire.siren = this.siren;
+      prestataire.text = this.text;
+      prestataire.nomStand = this.nomStand;
+      prestataire.type = this.type;
+      prestataire.email = this.email;
+      prestataire.name = this.nomPrestataire;
+      router.push("/admin/prestataire/"+this.idPrestataire);
     }
   }
 }

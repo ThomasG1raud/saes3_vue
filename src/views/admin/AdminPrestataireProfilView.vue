@@ -17,7 +17,7 @@
             Categorie :
           </p>
           <p class="text-capitalize">
-            <router-link :to="'/liste_prestataire/#'+curentPrestataire.type">
+            <router-link :to="'/admin/prestataire/#'+curentPrestataire.type">
               {{ curentPrestataire.type }}
             </router-link>
           </p>
@@ -27,7 +27,7 @@
 
         <div class="partie" v-if="curentHoraire.length">
           <p> Horaire : </p>
-          <router-link to="/calendrier">
+          <router-link to="/admin/calendrier">
             <p v-for="(horaire, index) in curentHoraire" :key="index">
               {{ horaire.start.substr(11, 5) }} - {{ horaire.end.substr(11, 5) }}
             </p>
@@ -45,7 +45,7 @@
         <div class="partie">
           <p> Nom du stand : </p>
           <p class="text-capitalize">
-            <router-link :to="'/map/'+curentPrestataire.idStand">
+            <router-link :to="'/admin/map/'+curentPrestataire.idStand">
               {{ curentPrestataire.nomStand }}
             </router-link>
           </p>
@@ -79,7 +79,7 @@ export default {
   name: "AdminPrestataireProfilView",
   methods: {
     edit_profil() {
-      router.push("/prestataire/edit/"+this.idPrestataire)
+      router.push("/admin/prestataire/edit/"+this.idPrestataire)
     }
   },
   props: {
