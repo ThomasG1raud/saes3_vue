@@ -1,32 +1,35 @@
 <template>
-  <div>
-    <router-link class="linkCard" :to="'/admin/prestataire/'+prestataire.id">
-      <div class="card" :class="prestataire.type">
-        <div class="stand">
-          <img :src="require('@/assets/'+prestataire.imageStand)" alt="image stand" class="stand">
-        </div>
-        <div class="prestataire">
-          <img :src="require('@/assets/'+prestataire.imagePrestataire)" alt="image prestataire">
-        </div>
-        <div class="p-20">
-          <h1 class="titleCard">{{ prestataire.name }}</h1>
-          <p class="textCard">{{ prestataire.text }}</p>
-        </div>
+  <router-link class="linkCard" :to="'/admin/prestataire/'+curentPrestataire.id">
+    <div class="card" :class="curentPrestataire.type">
+      <div class="stand">
+        <img :src="require('@/assets/'+curentPrestataire.imageStand)" alt="image stand" class="stand">
       </div>
-    </router-link>
-  </div>
+      <div class="prestataire">
+        <img :src="require('@/assets/'+curentPrestataire.imagePrestataire)" alt="image prestataire">
+      </div>
+      <div class="p-20">
+        <h1 class="titleCard">{{ curentPrestataire.name }}</h1>
+        <p class="textCard">{{ curentPrestataire.text }}</p>
+      </div>
+    </div>
+  </router-link>
 </template>
 
 <script>
+import {mapGetters} from "vuex";
+
 export default {
   name: "AdminPrestataireCardView",
   props: {
-    prestataire: {
-      text: String,
-      imagePrestataire: String,
-      imageStand: String,
-      type: String,
-      id: Number
+    idPrestataire: Number
+  },
+  computed: {
+    ...mapGetters(["getInfoPrestataireByIdPrestataire", "getHoraireByIdPrestataire"]),
+    curentPrestataire() {
+      return this.getInfoPrestataireByIdPrestataire(this.idPrestataire)
+    },
+    curentHoraire() {
+      return this.getHoraireByIdPrestataire(this.idPrestataire)
     }
   }
 }

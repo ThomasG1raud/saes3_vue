@@ -9,7 +9,7 @@
       </div>
       <div id="grandDiv">
         <div v-for="(prestataire, index) in $store.state.allPrestataire.filter(prestataire => prestataire.type===c)" :key="index">
-          <VitrinePrestataireCardView :prestataire="prestataire"/>
+          <VitrinePrestataireCardView :idPrestataire="prestataire.id"/>
         </div>
       </div>
     </div>
