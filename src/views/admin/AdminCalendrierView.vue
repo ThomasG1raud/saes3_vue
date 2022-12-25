@@ -237,7 +237,6 @@ export default {
       this.$refs.calendar.next()
     },
     async addEvent () {
-      console.log("test :",this.start)
       if (this.name && this.start && this.end) {
         const horaire = {
           name: this.name,
@@ -247,7 +246,6 @@ export default {
           color: this.color
         }
         this.createHoraire(horaire)
-        console.log(this.getAllHoraire())
         this.reloadHoraire()
         this.name = ''
         this.details = ''

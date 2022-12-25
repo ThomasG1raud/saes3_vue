@@ -99,7 +99,7 @@ const routes = [
   },
   {
     path: "/prestataire/statistique",
-    name: "statistique",
+    name: "prestataire_statistique",
     component: PrestataireStatistiqueView
   },
 

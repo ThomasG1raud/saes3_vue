@@ -69,7 +69,6 @@ export default {
       setTimeout(() => {this.isWrong=false}, 3000);
     },
     onsubmit() {
-      console.clear();
       if (this.password !== this.confirmPassword) {
         this.alertPopUp("Le mot de passe doit être identique");
         return;

@@ -207,8 +207,8 @@ export default new Vuex.Store({
             return state.standId = state.allPrestataire.find(prestataire => parseInt(prestataire.id) === parseInt(idPrestataire)).idStand;
         },
 
-        isCorectPassword: (state) => (password) => {
-            return this.getInfoPrestataireByIdPrestataire(state.accountId).password === password;
+        isCorectPassword: (state) => (idPrestataire, password) => {
+            return state.allPrestataire.find(prestataire => parseInt(prestataire.id) === parseInt(idPrestataire)).password === password;
         },
         isAlreadyAnAccound: (state) => (email) => {
             return state.allPrestataire.map(prestataire => prestataire.email).includes(email) || state.admin.email === email;

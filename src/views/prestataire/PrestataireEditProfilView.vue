@@ -55,6 +55,16 @@
           @click:append="showPassword = !showPassword"
       ></v-text-field>
 
+      <v-alert
+          v-if="isWrong"
+          outlined
+          text
+          color="#FF0000"
+          type="error"
+      >
+        Wrong password
+      </v-alert>
+
       <v-btn
           :disabled="!valid || isValid || !password"
           color="var(--blue)"
@@ -65,6 +75,7 @@
       </v-btn>
 
       <v-btn
+          :disabled="isValid"
           color="var(--red)"
           class="mr-4"
           @click="resetForm"
@@ -94,6 +105,7 @@ export default {
   data: () => ({
     valid: true,
     showPassword: false,
+    isWrong: false,
 
     text: "",
     nomStand: "",
@@ -145,8 +157,17 @@ export default {
       this.email = prestataire.email;
     },
     validate_edit() {
-      const a = this.isCorectPassword(this.idPrestataire, this.password)
-      console.log(a)
+      if (this.isCorectPassword(this.idPrestataire, this.password)) {
+        let prestataire = this.getInfoPrestataireByIdPrestataire(this.idPrestataire);
+        prestataire.text = this.text;
+        prestataire.nomStand = this.nomStand;
+        prestataire.type = this.type;
+        prestataire.email = this.email;
+        router.push("/prestataire/profil/"+this.idPrestataire);
+      } else {
+        this.isWrong = true
+        setTimeout(() => {this.isWrong=false}, 3000);
+      }
     }
   }
 }
@@ -161,6 +182,9 @@ export default {
 }
 form {
   padding: 20px;
+}
+button {
+  margin: 0 5px;
 }
 .d-none {
   display: none;
