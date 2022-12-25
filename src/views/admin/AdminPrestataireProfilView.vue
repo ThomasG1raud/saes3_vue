@@ -63,7 +63,9 @@
       <img class="fleche" src="@/assets/keyboard_double_arrow_up_black.svg">
     </div>
     <div class="btn-edit">
-      <button class="btn btn-edit" @click="edit_profil">Edit</button>
+      <button class="btn btn-edit" @click="edit_horaire">Edit horaire</button>
+      <button class="btn btn-edit" @click="edit_profil">Edit profil</button>
+      <button class="btn btn-edit" @click="edit_emplacement">Edit emplacement</button>
     </div>
 
     <div id="divService" v-if="bool">
@@ -78,8 +80,14 @@ import router from "@/router";
 export default {
   name: "AdminPrestataireProfilView",
   methods: {
+    edit_horaire() {
+      router.push("/admin/calendrier")
+    },
     edit_profil() {
       router.push("/admin/prestataire/edit/"+this.idPrestataire)
+    },
+    edit_emplacement() {
+      router.push("/admin/map/"+this.idPrestataire)
     }
   },
   props: {
@@ -188,10 +196,23 @@ export default {
     position: absolute;
     translate: 1050px -25px;
     height: 100px;
-    width: 100px;
+    display: flex;
+    background-color: var(--background);
   }
-  button.btn-edit {
+  button.btn-edit, button.btn-edit:hover {
     height: 50px;
-    width: 100px;
+    min-width: 100px;
+    padding: 0 10px;
+    margin: 0 3px;
+  }
+  .btn-edit {
+    --defined-color-primary: var(--background);
+    --defined-color-secondary: var(--green);
+  }
+  .btn-edit:first-child {
+    --defined-color-secondary: var(--blue);
+  }
+  .btn-edit:last-child {
+    --defined-color-secondary: var(--orange);
   }
 </style>

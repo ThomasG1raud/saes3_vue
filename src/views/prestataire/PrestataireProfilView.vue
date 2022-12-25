@@ -188,10 +188,17 @@ export default {
     position: absolute;
     translate: 1050px -25px;
     height: 100px;
-    width: 100px;
+    display: flex;
+    background-color: var(--background);
   }
-  button.btn-edit {
+  button.btn-edit, button.btn-edit:hover {
     height: 50px;
-    width: 100px;
+    min-width: 100px;
+    padding: 0 10px;
+    margin: 0 3px;
+  }
+  .btn-edit {
+    --defined-color-primary: var(--background);
+    --defined-color-secondary: var(--green);
   }
 </style>
