@@ -117,7 +117,9 @@
                     <v-toolbar-title v-html="selectedEvent.name"></v-toolbar-title>
                     <div class="flex-grow-1"></div>
                   </v-toolbar>
-
+                  <v-card-text tag="h1">
+                    {{ currentNameEditPrestataireSelected }}
+                  </v-card-text>
                   <v-card-text>
                     <form>
                       {{ selectedEvent.details }}
@@ -166,21 +168,20 @@
 
                   <v-card-text>
                     <form>
-                      <v-textarea
-                          v-model="selectedEvent.details"
-                          clearable
-                          auto-grow
-                          clear-icon="mdi-close-circle"
-                      ></v-textarea>
                       <v-select
-                          v-model="currentEditPrestataireSelected"
+                          v-model="currentIdEditPrestataireSelected"
                           :items="getListPrestataire"
                           item-value="id"
                           item-text="name"
                           label="Please select a prestataire"
                           return-object
                       ></v-select>
-                      {{currentEditPrestataireSelected}}
+                      <v-textarea
+                          v-model="selectedEvent.details"
+                          clearable
+                          auto-grow
+                          clear-icon="mdi-close-circle"
+                      ></v-textarea>
                     </form>
                   </v-card-text>
                   <v-card-actions>
@@ -266,13 +267,18 @@ export default {
     getListPrestataire () {
       return this.getAllPrestataire();
     },
-    currentEditPrestataireSelected: {
+    currentIdEditPrestataireSelected: {
       get(){
         return this.selectedEvent.idPrestataire
       },
       set(setValue){
         this.selectedEvent.idPrestataire = setValue.id;
         return setValue.id
+      }
+    },
+    currentNameEditPrestataireSelected: {
+      get() {
+        return this.getListPrestataire.filter(prestataire => prestataire.id === this.currentIdEditPrestataireSelected).map(prestataire => prestataire.name)[0];
       }
     }
   },
@@ -377,5 +383,8 @@ export default {
   --secondary: var(--secondary);
   --defined-color-primary: var(--light);
   --defined-color-secondary:  var(--blue);
+}
+h1 {
+  font-size: large;
 }
 </style>
