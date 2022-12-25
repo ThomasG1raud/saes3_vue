@@ -1,32 +1,46 @@
 <template>
-  <router-link class="linkCard" :to="'/admin/prestataire/'+curentPrestataire.id">
-    <div class="card">
-      <div class="divImage">
-        <img :src="require('@/assets/'+curentPrestataire.imagePrestataire)">
-      </div>
-      <div class="divInfo">
-        <div class="infoStand">
-          <p>12h23 - 16h45</p>
-          <h2>{{ curentPrestataire.nomStand }}</h2>
-        </div>
-        <div class="infoPrestataire">
-          <div class="info">
-            <p>Nom :</p>
-            <p>{{ curentPrestataire.name }}</p>
+  <div>
+    <div v-if="curentPrestataire">
+      <router-link class="linkCard" :to="'/admin/prestataire/'+curentPrestataire.id">
+        <div class="card">
+          <div class="divImage">
+            <img :src="require('@/assets/'+curentPrestataire.imagePrestataire)">
           </div>
-          <hr>
-          <div class="info">
-            <p>Categorie :</p>
-            <p>{{ curentPrestataire.type }}</p>
+          <div class="divInfo">
+            <div class="infoStand">
+              <p>12h23 - 16h45</p>
+              <h2>{{ curentPrestataire.nomStand }}</h2>
+            </div>
+            <div class="infoPrestataire">
+              <div class="info">
+                <p>Nom :</p>
+                <p>{{ curentPrestataire.name }}</p>
+              </div>
+              <hr>
+              <div class="info">
+                <p>Categorie :</p>
+                <p>{{ curentPrestataire.type }}</p>
+              </div>
+              <hr>
+            </div>
           </div>
-          <hr>
+          <div class="divTextPresentation">
+            <p>{{ curentPrestataire.text }}</p>
+          </div>
         </div>
-      </div>
-      <div class="divTextPresentation">
-        <p>{{ curentPrestataire.text }}</p>
-      </div>
+      </router-link>
     </div>
-  </router-link>
+    <div v-else id="prestataireError">
+      <v-alert
+          border="bottom"
+          color="var(--red)"
+          prominent
+          type="error"
+      >
+        Il n'y a pas de prestataire ici
+      </v-alert>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -103,5 +117,16 @@ button {
   --defined-color-primary: var(--very-very-light);
   --defined-color-secondary: var(--very-dark);
 }
-
+#prestataireError {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+.v-alert {
+  margin: auto;
+  padding: 30px;
+}
+.v-alert__content {
+  margin-left: 10px;
+}
 </style>

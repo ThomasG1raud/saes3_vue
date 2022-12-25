@@ -252,7 +252,10 @@ export default new Vuex.Store({
             state.allHoraire.splice(indexDelete, 1);
         },
         updateDetails: (state, indexUpdate, ev) => {
-            state.allHoraire.splice(indexUpdate, 1, ev);
+            // state.allHoraire.splice(indexUpdate, 1, ev);
+            let horaire = state.allHoraire[indexUpdate];
+            console.log(horaire)
+            horaire = ev;
         }
     },
     actions: {

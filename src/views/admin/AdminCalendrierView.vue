@@ -53,6 +53,14 @@
                   <v-text-field v-model="start" type="datetime-local" label="start (required)"></v-text-field>
                   <v-text-field v-model="end" type="datetime-local" label="end (required)"></v-text-field>
                   <v-text-field v-model="color" type="color" label="color (click to open color menu)"></v-text-field>
+                  <v-select
+                      v-model="currentPrestataireSelected"
+                      :items="getListPrestataire"
+                      item-value="id"
+                      item-text="name"
+                      label="Please select a prestataire"
+                      return-object
+                  ></v-select>
                   <v-btn type="submit" color="var(--primary)" class="mr-4" @click.stop="dialog = false">
                     create event
                   </v-btn>
@@ -90,50 +98,102 @@
                 :type="type"
                 @click:event="showEvent"
                 @click:more="viewDay"
-                @click:date="setDialogDate"
+                @click:date="dialog = true;start=null;end=null;/*setDialogDate*/"
                 @change="updateRange"
             ></v-calendar>
-            <v-menu
-                v-model="selectedOpen"
-                :close-on-content-click="false"
-                :activator="selectedElement"
-                offset-x
-            >
-              <v-card color="grey lighten-4" :width="350" flat>
-                <v-toolbar :color="selectedEvent.color" dark>
-                  <v-btn @click="deleteEvent(selectedEvent.id)" icon>
-                    <v-icon>mdi-delete</v-icon>
-                  </v-btn>
-                  <v-toolbar-title v-html="selectedEvent.name"></v-toolbar-title>
-                  <div class="flex-grow-1"></div>
-                </v-toolbar>
+<!--            normal not edit-->
+            <div v-if="currentlyEditing !== selectedEvent.id">
+              <v-menu
+                  v-model="selectedOpen"
+                  :close-on-content-click="false"
+                  :activator="selectedElement"
+                  offset-x
+              >
+                <v-card color="grey lighten-4" :width="350" flat>
+                  <v-toolbar :color="selectedEvent.color" dark>
+                    <v-btn @click="deleteEvent(selectedEvent.id)" icon>
+                      <v-icon>mdi-delete</v-icon>
+                    </v-btn>
+                    <v-toolbar-title v-html="selectedEvent.name"></v-toolbar-title>
+                    <div class="flex-grow-1"></div>
+                  </v-toolbar>
 
-                <v-card-text>
-                  <form v-if="currentlyEditing !== selectedEvent.id">
-                    {{ selectedEvent.details }}
-                  </form>
-                  <form v-else>
-                    <v-textarea
-                        v-model="selectedEvent.details"
-                        clearable
-                        auto-grow
-                        clear-icon="mdi-close-circle"
-                    ></v-textarea>
-                  </form>
-                </v-card-text>
-                <v-card-actions>
-                  <v-btn text color="var(--secondary)" @click="selectedOpen = false">
-                    close
-                  </v-btn>
-                  <v-btn v-if="currentlyEditing !== selectedEvent.id" text @click.prevent="editEvent(selectedEvent)">
-                    edit
-                  </v-btn>
-                  <v-btn text v-else type="submit" @click.prevent="updateEvent(selectedEvent)">
-                    Save
-                  </v-btn>
-                </v-card-actions>
-              </v-card>
-            </v-menu>
+                  <v-card-text>
+                    <form>
+                      {{ selectedEvent.details }}
+                    </form>
+                  </v-card-text>
+                  <v-card-actions>
+                    <v-btn text color="var(--secondary)" @click="selectedOpen = false">
+                      close
+                    </v-btn>
+                   <v-btn text @click.prevent="editEvent(selectedEvent)">
+                     edit
+                   </v-btn>
+                   <router-link :to="'/admin/prestataire/'+selectedEvent.idPrestataire">
+                     <v-btn text color="var(--very-very-dark)">
+                       show prestataire
+                     </v-btn>
+                   </router-link>
+                  </v-card-actions>
+                </v-card>
+              </v-menu>
+            </div>
+
+<!--            menu edit-->
+            <div v-else>
+              <v-menu
+                  v-model="selectedOpen"
+                  :close-on-content-click="false"
+                  :activator="selectedElement"
+                  offset-x
+              >
+                <v-card color="grey lighten-4" :width="350" flat>
+                  <v-toolbar :color="selectedEvent.color" dark>
+                    <v-btn @click="deleteEvent(selectedEvent.id)" icon>
+                      <v-icon>mdi-delete</v-icon>
+                    </v-btn>
+<!--                    <v-toolbar-title v-html="selectedEvent.name"></v-toolbar-title>-->
+                    <v-text-field
+                        v-model="selectedEvent.name"
+                        label="Title"
+                        class="mt-6"
+                        :background-color="selectedEvent.color"
+                        solo
+                    ></v-text-field>
+                    <div class="flex-grow-1"></div>
+                  </v-toolbar>
+
+                  <v-card-text>
+                    <form>
+                      <v-textarea
+                          v-model="selectedEvent.details"
+                          clearable
+                          auto-grow
+                          clear-icon="mdi-close-circle"
+                      ></v-textarea>
+                      <v-select
+                          v-model="currentEditPrestataireSelected"
+                          :items="getListPrestataire"
+                          item-value="id"
+                          item-text="name"
+                          label="Please select a prestataire"
+                          return-object
+                      ></v-select>
+                      {{currentEditPrestataireSelected}}
+                    </form>
+                  </v-card-text>
+                  <v-card-actions>
+                    <v-btn text color="var(--secondary)" @click="selectedOpen = false">
+                      close
+                    </v-btn>
+                    <v-btn text type="submit" @click.prevent="updateEvent(selectedEvent)">
+                      Save
+                    </v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-menu>
+            </div>
           </v-sheet>
         </v-col>
       </v-row>
@@ -167,7 +227,8 @@ export default {
     selectedOpen: false,
     events: [],
     dialog: false,
-    dialogDate: false
+    dialogDate: false,
+    currentPrestataireSelected: {},
   }),
   mounted () {
     this.reloadHoraire()
@@ -201,10 +262,22 @@ export default {
       return this.$refs.calendar.getFormatter({
         timeZone: 'UTC', month: 'long',
       })
+    },
+    getListPrestataire () {
+      return this.getAllPrestataire();
+    },
+    currentEditPrestataireSelected: {
+      get(){
+        return this.selectedEvent.idPrestataire
+      },
+      set(setValue){
+        this.selectedEvent.idPrestataire = setValue.id;
+        return setValue.id
+      }
     }
   },
   methods: {
-    ...mapGetters(["getAllHoraire"]),
+    ...mapGetters(["getAllHoraire", "getAllPrestataire", "getInfoPrestataireByIdPrestataire"]),
     ...mapActions(["createHoraire", "deleteHoraire", "editDetails"]),
     reloadHoraire() {
       const allHoraire = this.getAllHoraire();
@@ -237,13 +310,14 @@ export default {
       this.$refs.calendar.next()
     },
     async addEvent () {
-      if (this.name && this.start && this.end) {
+      if (this.name && this.start && this.end && this.currentPrestataireSelected) {
         const horaire = {
           name: this.name,
           details: this.details,
           start: this.start,
           end: this.end,
-          color: this.color
+          color: this.color,
+          idPrestataire: this.currentPrestataireSelected.id
         }
         this.createHoraire(horaire)
         this.reloadHoraire()
@@ -252,15 +326,16 @@ export default {
         this.start = ''
         this.end = ''
         this.color = ''
+        this.currentPrestataireSelected = {}
       } else {
-        alert('You must enter event name, start, and end time')
+        alert('You must enter event name, start, end time and prestataire name')
       }
     },
     editEvent (ev) {
       this.currentlyEditing = ev.id
     },
     async updateEvent (ev) {
-      this.currentlyEditing = ev; // this.editDetails(ev)
+      this.editDetails(ev) // this.currentlyEditing = ev;
       this.selectedOpen = false
       this.currentlyEditing = null
     },

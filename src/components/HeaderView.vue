@@ -83,7 +83,7 @@ export default {
     loginAdmin() {
       this.setAccountId(99);
       this.setAccountType(2);
-      router.push("/admin");
+      router.push("/admin/calendrier");
     }
   }
 }
