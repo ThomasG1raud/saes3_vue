@@ -2,16 +2,35 @@
   <div id="racine">
     <div id="divForm">
       <div id="formulaire">
-        <select @change="onChange($event)" name="prestataire" id="prestataire-select">
-          <option value="">--Please choose an option--</option>
-          <option value="PrestataireAssigné">voir les prestataires assignés</option>
-          <option value="PrestataireNonAssigné">Assigner un prestataire</option>
-        </select>
+        <div class="div-input">
+          <select @change="onChangeAssigner($event)" name="assigner">
+            <option value="">--Please choose an option--</option>
+            <option value="PrestataireAssigné">Voir les prestataires assignés</option>
+            <option value="PrestataireNonAssigné">Assigner un prestataire</option>
+          </select>
+
+          <select @change="onChangeCategory($event)" name="category">
+            <option value="">--Please choose an Category--</option>
+            <option v-for="(category, index) in getAllCategory" :key="index" :value="category">{{category}}</option>
+          </select>
+        </div>
+
         <div id="listePrestataire">
+          <v-alert
+              v-if="!research.length"
+              outlined
+              text
+              color="var(--orange)"
+              type="warning"
+          >Aucun prestataire n'as été touver</v-alert>
           <div v-for="(prestataire,index) in research" :key="index">
-            <div class="namePrestataire">
-              <p> {{ prestataire.name }}</p>
-            </div>
+            <router-link :to="'/admin/map/'+prestataire.idStand">
+              <div class="namePrestataire">
+                <p :class="prestataire.type">
+                  <span>{{ prestataire.name }}</span>, {{ prestataire.nomStand }}
+                </p>
+              </div>
+            </router-link>
           </div>
         </div>
 
@@ -25,31 +44,36 @@
 
 <script>
 import MapView from "@/components/map/MapView";
-// import CardPrestataireForAdminView from "@/components/map/CardPrestataireForAdminView";
 import {mapGetters} from "vuex"
 
 export default {
   name: "AdminMapView",
   data: () => ({
-    filter: "",
+    filterAssigner: "",
+    filterCategory: ""
   }),
   computed: {
-    ...mapGetters(['getAllPrestataire']),
+    ...mapGetters(['getAllPrestataire', 'getAllCategory']),
     research() {
-      if (this.filter === "") {
-        console.log(this.getAllPrestataire[this.getAllPrestataire.length-1].id)
-        return this.getAllPrestataire
+      let prestataireFilter = this.getAllPrestataire;
+      if (this.filterAssigner) {
+        prestataireFilter = prestataireFilter.filter(prestataire => (prestataire.idStand !== undefined) === (this.filterAssigner === "PrestataireAssigné"))
       }
-      return this.getAllPrestataire.filter(prestataire => (prestataire.idStand != undefined) === (this.filter === "PrestataireAssigné"))
+      if (this.filterCategory) {
+        prestataireFilter = prestataireFilter.filter(prestataire => (prestataire.type === this.filterCategory))
+      }
+      return prestataireFilter
     }
   },
   components: {
     MapView,
-    // CardPrestataireForAdminView
   },
   methods: {
-    onChange: function (evenement) {
-      this.filter = evenement.target.value
+    onChangeAssigner: function (evenement) {
+      this.filterAssigner = evenement.target.value
+    },
+    onChangeCategory: function (evenement) {
+      this.filterCategory = evenement.target.value
     }
   }
 }
@@ -95,6 +119,7 @@ export default {
 }
 #listePrestataire {
   overflow: scroll;
+  width: 100%;
 }
 
 p {
@@ -114,4 +139,25 @@ select:hover{
   border-color: var(--light);
 }
 
+p.activite {
+  background-color: var(--activite);
+}
+p.spectacle {
+  background-color: var(--spectacle);
+}
+p.restauration {
+  background-color: var(--restauration);
+}
+a {
+  text-decoration: none;
+}
+
+div.div-input {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+}
+.v-alert {
+  margin: 10px;
+}
 </style>

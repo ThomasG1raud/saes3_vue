@@ -32,7 +32,7 @@
             v-if="isWrong"
             outlined
             text
-            color="#FF0000"
+            color="var(--red)"
             type="error"
         >
           {{ errorRegister }}
