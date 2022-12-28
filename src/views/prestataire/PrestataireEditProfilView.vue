@@ -28,12 +28,6 @@
           auto-grow
       ></v-textarea>
 
-<!--      <v-select-->
-<!--          v-model="type"-->
-<!--          :items="getAllCategory"-->
-<!--          label="Category"-->
-<!--          required-->
-<!--      ></v-select>-->
       <v-radio-group v-model="type">
         <v-radio
             v-for="category in getAllCategory"
@@ -106,6 +100,7 @@ export default {
     valid: true,
     showPassword: false,
     isWrong: false,
+    previousEmail: "",
 
     text: "",
     nomStand: "",
@@ -123,17 +118,18 @@ export default {
     ],
     textRules: [
       v => !!v || 'Text is required',
-      v => (v && v.length > 50) || 'Name must be less than 50 characters',
+      v => (v && v.length >= 50) || 'Name must be less than 50 characters',
     ],
     passwordRules: [
       v => !!v || 'Password is required',
     ]
   }),
   created() {
+    this.emailRules.push(v => this.previousEmail === v || !this.isAlreadyAnAccound(v) || "Cette email est déjà utilisé",)
     this.resetForm();
   },
   computed :{
-    ...mapGetters(["getInfoPrestataireByIdPrestataire", "getAllCategory", "isCorectPassword"]),
+    ...mapGetters(["getInfoPrestataireByIdPrestataire", "getAllCategory", "isCorectPassword", "isAlreadyAnAccound"]),
     curentPrestataire() {
       return this.getInfoPrestataireByIdPrestataire(this.idPrestataire)
     },
@@ -143,6 +139,12 @@ export default {
           && this.nomStand === prestataire.nomStand
           && this.type === prestataire.type
           && this.email === prestataire.email
+    },
+    isAlreadyAnEmail() {
+      if (!this.email.length) return "E-mail is required";
+      if (/.+@.+\..+/.test(this.email)) return "E-mail must be valid";
+      if (this.previousEmail === this.email || !this.isAlreadyAnAccound(this.email)) return "Cette email est déjà utilisé";
+      return true;
     }
   },
   methods: {
@@ -155,6 +157,7 @@ export default {
       this.nomStand = prestataire.nomStand;
       this.type = prestataire.type;
       this.email = prestataire.email;
+      this.previousEmail = prestataire.email;
     },
     validate_edit() {
       if (this.isCorectPassword(this.idPrestataire, this.password)) {

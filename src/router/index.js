@@ -137,7 +137,7 @@ const routes = [
   {
     path: "/admin/prestataire/:idPrestataire",
     name: "admin_prestataire_profil",
-    component: AdminPrestataireProfilView, /*todo*/
+    component: AdminPrestataireProfilView,
     props: (route) => ({
       idPrestataire: parseInt(route.params.idPrestataire)
     })
@@ -145,7 +145,7 @@ const routes = [
   {
     path: "/admin/prestataire/edit/:idPrestataire",
     name: "admin_prestataire_edit_profil",
-    component: AdminPrestataireEditProfilView, /*todo*/
+    component: AdminPrestataireEditProfilView,
     props: (route) => ({
       idPrestataire: parseInt(route.params.idPrestataire)
     })
