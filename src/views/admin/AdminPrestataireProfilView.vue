@@ -29,7 +29,7 @@
           <p> Horaire : </p>
           <router-link to="/admin/calendrier">
             <p v-for="(horaire, index) in curentHoraire" :key="index">
-              {{ horaire.start.substr(11, 5) }} - {{ horaire.end.substr(11, 5) }} <!--todo -->
+              {{horaire.name}} : {{ horaire.start.substr(11, 5) }} - {{ horaire.end.substr(11, 5) }} <!--todo -->
             </p>
           </router-link>
         </div>
