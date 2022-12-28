@@ -11,6 +11,7 @@ import VitrinePrestataireView from "@/views/vitrine/VitrinePrestataireView";
 import VitrinePrestataireProfilView from "@/views/vitrine/VitrinePrestataireProfilView.vue";
 
 import PrestataireHomeView from '@/views/vitrine/HomeView.vue'
+import PrestataireCalendrierView from "@/views/prestataire/PrestataireCalendrierView.vue";
 import PrestataireProfilView from "@/views/prestataire/PrestataireProfilView";
 import PrestataireEditProfilView from "@/views/prestataire/PrestataireEditProfilView.vue";
 import PrestataireStatistiqueView from "@/views/prestataire/PrestataireStatistiqueView";
@@ -18,8 +19,8 @@ import PrestataireStatistiqueView from "@/views/prestataire/PrestataireStatistiq
 import AdminView from "@/views/admin/AdminView";
 import AdminMapView from "@/views/admin/AdminMapView";
 import AdminCalendrierView from "@/views/admin/AdminCalendrierView.vue";
-import AdminStandView from "@/views/admin/AdminStandView";
 
+import AdminStandView from "@/views/admin/AdminStandView";
 import AdminPrestataireView from "@/views/admin/AdminPrestataireView";
 import AdminPrestataireProfilView from "@/views/admin/AdminPrestataireProfilView.vue";
 import AdminPrestataireEditProfilView from "@/views/admin/AdminPrestataireEditProfilView.vue";
@@ -84,6 +85,14 @@ const routes = [
     name: "prestataire_home",
     component: PrestataireHomeView
 
+  },
+  {
+    path: "/prestataire/calendrier/:idPrestataire",
+    name: "prestataire_calendrier",
+    component: PrestataireCalendrierView,
+    props: (route) => ({
+      idPrestataire: parseInt(route.params.idPrestataire)
+    })
   },
   {
     path: "/prestataire/profil/:idPrestataire",

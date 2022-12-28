@@ -66,6 +66,9 @@
                   <v-toolbar-title v-html="selectedEvent.name"></v-toolbar-title>
                   <div class="flex-grow-1"></div>
                 </v-toolbar>
+                <v-card-text tag="h1">
+                  {{ "idPrestataire = "+selectedEvent.idPrestataire }} <!--todo -->
+                </v-card-text>
                 <v-card-text>
                   <form v-if="currentlyEditing !== selectedEvent.id">
                     {{ selectedEvent.details }}
@@ -122,7 +125,7 @@ export default {
     selectedEvent: {},
     selectedElement: null,
     selectedOpen: false,
-    events: [],
+    events: []
   }),
   mounted () {
     this.reloadHoraire()

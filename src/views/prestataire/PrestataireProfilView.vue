@@ -16,24 +16,30 @@
           <p>
             Categorie :
           </p>
-          <p class="text-capitalize">
-            <router-link :to="'/liste_prestataire/#'+curentPrestataire.type">
-              {{ curentPrestataire.type }}
-            </router-link>
+          <p class="text-capitalize" :class="curentPrestataire.type">
+            {{ curentPrestataire.type }}
           </p>
         </div>
 
         <hr>
 
-        <div class="partie" v-if="curentHoraire.length">
+        <div class="partie">
           <p> Horaire : </p>
-          <router-link to="/calendrier">
-            <p v-for="(horaire, index) in curentHoraire" :key="index">
-              {{ horaire.start.substr(11, 5) }} - {{ horaire.end.substr(11, 5) }}
-            </p>
+          <router-link :to="'/prestataire/calendrier/'+idPrestataire">
+            <div v-if="curentHoraire.length">
+              <p  v-for="(horaire, index) in curentHoraire" :key="index">
+                {{ horaire.start.substr(11, 5) }} - {{ horaire.end.substr(11, 5) }} <!--todo -->
+              </p>
+            </div>
+            <div v-else>
+              <p id="addHoraire">
+                Ajouter un horraire
+              </p>
+            </div>
           </router-link>
         </div>
-        <hr v-if="curentHoraire.length">
+
+        <hr>
 
         <div class="partie">
           <p> E-mail:</p>
@@ -200,5 +206,18 @@ export default {
   .btn-edit {
     --defined-color-primary: var(--background);
     --defined-color-secondary: var(--green);
+  }
+  p.activite {
+    color: var(--activite);
+  }
+  p.spectacle {
+    color: var(--spectacle);
+  }
+  p.restauration {
+    color: var(--restauration);
+  }
+  #addHoraire {
+    color: var(--blue);
+    text-decoration-line: underline;
   }
 </style>
