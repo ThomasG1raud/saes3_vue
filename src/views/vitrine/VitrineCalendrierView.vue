@@ -83,7 +83,7 @@
                   <v-btn text color="var(--secondary)" @click="selectedOpen = false">
                     close
                   </v-btn>
-                  <router-link :to="'/prestataire/'+selectedEvent.idPrestataire">
+                  <router-link :to="'/liste_prestataire/'+selectedEvent.idPrestataire">
                     <v-btn text color="var(--very-very-dark)">
                       show prestataire
                     </v-btn>

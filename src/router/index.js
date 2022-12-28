@@ -5,20 +5,20 @@ import LoginView from "@/views/vitrine/LoginView";
 import RegisterView from "@/views/vitrine/RegisterView";
 
 import HomeView from '@/views/vitrine/HomeView.vue'
-import VitrineActiviteView from "@/views/vitrine/VitrineActiviteView";
 import VitrineMapView from "@/views/vitrine/VitrineMapView";
 import VitrineCalendrierView from "@/views/vitrine/VitrineCalendrierView.vue";
+import VitrinePrestataireView from "@/views/vitrine/VitrinePrestataireView";
 import VitrinePrestataireProfilView from "@/views/vitrine/VitrinePrestataireProfilView.vue";
-import PrestataireView from "@/views/vitrine/VitrinePrestataireView";
 
+import PrestataireHomeView from '@/views/vitrine/HomeView.vue'
 import PrestataireProfilView from "@/views/prestataire/PrestataireProfilView";
-import PrestataireStatistiqueView from "@/views/prestataire/PrestataireStatistiqueView";
 import PrestataireEditProfilView from "@/views/prestataire/PrestataireEditProfilView.vue";
+import PrestataireStatistiqueView from "@/views/prestataire/PrestataireStatistiqueView";
 
 import AdminView from "@/views/admin/AdminView";
 import AdminMapView from "@/views/admin/AdminMapView";
-import AdminStandView from "@/views/admin/AdminStandView";
 import AdminCalendrierView from "@/views/admin/AdminCalendrierView.vue";
+import AdminStandView from "@/views/admin/AdminStandView";
 
 import AdminPrestataireView from "@/views/admin/AdminPrestataireView";
 import AdminPrestataireProfilView from "@/views/admin/AdminPrestataireProfilView.vue";
@@ -27,6 +27,7 @@ import AdminPrestataireEditProfilView from "@/views/admin/AdminPrestataireEditPr
 Vue.use(VueRouter)
 
 const routes = [
+  // Authentication
   {
     path: "/login",
     name: "login",
@@ -37,16 +38,13 @@ const routes = [
     name: "register",
     component: RegisterView
   },
-
+  // Authentication
+  // ------------------------------------
+  // Vitrine
   {
     path: "/",
     name: "home",
     component: HomeView
-  },
-  {
-    path: "/activite",
-    name: "activite",
-    component: VitrineActiviteView
   },
   {
     path: "/map",
@@ -68,21 +66,24 @@ const routes = [
   {
     path: "/liste_prestataire",
     name: "liste_prestataire",
-    component: PrestataireView
-  },
-
-  {
-    path: "/prestataire",
-    name: "prestataire",
-    component: HomeView
+    component: VitrinePrestataireView
   },
   {
-    path: "/prestataire/:idPrestataire",
+    path: "/liste_prestataire/:idPrestataire",
     name: "vitrine_profil",
     component: VitrinePrestataireProfilView,
     props: (route) => ({
       idPrestataire: parseInt(route.params.idPrestataire)
     })
+  },
+  // Vitrine
+  // ------------------------------------
+  // Prestataire
+  {
+    path: "/prestataire",
+    name: "prestataire_home",
+    component: PrestataireHomeView
+
   },
   {
     path: "/prestataire/profil/:idPrestataire",
@@ -105,16 +106,14 @@ const routes = [
     name: "prestataire_statistique",
     component: PrestataireStatistiqueView
   },
-
+  // Prestataire
+  // ------------------------------------
+  // Admin
+    // Admin classic
   {
     path: "/admin",
     name: "admin",
     component: AdminView
-  },
-  {
-    path: "/admin/calendrier",
-    name: "admin_calendrier",
-    component: AdminCalendrierView
   },
   {
     path: "/admin/map",
@@ -128,7 +127,19 @@ const routes = [
       })
     }]
   },
-
+  {
+    path: "/admin/calendrier",
+    name: "admin_calendrier",
+    component: AdminCalendrierView
+  },
+  {
+    path: "/admin/stand",
+    name: "stand",
+    component: AdminStandView
+  },
+    // Admin classic
+    // ------------------------------------
+    // Admin prestataire
   {
     path: "/admin/prestataire",
     name: "admin_prestataire",
@@ -142,6 +153,7 @@ const routes = [
       idPrestataire: parseInt(route.params.idPrestataire)
     })
   },
+
   {
     path: "/admin/prestataire/edit/:idPrestataire",
     name: "admin_prestataire_edit_profil",
@@ -149,13 +161,9 @@ const routes = [
     props: (route) => ({
       idPrestataire: parseInt(route.params.idPrestataire)
     })
-  },
-
-  {
-    path: "/admin/stand",
-    name: "stand",
-    component: AdminStandView
   }
+    // Admin prestataire
+  // Admin
 ]
 
 const router = new VueRouter({

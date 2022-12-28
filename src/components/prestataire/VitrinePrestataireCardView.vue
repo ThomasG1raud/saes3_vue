@@ -1,5 +1,5 @@
 <template>
-    <router-link class="linkCard" :to="'/prestataire/'+idPrestataire">
+    <router-link class="linkCard" :to="'/liste_prestataire/'+idPrestataire">
       <div class="card">
         <div class="divImage">
           <img :src="require('@/assets/'+curentPrestataire.imagePrestataire)">

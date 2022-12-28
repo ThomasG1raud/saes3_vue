@@ -23,7 +23,7 @@ import VitrinePrestataireCardView from "@/components/prestataire/VitrinePrestata
 import {mapGetters} from "vuex";
 
 export default {
-  name: "PrestataireView",
+  name: "VitrinePrestataireView",
   data: () => ({
     filter: ""
   }),
