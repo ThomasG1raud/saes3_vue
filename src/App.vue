@@ -99,10 +99,10 @@ div.spectacle {
 div.restauration {
   background-color: var(--restauration);
 }
-a {
+a, a:hover {
   text-decoration-line: none;
 }
-a:hover {
+a.underline:hover, a.item:hover {
   text-decoration-line: underline;
 }
 @keyframes displayZoom {

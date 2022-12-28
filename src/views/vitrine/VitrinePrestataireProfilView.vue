@@ -17,7 +17,7 @@
             Categorie :
           </p>
           <p class="text-capitalize">
-            <router-link :to="'/liste_prestataire/#'+curentPrestataire.type">
+            <router-link class="underline" :to="'/liste_prestataire/#'+curentPrestataire.type">
               {{ curentPrestataire.type }}
             </router-link>
           </p>
@@ -27,7 +27,7 @@
 
         <div class="partie" v-if="curentHoraire.length">
           <p> Horaire : </p>
-          <router-link to="/calendrier">
+          <router-link class="underline" to="/calendrier">
             <p v-for="(horaire, index) in curentHoraire" :key="index">
               {{horaire.name}} : {{ horaire.start.substr(11, 5) }} - {{ horaire.end.substr(11, 5) }} <!--todo -->
             </p>
@@ -38,7 +38,7 @@
         <div class="partie">
           <p> E-mail:</p>
           <p> {{ curentPrestataire.email }} </p>
-          <a class="contacter" :href="'mailto:'+curentPrestataire.email">Contacter</a>
+          <a class="contacter underline" :href="'mailto:'+curentPrestataire.email">Contacter</a>
         </div>
 
         <hr>
@@ -46,7 +46,7 @@
         <div class="partie">
           <p> Nom du stand : </p>
           <p class="text-capitalize">
-            <router-link :to="'/map/'+curentPrestataire.idStand">
+            <router-link class="underline" :to="'/map/'+curentPrestataire.idStand">
               {{ curentPrestataire.nomStand }}
             </router-link>
           </p>
@@ -67,16 +67,22 @@
     <div id="divService" v-if="bool">
       <p id="paragraphe">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
     </div>
+
+    <VitrineGuestbookView/>
   </div>
 </template>
 
 <script>
 import {mapGetters} from "vuex";
+import VitrineGuestbookView from "@/components/vitrine/VitrineGuestbookView.vue";
 
 export default {
   name: "VitrinePrestataireProfilView",
   props: {
     idPrestataire: Number
+  },
+  components: {
+    VitrineGuestbookView
   },
   data: () => ({
     bool:false

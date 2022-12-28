@@ -45,6 +45,14 @@ export default new Vuex.Store({
                 color: "var(--primary)"
             }
         ],
+        allComment: [
+            {
+                name: 'Frozen Yogurt',
+                note: 4,
+                text: '1%',
+                idPrestataire: 1
+            },
+        ],
         allAdmin: [
             {
                 email: "admin@gmail.com",

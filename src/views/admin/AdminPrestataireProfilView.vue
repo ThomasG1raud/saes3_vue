@@ -17,7 +17,7 @@
             Categorie :
           </p>
           <p class="text-capitalize">
-            <router-link :to="'/admin/prestataire/#'+curentPrestataire.type">
+            <router-link class="underline" to="'/admin/prestataire/#'+curentPrestataire.type">
               {{ curentPrestataire.type }}
             </router-link>
           </p>
@@ -27,7 +27,7 @@
 
         <div class="partie" v-if="curentHoraire.length">
           <p> Horaire : </p>
-          <router-link to="/admin/calendrier">
+          <router-link class="underline" to="/admin/calendrier">
             <p v-for="(horaire, index) in curentHoraire" :key="index">
               {{horaire.name}} : {{ horaire.start.substr(11, 5) }} - {{ horaire.end.substr(11, 5) }} <!--todo -->
             </p>
@@ -38,7 +38,7 @@
         <div class="partie">
           <p> E-mail:</p>
           <p> {{ curentPrestataire.email }} </p>
-          <a class="contacter" :href="'mailto:'+curentPrestataire.email">Contacter</a>
+          <a class="contacter underline" :href="'mailto:'+curentPrestataire.email">Contacter</a>
         </div>
 
         <hr>
@@ -46,7 +46,7 @@
         <div class="partie">
           <p> Nom du stand : </p>
           <p class="text-capitalize">
-            <router-link :to="'/admin/map/'+curentPrestataire.idStand">
+            <router-link class="underline" to="'/admin/map/'+curentPrestataire.idStand">
               {{ curentPrestataire.nomStand }}
             </router-link>
           </p>
