@@ -38,6 +38,7 @@
         <div class="partie">
           <p> E-mail:</p>
           <p> {{ curentPrestataire.email }} </p>
+          <a class="contacter" :href="'mailto:'+curentPrestataire.email">Contacter</a>
         </div>
 
         <hr>
@@ -60,7 +61,7 @@
       </div>
     </div>
     <div class="rond" v-on:click="bool =!bool">
-      <img class="fleche" src="@/assets/keyboard_double_arrow_up_black.svg">
+      <img class="fleche" src="@/assets/keyboard_double_arrow_up_black.svg" alt="arrow up">
     </div>
 
     <div id="divService" v-if="bool">
@@ -175,6 +176,9 @@ export default {
   }
   .text-capitalize {
     text-transform: capitalize;
+  }
+  a.contacter {
+    color: var(--blue);
   }
 
 </style>

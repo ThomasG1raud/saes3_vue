@@ -38,6 +38,7 @@
         <div class="partie">
           <p> E-mail:</p>
           <p> {{ curentPrestataire.email }} </p>
+          <a class="contacter" :href="'mailto:'+curentPrestataire.email">Contacter</a>
         </div>
 
         <hr>
@@ -60,7 +61,7 @@
       </div>
     </div>
     <div class="rond" v-on:click="bool =!bool">
-      <img class="fleche" src="@/assets/keyboard_double_arrow_up_black.svg">
+      <img class="fleche" src="@/assets/keyboard_double_arrow_up_black.svg" alt="arrow up">
     </div>
     <div class="btn-edit">
       <button class="btn btn-edit" @click="edit_horaire">Edit horaire</button>

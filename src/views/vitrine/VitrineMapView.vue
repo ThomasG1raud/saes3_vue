@@ -62,7 +62,6 @@ export default {
   padding: 10px 0;
   display: flex;
   width: 100%;
-  boder: solid white;
 }
 
 
@@ -122,7 +121,7 @@ p.spectacle {
 p.restauration {
   background-color: var(--restauration);
 }
-a {
+a, a:hover {
   text-decoration: none;
 }
 </style>

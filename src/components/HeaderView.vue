@@ -124,12 +124,6 @@ export default {
   a.item.router-link-exact-active {
     text-decoration: underline;
   }
-  a.item {
-    text-decoration: none;
-  }
-  a.item:hover {
-    text-decoration: underline;
-  }
   div.item {
     display: flex;
     align-items: center;

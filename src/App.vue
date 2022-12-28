@@ -99,6 +99,12 @@ div.spectacle {
 div.restauration {
   background-color: var(--restauration);
 }
+a {
+  text-decoration-line: none;
+}
+a:hover {
+  text-decoration-line: underline;
+}
 @keyframes displayZoom {
   0% {
     opacity: 0;
