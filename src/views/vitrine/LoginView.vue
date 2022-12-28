@@ -2,12 +2,12 @@
   <div id="bigDiv">
 
     <div id="cardLeft">
-      <img src="@/assets/imageVitrinePrincipal.jpg">
+      <img src="@/assets/imageVitrinePrincipal.jpg" alt="image vitrine">
     </div>
 
-    <div id="rond">
-      <p id="fleche">⇺</p>
-    </div>
+<!--    <div id="rond">-->
+<!--      <p id="fleche">⇺</p>-->
+<!--    </div>-->
 
 
     <div id="cardRight">
@@ -63,10 +63,11 @@ export default {
     onsubmit() {
       const prestaire = this.getIDPrestataireWithEmail(this.email, this.password);
       if (!prestaire) {
-        if (this.getIsAdmin(this.email, this.password)) {
-          this.setAccountId(99);
+        const admin = this.getIsAdmin(this.email, this.password)
+        if (admin) {
+          this.setAccountId(admin.id);
           this.setAccountType(2);
-          router.push("/admin");
+          router.push("/admin/calendrier");
         } else {
           this.isWrong = true
           setTimeout(() => {this.isWrong=false}, 3000);

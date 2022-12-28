@@ -52,11 +52,11 @@ export default {
   data: () => ({
     isWrong: false,
     errorRegister: "Error register",
-    lastname: "a",
-    firstname: "a",
-    email: "a@gmail.com",
-    password: "a",
-    confirmPassword: "a"
+    lastname: "",
+    firstname: "",
+    email: "",
+    password: "",
+    confirmPassword: ""
   }),
   computed: {
     ...mapGetters(["isAlreadyAnAccound", "getAllPrestataire", "getLastInsertId"])

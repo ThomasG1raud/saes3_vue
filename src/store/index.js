@@ -45,12 +45,20 @@ export default new Vuex.Store({
                 color: "var(--primary)"
             }
         ],
-        admin: {
-            email: "admin@gmail.com",
-            login: "admin",
-            password: "admin",
-            id: 99
-        },
+        allAdmin: [
+            {
+                email: "admin@gmail.com",
+                login: "admin",
+                password: "admin",
+                id: 99
+            },
+            {
+                email: "admin2@gmail.com",
+                login: "admin",
+                password: "admin",
+                id: 100
+            }
+        ],
         allPrestataire: [
             {
                 name: "Nom du prestataire 1",
@@ -211,11 +219,12 @@ export default new Vuex.Store({
             return state.allPrestataire.find(prestataire => parseInt(prestataire.id) === parseInt(idPrestataire)).password === password;
         },
         isAlreadyAnAccound: (state) => (email) => {
-            return state.allPrestataire.map(prestataire => prestataire.email).includes(email) || state.admin.email === email;
+            return state.allPrestataire.map(prestataire => prestataire.email).includes(email)
+                || state.allAdmin.map(admin => admin.email).includes(email)
         },
 
         getIsAdmin: (state) => (email, password) => {
-            return (state.admin.email === email) && state.admin.password === password;
+            return state.allAdmin.find(admin => admin.email === email && admin.password === password);
         },
         getConnected: (state) => {
             return state.connected
