@@ -71,21 +71,15 @@
         Cancel
       </v-btn>
     </v-form>
-
-    <AdminGuestbookView :id-prestataire="idPrestataire"/>
   </div>
 </template>
 
 <script>
 import {mapGetters} from "vuex";
 import router from "@/router";
-import AdminGuestbookView from "@/components/admin/AdminGuestbookView.vue";
 
 export default {
   name: "AdminPrestataireEditProfilView",
-  components: {
-    AdminGuestbookView
-  },
   props: {
     idPrestataire: Number
   },

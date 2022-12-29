@@ -7,7 +7,9 @@ export default new Vuex.Store({
     state: {
         connected: 0,
         accountId: 0,
-        lastInsertId: 10,
+        lastInsertIdPrestataire: 10,
+        lastInsertIdHoraire: 3,
+        lastInsertIdComment: 4,
         allCategory: [
             "activite",
             "spectacle",
@@ -47,6 +49,7 @@ export default new Vuex.Store({
         ],
         allComment: [
             {
+                id: 1,
                 name: "Guillaume Plante",
                 email: "guillaume.plante@gmail.com",
                 note: 3,
@@ -56,6 +59,7 @@ export default new Vuex.Store({
                 isPrestataire: false
             },
             {
+                id: 2,
                 name: "Guillaume Plante",
                 email: "guillaume.plante@gmail.com",
                 note: 3,
@@ -65,6 +69,7 @@ export default new Vuex.Store({
                 isPrestataire: false
             },
             {
+                id: 3,
                 name: "Nom du prestataire 1",
                 email: "prestataire1@gmail.com",
                 note: 5,
@@ -73,6 +78,16 @@ export default new Vuex.Store({
                 idPrestataire: 2,
                 isPrestataire: true
             },
+            {
+                id: 4,
+                name: "Nom du prestataire 1",
+                email: "prestataire4@gmail.com",
+                note: 5,
+                date: "2022-12-30",
+                text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+                idPrestataire: 2,
+                isPrestataire: true
+            }
         ],
         allAdmin: [
             {
@@ -269,17 +284,30 @@ export default new Vuex.Store({
             return state.accountId
         },
 
-        getLastInsertId: (state) => {
-            return state.lastInsertId;
+        getLastInsertIdPrestataire: (state) => {
+            return state.lastInsertIdPrestataire;
         },
+        getLastInsertIdHoraire: (state) => {
+            return state.lastInsertIdHoraire;
+        },
+        getLastInsertIdComment: (state) => {
+            return state.lastInsertIdComment;
+        },
+
 
         getAllHoraire: (state) => {
             return state.allHoraire;
         }
     },
     mutations: {
-        increment (state) {
-            state.lastInsertId++
+        incrementIdPrestataire (state) {
+            state.lastInsertIdPrestataire++
+        },
+        incrementIdHoraire (state) {
+            state.lastInsertIdHoraire++
+        },
+        incrementIdComment (state) {
+            state.lastInsertIdComment++
         },
         setAccountId: (state, id) => {
             state.accountId = parseInt(id);
@@ -293,8 +321,11 @@ export default new Vuex.Store({
         addHoraire: (state, horaire) => {
             state.allHoraire.push(horaire);
         },
-        postComment: (state, comment) => {
+        addComment: (state, comment) => {
             state.allComment.push(comment)
+        },
+        removeComment: (state, comment) => {
+            state.allComment.splice(comment, 1);
         },
         removeHoraire: (state, indexDelete) => {
             state.allHoraire.splice(indexDelete, 1);
@@ -308,7 +339,7 @@ export default new Vuex.Store({
     },
     actions: {
         createPrestataire: ({getters, commit}, prestataire) => {
-            const idPrestataire = getters.getLastInsertId + 1;
+            const idPrestataire = getters.getLastInsertIdPrestataire + 1;
             const {lastname, firstname, email, password} = prestataire;
             commit("addPrestataire", {
                 name: `${lastname} ${firstname}`,
@@ -323,9 +354,27 @@ export default new Vuex.Store({
                 id: idPrestataire,
                 password: password
             })
-            commit("increment");
+            commit("incrementIdPrestataire");
             commit("setAccountId", idPrestataire);
             commit('setAccountType', 1);
+        },
+        createComment: ({getters, commit}, comment) => {
+            const idComment = getters.getLastInsertIdComment + 1;
+            commit('addComment', {
+                id: idComment,
+                name: comment.name,
+                email: comment.email,
+                note: comment.note,
+                date: comment.date,
+                text: comment.text,
+                idPrestataire: comment.idPrestataire,
+                isPrestataire: comment.isPrestataire
+            })
+            commit('incrementIdComment');
+        },
+        deleteComment: ({getters, commit}, idComment) => {
+            const indexDelete = getters.getAllComment.findIndex(comment => comment.id === parseInt(idComment))
+            commit("removeHoraire", parseInt(indexDelete));
         },
         deleteHoraire: ({getters, commit}, idHoraire) => {
             const indexDelete = getters.getAllHoraire.findIndex(horaire => horaire.id === parseInt(idHoraire))

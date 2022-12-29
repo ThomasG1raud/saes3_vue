@@ -73,7 +73,7 @@
       >
         <div>Your comment  has been successfully added</div>
         <div>Name : {{firstname}} {{surname}}</div>
-        <div class="alert-star">Note : <StarDisplayView :stars="note"/></div>
+        <div class="alert-star">Note : <StarDisplayView :stars="parseInt(note)"/></div>
         <div>Date : {{getDate}}</div>
         <div>Text : {{textComment}}</div>
       </v-alert>
@@ -90,10 +90,10 @@
         <tr :class="item.isPrestataire ? 'prestataire' : ''">
           <td class="name">{{ item.name }}</td>
           <td>
-            <StarDisplayView :stars="item.note" class="ma-auto"/>
+            <StarDisplayView :stars="parseInt(item.note)" class="ma-auto"/>
           </td>
           <td>{{item.date}}</td>
-          <td>{{ item.comment }}</td>
+          <td>{{ item.text }}</td>
         </tr>
       </template>
       <template v-slot:header="{ item }">
@@ -108,7 +108,7 @@
 <script>
 import StarDisplayView from "@/components/StarDisplayView.vue";
 import StarEditView from "@/components/StarEditView.vue";
-import {mapGetters, mapMutations} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 
 export default {
   name: "VitrineGuestbookView",
@@ -176,7 +176,7 @@ export default {
   },
   methods: {
     ...mapGetters(["getAllComment", "isAlreadyAnAccound"]),
-    ...mapMutations(["postComment"]),
+    ...mapActions(["createComment"]),
     addComment() {
       if (this.isAddComment) return;
       if (!this.$refs.form.validate()) return;
@@ -189,7 +189,7 @@ export default {
         idPrestataire: this.idPrestataire,
         isPrestataire: false
       }
-      this.postComment(comment)
+      this.createComment(comment)
       this.isAddComment = true;
     },
     reset() {

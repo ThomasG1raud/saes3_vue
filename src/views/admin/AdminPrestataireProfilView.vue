@@ -80,14 +80,20 @@
     <div id="divService" v-if="bool">
       <p id="paragraphe"> {{ curentPrestataire.text }} </p>
     </div>
+
+    <AdminGuestbookView :id-prestataire="idPrestataire"/>
   </div>
 </template>
 
 <script>
 import {mapGetters} from "vuex";
 import router from "@/router";
+import AdminGuestbookView from "@/components/admin/AdminGuestbookView.vue";
 export default {
   name: "AdminPrestataireProfilView",
+  components: {
+    AdminGuestbookView
+  },
   methods: {
     edit_horaire() {
       router.push("/admin/calendrier")

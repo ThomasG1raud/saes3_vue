@@ -59,7 +59,7 @@ export default {
     confirmPassword: ""
   }),
   computed: {
-    ...mapGetters(["isAlreadyAnAccound", "getAllPrestataire", "getLastInsertId"])
+    ...mapGetters(["isAlreadyAnAccound", "getAllPrestataire"])
   },
   methods: {
     ...mapActions(["createPrestataire"]),
