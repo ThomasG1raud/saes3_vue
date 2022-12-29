@@ -48,10 +48,17 @@ export default new Vuex.Store({
         allComment: [
             {
                 name: 'Frozen Yogurt',
-                note: 4,
+                note: 3,
                 date: "29/12/2022",
                 text: '1%',
                 idPrestataire: 1
+            },
+            {
+                name: 'Frozen Yogurt',
+                note: 5,
+                date: "29/12/2022",
+                text: '1%',
+                idPrestataire: 2
             },
         ],
         allAdmin: [
@@ -222,6 +229,9 @@ export default new Vuex.Store({
         },
         getAllComment: (state) => {
             return state.allComment
+        },
+        getAllCommentByIdPrestataire: (state) => (idPrestataire) => {
+            return state.allComment.filter(comment => parseInt(comment.idPrestataire) === parseInt(idPrestataire))
         },
         getStandId: (state) => (idPrestataire) =>  {
             return state.standId = state.allPrestataire.find(prestataire => parseInt(prestataire.id) === parseInt(idPrestataire)).idStand;

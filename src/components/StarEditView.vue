@@ -29,7 +29,6 @@
         type="number"
         disabled
     ></v-text-field>
-    {{last_stars}} {{current_stars}}
   </div>
 </template>
 

@@ -34,7 +34,7 @@
             auto-grow
         ></v-textarea>
         <v-btn
-            :disabled="!valid"
+            :disabled="isAddComment || !valid"
             color="var(--blue)"
             class="mr-4"
             @click="addComment"
@@ -42,6 +42,7 @@
           Add comment
         </v-btn>
         <v-btn
+            :disabled="isAddComment"
             color="var(--red)"
             class="mr-4"
             @click="reset"
@@ -49,6 +50,7 @@
           Reset Form
         </v-btn>
         <v-btn
+            :disabled="isAddComment"
             color="var(--orange)"
             @click="resetValidation"
         >
@@ -73,7 +75,7 @@
     <!--    todo le syle d'un élément fait que : "min-height: 100vh;" donc il y a du blanc apres le tableau quand il est trop petit--->
     <v-data-table
         :headers="headers"
-        :items="/*allComment*/listeComent"
+        :items="curentComments"
         :items-per-page="5"
         expand-icon="mdi-star"
         class="elevation-1"
@@ -150,197 +152,11 @@ export default {
         align: 'center',
         value: 'comment'
       }
-    ],
-
-    // todo metre dans le store
-    allComment: [
-      {
-        name: 'Lee Rush',
-        note: 1,
-        date: "11/01/2023",
-        comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      },
-      {
-        name: 'Lawrence Haas',
-        note: 2,
-        date: "12/01/2023",
-        comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      },
-      {
-        name: 'Christian Marquez',
-        note: 2,
-        date: "06/01/2023",
-        comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      },
-      {
-        name: 'Wallace Roman',
-        note: 3,
-        date: "04/01/2023",
-        comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      },
-      {
-        name: 'Hollis Barton',
-        note: 3,
-        date: "02/01/2023",
-        comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      },
-      {
-        name: 'Jelly bean',
-        note: 3,
-        date: "15/01/2023",
-        comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      },
-      {
-        name: 'Hollis Barton',
-        note: 3,
-        date: "18/01/2023",
-        comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      },
-      {
-        name: 'Cleveland Shaw',
-        note: 4,
-        date: "14/01/2023",
-        comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      },
-      {
-        name: 'Cesar Costa',
-        note: 3,
-        date: "02/01/2023",
-        comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      },
-      {
-        name: 'Cory Alvarado',
-        note: 5,
-        date: "01/01/2023",
-        comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      },
-
-      {
-        name: 'Lee Rush',
-        note: 1,
-        date: "11/01/2023",
-        comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      },
-      {
-        name: 'Lawrence Haas',
-        note: 2,
-        date: "12/01/2023",
-        comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      },
-      {
-        name: 'Christian Marquez',
-        note: 2,
-        date: "06/01/2023",
-        comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      },
-      {
-        name: 'Wallace Roman',
-        note: 3,
-        date: "04/01/2023",
-        comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      },
-      {
-        name: 'Hollis Barton',
-        note: 3,
-        date: "02/01/2023",
-        comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      },
-      {
-        name: 'Jelly bean',
-        note: 3,
-        date: "15/01/2023",
-        comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      },
-      {
-        name: 'Hollis Barton',
-        note: 3,
-        date: "18/01/2023",
-        comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      },
-      {
-        name: 'Cleveland Shaw',
-        note: 4,
-        date: "14/01/2023",
-        comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      },
-      {
-        name: 'Cesar Costa',
-        note: 3,
-        date: "02/01/2023",
-        comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      },
-      {
-        name: 'Cory Alvarado',
-        note: 5,
-        date: "01/01/2023",
-        comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      },
-
-      {
-        name: 'Lee Rush',
-        note: 1,
-        date: "11/01/2023",
-        comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      },
-      {
-        name: 'Lawrence Haas',
-        note: 2,
-        date: "12/01/2023",
-        comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      },
-      {
-        name: 'Christian Marquez',
-        note: 2,
-        date: "06/01/2023",
-        comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      },
-      {
-        name: 'Wallace Roman',
-        note: 3,
-        date: "04/01/2023",
-        comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      },
-      {
-        name: 'Hollis Barton',
-        note: 3,
-        date: "02/01/2023",
-        comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      },
-      {
-        name: 'Jelly bean',
-        note: 3,
-        date: "15/01/2023",
-        comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      },
-      {
-        name: 'Hollis Barton',
-        note: 3,
-        date: "18/01/2023",
-        comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      },
-      {
-        name: 'Cleveland Shaw',
-        note: 4,
-        date: "14/01/2023",
-        comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      },
-      {
-        name: 'Cesar Costa',
-        note: 3,
-        date: "02/01/2023",
-        comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      },
-      {
-        name: 'Cory Alvarado',
-        note: 5,
-        date: "01/01/2023",
-        comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      }
     ]
   }),
   computed: {
-    listeComent() {
-      return this.getAllComment()
+    curentComments() {
+      return this.getAllComment().filter(comment => parseInt(comment.idPrestataire) === parseInt(this.idPrestataire));
     },
     getDate() {
       return new Date().toISOString().substr(0, 10);
@@ -361,10 +177,6 @@ export default {
       }
       this.postComment(comment)
       this.isAddComment = true;
-      setTimeout(() => {
-        this.isAddComment = false;
-        this.reset();
-      }, 1000*1000);
     },
     reset() {
       this.$refs.form.reset()
