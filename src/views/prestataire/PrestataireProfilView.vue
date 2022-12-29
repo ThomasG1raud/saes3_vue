@@ -75,14 +75,20 @@
     <div id="divService" v-if="bool">
       <p id="paragraphe"> {{ curentPrestataire.text }} </p>
     </div>
+
+    <PrestataireGuestbookView :id-prestataire="idPrestataire"/>
   </div>
 </template>
 
 <script>
 import {mapGetters} from "vuex";
 import router from "@/router";
+import PrestataireGuestbookView from "@/components/prestataire/PrestataireGuestbookView.vue";
 export default {
   name: "PrestataireProfilView",
+  components: {
+    PrestataireGuestbookView
+  },
   methods: {
     edit_profil() {
       router.push("/prestataire/edit/"+this.idPrestataire)

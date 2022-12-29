@@ -8,22 +8,14 @@
           :disabled="isAddComment"
       >
         <v-text-field
-            v-model="firstname"
-            :counter="10"
-            :rules="nameRules"
-            label="Firstname"
+            disabled
+            :value="curentPrestataire.name"
+            label="Name"
             required
         ></v-text-field>
         <v-text-field
-            v-model="surname"
-            :counter="10"
-            :rules="nameRules"
-            label="Surname"
-            required
-        ></v-text-field>
-        <v-text-field
-            v-model="email"
-            :rules="emailRules"
+            disabled
+            :value="curentPrestataire.email"
             label="E-mail"
             required
         ></v-text-field>
@@ -72,7 +64,7 @@
           type="success"
       >
         <div>Your comment  has been successfully added</div>
-        <div>Name : {{firstname}} {{surname}}</div>
+        <div>Name : {{curentPrestataire.name}}</div>
         <div class="alert-star">Note : <StarDisplayView :stars="note"/></div>
         <div>Date : {{getDate}}</div>
         <div>Text : {{textComment}}</div>
@@ -111,31 +103,19 @@ import StarEditView from "@/components/StarEditView.vue";
 import {mapGetters, mapMutations} from "vuex";
 
 export default {
-  name: "VitrineGuestbookView",
+  name: "PrestataireGuestbookView",
   props: {
     idPrestataire: Number
   },
   data: () => ({
     isAddComment: false,
     valid: true,
-    firstname: '',
-    surname: '',
-    email: '',
     note: 0,
     textComment: '',
-    nameRules: [
-      v => !!v || 'Name is required',
-      v => /^[^0-9]+$/.test(v) || 'The name must not contain a number',
-      v => (v && v.length <= 10) || 'Name must be less than 10 characters',
-    ],
     commentRules: [
       v => !!v || 'Comment is required',
       v => (v && v.length > 10) || 'The text must be at least 10 characters',
       v => (v && v.length < 512) || 'Name must be less than 512 characters',
-    ],
-    emailRules: [
-      v => !!v || 'E-mail is required',
-      v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
     ],
 
     // headers props
@@ -167,6 +147,10 @@ export default {
     ]
   }),
   computed: {
+    ...mapGetters(["getInfoPrestataireByIdPrestataire"]),
+    curentPrestataire() {
+      return this.getInfoPrestataireByIdPrestataire(this.idPrestataire)
+    },
     curentComments() {
       return this.getAllComment().filter(comment => parseInt(comment.idPrestataire) === parseInt(this.idPrestataire));
     },
@@ -181,19 +165,19 @@ export default {
       if (this.isAddComment) return;
       if (!this.$refs.form.validate()) return;
       const comment = {
-        name: `${this.surname} ${this.firstname}`,
-        email: this.email,
+        name: this.curentPrestataire.name,
+        email: this.curentPrestataire.email,
         note: this.note,
         text: this.textComment,
         date: this.getDate,
         idPrestataire: this.idPrestataire,
-        isPrestataire: false
+        isPrestataire: true
       }
       this.postComment(comment)
       this.isAddComment = true;
     },
     reset() {
-      this.$refs.form.reset()
+      this.textComment = "";
       this.note = 0;
     },
     resetValidation() {
