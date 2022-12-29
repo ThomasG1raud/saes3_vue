@@ -22,7 +22,7 @@
             </v-icon>
           </td>
           <td>
-            <v-btn color="red" class="white--text" @click.prevent="deleteComment(item)">
+            <v-btn color="red" class="white--text" @click.prevent="removeComment(item.id)">
               <v-icon left>
                 mdi-delete
               </v-icon>
@@ -98,11 +98,9 @@ export default {
   methods: {
     ...mapGetters(["getAllComment"]),
     ...mapActions(["deleteComment"]),
-    deleteComment(comment) {
-      setTimeout(() => {
-        console.log(comment)
-        this.deleteComment(comment);
-      }, 1000)
+    removeComment(idComment) {
+      if (!confirm("Are you sure to delete ?")) return;
+      this.deleteComment(idComment);
     }
   },
   components: {

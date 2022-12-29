@@ -171,7 +171,7 @@ export default {
         text: this.textComment,
         date: this.getDate,
         idPrestataire: this.idPrestataire,
-        isPrestataire: true
+        isPrestataire: this.idPrestataire
       }
       this.createComment(comment)
       this.isAddComment = true;

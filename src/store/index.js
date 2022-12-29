@@ -56,7 +56,7 @@ export default new Vuex.Store({
                 date: "2022-12-29",
                 text: "Je sais pas quoi penser.",
                 idPrestataire: 1,
-                isPrestataire: false
+                isPrestataire: 0
             },
             {
                 id: 2,
@@ -66,7 +66,7 @@ export default new Vuex.Store({
                 date: "2022-12-29",
                 text: "Je sais pas quoi penser.",
                 idPrestataire: 2,
-                isPrestataire: false
+                isPrestataire: 0
             },
             {
                 id: 3,
@@ -76,7 +76,7 @@ export default new Vuex.Store({
                 date: "2022-12-30",
                 text: "Très bon prestataiire",
                 idPrestataire: 2,
-                isPrestataire: true
+                isPrestataire: 2
             },
             {
                 id: 4,
@@ -86,7 +86,7 @@ export default new Vuex.Store({
                 date: "2022-12-30",
                 text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
                 idPrestataire: 2,
-                isPrestataire: true
+                isPrestataire: 3
             }
         ],
         allAdmin: [
@@ -269,7 +269,6 @@ export default new Vuex.Store({
             return state.allPrestataire.find(prestataire => parseInt(prestataire.id) === parseInt(idPrestataire)).password === password;
         },
         isAlreadyAnAccound: (state) => (email) => {
-            console.log(email)
             return state.allPrestataire.map(prestataire => prestataire.email).includes(email)
                 || state.allAdmin.map(admin => admin.email).includes(email)
         },
@@ -374,7 +373,7 @@ export default new Vuex.Store({
         },
         deleteComment: ({getters, commit}, idComment) => {
             const indexDelete = getters.getAllComment.findIndex(comment => comment.id === parseInt(idComment))
-            commit("removeHoraire", parseInt(indexDelete));
+            commit("removeComment", parseInt(indexDelete));
         },
         deleteHoraire: ({getters, commit}, idHoraire) => {
             const indexDelete = getters.getAllHoraire.findIndex(horaire => horaire.id === parseInt(idHoraire))
