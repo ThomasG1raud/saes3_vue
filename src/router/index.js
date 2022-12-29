@@ -20,6 +20,8 @@ import AdminView from "@/views/admin/AdminView";
 import AdminMapView from "@/views/admin/AdminMapView";
 import AdminCalendrierView from "@/views/admin/AdminCalendrierView.vue";
 
+import AdminGuestbookView from "@/components/admin/AdminGuestbookView.vue";
+
 import AdminStandView from "@/views/admin/AdminStandView";
 import AdminPrestataireView from "@/views/admin/AdminPrestataireView";
 import AdminPrestataireProfilView from "@/views/admin/AdminPrestataireProfilView.vue";
@@ -147,6 +149,17 @@ const routes = [
     component: AdminStandView
   },
     // Admin classic
+    // ------------------------------------
+    // Admin Guestbook
+  {
+    path: "/admin/guestbook",
+    name: "admin_guestbook",
+    component: AdminGuestbookView,
+    props: () => ({
+      idPrestataire: 0
+    })
+  },
+    // Admin Guestbook
     // ------------------------------------
     // Admin prestataire
   {

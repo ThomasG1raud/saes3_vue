@@ -49,14 +49,24 @@ export default new Vuex.Store({
         ],
         allComment: [
             {
-                id: 1,
-                name: "Guillaume Plante",
-                email: "guillaume.plante@gmail.com",
-                note: 3,
+                id: 4,
+                name: "Nom du prestataire 2",
+                email: "prestataire1@gmail.com",
+                note: 5,
+                date: "2022-12-30",
+                text: "Très bon prestataiire",
+                idPrestataire: 2,
+                idComptePost: 2
+            },
+            {
+                id: 3,
+                name: "Alexandre Duclos",
+                email: "alexandre_duclos@gmail.com",
+                note: 1,
                 date: "2022-12-29",
-                text: "Je sais pas quoi penser.",
-                idPrestataire: 1,
-                isPrestataire: 0
+                text: "C'est vraiment nul !!!",
+                idPrestataire: 2,
+                idComptePost: 0
             },
             {
                 id: 2,
@@ -65,28 +75,18 @@ export default new Vuex.Store({
                 note: 3,
                 date: "2022-12-29",
                 text: "Je sais pas quoi penser.",
-                idPrestataire: 2,
-                isPrestataire: 0
+                idPrestataire: 1,
+                idComptePost: 0
             },
             {
-                id: 3,
-                name: "Nom du prestataire 1",
-                email: "prestataire1@gmail.com",
-                note: 5,
-                date: "2022-12-30",
-                text: "Très bon prestataiire",
-                idPrestataire: 2,
-                isPrestataire: 2
-            },
-            {
-                id: 4,
-                name: "Nom du prestataire 1",
+                id: 1,
+                name: "Nom du prestataire 3",
                 email: "prestataire4@gmail.com",
                 note: 5,
-                date: "2022-12-30",
+                date: "2022-12-20",
                 text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-                idPrestataire: 2,
-                isPrestataire: 3
+                idPrestataire: 3,
+                idComptePost: 3
             }
         ],
         allAdmin: [
@@ -321,7 +321,7 @@ export default new Vuex.Store({
             state.allHoraire.push(horaire);
         },
         addComment: (state, comment) => {
-            state.allComment.push(comment)
+            state.allComment.splice(0, 0, comment)
         },
         removeComment: (state, comment) => {
             state.allComment.splice(comment, 1);
@@ -367,7 +367,7 @@ export default new Vuex.Store({
                 date: comment.date,
                 text: comment.text,
                 idPrestataire: comment.idPrestataire,
-                isPrestataire: comment.isPrestataire
+                idComptePost: comment.idComptePost
             })
             commit('incrementIdComment');
         },

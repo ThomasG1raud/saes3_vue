@@ -32,6 +32,7 @@
         </router-link>
         <router-link class="item" to="/admin/calendrier">Calendrier</router-link>
         <router-link class="item" to="/admin/stand">Stand</router-link>
+        <router-link class="item" to="/admin/guestbook">Livre d'or</router-link>
         <router-link class="item" to="/admin/prestataire">Prestataire</router-link>
         <router-link class="item" to="/admin/map">Map</router-link>
         <div class="item">

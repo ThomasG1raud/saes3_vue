@@ -79,7 +79,7 @@
         class="elevation-1"
     >
       <template v-slot:item="{ item }">
-        <tr :class="item.isPrestataire ? 'prestataire' : ''">
+        <tr :class="item.idComptePost ? 'prestataire' : ''">
           <td class="name">{{ item.name }}</td>
           <td>
             <StarDisplayView :stars="parseInt(item.note)" class="ma-auto"/>
@@ -171,7 +171,7 @@ export default {
         text: this.textComment,
         date: this.getDate,
         idPrestataire: this.idPrestataire,
-        isPrestataire: this.idPrestataire
+        idComptePost: this.idPrestataire
       }
       this.createComment(comment)
       this.isAddComment = true;

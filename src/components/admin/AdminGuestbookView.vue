@@ -6,10 +6,21 @@
         :items="curentComments"
         :items-per-page="5"
         expand-icon="mdi-star"
-        class="elevation-1"
+        :class="idPrestataire ? 'elevation-1' : 'elevation-1 ma-5'"
+        :search="search"
+        :custom-filter="filterOnlyCapsText"
     >
+
+      <template v-slot:top>
+        <v-text-field
+            v-model="search"
+            label="Search"
+            class="mx-4"
+        ></v-text-field>
+      </template>
+
       <template v-slot:item="{ item }">
-        <tr :class="item.isPrestataire ? 'prestataire' : ''">
+        <tr :class="item.idComptePost ? 'prestataire' : ''">
           <td class="name">{{ item.name }}</td>
           <td>
             <StarDisplayView :stars="parseInt(item.note)" class="ma-auto"/>
@@ -17,8 +28,8 @@
           <td>{{item.date}}</td>
           <td>{{ item.text }}</td>
           <td>
-            <v-icon :color="item.isPrestataire ? 'green' : 'red'">
-              {{ item.isPrestataire ? "mdi-check" : "mdi-cancel" }}
+            <v-icon :color="item.idComptePost ? 'green' : 'red'">
+              {{ item.idComptePost ? "mdi-check" : "mdi-cancel" }}
             </v-icon>
           </td>
           <td>
@@ -32,7 +43,7 @@
         </tr>
       </template>
       <template v-slot:header="{ item }">
-        <div>
+        <div class="test">
           {{item}}
         </div>
       </template>
@@ -50,11 +61,12 @@ export default {
     idPrestataire: Number
   },
   data: () => ({
+    search: '',
     // headers props
     headers: [
       {
         text: 'Nom',
-        sortable: false,
+        sortable: true,
         align: 'center',
         value: 'name'
       },
@@ -80,7 +92,7 @@ export default {
         text: "Is prestataire",
         sortable: true,
         align: "center",
-        value: "isPrestataire"
+        value: "idComptePost"
       },
       {
         text: "Delete",
@@ -92,6 +104,7 @@ export default {
   }),
   computed: {
     curentComments() {
+      if (!this.idPrestataire) return this.getAllComment();
       return this.getAllComment().filter(comment => parseInt(comment.idPrestataire) === parseInt(this.idPrestataire));
     }
   },
@@ -101,6 +114,17 @@ export default {
     removeComment(idComment) {
       if (!confirm("Are you sure to delete ?")) return;
       this.deleteComment(idComment);
+    },
+    filterOnlyCapsText(value, search, item) {
+      if (!value) return false;
+      if (!search) return false;
+      if (typeof value !== 'string') return false;
+      if (item.name.toString().toLowerCase().includes(search.toLowerCase())) return true;
+      if (item.note.toString().toLowerCase().includes(search.toLowerCase())) return true;
+      if (item.date.toString().toLowerCase().includes(search.toLowerCase())) return true;
+      if (item.text.toString().toLowerCase().includes(search.toLowerCase())) return true;
+      return item.idComptePost && "is prestataire".toString().toLowerCase().includes(search.toLowerCase());
+
     }
   },
   components: {
