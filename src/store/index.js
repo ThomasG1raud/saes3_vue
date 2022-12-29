@@ -49,6 +49,7 @@ export default new Vuex.Store({
             {
                 name: 'Frozen Yogurt',
                 note: 4,
+                date: "29/12/2022",
                 text: '1%',
                 idPrestataire: 1
             },
@@ -219,6 +220,9 @@ export default new Vuex.Store({
         getAllCategory: (state) => {
             return state.allCategory
         },
+        getAllComment: (state) => {
+            return state.allComment
+        },
         getStandId: (state) => (idPrestataire) =>  {
             return state.standId = state.allPrestataire.find(prestataire => parseInt(prestataire.id) === parseInt(idPrestataire)).idStand;
         },
@@ -264,6 +268,9 @@ export default new Vuex.Store({
         },
         addHoraire: (state, horaire) => {
             state.allHoraire.push(horaire);
+        },
+        postComment: (state, comment) => {
+            state.allComment.push(comment)
         },
         removeHoraire: (state, indexDelete) => {
             state.allHoraire.splice(indexDelete, 1);

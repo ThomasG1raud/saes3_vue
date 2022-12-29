@@ -99,15 +99,11 @@ export default {
     ],
     nameRules: [
       v => !!v || 'Name is required',
-      v => /\D+/.test(v) || 'The name must not contain a number',
-    ],
-    emailRules: [
-      v => !!v || 'E-mail is required',
-      v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+      v => /^[^0-9]+$/.test(v) || 'The name must not contain a number',
     ],
     textRules: [
       v => !!v || 'Text is required',
-      v => (v && v.length > 50) || 'Name must be less than 50 characters',
+      v => (v && v.length >= 50) || 'The text must be at least 50 characters',
     ],
   }),
   created() {

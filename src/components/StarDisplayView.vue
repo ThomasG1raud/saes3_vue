@@ -26,7 +26,6 @@ export default {
 .div-star {
   width: min-content;
   display: grid;
-  margin: auto;
   grid-template-columns: repeat(5, 1fr);
 }
 </style>
