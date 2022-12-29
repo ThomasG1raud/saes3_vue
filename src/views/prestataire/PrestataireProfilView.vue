@@ -25,7 +25,7 @@
 
         <div class="partie">
           <p> Horaire : </p>
-          <router-link class="underline" to="'/prestataire/calendrier/'+idPrestataire">
+          <router-link class="underline" :to="'/prestataire/calendrier/'+idPrestataire">
             <div v-if="curentHoraire.length">
               <p  v-for="(horaire, index) in curentHoraire" :key="index">
                 {{horaire.name}} : {{ horaire.start.substr(11, 5) }} - {{ horaire.end.substr(11, 5) }} <!--todo -->
@@ -51,7 +51,7 @@
         <div class="partie">
           <p> Nom du stand : </p>
           <p class="text-capitalize">
-            <router-link class="underline" to="'/map/'+curentPrestataire.idStand">
+            <router-link class="underline" :to="'/map/'+curentPrestataire.idStand">
               {{ curentPrestataire.nomStand }}
             </router-link>
           </p>
@@ -224,6 +224,8 @@ export default {
   }
   #addHoraire {
     color: var(--blue);
-    text-decoration-line: underline;
+  }
+  #addHoraire:hover {
+    text-decoration: underline;
   }
 </style>

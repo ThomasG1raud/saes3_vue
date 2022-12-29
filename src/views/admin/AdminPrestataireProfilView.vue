@@ -17,7 +17,7 @@
             Categorie :
           </p>
           <p class="text-capitalize">
-            <router-link class="underline" to="'/admin/prestataire/#'+curentPrestataire.type">
+            <router-link class="underline" :to="'/admin/prestataire/#'+curentPrestataire.type">
               {{ curentPrestataire.type }}
             </router-link>
           </p>
@@ -25,15 +25,23 @@
 
         <hr>
 
-        <div class="partie" v-if="curentHoraire.length">
+        <div class="partie">
           <p> Horaire : </p>
-          <router-link class="underline" to="/admin/calendrier">
-            <p v-for="(horaire, index) in curentHoraire" :key="index">
-              {{horaire.name}} : {{ horaire.start.substr(11, 5) }} - {{ horaire.end.substr(11, 5) }} <!--todo -->
-            </p>
+          <router-link class="underline" :to="'/admin/calendrier/'">
+            <div v-if="curentHoraire.length">
+              <p  v-for="(horaire, index) in curentHoraire" :key="index">
+                {{horaire.name}} : {{ horaire.start.substr(11, 5) }} - {{ horaire.end.substr(11, 5) }} <!--todo -->
+              </p>
+            </div>
+            <div v-else>
+              <p id="addHoraire">
+                Ajouter un horraire
+              </p>
+            </div>
           </router-link>
         </div>
-        <hr v-if="curentHoraire.length">
+
+        <hr>
 
         <div class="partie">
           <p> E-mail:</p>
@@ -46,7 +54,7 @@
         <div class="partie">
           <p> Nom du stand : </p>
           <p class="text-capitalize">
-            <router-link class="underline" to="'/admin/map/'+curentPrestataire.idStand">
+            <router-link class="underline" :to="'/admin/map/'+curentPrestataire.idStand">
               {{ curentPrestataire.nomStand }}
             </router-link>
           </p>
@@ -215,5 +223,11 @@ export default {
   }
   .btn-edit:last-child {
     --defined-color-secondary: var(--orange);
+  }
+  #addHoraire {
+    color: var(--blue);
+  }
+  #addHoraire:hover {
+    text-decoration: underline;
   }
 </style>
