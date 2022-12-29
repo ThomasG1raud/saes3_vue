@@ -30,7 +30,7 @@
           <router-link class="underline" :to="'/admin/calendrier/'">
             <div v-if="curentHoraire.length">
               <p  v-for="(horaire, index) in curentHoraire" :key="index">
-                {{horaire.name}} : {{ horaire.start.substr(11, 5) }} - {{ horaire.end.substr(11, 5) }} <!--todo -->
+                {{horaire.name}} : {{ horaire.start.substr(11, 5) }} - {{ horaire.end.substr(11, 5) }} <!--todo affichage corecte de la date-->
               </p>
             </div>
             <div v-else>

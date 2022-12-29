@@ -67,7 +67,7 @@
                   <div class="flex-grow-1"></div>
                 </v-toolbar>
                 <v-card-text tag="h1">
-                  {{ "idPrestataire = "+selectedEvent.idPrestataire }} <!--todo -->
+                  {{ "idPrestataire = "+selectedEvent.idPrestataire }} <!--todo affichage du nom du prestataire-->
                 </v-card-text>
                 <v-card-text>
                   <form v-if="currentlyEditing !== selectedEvent.id">

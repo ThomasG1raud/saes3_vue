@@ -22,7 +22,6 @@ import AdminCalendrierView from "@/views/admin/AdminCalendrierView.vue";
 
 import AdminGuestbookView from "@/components/admin/AdminGuestbookView.vue";
 
-import AdminStandView from "@/views/admin/AdminStandView";
 import AdminPrestataireView from "@/views/admin/AdminPrestataireView";
 import AdminPrestataireProfilView from "@/views/admin/AdminPrestataireProfilView.vue";
 import AdminPrestataireEditProfilView from "@/views/admin/AdminPrestataireEditProfilView.vue";
@@ -142,11 +141,6 @@ const routes = [
     path: "/admin/calendrier",
     name: "admin_calendrier",
     component: AdminCalendrierView
-  },
-  {
-    path: "/admin/stand",
-    name: "stand",
-    component: AdminStandView
   },
     // Admin classic
     // ------------------------------------

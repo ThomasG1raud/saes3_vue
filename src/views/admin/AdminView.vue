@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>
-<!--      TODO -->
+<!--      TODO make vue-->
       view de admin
     </h1>
   </div>

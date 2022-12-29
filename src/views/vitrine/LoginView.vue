@@ -67,7 +67,7 @@ export default {
         if (admin) {
           this.setAccountId(admin.id);
           this.setAccountType(2);
-          router.push("/admin/calendrier");
+          router.push("/admin");
         } else {
           this.isWrong = true
           setTimeout(() => {this.isWrong=false}, 3000);

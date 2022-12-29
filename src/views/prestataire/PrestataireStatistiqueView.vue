@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>
-<!--      TODO -->
+<!--      TODO make vue-->
       Page statistique tu prestataire
     </h1>
   </div>

@@ -7,7 +7,7 @@
         <div class="divInfo">
           <div class="infoStand">
             <p v-for="(horaire, index) in curentHoraire" :key="index">
-              {{horaire.name}} : {{ horaire.start.substr(11, 5) }} - {{ horaire.end.substr(11, 5) }} <!--todo -->
+              {{horaire.name}} : {{ horaire.start.substr(11, 5) }} - {{ horaire.end.substr(11, 5) }} <!--todo affichage corecte de la date-->
             </p>
             <h2>{{ curentPrestataire.nomStand }}</h2>
           </div>

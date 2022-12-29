@@ -27,11 +27,10 @@
       </div>
 <!--      Login with admin-->
       <div class="div-nav" v-else-if="getConnected === 2">
-        <router-link class="item" to="/">
+        <router-link class="item" to="/admin">
           <img src="@/assets/logo_sae_white.png" alt="logo_sae_white" id="logo_navbar">
         </router-link>
         <router-link class="item" to="/admin/calendrier">Calendrier</router-link>
-        <router-link class="item" to="/admin/stand">Stand</router-link>
         <router-link class="item" to="/admin/guestbook">Livre d'or</router-link>
         <router-link class="item" to="/admin/prestataire">Prestataire</router-link>
         <router-link class="item" to="/admin/map">Map</router-link>
@@ -85,7 +84,7 @@ export default {
     loginAdmin() {
       this.setAccountId(99);
       this.setAccountType(2);
-      router.push("/admin/calendrier");
+      router.push("/admin");
     }
   }
 }
