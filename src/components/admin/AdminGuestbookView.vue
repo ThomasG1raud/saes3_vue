@@ -21,11 +21,16 @@
 
       <template v-slot:item="{ item }">
         <tr :class="item.idComptePost ? 'prestataire' : ''">
-          <td class="name">{{ item.name }}</td>
+          <td class="name" v-if="!item.idComptePost">{{ item.name }}</td>
+          <td class="name" v-else>
+            <router-link class="item" :to="'/admin/prestataire/'+item.idComptePost">
+              {{ item.name }}
+            </router-link>
+          </td>
           <td>
             <StarDisplayView :stars="parseInt(item.note)" class="ma-auto"/>
           </td>
-          <td>{{item.date}}</td>
+          <td>{{ item.date }}</td>
           <td>{{ item.text }}</td>
           <td>
             <v-icon :color="item.idComptePost ? 'green' : 'red'">
@@ -44,7 +49,7 @@
       </template>
       <template v-slot:header="{ item }">
         <div class="test">
-          {{item}}
+          {{ item }}
         </div>
       </template>
     </v-data-table>
@@ -138,30 +143,44 @@ export default {
   margin-top: 60px;
   background-color: var(--background);
 }
+
+a.item.router-link-exact-active {
+  text-decoration: underline;
+}
+
 td.name {
   width: 200px;
 }
+
 .alert-star {
   display: flex;
   margin: auto;
   width: max-content;
 }
+
 .alert {
   scale: 1;
   animation: 1s displayZoom;
 }
+
 .theme--light.v-icon:focus::after {
   opacity: 0;
 }
+
+tr.prestataire {
+  background-color: rgb(0, 0, 256, 0.1);
+}
+
+tr.prestataire:hover {
+  background-color: rgb(0, 0, 256, 0.2) !important;
+}
+tr.prestataire:hover > td.name > a.item{
+  text-decoration: underline;
+}
+
 @keyframes displayZoom {
   0% {
     transform: rotateX(90deg);
   }
-}
-tr.prestataire {
-  background-color: rgb(0, 0, 256, 0.1);
-}
-tr.prestataire:hover {
-  background-color: rgb(0, 0, 256, 0.2) !important;
 }
 </style>
