@@ -21,6 +21,12 @@
             label="Surname"
             required
         ></v-text-field>
+        <v-text-field
+            v-model="email"
+            :rules="emailRules"
+            label="E-mail"
+            required
+        ></v-text-field>
 
         <StarEditView @value-changed="chnageNote" :stars="parseInt(note ? parseInt(note) : 0)" :isAddComment="isAddComment"/>
 
@@ -81,7 +87,7 @@
         class="elevation-1"
     >
       <template v-slot:item="{ item }">
-        <tr>
+        <tr :class="item.isPrestataire ? 'prestataire' : ''">
           <td class="name">{{ item.name }}</td>
           <td>
             <StarDisplayView :stars="item.note" class="ma-auto"/>
@@ -104,6 +110,7 @@ import StarDisplayView from "@/components/StarDisplayView.vue";
 import StarEditView from "@/components/StarEditView.vue";
 import {mapGetters, mapMutations} from "vuex";
 import router from "@/router";
+
 export default {
   name: "VitrineGuestbookView",
   props: {
@@ -114,6 +121,7 @@ export default {
     valid: true,
     firstname: '',
     surname: '',
+    email: '',
     note: 0,
     textComment: '',
     nameRules: [
@@ -124,6 +132,10 @@ export default {
     commentRules: [
       v => !!v || 'Comment is required',
       v => (v && v.length > 10) || 'The text must be at least 10 characters',
+    ],
+    emailRules: [
+      v => !!v || 'E-mail is required',
+      v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
     ],
 
     // headers props
@@ -160,16 +172,17 @@ export default {
     },
     getDate() {
       return new Date().toISOString().substr(0, 10);
-    }
+    },
   },
   methods: {
-    ...mapGetters(["getAllComment"]),
+    ...mapGetters(["getAllComment", "isAlreadyAnAccound"]),
     ...mapMutations(["postComment"]),
     addComment() {
       if (this.isAddComment) return;
       if (!this.$refs.form.validate()) return;
       const comment = {
         name: `${this.surname} ${this.firstname}`,
+        email: this.email,
         note: this.note,
         text: this.textComment,
         date: this.getDate,
@@ -220,5 +233,11 @@ td.name {
   0% {
     transform: rotateX(90deg);
   }
+}
+tr.prestataire {
+  background-color: rgb(0, 0, 256, 0.1);
+}
+tr.prestataire:hover {
+  background-color: rgb(0, 0, 256, 0.2) !important;
 }
 </style>

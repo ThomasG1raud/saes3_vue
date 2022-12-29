@@ -47,18 +47,31 @@ export default new Vuex.Store({
         ],
         allComment: [
             {
-                name: 'Frozen Yogurt',
+                name: "Guillaume Plante",
+                email: "guillaume.plante@gmail.com",
                 note: 3,
-                date: "29/12/2022",
-                text: '1%',
-                idPrestataire: 1
+                date: "2022-12-29",
+                text: "Je sais pas quoi penser.",
+                idPrestataire: 1,
+                isPrestataire: false
             },
             {
-                name: 'Frozen Yogurt',
+                name: "Guillaume Plante",
+                email: "guillaume.plante@gmail.com",
+                note: 3,
+                date: "2022-12-29",
+                text: "Je sais pas quoi penser.",
+                idPrestataire: 2,
+                isPrestataire: false
+            },
+            {
+                name: "Nom du prestataire 1",
+                email: "prestataire1@gmail.com",
                 note: 5,
-                date: "29/12/2022",
-                text: '1%',
-                idPrestataire: 2
+                date: "2022-12-30",
+                text: "Très bon prestataiire",
+                idPrestataire: 2,
+                isPrestataire: true
             },
         ],
         allAdmin: [
@@ -241,6 +254,7 @@ export default new Vuex.Store({
             return state.allPrestataire.find(prestataire => parseInt(prestataire.id) === parseInt(idPrestataire)).password === password;
         },
         isAlreadyAnAccound: (state) => (email) => {
+            console.log(email)
             return state.allPrestataire.map(prestataire => prestataire.email).includes(email)
                 || state.allAdmin.map(admin => admin.email).includes(email)
         },
