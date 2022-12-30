@@ -16,7 +16,7 @@ import PrestataireProfilView from "@/views/prestataire/PrestataireProfilView";
 import PrestataireEditProfilView from "@/views/prestataire/PrestataireEditProfilView.vue";
 import PrestataireStatistiqueView from "@/views/prestataire/PrestataireStatistiqueView";
 
-import AdminView from "@/views/admin/AdminView";
+import AdminHomeView from "@/views/admin/AdminHomeView.vue";
 import AdminMapView from "@/views/admin/AdminMapView";
 import AdminCalendrierView from "@/views/admin/AdminCalendrierView.vue";
 
@@ -45,12 +45,12 @@ const routes = [
   // Vitrine
   {
     path: "/",
-    name: "home",
+    name: "vitrine_home",
     component: HomeView
   },
   {
     path: "/map",
-    name: "map",
+    name: "vitrine_map",
     component: VitrineMapView,
     children: [{
       path: ":idStand",
@@ -62,12 +62,12 @@ const routes = [
   },
   {
     path: "/calendrier",
-    name: "calendrier",
+    name: "vitrine_calendrier",
     component: VitrineCalendrierView
   },
   {
     path: "/liste_prestataire",
-    name: "liste_prestataire",
+    name: "vitrine_liste_prestataire",
     component: VitrinePrestataireView
   },
   {
@@ -122,8 +122,8 @@ const routes = [
     // Admin classic
   {
     path: "/admin",
-    name: "admin",
-    component: AdminView
+    name: "admin_home",
+    component: AdminHomeView
   },
   {
     path: "/admin/map",

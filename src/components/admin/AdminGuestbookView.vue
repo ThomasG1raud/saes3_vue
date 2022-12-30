@@ -1,14 +1,14 @@
 <template>
   <v-app id="guestbook" class="app">
     <!--    todo le syle d'un élément fait que : "min-height: 100vh;" donc il y a du blanc apres le tableau quand il est trop petit--->
-    <v-data-table
-        :headers="headers"
-        :items="curentComments"
-        :items-per-page="5"
-        expand-icon="mdi-star"
-        :class="idPrestataire ? 'elevation-1' : 'elevation-1 ma-5'"
-        :search="search"
-        :custom-filter="filterOnlyCapsText"
+    <v-data-table v-if="curentComments.length"
+                  :headers="headers"
+                  :items="curentComments"
+                  :items-per-page="5"
+                  expand-icon="mdi-star"
+                  :class="idPrestataire ? 'elevation-1' : 'elevation-1 ma-5'"
+                  :search="search"
+                  :custom-filter="filterOnlyCapsText"
     >
 
       <template v-slot:top>
@@ -32,7 +32,7 @@
           </td>
           <td>{{ item.date }}</td>
           <td>{{ item.text }}</td>
-          <td>
+          <td class="text-is-prestataire">
             <v-icon :color="item.idComptePost ? 'green' : 'red'">
               {{ item.idComptePost ? "mdi-check" : "mdi-cancel" }}
             </v-icon>
@@ -53,6 +53,22 @@
         </div>
       </template>
     </v-data-table>
+    <v-container v-else class="mt-5">
+      <v-alert
+          border="bottom"
+          color="red"
+          elevation="24"
+          icon="mdi-account"
+          type="error"
+      >
+        <span v-if="this.idPrestataire">
+          There are no comments for this prestataire.
+        </span>
+        <span v-else>
+          There are no comments for all prestataire.
+        </span>
+      </v-alert>
+    </v-container>
   </v-app>
 </template>
 
@@ -166,11 +182,13 @@ td.name {
 .theme--light.v-icon:focus::after {
   opacity: 0;
 }
+td.text-is-prestataire {
+  min-width: 150px;
+}
 
 tr.prestataire {
   background-color: rgb(0, 0, 256, 0.1);
 }
-
 tr.prestataire:hover {
   background-color: rgb(0, 0, 256, 0.2) !important;
 }

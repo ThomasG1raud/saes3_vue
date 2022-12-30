@@ -210,7 +210,6 @@ export default {
   div.btn-edit {
     position: absolute;
     translate: 1050px -25px;
-    height: 100px;
     display: flex;
     background-color: var(--background);
   }
