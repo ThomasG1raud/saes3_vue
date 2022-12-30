@@ -47,7 +47,7 @@
 import {mapGetters} from "vuex";
 
 export default {
-  name: "CardPrestataireView",
+  name: "VitrineCardPrestataireView",
   props: {
     idStand: Number
   },

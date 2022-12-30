@@ -57,7 +57,7 @@ export default {
     research() {
       let prestataireFilter = this.getAllPrestataire;
       if (this.filterAssigner) {
-        prestataireFilter = prestataireFilter.filter(prestataire => (prestataire.idStand !== undefined) === (this.filterAssigner === "PrestataireAssigné"))
+        prestataireFilter = prestataireFilter.filter(prestataire => (prestataire.idStand !== 0) === (this.filterAssigner === "PrestataireAssigné"))
       }
       if (this.filterCategory) {
         prestataireFilter = prestataireFilter.filter(prestataire => (prestataire.type === this.filterCategory))

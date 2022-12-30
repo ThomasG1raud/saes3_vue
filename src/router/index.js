@@ -54,7 +54,7 @@ const routes = [
     component: VitrineMapView,
     children: [{
       path: ":idStand",
-      component: () => import('@/components/map/CardPrestataireView'),
+      component: () => import('@/components/vitrine/VitrineCardPrestataireView.vue'),
       props: route => ({
         idStand: parseInt(route.params.idStand)
       })
@@ -130,10 +130,10 @@ const routes = [
     name: "admin_map",
     component: AdminMapView,
     children: [{
-      path: ":idPrestataire",
-      component: () => import('@/components/map/CardPrestataireForAdminView'),
+      path: ":idStand",
+      component: () => import('@/components/admin/AdminCardPrestataireView.vue'),
       props: (route) => ({
-        idPrestataire: parseInt(route.params.idPrestataire)
+        idStand: parseInt(route.params.idStand)
       })
     }]
   },

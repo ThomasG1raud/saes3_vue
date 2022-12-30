@@ -33,14 +33,14 @@
 import {mapGetters} from "vuex";
 
 export default {
-  name: "CardPrestataireForAdminView",
+  name: "AdminCardPrestataireView",
   props: {
-    idPrestataire: Number
+    idStand: Number
   },
   computed :{
-    ...mapGetters(["getInfoPrestataireByIdPrestataire"]),
+    ...mapGetters(["getInfoPrestataireByIdStand"]),
     curentPrestataire() {
-      return this.getInfoPrestataireByIdPrestataire(this.idPrestataire)
+      return this.getInfoPrestataireByIdStand(this.idStand)
     }
   }
 }
