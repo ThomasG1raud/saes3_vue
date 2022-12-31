@@ -7,25 +7,25 @@
         </div>
       </div>
 
-      <div class="">
+      <div class="info">
         <hr>
         <div>
           <h2>{{ curentPrestataire.nomStand }}</h2>
-          <p>12h23 - 16h45</p>
+          <p v-for="(horaire, index) in curentPrestatireHoraire" :key="index">
+            {{horaire.name}} : {{ horaire.start.substr(11, 5) }} - {{ horaire.end.substr(11, 5) }} <!--todo affichage corecte de la date-->
+          </p>
         </div>
         <hr>
         <div class="line">
-          <p>Nom :</p>
-          <p>{{ curentPrestataire.name }}</p>
+          <p>Nom : {{ curentPrestataire.name }}</p>
         </div>
         <hr>
         <div class="line">
-          <p>Categorie :</p>
-          <p>{{ curentPrestataire.type }}</p>
+          <p>Categorie : {{ curentPrestataire.type }}</p>
         </div>
         <hr>
         <div class="line">
-          <p>{{ curentPrestataire.text }}</p>
+          <p>Texte : {{ curentPrestataire.text }}</p>
         </div>
       </div>
 
@@ -42,9 +42,12 @@ export default {
     idPrestataire: Number
   },
   computed: {
-    ...mapGetters(["getInfoPrestataireByIdPrestataire"]),
+    ...mapGetters(["getInfoPrestataireByIdPrestataire", "getAllHoraireByIdPrestataire"]),
     curentPrestataire() {
       return this.getInfoPrestataireByIdPrestataire(this.idPrestataire)
+    },
+    curentPrestatireHoraire() {
+      return this.getAllHoraireByIdPrestataire(this.idPrestataire)
     }
   }
 }
@@ -52,7 +55,6 @@ export default {
 
 <style scoped>
 .card {
-  /*border: 1px solid var(--very-very-dark);*/
   height: 100%;
   margin-right: 10px;
   display: flex;
@@ -83,10 +85,10 @@ img {
 }
 
 div.line {
-  display: flex;
+  text-align: left;
   padding: 10px;
 }
-div.line > p:first-child {
-  margin-right: 5px;
+div.info {
+  margin-bottom: 10px;
 }
 </style>
