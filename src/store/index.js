@@ -296,7 +296,11 @@ export default new Vuex.Store({
 
         getAllHoraire: (state) => {
             return state.allHoraire;
-        }
+        },
+        getAllHoraireByIdPrestataire: (state) => (idPrestataire) => {
+            return state.allHoraire.filter(horaire => parseInt(horaire.idPrestataire) === parseInt(idPrestataire));
+        },
+
     },
     mutations: {
         incrementIdPrestataire (state) {
