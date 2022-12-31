@@ -91,7 +91,7 @@
                 ref="calendar"
                 v-model="focus"
                 color="var(--blue)"
-                :events="events"
+                :events="getEvents"
                 :event-color="getEventColor"
                 :event-margin-bottom="3"
                 :now="today"
@@ -226,14 +226,10 @@ export default {
     selectedEvent: {},
     selectedElement: null,
     selectedOpen: false,
-    events: [],
     dialog: false,
     dialogDate: false,
     currentPrestataireSelected: {},
   }),
-  mounted () {
-    this.reloadHoraire()
-  },
   computed: {
     title () {
       const { start, end } = this
@@ -280,19 +276,14 @@ export default {
       get() {
         return this.getListPrestataire.filter(prestataire => prestataire.id === this.currentIdEditPrestataireSelected).map(prestataire => prestataire.name)[0];
       }
+    },
+    getEvents() {
+      return this.getAllHoraire();
     }
   },
   methods: {
     ...mapGetters(["getAllHoraire", "getAllPrestataire", "getInfoPrestataireByIdPrestataire"]),
     ...mapActions(["createHoraire", "deleteHoraire", "editDetails"]),
-    reloadHoraire() {
-      const allHoraire = this.getAllHoraire();
-      const events = []
-      allHoraire.forEach(horaire => {
-        events.push(horaire)
-      })
-      this.events = events
-    },
     setDialogDate( { date }) {
       this.start = null;
       this.end = null;
@@ -326,7 +317,6 @@ export default {
           idPrestataire: this.currentPrestataireSelected.id
         }
         this.createHoraire(horaire)
-        this.reloadHoraire()
         this.name = ''
         this.details = ''
         this.start = ''
@@ -348,7 +338,6 @@ export default {
     async deleteEvent (ev) {
       this.deleteHoraire(ev)
       this.selectedOpen = false
-      this.reloadHoraire();
     },
     showEvent ({ nativeEvent, event }) {
       const open = () => {

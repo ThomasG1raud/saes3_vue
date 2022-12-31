@@ -1,7 +1,6 @@
 <template>
   <v-app id="calendar">
     <template>
-      {{idPrestataire}}
       <v-row class="fill-height">
         <v-col>
           <v-sheet height="64">
@@ -84,7 +83,7 @@
                 ref="calendar"
                 v-model="focus"
                 color="var(--blue)"
-                :events="events"
+                :events="getEvents(idPrestataire)"
                 :event-color="getEventColor"
                 :event-margin-bottom="3"
                 :now="today"
@@ -205,13 +204,9 @@ export default {
     selectedEvent: {},
     selectedElement: null,
     selectedOpen: false,
-    events: [],
     dialog: false,
     dialogDate: false
   }),
-  mounted () {
-    this.reloadHoraire()
-  },
   computed: {
     title () {
       const { start, end } = this
@@ -242,23 +237,13 @@ export default {
         timeZone: 'UTC', month: 'long',
       })
     },
-    getListPrestataire () {
-      return this.getAllPrestataire();
+    getEvents(idPrestataire) {
+      return this.getAllHoraireByIdPrestataire(idPrestataire);
     }
   },
   methods: {
-    ...mapGetters(["getAllHoraire", "getAllPrestataire", "getInfoPrestataireByIdPrestataire"]),
+    ...mapGetters(["getAllHoraireByIdPrestataire", "getAllPrestataire", "getInfoPrestataireByIdPrestataire"]),
     ...mapActions(["createHoraire", "deleteHoraire", "editDetails"]),
-    reloadHoraire() {
-      const allHoraire = this.getAllHoraire();
-      const events = []
-      allHoraire.forEach(horaire => {
-        if (horaire.idPrestataire === this.idPrestataire) {
-          events.push(horaire)
-        }
-      })
-      this.events = events
-    },
     setDialogDate( { date }) {
       this.start = null;
       this.end = null;
@@ -292,7 +277,6 @@ export default {
           idPrestataire: this.idPrestataire
         }
         this.createHoraire(horaire)
-        this.reloadHoraire()
         this.name = ''
         this.details = ''
         this.start = ''
@@ -313,7 +297,6 @@ export default {
     async deleteEvent (ev) {
       this.deleteHoraire(ev)
       this.selectedOpen = false
-      this.reloadHoraire();
     },
     showEvent ({ nativeEvent, event }) {
       const open = () => {

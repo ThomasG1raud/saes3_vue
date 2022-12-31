@@ -45,7 +45,7 @@
                 ref="calendar"
                 v-model="focus"
                 color="var(--blue)"
-                :events="events"
+                :events="getEvents"
                 :event-color="getEventColor"
                 :event-margin-bottom="3"
                 :now="today"
@@ -125,11 +125,7 @@ export default {
     selectedEvent: {},
     selectedElement: null,
     selectedOpen: false,
-    events: []
   }),
-  mounted () {
-    this.reloadHoraire()
-  },
   computed: {
     title () {
       const { start, end } = this
@@ -159,18 +155,13 @@ export default {
       return this.$refs.calendar.getFormatter({
         timeZone: 'UTC', month: 'long',
       })
+    },
+    getEvents() {
+      return this.getAllHoraire()
     }
   },
   methods: {
     ...mapGetters(["getAllHoraire"]),
-    reloadHoraire() {
-      const allHoraire = this.getAllHoraire();
-      const events = []
-      allHoraire.forEach(horaire => {
-        events.push(horaire)
-      })
-      this.events = events
-    },
     viewDay ({ date }) {
       this.focus = date
       this.type = 'day'
