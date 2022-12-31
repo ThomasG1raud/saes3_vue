@@ -90,16 +90,6 @@ button.btn-edit {
   --defined-color-primary: var(--green);
   --defined-color-secondary: var(--very-very-dark);
 }
-
-div.activite {
-  background-color: var(--activite);
-}
-div.spectacle {
-  background-color: var(--spectacle);
-}
-div.restauration {
-  background-color: var(--restauration);
-}
 a, a:hover {
   text-decoration-line: none;
   color: var(--link);
@@ -119,13 +109,13 @@ a.spectacle {
 a.restauration {
   color: var(--restauration);
 }
-.activite:before, .activite:after{
+.activite::before, .activite::after{
   content: "🗡";
 }
-.spectacle:before, .spectacle:after {
+.spectacle::before, .spectacle::after {
   content: "⚔️";
 }
-.restauration:before, .restauration:after {
+.restauration::before, .restauration::after {
   content: "🍲";
 }
 .activite, .spectacle, .restauration {

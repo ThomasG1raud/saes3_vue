@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="curentPrestataire">
+    <div v-if="curentPrestataire.idStand">
       <router-link class="linkCard" :to="'/admin/prestataire/'+curentPrestataire.id">
         <div class="card">
           <div class="divImage">
@@ -30,7 +30,7 @@
         </div>
       </router-link>
     </div>
-    <div v-else id="prestataireError">
+    <div v-else class="prestataireError">
       <v-alert
           border="bottom"
           color="var(--red)"
@@ -51,7 +51,7 @@ export default {
   props: {
     idStand: Number
   },
-  computed :{
+  computed: {
     ...mapGetters(["getInfoPrestataireByIdStand"]),
     curentPrestataire() {
       return this.getInfoPrestataireByIdStand(this.idStand)
@@ -117,15 +117,19 @@ button {
   --defined-color-primary: var(--very-very-light);
   --defined-color-secondary: var(--very-dark);
 }
-#prestataireError {
+
+.prestataireError {
   display: flex;
-  width: 100%;
+  align-items: center;
   height: 100%;
+  width: 100%;
 }
+
 .v-alert {
   margin: auto;
   padding: 30px;
 }
+
 .v-alert__content {
   margin-left: 10px;
 }

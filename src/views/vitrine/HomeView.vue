@@ -7,32 +7,26 @@
     </div>
     <section>
       <div class="grid" id="grid">
-        <CardActivityView :link-card="{path: '/liste_prestataire/', hash:'activite'}" type="activite"
-                          image-card="activite.png" title-card="Activités"
+        <CardActivityView :link-card="{path: '/liste_prestataire/', hash:'activite'}" type="activite" image-card="activite.png"
                           text-card="Découvrez les anciennes méthodes de la  sculpture, de la forge ou encore de la caligraphie"/>
-        <CardActivityView :link-card="{path: '/liste_prestataire/', hash:'spectacle'}" type="spectacle"
-                          image-card="spectacle.png" title-card="Spectacles"
+        <CardActivityView :link-card="{path: '/liste_prestataire/', hash:'spectacle'}" type="spectacle" image-card="spectacle.png"
                           text-card="Assistez aux combats de preux chevaliers, ecoutez la musique des temps anciens ou bien encore venez découvrir la vie des habitants du Moyen-age"/>
-        <CardActivityView :link-card="{path: '/liste_prestataire/', hash:'restauration'}" type="restauration"
-                          image-card="boutique.png" title-card="Boutiques, restauration"
+        <CardActivityView :link-card="{path: '/liste_prestataire/', hash:'restauration'}" type="restauration" image-card="boutique.png"
                           text-card="Prenez plaisir à découvrir la cuisine antique et ses saveurs authentique, ou offrez-vous un petit plaisir dans l'une de nos nombreuses boutiques"/>
       </div>
     </section>
 
     <MapView :height="540" :width="910" :zoomRatio="-1"/>
-    <!--    <HelloWorld msg="Welcome to Your Vue.js App"/>-->
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
 import MapView from "@/components/map/MapView";
 import CardActivityView from "@/components/vitrine/CardActivityView";
 
 export default {
   name: 'HomeView',
   components: {
-    // HelloWorld,
     MapView,
     CardActivityView
   }
@@ -85,5 +79,6 @@ export default {
   box-shadow: 5px 5px 3px var(--very-very-dark);
   rotate: 45deg;
 }
+
 </style>
 

@@ -54,19 +54,23 @@
       </template>
     </v-data-table>
     <v-container v-else class="mt-5">
-      <v-alert
-          border="bottom"
-          color="red"
-          elevation="24"
-          icon="mdi-account"
-          type="error"
+      <v-alert v-if="this.idPrestataire"
+               border="bottom"
+               color="warning"
+               elevation="24"
+               icon="mdi-comment"
+               type="warning"
       >
-        <span v-if="this.idPrestataire">
-          There are no comments for this prestataire.
-        </span>
-        <span v-else>
-          There are no comments for all prestataire.
-        </span>
+        There are no comments for this prestataire
+      </v-alert>
+      <v-alert v-else
+               border="bottom"
+               color="error"
+               elevation="24"
+               icon="mdi-comment"
+               type="error"
+      >
+        There are no comments for all prestataire
       </v-alert>
     </v-container>
   </v-app>
@@ -178,6 +182,7 @@ td.name {
 .theme--light.v-icon:focus::after {
   opacity: 0;
 }
+
 td.text-is-prestataire {
   min-width: 150px;
 }
@@ -185,6 +190,7 @@ td.text-is-prestataire {
 tr.prestataire {
   background-color: rgb(0, 0, 256, 0.1);
 }
+
 tr.prestataire:hover {
   background-color: rgb(0, 0, 256, 0.2) !important;
 }

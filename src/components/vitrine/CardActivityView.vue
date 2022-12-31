@@ -1,8 +1,8 @@
 <template>
     <router-link :to="linkCard" class="linkCard">
       <div class="max-h">
-        <div class="card" :class="type">
-          <h1 class="titleCard">{{titleCard}}</h1>
+        <div class="card">
+          <h1 class="titleCard" :class="type">{{type}}</h1>
           <p class="textCard">{{textCard}}</p>
           <div class="m-auto">
             <img :src="require('@/assets/'+imageCard)" alt="image card">
@@ -19,8 +19,12 @@ export default {
     linkCard: Object,
     type: String,
     imageCard: String,
-    titleCard: String,
     textCard: String
+  },
+  computed: {
+    getBackground() {
+      return `var(--${this.type})`;
+    }
   }
 }
 </script>
@@ -32,6 +36,8 @@ export default {
   }
   .card {
     color: var(--very-very-light);
+    background-color: v-bind(getBackground);
+    box-shadow: 0 0 15px var(--grey);
     border-radius: 20px;
     padding: 20px;
     transition-duration: 1s;
@@ -41,7 +47,7 @@ export default {
   .card:hover {
     transition-duration: 1s;
     scale: 1.02;
-    box-shadow: 0 0 15px var(--dark);
+    box-shadow: 0 0 15px var(--very-very-dark);
   }
   .textCard {
     padding-left: 20px;
@@ -54,8 +60,7 @@ export default {
   .m-auto {
     margin: auto;
   }
-  a.linkCard {
-    text-decoration: none;
-    color: var(--very-very-light);
+  h1 {
+    text-transform: capitalize;
   }
 </style>

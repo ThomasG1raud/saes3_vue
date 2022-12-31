@@ -20,7 +20,8 @@
             required
         ></v-text-field>
 
-        <StarEditView @value-changed="chnageNote" :stars="parseInt(note ? parseInt(note) : 0)" :isAddComment="isAddComment"/>
+        <StarEditView @value-changed="chnageNote" :stars="parseInt(note ? parseInt(note) : 0)"
+                      :isAddComment="isAddComment"/>
 
         <v-textarea
             v-model="textComment"
@@ -63,20 +64,22 @@
           color="blue"
           type="success"
       >
-        <div>Your comment  has been successfully added</div>
-        <div>Name : {{curentPrestataire.name}}</div>
-        <div class="alert-star">Note : <StarDisplayView :stars="parseInt(note)"/></div>
-        <div>Date : {{getDate}}</div>
-        <div>Text : {{textComment}}</div>
+        <div>Your comment has been successfully added</div>
+        <div>Name : {{ curentPrestataire.name }}</div>
+        <div class="alert-star">Note :
+          <StarDisplayView :stars="parseInt(note)"/>
+        </div>
+        <div>Date : {{ getDate }}</div>
+        <div>Text : {{ textComment }}</div>
       </v-alert>
     </v-col>
     <!--    todo le syle d'un élément fait que : "min-height: 100vh;" donc il y a du blanc apres le tableau quand il est trop petit--->
-    <v-data-table
-        :headers="headers"
-        :items="curentComments"
-        :items-per-page="5"
-        expand-icon="mdi-star"
-        class="elevation-1"
+    <v-data-table v-if="curentComments.length"
+                  :headers="headers"
+                  :items="curentComments"
+                  :items-per-page="5"
+                  expand-icon="mdi-star"
+                  class="elevation-1"
     >
       <template v-slot:item="{ item }">
         <tr :class="item.idComptePost ? 'prestataire' : ''">
@@ -84,16 +87,27 @@
           <td>
             <StarDisplayView :stars="parseInt(item.note)" class="ma-auto"/>
           </td>
-          <td>{{item.date}}</td>
+          <td>{{ item.date }}</td>
           <td>{{ item.text }}</td>
         </tr>
       </template>
       <template v-slot:header="{ item }">
         <div>
-          {{item}}
+          {{ item }}
         </div>
       </template>
     </v-data-table>
+    <v-container v-else class="mt-5">
+      <v-alert
+          border="bottom"
+          color="warning"
+          elevation="24"
+          icon="mdi-comment"
+          type="warning"
+      >
+        You have no comment
+      </v-alert>
+    </v-container>
   </v-app>
 </template>
 
@@ -199,29 +213,36 @@ export default {
   margin-top: 60px;
   background-color: var(--background);
 }
+
 td.name {
   width: 200px;
 }
+
 .alert-star {
   display: flex;
   margin: auto;
   width: max-content;
 }
+
 .alert {
   scale: 1;
   animation: 1s displayZoom;
 }
+
 .theme--light.v-icon:focus::after {
   opacity: 0;
 }
+
 @keyframes displayZoom {
   0% {
     transform: rotateX(90deg);
   }
 }
+
 tr.prestataire {
   background-color: rgb(0, 0, 256, 0.1);
 }
+
 tr.prestataire:hover {
   background-color: rgb(0, 0, 256, 0.2) !important;
 }

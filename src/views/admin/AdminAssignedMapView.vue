@@ -2,7 +2,7 @@
   <div id="racine">
     <div id="divForm">
       <div id="map">
-        <MapView :height="700" :width="800" :zoomRatio="0"></MapView>
+        <MapView :height="700" :width="800" :zoomRatio="-1"></MapView>
       </div>
     </div>
   </div>

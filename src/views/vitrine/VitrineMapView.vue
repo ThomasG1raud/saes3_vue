@@ -20,7 +20,7 @@
 
       </div>
       <div id="map">
-        <MapView :height="700" :width="800" :zoomRatio="0"></MapView>
+        <MapView :height="700" :width="800" :zoomRatio="-1"></MapView>
       </div>
     </div>
   </div>
@@ -123,5 +123,11 @@ p.restauration {
 }
 a, a:hover {
   text-decoration: none;
+}
+a.router-link-exact-active {
+  text-decoration: none;
+}
+a.router-link-exact-active > .namePrestataire {
+  border-color: var(--link);
 }
 </style>

@@ -1,32 +1,46 @@
 <template>
-  <router-link class="linkCard" :to="'/admin/prestataire/'+curentPrestataire.id">
-    <div class="card">
-      <div class="divImage">
-        <img :src="require('@/assets/'+curentPrestataire.imagePrestataire)">
-      </div>
-      <div class="divInfo">
-        <div class="infoStand">
-          <p>12h23 - 16h45</p>
-          <h2> {{ curentPrestataire.nomStand }}</h2>
-        </div>
-        <div class="infoPrestataire">
-          <div class="info">
-            <p>Nom :</p>
-            <p>{{ curentPrestataire.name }}</p>
+  <div>
+    <div v-if="curentPrestataire.idStand">
+      <router-link class="linkCard" :to="'/admin/prestataire/'+curentPrestataire.id">
+        <div class="card">
+          <div class="divImage">
+            <img :src="require('@/assets/'+curentPrestataire.imagePrestataire)">
           </div>
-          <hr>
-          <div class="info">
-            <p>Categorie :</p>
-            <p :class="curentPrestataire.type">{{ curentPrestataire.type }}</p>
+          <div class="divInfo">
+            <div class="infoStand">
+              <p>12h23 - 16h45</p>
+              <h2>{{ curentPrestataire.nomStand }}</h2>
+            </div>
+            <div class="infoPrestataire">
+              <div class="info">
+                <p>Nom :</p>
+                <p>{{ curentPrestataire.name }}</p>
+              </div>
+              <hr>
+              <div class="info">
+                <p>Categorie :</p>
+                <p :class="curentPrestataire.type">{{ curentPrestataire.type }}</p>
+              </div>
+              <hr>
+            </div>
           </div>
-          <hr>
+          <div class="divTextPresentation">
+            <p>{{ curentPrestataire.text }}</p>
+          </div>
         </div>
-      </div>
-      <div class="divTextPresentation">
-        <p>{{curentPrestataire.text}}</p>
-      </div>
+      </router-link>
     </div>
-  </router-link>
+    <div v-else class="prestataireError">
+      <v-alert
+          border="bottom"
+          color="var(--red)"
+          prominent
+          type="error"
+      >
+        Il n'y a pas de prestataire ici
+      </v-alert>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -37,7 +51,7 @@ export default {
   props: {
     idStand: Number
   },
-  computed :{
+  computed: {
     ...mapGetters(["getInfoPrestataireByIdStand"]),
     curentPrestataire() {
       return this.getInfoPrestataireByIdStand(this.idStand)
@@ -110,7 +124,12 @@ p {
   border-color: var(--very-dark);
 }
 
-
+.prestataireError {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
 
 button {
 
