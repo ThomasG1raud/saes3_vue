@@ -1,22 +1,34 @@
 <template>
-<!--  <img :src="require('@/assets/'+curentPrestataire.imagePrestataire)">-->
-<!--  <p> {{ curentPrestataire.nomStand }}</p>-->
-<!--  <p>{{ curentPrestataire.name }}</p>-->
-<!--  <p>{{ curentPrestataire.type }}</p>-->
-<!--  <p>{{curentPrestataire.text}}</p>-->
-  <router-link class="d-contents linkCard" :to="'/admin/prestataire/'+curentPrestataire.id">
+  <router-link class="d-contents" :to="'/admin/prestataire/'+curentPrestataire.id">
     <div class="card">
       <div class="d-contents">
         <div class="image">
-          <img :src="require('@/assets/'+curentPrestataire.imagePrestataire)">
+          <img :src="require('@/assets/'+curentPrestataire.imagePrestataire)" alt="image prestataire">
         </div>
       </div>
-      <div class="info">
-        <p> {{ curentPrestataire.nomStand }}</p>
-        <p>{{ curentPrestataire.name }}</p>
-        <p>{{ curentPrestataire.type }}</p>
-        <p>{{curentPrestataire.text}}</p>
+
+      <div class="">
+        <hr>
+        <div>
+          <h2>{{ curentPrestataire.nomStand }}</h2>
+          <p>12h23 - 16h45</p>
+        </div>
+        <hr>
+        <div class="line">
+          <p>Nom :</p>
+          <p>{{ curentPrestataire.name }}</p>
+        </div>
+        <hr>
+        <div class="line">
+          <p>Categorie :</p>
+          <p>{{ curentPrestataire.type }}</p>
+        </div>
+        <hr>
+        <div class="line">
+          <p>{{ curentPrestataire.text }}</p>
+        </div>
       </div>
+
     </div>
   </router-link>
 </template>
@@ -29,7 +41,7 @@ export default {
   props: {
     idPrestataire: Number
   },
-  computed :{
+  computed: {
     ...mapGetters(["getInfoPrestataireByIdPrestataire"]),
     curentPrestataire() {
       return this.getInfoPrestataireByIdPrestataire(this.idPrestataire)
@@ -39,16 +51,21 @@ export default {
 </script>
 
 <style scoped>
-a.linkCard {
-  margin-bottom: 10px;
-}
 .card {
-  border: 1px solid var(--very-very-dark);
+  /*border: 1px solid var(--very-very-dark);*/
   height: 100%;
-  margin: 10px;
+  margin-right: 10px;
   display: flex;
   flex-direction: column;
+
+  border-radius: 30px;
+  box-shadow: 0 0 15px var(--grey);
+  transition-duration: 250ms;
 }
+.card:hover {
+  box-shadow: 0 0 15px var(--dark);
+}
+
 div.image {
   height: 100%;
   overflow: hidden;
@@ -56,14 +73,20 @@ div.image {
   aspect-ratio: 1;
   /*margin: 0 auto;*/
 }
+
 .d-contents {
   display: contents;
 }
+
 img {
   height: inherit;
 }
 
-div.info {
-  border: 1px solid blue;
+div.line {
+  display: flex;
+  padding: 10px;
+}
+div.line > p:first-child {
+  margin-right: 5px;
 }
 </style>
