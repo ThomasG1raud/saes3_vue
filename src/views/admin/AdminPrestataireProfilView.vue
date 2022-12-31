@@ -17,7 +17,7 @@
             Categorie :
           </p>
           <p class="text-capitalize">
-            <router-link class="underline" :to="'/admin/prestataire/#'+curentPrestataire.type">
+            <router-link class="underline" :class="curentPrestataire.type" :to="'/admin/prestataire/#'+curentPrestataire.type">
               {{ curentPrestataire.type }}
             </router-link>
           </p>

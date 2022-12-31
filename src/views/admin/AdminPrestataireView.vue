@@ -1,14 +1,14 @@
 <template>
   <div id="PlusGrandDiv">
-    <div  v-for="(c,i) in $store.state.allCategory" :key="i">
-      <div id="categorie">
+    <div  v-for="(category,i) in $store.state.allCategory" :key="i"> <!--todo utiliser un getters-->
+      <div class="categorie">
         <div class="entete">
-          <p class="pCategorie" :id="c">{{ c }}</p>
+          <p class="pCategorie" :class="category">{{ category }}</p>
           <hr>
         </div>
       </div>
       <div id="grandDiv">
-        <div v-for="(prestataire, index) in $store.state.allPrestataire.filter(prestataire => prestataire.type===c)" :key="index">
+        <div v-for="(prestataire, index) in $store.state.allPrestataire.filter(prestataire => prestataire.type===category)" :key="index"> <!--todo utiliser les getters-->
           <AdminPrestataireCardView :idPrestataire="prestataire.id"/>
         </div>
       </div>
@@ -27,7 +27,7 @@ export default {
   }),
   computed: {
     research() {
-      return this.$store.state.allPrestataire.filter(prestataire => {
+      return this.$store.state.allPrestataire.filter(prestataire => { /*todo utiliser les getters*/
         if (prestataire.name.toLowerCase().includes(this.filter.toLowerCase())) return true
         if (prestataire.type.toLowerCase().startsWith(this.filter.toLowerCase())) return true
         return false
@@ -60,8 +60,7 @@ export default {
   background-color: var(--dark);
 }
 
-#categorie {
-
+.categorie {
   justify-content: start;
   align-items: center;
   margin-top: 20px;

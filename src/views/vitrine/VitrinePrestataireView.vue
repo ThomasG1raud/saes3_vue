@@ -1,9 +1,9 @@
 <template>
   <div id="PlusGrandDiv">
     <div v-for="(category,i) in getAllCategory" :key="i">
-      <div id="categorie">
+      <div class="categorie">
         <div class="entete">
-          <p class="pCategorie" :id="category">{{ category }}</p>
+          <p class="pCategorie" :class="category">{{ category }}</p>
           <hr>
         </div>
       </div>
@@ -57,8 +57,7 @@ export default {
   background-color: var(--dark);
 }
 
-#categorie {
-
+.categorie {
   justify-content: start;
   align-items: center;
   margin-top: 20px;

@@ -19,7 +19,7 @@
               <hr>
               <div class="info">
                 <p>Categorie :</p>
-                <p>{{ curentPrestataire.type }}</p>
+                <p :class="curentPrestataire.type">{{ curentPrestataire.type }}</p>
               </div>
               <hr>
             </div>

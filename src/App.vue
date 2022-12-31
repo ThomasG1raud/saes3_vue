@@ -110,6 +110,27 @@ a.underline:hover, a.item:hover {
 a.router-link-exact-active {
   text-decoration: underline;
 }
+a.activite {
+  color: var(--activite);
+}
+a.spectacle {
+  color: var(--spectacle);
+}
+a.restauration {
+  color: var(--restauration);
+}
+.activite:before, .activite:after{
+  content: "🗡";
+}
+.spectacle:before, .spectacle:after {
+  content: "⚔️";
+}
+.restauration:before, .restauration:after {
+  content: "🍲";
+}
+.activite, .spectacle, .restauration {
+  white-space: nowrap;
+}
 @keyframes displayZoom {
   0% {
     opacity: 0;
