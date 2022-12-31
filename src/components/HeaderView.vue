@@ -121,9 +121,6 @@ export default {
   button:hover, #connected-selected:hover {
     border-color: var(--very-very-light);
   }
-  a.item.router-link-exact-active {
-    text-decoration: underline;
-  }
   div.item {
     display: flex;
     align-items: center;

@@ -23,7 +23,7 @@
         <tr :class="item.idComptePost ? 'prestataire' : ''">
           <td class="name" v-if="!item.idComptePost">{{ item.name }}</td>
           <td class="name" v-else>
-            <router-link class="item" :to="'/admin/prestataire/'+item.idComptePost">
+            <router-link class="underline" :to="'/admin/prestataire/'+item.idComptePost">
               {{ item.name }}
             </router-link>
           </td>
@@ -160,10 +160,6 @@ export default {
   background-color: var(--background);
 }
 
-a.item.router-link-exact-active {
-  text-decoration: underline;
-}
-
 td.name {
   width: 200px;
 }
@@ -191,9 +187,6 @@ tr.prestataire {
 }
 tr.prestataire:hover {
   background-color: rgb(0, 0, 256, 0.2) !important;
-}
-tr.prestataire:hover > td.name > a.item{
-  text-decoration: underline;
 }
 
 @keyframes displayZoom {

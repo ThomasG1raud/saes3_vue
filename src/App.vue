@@ -46,6 +46,7 @@ export default {
   --green: #19dc22;
   --orange: #e09431;
 
+  --link: var(--blue);
   --activite: #70321d;
   --spectacle: #af5031;
   --restauration: #e1673e;
@@ -101,9 +102,13 @@ div.restauration {
 }
 a, a:hover {
   text-decoration-line: none;
+  color: var(--link);
 }
 a.underline:hover, a.item:hover {
   text-decoration-line: underline;
+}
+a.router-link-exact-active {
+  text-decoration: underline;
 }
 @keyframes displayZoom {
   0% {

@@ -1,5 +1,5 @@
 <template>
-  <router-link class="d-contents" :to="'/admin/prestataire/'+curentPrestataire.id">
+  <div class="d-contents">
     <div class="card">
       <div class="d-contents">
         <div class="image">
@@ -10,27 +10,52 @@
       <div class="info">
         <hr>
         <div>
-          <h2>{{ curentPrestataire.nomStand }}</h2>
-          <p v-for="(horaire, index) in curentPrestatireHoraire" :key="index">
-            {{horaire.name}} : {{ horaire.start.substr(11, 5) }} - {{ horaire.end.substr(11, 5) }} <!--todo affichage corecte de la date-->
+          <h2>
+            Nom du stand :
+            <router-link class="underline" :to="'/admin/map/'+curentPrestataire.idStand">
+              {{ curentPrestataire.nomStand }}
+            </router-link>
+          </h2>
+          <router-link class="underline" to="/admin/calendrier">
+            <button class="btn" v-if="!curentPrestatireHoraire.length">
+              Ajouter un horaire
+            </button>
+            <p v-for="(horaire, index) in curentPrestatireHoraire" :key="index">
+              {{horaire.name}} : {{ horaire.start.substr(11, 5) }} - {{ horaire.end.substr(11, 5) }} <!--todo affichage corecte de la date-->
+            </p>
+          </router-link>
+        </div>
+        <hr>
+        <div class="line">
+          <p>
+            Nom :
+            <router-link class="underline" :to="'/admin/prestataire/'+curentPrestataire.id">
+              {{ curentPrestataire.name }}
+            </router-link>
           </p>
         </div>
         <hr>
         <div class="line">
-          <p>Nom : {{ curentPrestataire.name }}</p>
+          <p>
+            Categorie :
+            <router-link class="underline" :to="'/admin/prestataire/#'+curentPrestataire.type">
+              {{ curentPrestataire.type }}
+            </router-link>
+          </p>
         </div>
         <hr>
         <div class="line">
-          <p>Categorie : {{ curentPrestataire.type }}</p>
-        </div>
-        <hr>
-        <div class="line">
-          <p>Texte : {{ curentPrestataire.text }}</p>
+          <p>
+            Texte :
+            <span>
+              {{ curentPrestataire.text }}
+            </span>
+          </p>
         </div>
       </div>
 
     </div>
-  </router-link>
+  </div>
 </template>
 
 <script>
@@ -72,7 +97,7 @@ div.image {
   height: 100%;
   overflow: hidden;
 
-  aspect-ratio: 1;
+  /*aspect-ratio: 1;*/
   /*margin: 0 auto;*/
 }
 
@@ -90,5 +115,10 @@ div.line {
 }
 div.info {
   margin-bottom: 10px;
+}
+.btn {
+  --defined-color-primary: var(--very-very-light);
+  --defined-color-secondary: var(--blue);
+  margin-bottom: 5px;
 }
 </style>

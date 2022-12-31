@@ -22,8 +22,8 @@
 				</l-image-overlay>
 				</l-map>
 			</div>
-			<router-view/>
-	</div>
+      <router-view/>
+    </div>
 	</template>
 	
 	<script>
