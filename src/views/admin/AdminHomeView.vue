@@ -44,9 +44,6 @@ export default {
 </script>
 
 <style scoped>
-* {
-  width: 100%;
-}
 .btn {
   width: 50%;
   margin-bottom: 10px;
@@ -60,6 +57,9 @@ export default {
   margin: 30px auto;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 30px;
+}
+div.image {
+  width: 100%;
 }
 img {
   width: inherit;

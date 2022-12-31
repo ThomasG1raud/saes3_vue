@@ -18,6 +18,7 @@ import PrestataireStatistiqueView from "@/views/prestataire/PrestataireStatistiq
 
 import AdminHomeView from "@/views/admin/AdminHomeView.vue";
 import AdminMapView from "@/views/admin/AdminMapView";
+import AdminAssignedMapView from "@/views/admin/AdminAssignedMapView.vue";
 import AdminCalendrierView from "@/views/admin/AdminCalendrierView.vue";
 
 import AdminGuestbookView from "@/components/admin/AdminGuestbookView.vue";
@@ -134,6 +135,18 @@ const routes = [
       component: () => import('@/components/admin/AdminCardPrestataireView.vue'),
       props: (route) => ({
         idStand: parseInt(route.params.idStand)
+      })
+    }]
+  },
+  {
+    path: "/admin/assigned/map",
+    name: "admin_assigned_map",
+    component: AdminAssignedMapView,
+    children: [{
+      path: ":idPrestataire",
+      component: () => import('@/components/admin/AdminCardAssignedPrestataireView.vue'),
+      props: (route) => ({
+        idPrestataire: parseInt(route.params.idPrestataire)
       })
     }]
   },

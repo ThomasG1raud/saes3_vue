@@ -100,7 +100,7 @@
 	
 	<style>
 	.leaflet-control-attribution {
-	display: none;
+    display: none;
   }
 
   .div-carte {

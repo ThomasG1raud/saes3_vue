@@ -48,7 +48,7 @@
         </tr>
       </template>
       <template v-slot:header="{ item }">
-        <div class="test">
+        <div>
           {{ item }}
         </div>
       </template>

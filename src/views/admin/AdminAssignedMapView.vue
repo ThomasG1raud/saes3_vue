@@ -1,40 +1,6 @@
 <template>
   <div id="racine">
     <div id="divForm">
-      <div id="formulaire">
-        <div class="div-input">
-          <select @change="onChangeAssigner($event)" name="assigner">
-            <option value="">--Please choose an option--</option>
-            <option value="PrestataireAssigné">Voir les prestataires assignés</option>
-            <option value="PrestataireNonAssigné">Assigner un prestataire</option>
-          </select>
-
-          <select @change="onChangeCategory($event)" name="category">
-            <option value="">--Please choose an Category--</option>
-            <option v-for="(category, index) in getAllCategory" :key="index" :value="category">{{category}}</option>
-          </select>
-        </div>
-
-        <div id="listePrestataire">
-          <v-alert
-              v-if="!research.length"
-              outlined
-              text
-              color="var(--orange)"
-              type="warning"
-          >Aucun prestataire n'as été touver</v-alert>
-          <div v-for="(prestataire,index) in research" :key="index">
-            <router-link :to="prestataire.idStand ? `/admin/map/${prestataire.idStand}` : `/admin/assigned/map/${prestataire.id}`">
-              <div class="namePrestataire">
-                <p :class="prestataire.type">
-                  <span>{{ prestataire.name }}</span>, {{ prestataire.nomStand }}
-                </p>
-              </div>
-            </router-link>
-          </div>
-        </div>
-
-      </div>
       <div id="map">
         <MapView :height="700" :width="800" :zoomRatio="0"></MapView>
       </div>
@@ -47,7 +13,7 @@ import MapView from "@/components/map/MapView";
 import {mapGetters} from "vuex"
 
 export default {
-  name: "AdminMapView",
+  name: "AdminAssignedMapView",
   data: () => ({
     filterAssigner: "",
     filterCategory: ""
