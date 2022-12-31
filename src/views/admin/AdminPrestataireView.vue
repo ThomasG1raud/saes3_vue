@@ -1,6 +1,6 @@
 <template>
   <div id="PlusGrandDiv">
-    <div  v-for="(category,i) in $store.state.allCategory" :key="i"> <!--todo utiliser un getters-->
+    <div  v-for="(category,i) in getAllCategory" :key="i">
       <div class="categorie">
         <div class="entete">
           <p class="pCategorie" :class="category">{{ category }}</p>
@@ -8,7 +8,7 @@
         </div>
       </div>
       <div id="grandDiv">
-        <div v-for="(prestataire, index) in $store.state.allPrestataire.filter(prestataire => prestataire.type===category)" :key="index"> <!--todo utiliser les getters-->
+        <div v-for="(prestataire, index) in getAllPrestataire.filter(p => p.type===category)" :key="index">
           <AdminPrestataireCardView :idPrestataire="prestataire.id"/>
         </div>
       </div>
@@ -20,19 +20,11 @@
 
 <script>
 import AdminPrestataireCardView from "@/components/admin/AdminPrestataireCardView.vue";
+import {mapGetters} from "vuex";
 export default {
   name: "PrestataireView",
-  data: () => ({
-    filter: ""
-  }),
   computed: {
-    research() {
-      return this.$store.state.allPrestataire.filter(prestataire => { /*todo utiliser les getters*/
-        if (prestataire.name.toLowerCase().includes(this.filter.toLowerCase())) return true
-        if (prestataire.type.toLowerCase().startsWith(this.filter.toLowerCase())) return true
-        return false
-      });
-    }
+    ...mapGetters(["getAllCategory", "getAllPrestataire"])
   },
   components: {
     AdminPrestataireCardView

@@ -8,7 +8,7 @@
         </div>
       </div>
       <div id="grandDiv">
-        <div v-for="(prestataire, index) in getAllPrestataire.filter(prestataire => prestataire.type===category)" :key="index">
+        <div v-for="(prestataire, index) in getAllPrestataire.filter(p => p.type===category)" :key="index">
           <VitrinePrestataireCardView :idPrestataire="prestataire.id"/>
         </div>
       </div>
@@ -24,9 +24,6 @@ import {mapGetters} from "vuex";
 
 export default {
   name: "VitrinePrestataireView",
-  data: () => ({
-    filter: ""
-  }),
   components: {
     VitrinePrestataireCardView
   },
