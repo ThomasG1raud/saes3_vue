@@ -95,7 +95,8 @@ a {
 
 hr {
   width: 70%;
-  margin: 0;
+  color: currentColor;
+  background-color: currentColor;
 }
 
 p {

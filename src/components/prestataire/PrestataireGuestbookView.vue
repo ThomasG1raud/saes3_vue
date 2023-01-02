@@ -169,7 +169,7 @@ export default {
       return this.getAllComment().filter(comment => parseInt(comment.idPrestataire) === parseInt(this.idPrestataire));
     },
     getDate() {
-      return new Date().toISOString().substr(0, 10);
+      return new Date().toISOString().substr(0, 10); /*todo faire la date corectement*/
     },
   },
   methods: {

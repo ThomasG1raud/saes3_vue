@@ -208,8 +208,8 @@ import {mapActions, mapGetters} from "vuex";
 export default {
   name: "AdminCalendrierView",
   data: () => ({
-    today: new Date().toISOString().substr(0, 16),
-    focus: new Date().toISOString().substr(0, 16),
+    today: new Date().toISOString().substr(0, 16), /*todo faire la date corectement*/
+    focus: new Date().toISOString().substr(0, 16), /*todo faire la date corectement*/
     type: 'month',
     typeToLabel: {
       month: 'Month',

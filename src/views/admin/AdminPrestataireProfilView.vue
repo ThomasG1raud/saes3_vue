@@ -102,7 +102,7 @@ export default {
       router.push("/admin/prestataire/edit/"+this.idPrestataire)
     },
     edit_emplacement() {
-      router.push("/admin/map/"+this.idPrestataire)
+      router.push("/admin/assigned/map/"+this.idPrestataire)
     }
   },
   props: {
@@ -176,7 +176,6 @@ export default {
     width: 70%;
     height: 1px;
     margin-left: 5px;
-    background-color: var(--very-very-dark);
   }
 
   p {

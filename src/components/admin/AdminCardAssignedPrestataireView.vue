@@ -119,6 +119,6 @@ div.info {
 .btn {
   --defined-color-primary: var(--very-very-light);
   --defined-color-secondary: var(--blue);
-  margin-bottom: 5px;
+  margin: 5px;
 }
 </style>
