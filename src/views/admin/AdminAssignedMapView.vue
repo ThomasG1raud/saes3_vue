@@ -2,7 +2,10 @@
   <div id="racine">
     <div id="divForm">
       <div id="map">
-        <MapView :height="700" :width="800" :zoomRatio="-1"></MapView>
+        <MapView @value-changed="changeAssigner"
+            :height="700" :width="800"
+            :zoomRatio="-1" :base-url="'/admin/assigned'"
+        ></MapView>
       </div>
     </div>
   </div>
@@ -10,44 +13,41 @@
 
 <script>
 import MapView from "@/components/map/MapView";
-import {mapGetters} from "vuex"
+import {mapGetters, mapMutations} from "vuex";
 
 export default {
   name: "AdminAssignedMapView",
-  data: () => ({
-    filterAssigner: "",
-    filterCategory: ""
-  }),
-  computed: {
-    ...mapGetters(['getAllPrestataire', 'getAllCategory']),
-    research() {
-      let prestataireFilter = this.getAllPrestataire;
-      if (this.filterAssigner) {
-        prestataireFilter = prestataireFilter.filter(prestataire => (prestataire.idStand !== 0) === (this.filterAssigner === "PrestataireAssigné"))
-      }
-      if (this.filterCategory) {
-        prestataireFilter = prestataireFilter.filter(prestataire => (prestataire.type === this.filterCategory))
-      }
-      return prestataireFilter
-    }
+  props: {
+    idPrestataire: Number
   },
+  data: () => ({
+    idStand: 0
+  }),
   components: {
     MapView,
   },
+  computed: {
+    ...mapGetters(["getInfoPrestataireByIdStand"]),
+    curentPrestataire() {
+      return this.getInfoPrestataireByIdStand(this.idStand)
+    }
+  },
   methods: {
-    onChangeAssigner: function (evenement) {
-      this.filterAssigner = evenement.target.value
-    },
-    onChangeCategory: function (evenement) {
-      this.filterCategory = evenement.target.value
+    ...mapMutations(["setIdStand"]),
+    changeAssigner(idStand) {
+      this.idStand = idStand;
+      const prestataire = this.curentPrestataire;
+      if (!prestataire) {
+        this.setIdStand(this.idPrestataire, this.idStand);
+        return;
+      }
+      // console.log(prestataire.id)
     }
   }
 }
 </script>
 
 <style scoped>
-
-
 
 
 #divForm {
@@ -74,7 +74,7 @@ export default {
   height: 692px;
 }
 
-.namePrestataire{
+.namePrestataire {
   width: 500px;
   height: 50px;
   border: solid;
@@ -82,6 +82,7 @@ export default {
   background-color: var(--dark);
   color: var(--very-very-light);
 }
+
 #listePrestataire {
   overflow: scroll;
   width: 100%;
@@ -100,19 +101,22 @@ select {
   border-style: solid;
 }
 
-select:hover{
+select:hover {
   border-color: var(--light);
 }
 
 p.activite {
   background-color: var(--activite);
 }
+
 p.spectacle {
   background-color: var(--spectacle);
 }
+
 p.restauration {
   background-color: var(--restauration);
 }
+
 a, a:hover {
   text-decoration: none;
 }
@@ -122,6 +126,7 @@ div.div-input {
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 10px;
 }
+
 .v-alert {
   margin: 10px;
 }

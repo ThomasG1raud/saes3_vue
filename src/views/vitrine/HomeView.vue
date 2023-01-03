@@ -16,7 +16,7 @@
       </div>
     </section>
 
-    <MapView :height="540" :width="910" :zoomRatio="-1"/>
+    <MapView :height="540" :width="910" :zoomRatio="-1" :base-url="''"/>
   </div>
 </template>
 

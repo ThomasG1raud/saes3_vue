@@ -36,7 +36,7 @@
 
       </div>
       <div id="map">
-        <MapView :height="700" :width="800" :zoomRatio="-1"></MapView>
+        <MapView :height="700" :width="800" :zoomRatio="-1" :base-url="'/admin'"></MapView>
       </div>
     </div>
   </div>

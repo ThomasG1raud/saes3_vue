@@ -142,6 +142,9 @@ const routes = [
     path: "/admin/assigned/map",
     name: "admin_assigned_map",
     component: AdminAssignedMapView,
+    props: (route) => ({
+      idPrestataire: parseInt(route.params.idPrestataire)
+    }),
     children: [{
       path: ":idPrestataire",
       component: () => import('@/components/admin/AdminCardAssignedPrestataireView.vue'),

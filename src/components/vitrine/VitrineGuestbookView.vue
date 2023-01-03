@@ -28,7 +28,7 @@
             required
         ></v-text-field>
 
-        <StarEditView @value-changed="chnageNote" :stars="parseInt(note ? parseInt(note) : 0)"
+        <StarEditView @value-changed="changeNote" :stars="parseInt(note ? parseInt(note) : 0)"
                       :isAddComment="isAddComment"/>
 
         <v-textarea
@@ -213,7 +213,7 @@ export default {
     resetValidation() {
       this.$refs.form.resetValidation()
     },
-    chnageNote(note) {
+    changeNote(note) {
       this.note = note;
     }
   },
