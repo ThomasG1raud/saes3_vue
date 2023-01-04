@@ -14,6 +14,7 @@
 <script>
 import MapView from "@/components/map/MapView";
 import {mapGetters, mapMutations} from "vuex";
+import router from "@/router";
 
 export default {
   name: "AdminAssignedMapView",
@@ -27,7 +28,7 @@ export default {
     MapView,
   },
   computed: {
-    ...mapGetters(["getInfoPrestataireByIdStand"]),
+    ...mapGetters(["getInfoPrestataireByIdStand", "getInfoPrestataireByIdPrestataire"]),
     curentPrestataire() {
       return this.getInfoPrestataireByIdStand(this.idStand)
     }
@@ -36,9 +37,10 @@ export default {
     ...mapMutations(["setIdStand"]),
     changeAssigner(idStand) {
       this.idStand = idStand;
-      const prestataire = this.curentPrestataire;
+      let prestataire = this.curentPrestataire;
       if (!prestataire) {
-        this.setIdStand(this.idPrestataire, this.idStand);
+        this.getInfoPrestataireByIdPrestataire(this.idPrestataire).idStand = idStand;
+        router.push("/admin/map/"+idStand);
         return;
       }
       // console.log(prestataire.id)

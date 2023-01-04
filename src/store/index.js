@@ -318,12 +318,9 @@ export default new Vuex.Store({
         setAccountType: (state, type) => {
             state.connected = type;
         },
-        setIdStand: (state, idPrestataire, idStand) => {
-            state.allPrestataire.forEach((prestataire) => {
-                if (parseInt(prestataire.id) === parseInt(idPrestataire)) {
-                    prestataire.idStand = idStand;
-                }
-            })
+        setIdStand: (state, prestataire) => {
+            const idStand = undefined;
+            prestataire.idStand = idStand;
         },
         addPrestataire: (state, prestataire) => {
             state.allPrestataire.push(prestataire);

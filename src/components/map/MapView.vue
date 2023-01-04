@@ -11,7 +11,7 @@
 				ref="map"
 				@update:zoom="zoomUpdated"
 				@update:center="centerUpdated"
-				:style="{'width': width+'px', 'height': height+'px'}"
+				:style="{'width': getWidth+'px', 'height': getHeight+'px'}"
 			>
 				<l-image-overlay
 				:url="require('@/assets/carte.png')"
@@ -42,8 +42,8 @@
 		height: Number,
 		width: Number,
 		zoomRatio: Number,
-		catMarker: Number,
-    baseUrl: String
+    baseUrl: String,
+    zoomBound: Number
 	},
 	data: () => ({
     map: {
@@ -68,11 +68,43 @@
     }
 	}),
 	mounted() {
+    if (this.zoomBound) {
+      const height = this.height * this.zoomBound;
+      const width = this.width * this.zoomBound;
+      this.map.bounds = [[-height, -width], [height, width]];
+      this.map.markers = [
+        L.latLng(-210 * this.zoomBound, 490 * this.zoomBound),
+        L.latLng(50 * this.zoomBound, 462 * this.zoomBound),
+        L.latLng(-23 * this.zoomBound, 255 * this.zoomBound),
+        L.latLng(145 * this.zoomBound, 200 * this.zoomBound),
+        L.latLng(132 * this.zoomBound, -55 * this.zoomBound),
+        L.latLng(-40 * this.zoomBound, -5 * this.zoomBound),
+        L.latLng(-210 * this.zoomBound, 150 * this.zoomBound),
+        L.latLng(-210 * this.zoomBound, -120 * this.zoomBound),
+        L.latLng(115 * this.zoomBound, -440 * this.zoomBound),
+        L.latLng(-175 * this.zoomBound, -525 * this.zoomBound),
+      ]
+    }
+
 		this.addMarker(this.baseUrl, this.curentPrestataire, this.sendValueToParent);
 		this.$refs.map.mapObject.setView([-540, 910], this.map.zoomRatio);
 	},
   computed: {
     ...mapGetters(["getInfoPrestataireByIdStand"]),
+    getHeight() {
+      let height = this.height;
+      if (this.zoomBound) {
+        height *= this.zoomBound
+      }
+      return height
+    },
+    getWidth() {
+      let width = this.width;
+      if (this.zoomBound) {
+        width *= this.zoomBound
+      }
+      return width
+    }
   },
 	methods: {
     curentPrestataire(idStand) {

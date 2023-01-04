@@ -16,7 +16,9 @@
       </div>
     </section>
 
-    <MapView :height="540" :width="910" :zoomRatio="-1" :base-url="''"/>
+    <div class="centerMap">
+      <MapView :height="540" :width="910" :zoomRatio="-1" :base-url="''" :zoomBound="1.8"/>
+    </div>
   </div>
 </template>
 
@@ -79,6 +81,11 @@ export default {
   box-shadow: 5px 5px 3px var(--very-very-dark);
   rotate: 45deg;
 }
-
+.centerMap {
+  display: flex;
+}
+.centerMap > div {
+  margin: 0 auto;
+}
 </style>
 
