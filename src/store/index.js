@@ -136,7 +136,7 @@ export default new Vuex.Store({
                 imagePrestataire: "prestataire.png",
                 imageStand: "stand.png",
                 nomStand: "La bonne saucisse de michelle",
-                idStand: 3,
+                idStand: 0,
                 type: "restauration",
                 email: "prestataire3@gmail.com",
                 siren: 123456789,
@@ -175,8 +175,8 @@ export default new Vuex.Store({
                 imagePrestataire: "prestataire.png",
                 imageStand: "stand.png",
                 nomStand: "La bonne saucisse de michelle",
-                idStand: 6,
-                type: "activite",
+                idStand: 0,
+                type: "spectacle",
                 email: "prestataire6@gmail.com",
                 siren: 987654321,
                 id: 6,
@@ -245,6 +245,9 @@ export default new Vuex.Store({
         },
         getHoraireByIdPrestataire: (state) => (idPrestataire) => {
             return state.allHoraire.filter(horaire => parseInt(horaire.idPrestataire) === parseInt(idPrestataire))
+        },
+        getAllStandAssigned: (state)  => {
+            return state.allPrestataire.filter(prestataire => prestataire.idStand).map(prestataire => prestataire.idStand)
         },
         getIDPrestataireWithEmail: (state) => (email, password) => {
             return state.allPrestataire.find(prestataire => (prestataire.email === email && prestataire.password === password))

@@ -86,11 +86,11 @@
       ]
     }
 
-		this.addMarker(this.baseUrl, this.curentPrestataire, this.sendValueToParent);
+		this.addMarker(this.baseUrl, this.curentPrestataire, this.sendValueToParent, this.getAllStandAssigned, this.getOption);
 		this.$refs.map.mapObject.setView([-540, 910], this.map.zoomRatio);
 	},
   computed: {
-    ...mapGetters(["getInfoPrestataireByIdStand"]),
+    ...mapGetters(["getInfoPrestataireByIdStand", "getAllStandAssigned"]),
     getHeight() {
       let height = this.height;
       if (this.zoomBound) {
@@ -113,12 +113,17 @@
     sendValueToParent(idStand) {
       this.$emit('value-changed', idStand);
     },
-		addMarker (baseUrl, curentPrestataire, sendValueToParent) {
+    getOption(idStand, allStandAssigned) {
+      return {
+        opacity: allStandAssigned.includes(idStand) ? 0.5 : 1
+      }
+    },
+		addMarker (baseUrl, curentPrestataire, sendValueToParent, allStandAssigned, getOption) {
       L.marker(this.map.markers[0]).addTo(this.$refs.map.mapObject).on('click', function() {
         console.log("Billeterie")
       });
 			for (let i=1; i<this.map.markers.length; i++){
-				L.marker(this.map.markers[i]).addTo(this.$refs.map.mapObject).on('click', function() {
+				L.marker(this.map.markers[i], getOption(i, allStandAssigned)).addTo(this.$refs.map.mapObject).on('click', function() {
           const prestataire = curentPrestataire(i);
           if (baseUrl === "/admin/assigned") {
             sendValueToParent(i);
