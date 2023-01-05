@@ -1,6 +1,6 @@
 <template>
-  <div class="d-contents test">
-    <div class="card">
+  <div class="d-contents">
+    <div class="card" v-if="idStand">
       <div class="d-contents">
         <div class="image">
           <img :src="require('@/assets/'+curentPrestataire.imagePrestataire)" alt="image prestataire">
@@ -21,7 +21,8 @@
               Ajouter un horaire
             </button>
             <p v-for="(horaire, index) in curentPrestatireHoraire" :key="index">
-              {{horaire.name}} : {{ horaire.start.substr(11, 5) }} - {{ horaire.end.substr(11, 5) }} <!--todo affichage corecte de la date-->
+              {{ horaire.name }} : {{ horaire.start.substr(11, 5) }} - {{ horaire.end.substr(11, 5) }}
+              <!--todo affichage corecte de la date-->
             </p>
           </router-link>
         </div>
@@ -38,7 +39,8 @@
         <div class="line">
           <p>
             Categorie :
-            <router-link class="underline" :class="curentPrestataire.type" :to="'/admin/prestataire/#'+curentPrestataire.type">
+            <router-link class="underline" :class="curentPrestataire.type"
+                         :to="'/admin/prestataire/#'+curentPrestataire.type">
               {{ curentPrestataire.type }}
             </router-link>
           </p>
@@ -53,13 +55,32 @@
           </p>
         </div>
       </div>
+      <div>
+        <button class="btn btn-edit" @click.prevent="editAssignation()">
+          Modifier l'assigniation
+        </button>
+        <button class="btn btn-delete" @click.prevent="deleteAssignation()">
+          Supprimer l'assigniation
+        </button>
+      </div>
 
+    </div>
+    <div v-else class="prestataireError">
+      <v-alert
+          border="bottom"
+          color="var(--red)"
+          prominent
+          type="error"
+      >
+        Il n'y a pas de prestataire ici
+      </v-alert>
     </div>
   </div>
 </template>
 
 <script>
 import {mapGetters} from "vuex";
+import router from "@/router";
 
 export default {
   name: "AdminCardPrestataireView",
@@ -72,7 +93,16 @@ export default {
       return this.getInfoPrestataireByIdStand(this.idStand)
     },
     curentPrestatireHoraire() {
-      return this.getAllHoraireByIdPrestataire(this.idPrestataire)
+      return this.getAllHoraireByIdPrestataire(this.curentPrestataire.idPrestataire)
+    }
+  },
+  methods: {
+    deleteAssignation() {
+      this.curentPrestataire.idStand = 0;
+      router.push("/admin/map");
+    },
+    editAssignation() {
+      router.push("/admin/assigned/map/"+this.curentPrestataire.id);
     }
   }
 }
@@ -89,6 +119,7 @@ export default {
   box-shadow: 0 0 15px var(--grey);
   transition-duration: 250ms;
 }
+
 .card:hover {
   box-shadow: 0 0 15px var(--dark);
 }
@@ -113,12 +144,27 @@ div.line {
   text-align: left;
   padding: 10px;
 }
+
 div.info {
   margin-bottom: 10px;
 }
+
 .btn {
   --defined-color-primary: var(--very-very-light);
   --defined-color-secondary: var(--blue);
   margin: 5px;
+}
+
+.btn-delete {
+  --defined-color-secondary: var(--red);
+}
+.btn-edit {
+  --defined-color-secondary: var(--green);
+}
+.prestataireError {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
 }
 </style>
