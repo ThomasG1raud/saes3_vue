@@ -276,7 +276,14 @@ export default new Vuex.Store({
         },
 
         isCorectPassword: (state) => (idPrestataire, password) => {
-            return state.allPrestataire.find(prestataire => parseInt(prestataire.id) === parseInt(idPrestataire)).password === password;
+            const prestataire = state.allPrestataire.find(prestataire => parseInt(prestataire.id) === parseInt(idPrestataire))
+            return bcrypt.compareSync(password, prestataire.password, (err, res) => {
+                if (err) {
+                    console.error(err)
+                    return
+                }
+                return res
+            })
         },
         isAlreadyAnAccound: (state) => (email) => {
             return state.allPrestataire.map(prestataire => prestataire.email).includes(email)
