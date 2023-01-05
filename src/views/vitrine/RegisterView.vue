@@ -46,6 +46,8 @@
 <script>
 import {mapActions, mapGetters} from "vuex";
 import router from "@/router";
+import bcrypt from 'bcryptjs';
+
 
 export default {
   name: "RegisterView",
@@ -81,7 +83,7 @@ export default {
         lastname: this.lastname,
         firstname: this.firstname,
         email: this.email,
-        password: this.password
+        password: bcrypt.hashSync(this.password, 10)
       }
       this.createPrestataire(prestataire);
       router.push("/prestataire");

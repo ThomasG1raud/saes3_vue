@@ -47,6 +47,7 @@
 <script>
 import router from "@/router";
 import {mapGetters, mapMutations} from "vuex";
+// import bcrypt from 'bcryptjs';
 
 export default {
   name: "RegisterView",

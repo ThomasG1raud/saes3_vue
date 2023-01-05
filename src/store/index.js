@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import bcrypt from 'bcryptjs';
 
 Vue.use(Vuex)
 
@@ -93,13 +94,13 @@ export default new Vuex.Store({
             {
                 email: "admin@gmail.com",
                 login: "admin",
-                password: "admin",
+                password: "$2a$10$7zUYSZW9P4O0a3VCt9FaferIb4ROJWpCqP0xHQc22Rv4IFUnDHoEy",
                 id: 99
             },
             {
                 email: "admin2@gmail.com",
                 login: "admin",
-                password: "admin",
+                password: "$2a$10$7zUYSZW9P4O0a3VCt9FaferIb4ROJWpCqP0xHQc22Rv4IFUnDHoEy",
                 id: 100
             }
         ],
@@ -115,7 +116,7 @@ export default new Vuex.Store({
                 email: "prestataire1@gmail.com",
                 siren: 123456789,
                 id: 1,
-                password: "prestataire1"
+                password: "$2a$10$1jeaClkYno/A9eFv8BxZbO5p3lzJoTyx3mGtCzShfWt9DIeQ4HzaW"
             },
             {
                 name: "Nom du prestataire 2",
@@ -128,7 +129,7 @@ export default new Vuex.Store({
                 email: "prestataire2@gmail.com",
                 siren: 123456789,
                 id: 2,
-                password: "prestataire2"
+                password: "$2a$10$32n3d0gtkxKprGUSrkMAMuM/Sn/xp7lM0cI5W2pwe6EqrezbTLY46"
             },
             {
                 name: "Nom du prestataire 3",
@@ -141,7 +142,7 @@ export default new Vuex.Store({
                 email: "prestataire3@gmail.com",
                 siren: 123456789,
                 id: 3,
-                password: "prestataire3"
+                password: "$2a$10$uxCX.p1NbfoD9DtB5j1Bb.RLgvR0oPAr6ZZr/3W.T5ugbmRkzIBQW"
             },
             {
                 name: "Nom du prestataire 4",
@@ -154,7 +155,7 @@ export default new Vuex.Store({
                 email: "prestataire4@gmail.com",
                 siren: 987654321,
                 id: 4,
-                password: "prestataire4"
+                password: "$2a$10$q70W8NH9kv.D24kHJuxTLOhIScttN8o1uN.6F7k2cMQ9b5QEqq07e"
             },
             {
                 name: "Nom du prestataire 5",
@@ -167,7 +168,7 @@ export default new Vuex.Store({
                 email: "prestataire5@gmail.com",
                 siren: 567891234,
                 id: 5,
-                password: "prestataire5"
+                password: "$2a$10$dUSLxQYok9HzQbsXooUmK.YWPwk59FtrVFAKuxQh/FKYRJABgYzNW"
             },
             {
                 name: "Nom du prestataire 6",
@@ -180,7 +181,7 @@ export default new Vuex.Store({
                 email: "prestataire6@gmail.com",
                 siren: 987654321,
                 id: 6,
-                password: "prestataire6"
+                password: "$2a$10$SLV/GFOQGKp9p/TesbmT7eb4tFjuF685hYN94xKp0CpS74rY7OTeO"
             },
             {
                 name: "Nom du prestataire 7",
@@ -193,7 +194,7 @@ export default new Vuex.Store({
                 email: "prestataire7@gmail.com",
                 siren: 567891234,
                 id: 7,
-                password: "prestataire7"
+                password: "$2a$10$b3bCXvBLHLdLd2/STA6BxutiO80PgiYmxXCXWjpYJU6zDue6LXOWS"
             },
             {
                 name: "Nom du prestataire 8",
@@ -206,7 +207,7 @@ export default new Vuex.Store({
                 email: "prestataire8@gmail.com",
                 siren: 432198765,
                 id: 8,
-                password: "prestataire8"
+                password: "$2a$10$d7pL/nAnUXAjrSm3funzse0SP.OTPGtygKsWNQhty7tDGwG1RW70m"
             },
             {
                 name: "Nom du prestataire 9",
@@ -219,7 +220,7 @@ export default new Vuex.Store({
                 email: "prestataire9@gmail.com",
                 siren: 135792468,
                 id: 9,
-                password: "prestataire9"
+                password: "$2a$10$BPyJAznOvlPFubH7yyQyEO/lwQQPd4gtHIxLuDpUluvUdsvdYeINi"
             },
             {
                 name: "Nom du prestataire 10",
@@ -232,7 +233,7 @@ export default new Vuex.Store({
                 email: "prestataire10@gmail.com",
                 siren: 246813579,
                 id: 10,
-                password: "prestataire10"
+                password: "$2a$10$BFWfNOUIbi4htKdtViDFO.5HMnZrW2HkwfHiAi3sL9dBsQgfefTBe"
             }
         ]
     },
@@ -250,7 +251,13 @@ export default new Vuex.Store({
             return state.allPrestataire.filter(prestataire => prestataire.idStand).map(prestataire => prestataire.idStand)
         },
         getIDPrestataireWithEmail: (state) => (email, password) => {
-            return state.allPrestataire.find(prestataire => (prestataire.email === email && prestataire.password === password))
+            return state.allPrestataire.find(prestataire => (prestataire.email === email && bcrypt.compareSync(password, prestataire.password, (err, res) => {
+                if (err) {
+                    console.error(err)
+                    return
+                }
+                return res
+            })))
         },
         getAllPrestataire: (state) => {
             return state.allPrestataire
@@ -277,7 +284,13 @@ export default new Vuex.Store({
         },
 
         getIsAdmin: (state) => (email, password) => {
-            return state.allAdmin.find(admin => admin.email === email && admin.password === password);
+            return state.allAdmin.find(admin => admin.email === email && bcrypt.compareSync(password, admin.password, (err, res) => {
+                if (err) {
+                    console.error(err)
+                    return
+                }
+                return res
+            }))
         },
         getConnected: (state) => {
             return state.connected
