@@ -30,7 +30,7 @@ export default {
   computed: {
     ...mapGetters(["getInfoPrestataireByIdStand", "getInfoPrestataireByIdPrestataire"]),
     curentPrestataire() {
-      return this.getInfoPrestataireByIdStand(this.idStand)
+      return this.getInfoPrestataireByIdStand(this.idStand);
     }
   },
   methods: {
@@ -41,9 +41,12 @@ export default {
       if (!prestataire) {
         this.getInfoPrestataireByIdPrestataire(this.idPrestataire).idStand = idStand;
         router.push("/admin/map/"+idStand);
-        return;
       }
-      // console.log(prestataire.id)
+      else if (confirm("Êtes vous sur de vouloir remplacer le préstataire : " + prestataire.name)) {
+        prestataire.idStand = 0;
+        this.getInfoPrestataireByIdPrestataire(this.idPrestataire).idStand = idStand;
+        router.push("/admin/map/"+idStand);
+      }
     }
   }
 }
