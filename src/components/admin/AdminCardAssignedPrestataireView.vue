@@ -1,5 +1,5 @@
 <template>
-  <div class="d-contents">
+  <div class="d-contents test">
     <div class="card">
       <div class="d-contents">
         <div class="image">
