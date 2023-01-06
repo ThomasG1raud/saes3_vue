@@ -53,6 +53,11 @@
           </p>
         </div>
       </div>
+      <div>
+        <button class="btn btn-delete" @click.prevent="deleteAssignation()" v-if="curentPrestataire.idStand">
+          Supprimer l'assigniation
+        </button>
+      </div>
 
     </div>
   </div>
@@ -60,6 +65,7 @@
 
 <script>
 import {mapGetters} from "vuex";
+import router from "@/router";
 
 export default {
   name: "AdminCardAssignedPrestataireView",
@@ -74,6 +80,12 @@ export default {
     curentPrestatireHoraire() {
       return this.getAllHoraireByIdPrestataire(this.idPrestataire)
     }
+  },
+  methods: {
+    deleteAssignation() {
+      this.curentPrestataire.idStand = 0;
+      router.push("/admin/map");
+    },
   }
 }
 </script>
@@ -120,5 +132,8 @@ div.info {
   --defined-color-primary: var(--very-very-light);
   --defined-color-secondary: var(--blue);
   margin: 5px;
+}
+.btn-delete {
+  --defined-color-secondary: var(--red);
 }
 </style>

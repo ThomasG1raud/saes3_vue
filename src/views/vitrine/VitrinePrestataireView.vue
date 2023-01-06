@@ -8,7 +8,7 @@
         </div>
       </div>
       <div id="grandDiv">
-        <div v-for="(prestataire, index) in getAllPrestataire.filter(p => p.type===category)" :key="index">
+        <div class="card-content" v-for="(prestataire, index) in getAllPrestataire.filter(p => p.type===category)" :key="index">
           <VitrinePrestataireCardView :idPrestataire="prestataire.id"/>
         </div>
       </div>
@@ -40,7 +40,11 @@ export default {
   overflow: scroll;
 
 }
-
+.card-content {
+  height: 70vh;
+  aspect-ratio: 2 / 3;
+  margin: 10px;
+}
 #scroll {
   height: 64px;
   width: 64px;

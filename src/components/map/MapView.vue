@@ -119,9 +119,19 @@
       }
     },
 		addMarker (baseUrl, curentPrestataire, sendValueToParent, allStandAssigned, getOption) {
-      L.marker(this.map.markers[0]).addTo(this.$refs.map.mapObject).on('click', function() {
+      L.marker(this.map.markers[0], {
+        // icon: {
+          // options: {
+          //   iconUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Flat_tick_icon.svg/1024px-Flat_tick_icon.svg.png"
+          // }
+        // }
+      }).addTo(this.$refs.map.mapObject).on('click', function() {
+        this._icon.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Flat_tick_icon.svg/1024px-Flat_tick_icon.svg.png"
         console.log("Billeterie")
-      });
+      })
+          .on('load', function () {
+            console.log("charge")
+          });
 			for (let i=1; i<this.map.markers.length; i++){
 				L.marker(this.map.markers[i], getOption(i, allStandAssigned)).addTo(this.$refs.map.mapObject).on('click', function() {
           const prestataire = curentPrestataire(i);

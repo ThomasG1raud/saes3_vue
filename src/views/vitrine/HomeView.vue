@@ -61,7 +61,7 @@ export default {
 
 #title {
   font-size: 80px;
-  font-family: myFirstFont;
+  font-family: myFirstFont, Arial sans-serif;
   rotate: -45deg;
   color: black;
 }
