@@ -2,8 +2,6 @@
   <v-app id="guestbook">
     <!--    todo le syle d'un élément fait que : "min-height: 100vh;" donc il y a du blanc apres le tableau quand il est trop petit--->
     <v-data-table v-if="curentComments.length"
-                  v-model="selected"
-                  show-select
                   :headers="headers"
                   :items="curentComments"
                   :items-per-page="5"
@@ -23,11 +21,6 @@
 
       <template v-slot:item="{ item }">
         <tr :class="item.idComptePost ? 'prestataire' : ''">
-          <td>
-            <v-checkbox
-                :value="item.id"
-            ></v-checkbox>
-          </td>
           <td class="name" v-if="!item.idComptePost">{{ item.name }}</td>
           <td class="name" v-else>
             <router-link class="underline" :to="'/admin/prestataire/'+item.idComptePost">
@@ -95,7 +88,6 @@ export default {
   },
   data: () => ({
     search: '',
-    selected: [],
     // headers props
     headers: [
       {
