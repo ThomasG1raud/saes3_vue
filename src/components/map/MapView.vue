@@ -1,51 +1,51 @@
-	<template>
-		<div class="max">
-			<div class="div-carte">
-			<l-map
-				:zoom="zoomRatio"
-				:min-zoom="map.minZoom"
-				:max-zoom="map.maxZoom"
-				:crs="map.crs"
-				:max-bounds="map.maxbounds"
-				class="map"
-				ref="map"
-				@update:zoom="zoomUpdated"
-				@update:center="centerUpdated"
-				:style="{'width': getWidth+'px', 'height': getHeight+'px'}"
-			>
-				<l-image-overlay
-				:url="require('@/assets/carte.png')"
-				:bounds="map.bounds"
+<template>
+  <div class="max">
+    <div class="div-carte">
+      <l-map
+          :zoom="zoomRatio"
+          :min-zoom="map.minZoom"
+          :max-zoom="map.maxZoom"
+          :crs="map.crs"
+          :max-bounds="map.maxbounds"
+          class="map"
+          ref="map"
+          @update:zoom="zoomUpdated"
+          @update:center="centerUpdated"
+          :style="{'width': getWidth+'px', 'height': getHeight+'px'}"
+      >
+        <l-image-overlay
+            :url="require('@/assets/carte.png')"
+            :bounds="map.bounds"
 
-				>
-				
-				</l-image-overlay>
-				</l-map>
-			</div>
-      <router-view/>
+        >
+
+        </l-image-overlay>
+      </l-map>
     </div>
-	</template>
-	
-	<script>
-	import { LMap, LImageOverlay} from 'vue2-leaflet';
-	import L from "leaflet";
-	import 'leaflet/dist/leaflet.css';
-	import router from '@/router';
-  import {mapGetters} from "vuex";
+    <router-view/>
+  </div>
+</template>
 
-	export default {
-	components: {
-		LMap,
-		LImageOverlay,
-	},
-	props: {
-		height: Number,
-		width: Number,
-		zoomRatio: Number,
+<script>
+import {LMap, LImageOverlay} from 'vue2-leaflet';
+import L from "leaflet";
+import 'leaflet/dist/leaflet.css';
+import router from '@/router';
+import {mapGetters} from "vuex";
+
+export default {
+  components: {
+    LMap,
+    LImageOverlay,
+  },
+  props: {
+    height: Number,
+    width: Number,
+    zoomRatio: Number,
     baseUrl: String,
     zoomBound: Number
-	},
-	data: () => ({
+  },
+  data: () => ({
     map: {
       url: 'carte.png',
       minZoom: -1,
@@ -66,8 +66,13 @@
         L.latLng(-175, -525),
       ]
     }
-	}),
-	mounted() {
+  }),
+  updated() {
+    const markers = document.querySelectorAll(".leaflet-marker-icon")
+    markers.forEach(marker => marker.remove())
+    this.addMarker(this.baseUrl, this.curentPrestataire, this.sendValueToParent, this.getAllStandAssigned, this.getAllCategory, this.getOption);
+  },
+  mounted() {
     if (this.zoomBound) {
       const height = this.height * this.zoomBound;
       const width = this.width * this.zoomBound;
@@ -85,12 +90,11 @@
         L.latLng(-175 * this.zoomBound, -525 * this.zoomBound),
       ]
     }
-
-		this.addMarker(this.baseUrl, this.curentPrestataire, this.sendValueToParent, this.getAllStandAssigned, this.getOption);
-		this.$refs.map.mapObject.setView([-540, 910], this.map.zoomRatio);
-	},
+    this.addMarker(this.baseUrl, this.curentPrestataire, this.sendValueToParent, this.getAllStandAssigned, this.getAllCategory, this.getOption);
+    this.$refs.map.mapObject.setView([-540, 910], this.map.zoomRatio);
+  },
   computed: {
-    ...mapGetters(["getInfoPrestataireByIdStand", "getAllStandAssigned"]),
+    ...mapGetters(["getInfoPrestataireByIdStand", "getAllStandAssigned", "getAllCategory"]),
     getHeight() {
       let height = this.height;
       if (this.zoomBound) {
@@ -106,34 +110,53 @@
       return width
     }
   },
-	methods: {
+  methods: {
     curentPrestataire(idStand) {
       return this.getInfoPrestataireByIdStand(idStand);
     },
     sendValueToParent(idStand) {
       this.$emit('value-changed', idStand);
     },
-    getOption(idStand, allStandAssigned) {
-      return {
-        opacity: allStandAssigned.includes(idStand) ? 0.5 : 1
+    getOption(idStand, allStandAssigned, getAllCategory, params) {
+      const marker = [
+        "marker_activite.svg",
+        "marker_spectacle.svg",
+        "marker_restauration.svg",
+        "marker_undefined.svg"
+      ];
+      let sizePx = 50;
+      if (idStand === parseInt(params)) {
+        sizePx = 64;
       }
+      const prestataire = this.curentPrestataire(idStand)?.type // ? Permet d'évité une erreur si le prestataire est undifined
+      // allStandAssigned.includes(idStand).type; // permet de voir si le stand est assigner
+      let idType = getAllCategory.indexOf(prestataire);
+      if (idType === -1) {
+        idType = 3;
+      }
+      const iconUrl = require(`@/assets/icons/${marker[idType]}`);
+      return {
+        // opacity: allStandAssigned.includes(idStand) ? 0.5 : 1,
+        icon: L.icon({
+          iconUrl: iconUrl,
+          iconSize: [sizePx, sizePx],
+        })
+      }
+
     },
-		addMarker (baseUrl, curentPrestataire, sendValueToParent, allStandAssigned, getOption) {
+    addMarker(baseUrl, curentPrestataire, sendValueToParent, allStandAssigned, getAllCategory, getOption) {
       L.marker(this.map.markers[0], {
-        // icon: {
-          // options: {
-          //   iconUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Flat_tick_icon.svg/1024px-Flat_tick_icon.svg.png"
-          // }
-        // }
-      }).addTo(this.$refs.map.mapObject).on('click', function() {
-        this._icon.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Flat_tick_icon.svg/1024px-Flat_tick_icon.svg.png"
-        console.log("Billeterie")
-      })
-          .on('load', function () {
-            console.log("charge")
-          });
-			for (let i=1; i<this.map.markers.length; i++){
-				L.marker(this.map.markers[i], getOption(i, allStandAssigned)).addTo(this.$refs.map.mapObject).on('click', function() {
+        icon: L.icon({
+          iconUrl: require("@/assets/logo.png"),
+          iconSize: [40, 40],
+        })
+      }).addTo(this.$refs.map.mapObject)
+          .on('click', function () {
+            console.log("Billeterie")
+          })
+
+      for (let i = 1; i < this.map.markers.length; i++) {
+        L.marker(this.map.markers[i], getOption(i, allStandAssigned, getAllCategory, router.currentRoute.params?.idStand)).addTo(this.$refs.map.mapObject).on('click', function () {
           const prestataire = curentPrestataire(i);
           if (baseUrl === "/admin/assigned") {
             sendValueToParent(i);
@@ -148,31 +171,38 @@
               router.push(path);
             }
           }
-				});
-			}
-		},
-		zoomUpdated (zoom) {
-			this.map.zoom = zoom;
-		},
-		centerUpdated (center) {
-		this.map.center = center;
-		}
-	}
-	}
-	</script>
-	
-	<style>
-	.leaflet-control-attribution {
-    display: none;
+        });
+      }
+    },
+    zoomUpdated(zoom) {
+      this.map.zoom = zoom;
+    },
+    centerUpdated(center) {
+      this.map.center = center;
+    }
   }
+}
+</script>
 
-  .div-carte {
-    display: flex;
-    align-items: center;
-    margin:10px;
-  }
-  .max {
-    display: flex;
-    height: 100%;
-  }
-	</style>
+<style>
+.leaflet-control-attribution {
+  display: none;
+}
+.div-carte {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+}
+
+.max {
+  display: flex;
+  height: 100%;
+}
+
+.red {
+  background-color: red;
+  color: red;
+  box-shadow: red;
+  scale: 2;
+}
+</style>

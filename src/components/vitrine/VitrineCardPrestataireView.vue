@@ -1,6 +1,6 @@
 <template>
   <div class="d-contents">
-    <div class="card">
+    <div class="card" v-if="idStand">
       <div class="d-contents">
         <div class="image">
           <img :src="require('@/assets/'+curentPrestataire.imagePrestataire)" alt="image prestataire">
@@ -53,7 +53,17 @@
           </p>
         </div>
       </div>
+    </div>
 
+    <div v-else class="prestataireError">
+      <v-alert
+          border="bottom"
+          color="var(--red)"
+          prominent
+          type="error"
+      >
+        Il n'y a pas de prestataire ici
+      </v-alert>
     </div>
   </div>
 </template>
@@ -89,6 +99,7 @@ export default {
   box-shadow: 0 0 15px var(--grey);
   transition-duration: 250ms;
 }
+
 .card:hover {
   box-shadow: 0 0 15px var(--dark);
 }
@@ -120,5 +131,11 @@ div.info {
   --defined-color-primary: var(--very-very-light);
   --defined-color-secondary: var(--blue);
   margin: 5px;
+}
+.prestataireError {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
 }
 </style>
