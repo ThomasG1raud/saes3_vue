@@ -111,7 +111,7 @@ export default new Vuex.Store({
                 imagePrestataire: "prestataire.png",
                 imageStand: "stand.png",
                 nomStand: "La bonne saucisse de michelle",
-                idStand: 1,
+                idStand: 0,
                 type: "activite",
                 email: "prestataire1@gmail.com",
                 siren: 123456789,

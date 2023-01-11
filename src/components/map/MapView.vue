@@ -22,6 +22,7 @@
         </l-image-overlay>
       </l-map>
     </div>
+    <VitrineHoverCardPrestataire :id-stand="hoverIdStand"/>
     <router-view/>
   </div>
 </template>
@@ -32,9 +33,11 @@ import L from "leaflet";
 import 'leaflet/dist/leaflet.css';
 import router from '@/router';
 import {mapGetters} from "vuex";
+import VitrineHoverCardPrestataire from "@/components/map/VitrineHoverCardPrestataire.vue";
 
 export default {
   components: {
+    VitrineHoverCardPrestataire,
     LMap,
     LImageOverlay,
   },
@@ -46,6 +49,7 @@ export default {
     zoomBound: Number
   },
   data: () => ({
+    hoverIdStand: 0,
     map: {
       url: 'carte.png',
       minZoom: -1,
@@ -70,7 +74,7 @@ export default {
   updated() {
     const markers = document.querySelectorAll(".leaflet-marker-icon")
     markers.forEach(marker => marker.remove())
-    this.addMarker(this.baseUrl, this.curentPrestataire, this.sendValueToParent, this.getAllStandAssigned, this.getAllCategory, this.getOption);
+    this.addMarker(this.baseUrl, this.curentPrestataire, this.sendValueToParent, this.getAllStandAssigned, this.getAllCategory, this.getOption, this.changeHover);
   },
   mounted() {
     if (this.zoomBound) {
@@ -90,11 +94,14 @@ export default {
         L.latLng(-175 * this.zoomBound, -525 * this.zoomBound),
       ]
     }
-    this.addMarker(this.baseUrl, this.curentPrestataire, this.sendValueToParent, this.getAllStandAssigned, this.getAllCategory, this.getOption);
+    this.addMarker(this.baseUrl, this.curentPrestataire, this.sendValueToParent, this.getAllStandAssigned, this.getAllCategory, this.getOption, this.changeHover);
     this.$refs.map.mapObject.setView([-540, 910], this.map.zoomRatio);
   },
   computed: {
     ...mapGetters(["getInfoPrestataireByIdStand", "getInfoPrestataireByIdPrestataire", "getAllStandAssigned", "getAllCategory"]),
+    getPath() {
+      return router.currentRoute.path;
+    },
     getHeight() {
       let height = this.height;
       if (this.zoomBound) {
@@ -116,6 +123,9 @@ export default {
     },
     sendValueToParent(idStand) {
       this.$emit('value-changed', idStand);
+    },
+    changeHover(idStand) {
+      this.hoverIdStand = idStand;
     },
     getOption(idStand, allStandAssigned, getAllCategory, paramsIdStand, paramsIdPrestataire) {
       const marker = [
@@ -146,11 +156,12 @@ export default {
       }
 
     },
-    addMarker(baseUrl, curentPrestataire, sendValueToParent, allStandAssigned, getAllCategory, getOption) {
+    addMarker(baseUrl, curentPrestataire, sendValueToParent, allStandAssigned, getAllCategory, getOption, changeHover) {
       L.marker(this.map.markers[0], {
+        opacity: 0,
         icon: L.icon({
           iconUrl: require("@/assets/logo.png"),
-          iconSize: [40, 40],
+          iconSize: [50, 50],
         })
       }).addTo(this.$refs.map.mapObject)
           .on('click', function () {
@@ -158,22 +169,32 @@ export default {
           })
 
       for (let i = 1; i < this.map.markers.length; i++) {
-        L.marker(this.map.markers[i], getOption(i, allStandAssigned, getAllCategory, router.currentRoute.params?.idStand, router.currentRoute.params?.idPrestataire)).addTo(this.$refs.map.mapObject).on('click', function () {
-          const prestataire = curentPrestataire(i);
-          if (baseUrl === "/admin/assigned") {
-            sendValueToParent(i);
-          } else if (prestataire && prestataire.idStand) {
-            const path = `${baseUrl}/map/${i}`;
-            if (router.currentRoute.path !== path) {
-              router.push(path);
-            }
-          } else {
-            const path = `${baseUrl}/map/0`;
-            if (router.currentRoute.path !== path) {
-              router.push(path);
-            }
-          }
-        });
+        L.marker(this.map.markers[i], getOption(i, allStandAssigned, getAllCategory, router.currentRoute.params?.idStand, router.currentRoute.params?.idPrestataire)).addTo(this.$refs.map.mapObject)
+            .on('click', function () {
+                  const prestataire = curentPrestataire(i);
+                  if (baseUrl === "/admin/assigned") {
+                    sendValueToParent(i);
+                  } else if (prestataire && prestataire.idStand) {
+                    const path = `${baseUrl}/map/${i}`;
+                    if (router.currentRoute.path !== path) {
+                      router.push(path);
+                    }
+                  } else {
+                    const path = `${baseUrl}/map/0`;
+                    if (router.currentRoute.path !== path) {
+                      router.push(path);
+                    }
+                  }
+                }
+            )
+            .on("mouseover", function () {
+              if (router.currentRoute.path === "/") {
+                changeHover(i);
+              }
+            })
+            .on("mouseout", function () {
+              changeHover(0);
+            });
       }
     },
     zoomUpdated(zoom) {
@@ -200,5 +221,6 @@ export default {
 .max {
   display: flex;
   height: 100%;
+  position: relative;
 }
 </style>
