@@ -54,16 +54,16 @@ export default {
       bounds: [[-540, -910], [540, 910]],
       maxbounds: [[-540, -910], [540, 910]],
       markers: [
-        L.latLng(-210, 490),
-        L.latLng(50, 462),
-        L.latLng(-23, 255),
-        L.latLng(145, 200),
-        L.latLng(132, -55),
-        L.latLng(-40, -5),
-        L.latLng(-210, 150),
-        L.latLng(-210, -120),
-        L.latLng(115, -440),
-        L.latLng(-175, -525),
+        L.latLng(-210 + 40 /*difY*/, 490),
+        L.latLng(50 + 40 /*difY*/, 462),
+        L.latLng(-23 + 40 /*difY*/, 255),
+        L.latLng(145 + 40 /*difY*/, 200),
+        L.latLng(132 + 40 /*difY*/, -55),
+        L.latLng(-40 + 40 /*difY*/, -5),
+        L.latLng(-210 + 40 /*difY*/, 150),
+        L.latLng(-210 + 40 /*difY*/, -120),
+        L.latLng(115 + 40 /*difY*/, -440),
+        L.latLng(-175 + 40 /*difY*/, -525),
       ]
     }
   }),
@@ -94,7 +94,7 @@ export default {
     this.$refs.map.mapObject.setView([-540, 910], this.map.zoomRatio);
   },
   computed: {
-    ...mapGetters(["getInfoPrestataireByIdStand", "getAllStandAssigned", "getAllCategory"]),
+    ...mapGetters(["getInfoPrestataireByIdStand", "getInfoPrestataireByIdPrestataire", "getAllStandAssigned", "getAllCategory"]),
     getHeight() {
       let height = this.height;
       if (this.zoomBound) {
@@ -117,7 +117,7 @@ export default {
     sendValueToParent(idStand) {
       this.$emit('value-changed', idStand);
     },
-    getOption(idStand, allStandAssigned, getAllCategory, params) {
+    getOption(idStand, allStandAssigned, getAllCategory, paramsIdStand, paramsIdPrestataire) {
       const marker = [
         "marker_activite.svg",
         "marker_spectacle.svg",
@@ -125,7 +125,10 @@ export default {
         "marker_undefined.svg"
       ];
       let sizePx = 50;
-      if (idStand === parseInt(params)) {
+      if (idStand === parseInt(paramsIdStand)) {
+        sizePx = 64;
+      }
+      if (paramsIdPrestataire && idStand === this.getInfoPrestataireByIdPrestataire(paramsIdPrestataire).idStand) {
         sizePx = 64;
       }
       const prestataire = this.curentPrestataire(idStand)?.type // ? Permet d'évité une erreur si le prestataire est undifined
@@ -136,7 +139,6 @@ export default {
       }
       const iconUrl = require(`@/assets/icons/${marker[idType]}`);
       return {
-        // opacity: allStandAssigned.includes(idStand) ? 0.5 : 1,
         icon: L.icon({
           iconUrl: iconUrl,
           iconSize: [sizePx, sizePx],
@@ -156,7 +158,7 @@ export default {
           })
 
       for (let i = 1; i < this.map.markers.length; i++) {
-        L.marker(this.map.markers[i], getOption(i, allStandAssigned, getAllCategory, router.currentRoute.params?.idStand)).addTo(this.$refs.map.mapObject).on('click', function () {
+        L.marker(this.map.markers[i], getOption(i, allStandAssigned, getAllCategory, router.currentRoute.params?.idStand, router.currentRoute.params?.idPrestataire)).addTo(this.$refs.map.mapObject).on('click', function () {
           const prestataire = curentPrestataire(i);
           if (baseUrl === "/admin/assigned") {
             sendValueToParent(i);
@@ -188,6 +190,7 @@ export default {
 .leaflet-control-attribution {
   display: none;
 }
+
 .div-carte {
   display: flex;
   align-items: center;
@@ -197,12 +200,5 @@ export default {
 .max {
   display: flex;
   height: 100%;
-}
-
-.red {
-  background-color: red;
-  color: red;
-  box-shadow: red;
-  scale: 2;
 }
 </style>
