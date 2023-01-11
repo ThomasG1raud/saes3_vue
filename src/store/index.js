@@ -19,7 +19,7 @@ export default new Vuex.Store({
         allHoraire: [
             {
                 id: 1,
-                idPrestataire: 1,
+                idPrestataire: 2,
                 name: "Activité",
                 details: "C'est une Activité",
                 start: "2023-01-18T16:30",
@@ -29,7 +29,7 @@ export default new Vuex.Store({
             },
             {
                 id: 2,
-                idPrestataire: 1,
+                idPrestataire: 7,
                 name: "Spectacle",
                 details: "C'est un Spectacle",
                 start: "2023-01-19T16:30",
@@ -39,7 +39,7 @@ export default new Vuex.Store({
             },
             {
                 id: 3,
-                idPrestataire: 5,
+                idPrestataire: 1,
                 name: "Restautation",
                 details: "C'est de la Restautation",
                 start: "2023-01-22T06:00",
@@ -51,13 +51,13 @@ export default new Vuex.Store({
         allComment: [
             {
                 id: 4,
-                name: "Nom du prestataire 2",
-                email: "prestataire1@gmail.com",
+                name: "tony.camillio@gmail.com",
+                email: "tony.camillio@gmail.com",
                 note: 5,
                 date: "2022-12-30",
                 text: "Très bon prestataiire",
-                idPrestataire: 2,
-                idComptePost: 2
+                idPrestataire: 3,
+                idComptePost: 3
             },
             {
                 id: 3,
@@ -81,13 +81,13 @@ export default new Vuex.Store({
             },
             {
                 id: 1,
-                name: "Nom du prestataire 3",
-                email: "prestataire4@gmail.com",
+                name: "Tom Stilinski",
+                email: "tom.stilinski@gmail.com",
                 note: 5,
                 date: "2022-12-20",
                 text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-                idPrestataire: 3,
-                idComptePost: 3
+                idPrestataire: 1,
+                idComptePost: 1
             }
         ],
         allAdmin: [
@@ -106,124 +106,124 @@ export default new Vuex.Store({
         ],
         allPrestataire: [
             {
-                name: "Nom du prestataire 1",
-                text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-                imagePrestataire: "prestataire.png",
-                nomStand: "La bonne saucisse de michelle",
-                idStand: 0,
-                type: "activite",
-                email: "prestataire1@gmail.com",
-                siren: 123456789,
-                id: 1,
-                password: "$2a$10$1jeaClkYno/A9eFv8BxZbO5p3lzJoTyx3mGtCzShfWt9DIeQ4HzaW"
-            },
-            {
-                name: "Nom du prestataire 2",
-                text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-                imagePrestataire: "prestataire.png",
-                nomStand: "La bonne saucisse de michelle",
-                idStand: 2,
-                type: "restauration",
-                email: "prestataire2@gmail.com",
-                siren: 123456789,
-                id: 2,
-                password: "$2a$10$32n3d0gtkxKprGUSrkMAMuM/Sn/xp7lM0cI5W2pwe6EqrezbTLY46"
-            },
-            {
-                name: "Nom du prestataire 3",
-                text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-                imagePrestataire: "prestataire.png",
-                nomStand: "La bonne saucisse de michelle",
-                idStand: 0,
-                type: "restauration",
-                email: "prestataire3@gmail.com",
-                siren: 123456789,
-                id: 3,
-                password: "$2a$10$uxCX.p1NbfoD9DtB5j1Bb.RLgvR0oPAr6ZZr/3W.T5ugbmRkzIBQW"
-            },
-            {
-                name: "Nom du prestataire 4",
-                text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-                imagePrestataire: "prestataire.png",
-                nomStand: "La bonne saucisse de michelle",
-                idStand: 4,
-                type: "spectacle",
-                email: "prestataire4@gmail.com",
-                siren: 987654321,
-                id: 4,
-                password: "$2a$10$q70W8NH9kv.D24kHJuxTLOhIScttN8o1uN.6F7k2cMQ9b5QEqq07e"
-            },
-            {
-                name: "Nom du prestataire 5",
-                text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-                imagePrestataire: "prestataire.png",
-                nomStand: "La bonne saucisse de michelle",
-                idStand: 5,
-                type: "activite",
-                email: "prestataire5@gmail.com",
-                siren: 567891234,
-                id: 5,
-                password: "$2a$10$dUSLxQYok9HzQbsXooUmK.YWPwk59FtrVFAKuxQh/FKYRJABgYzNW"
-            },
-            {
-                name: "Nom du prestataire 6",
-                text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-                imagePrestataire: "prestataire.png",
-                nomStand: "La bonne saucisse de michelle",
-                idStand: 0,
-                type: "spectacle",
-                email: "prestataire6@gmail.com",
-                siren: 987654321,
-                id: 6,
-                password: "$2a$10$SLV/GFOQGKp9p/TesbmT7eb4tFjuF685hYN94xKp0CpS74rY7OTeO"
-            },
-            {
-                name: "Nom du prestataire 7",
-                text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-                imagePrestataire: "prestataire.png",
-                nomStand: "La bonne saucisse de michelle",
-                idStand: 0,
-                type: "activite",
-                email: "prestataire7@gmail.com",
-                siren: 567891234,
-                id: 7,
-                password: "$2a$10$b3bCXvBLHLdLd2/STA6BxutiO80PgiYmxXCXWjpYJU6zDue6LXOWS"
-            },
-            {
-                name: "Nom du prestataire 8",
-                text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-                imagePrestataire: "prestataire.png",
-                nomStand: "La bonne saucisse de michelle",
+                name: 'Tom Stilinski',
+                text: 'Venez dégustez nos suculent rotis à la proche.',
+                imagePrestataire: 'images_prestataire/prestataire_1.jpg',
+                nomStand: 'La Rotisserie',
                 idStand: 8,
-                type: "activite",
-                email: "prestataire8@gmail.com",
-                siren: 432198765,
-                id: 8,
-                password: "$2a$10$d7pL/nAnUXAjrSm3funzse0SP.OTPGtygKsWNQhty7tDGwG1RW70m"
+                type: 'restauration',
+                email: 'tom.stilinski@gmail.com',
+                siren: '421540979',
+                id: 1,
+                password: '$2a$10$INQHfSQyOsiqFM3Kix6R4uP7xo4NvA4gDukX9YyIJUBd16sXIidXu'
             },
             {
-                name: "Nom du prestataire 9",
-                text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-                imagePrestataire: "prestataire.png",
-                nomStand: "La bonne saucisse de michelle",
+                name: 'Mike Carted',
+                text: "Venner vous initier au façonnage du métal cheaud pour la créaction d'outils du cotitien et des armes de combats.",
+                imagePrestataire: 'images_prestataire/prestataire_2.jpg',
+                nomStand: 'La Forge',
+                idStand: 3,
+                type: 'activite',
+                email: 'mike.carted@gmail.com',
+                siren: '038184849',
+                id: 2,
+                password: '$2a$10$8oxaUDEZE9hpMh/BBwM9L..D0Y7QXFAoXy8wZ305EFJ5C3vQS95BK'
+            },
+            {
+                name: 'Tony Camillio',
+                text: 'Venez découvrir nos arms et armures. Vous pouriez également tester des armures en cote de mailles.',
+                imagePrestataire: 'images_prestataire/prestataire_3.jpg',
+                nomStand: 'Armurie Médiéval',
+                idStand: 6,
+                type: 'activite',
+                email: 'tony.camillio@gmail.com',
+                siren: '824816706',
+                id: 3,
+                password: '$2a$10$fRkir1TIXgz1JDDqYYyfVedoHhjC6Er9iHe4bN/hFG.XOzXF6vWkK'
+            },
+            {
+                name: 'Anthony Griffin',
+                text: 'Vennez pour nous aider à reconstruire le chateau.',
+                imagePrestataire: 'images_prestataire/prestataire_4.jpg',
+                nomStand: 'Charpente',
+                idStand: 5,
+                type: 'spectacle',
+                email: 'anthony.griffin@gmail.com',
+                siren: '535870213',
+                id: 4,
+                password: '$2a$10$Qjvhq7XpYc89TazFdTAC3.ZgK/.NWa.TQkm9t8PnCWGP44B4PznUG'
+            },
+            {
+                name: 'Angelo Wheeler',
+                text: "Venez vous initier au souflage du verre et créer votre verre paronel et vennez également découvrir le travail de l'artisant pour la confection des vitraux.",
+                imagePrestataire: 'images_prestataire/prestataire_5.jpg',
+                nomStand: 'Mâitre Verrier',
+                idStand: 2,
+                type: 'activite',
+                email: 'angelo.wheeler@gmail.com',
+                siren: '109276640',
+                id: 5,
+                password: '$2a$10$s.TCDvAvrZTmyVjSurF90e8CdBKcLDn89.e7BD92tAaDlF99gtKpK'
+            },
+            {
+                name: 'Pablo Meyer',
+                text: 'Le tavernier vous ferra découvri ces meilleurs cues.',
+                imagePrestataire: 'images_prestataire/prestataire_6.jpg',
+                nomStand: 'La Taverne',
+                idStand: 4,
+                type: 'restauration',
+                email: 'pablo.meyer@gmail.com',
+                siren: '806493863',
+                id: 6,
+                password: '$2a$10$K49VujO2ngHjAXEpoFKQpeoaX4rw/lbMBuxzqgx3B7vipI7/ALTFW'
+            },
+            {
+                name: 'Jon Karlos',
+                text: 'Venez assistez nos combats et joures équestres..',
+                imagePrestataire: 'images_prestataire/prestataire_7.jpg',
+                nomStand: 'Duel médiéval',
                 idStand: 9,
-                type: "activite",
-                email: "prestataire9@gmail.com",
-                siren: 135792468,
-                id: 9,
-                password: "$2a$10$BPyJAznOvlPFubH7yyQyEO/lwQQPd4gtHIxLuDpUluvUdsvdYeINi"
+                type: 'spectacle',
+                email: 'jon.karlos@gmail.com',
+                siren: '093271962',
+                id: 7,
+                password: '$2a$10$lXN2Mfq8byx9p2IPvZhLOOtyHVt/bVQZ/TCYpZqmEnEBm6WNmEegm'
             },
             {
-                name: "Nom du prestataire 10",
-                text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-                imagePrestataire: "prestataire.png",
-                nomStand: "La bonne saucisse de michelle",
+                name: 'Alexis Clerck',
+                text: "Venez déguster mos mets. Le troubadour vous conmtera les histoires de l'époques.",
+                imagePrestataire: 'images_prestataire/prestataire_8.jpg',
+                nomStand: 'Le banquait des troubadours',
+                idStand: 7,
+                type: 'restauration',
+                email: 'alexis.clerck@gmail.com',
+                siren: '650062469',
+                id: 8,
+                password: '$2a$10$GIHb48cHHanwkmTRuxChV.s7AqRtVJdhY8Hf1dCasKWq6AtqKo4A.'
+            },
+            {
+                name: 'Malcolm Pearce',
+                text: 'Aucune description',
+                imagePrestataire: 'images_prestataire/prestataire_9.jpg',
+                nomStand: 'Pas de nom',
                 idStand: 0,
-                type: "activite",
-                email: "prestataire10@gmail.com",
-                siren: 246813579,
+                type: 'activite',
+                email: 'malcolm.pearce@gmail.com',
+                siren: '209745087',
+                id: 9,
+                password: '$2a$10$gpr4CYl7HEhFBVz2OqR92OkmkBMT9hsRDpdO3RlpR/TeB09jy6dxS'
+            },
+            {
+                name: 'Jack Sonara',
+                text: 'Aucune description',
+                imagePrestataire: 'images_prestataire/prestataire_10.jpg',
+                nomStand: 'Pas de nom',
+                idStand: 0,
+                type: 'activite',
+                email: 'jack.sonara@gmail.com',
+                siren: '653726293',
                 id: 10,
-                password: "$2a$10$BFWfNOUIbi4htKdtViDFO.5HMnZrW2HkwfHiAi3sL9dBsQgfefTBe"
+                password: '$2a$10$s/UDr/cDS.I0ljroN9y6yel4OcMAoyjnz5oIsbGXAblLUlHJ6JnAa'
             }
         ]
     },
@@ -363,9 +363,9 @@ export default new Vuex.Store({
             const {lastname, firstname, email, password} = prestataire;
             commit("addPrestataire", {
                 name: `${firstname} ${lastname}`,
-                text: "",
+                text: "Aucune description",
                 imagePrestataire: "prestataire.png",
-                nomStand: "",
+                nomStand: "Pas de nom",
                 idStand: 0,
                 type: "activite",
                 email: email,
