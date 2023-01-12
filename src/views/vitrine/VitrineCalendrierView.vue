@@ -67,9 +67,9 @@
                   <div class="flex-grow-1"></div>
                 </v-toolbar>
                 <v-card-text tag="h1">
-                  {{getPrestataireByIdPrestataire(selectedEvent.idPrestataire)}}
-                  <br>
-                  {{ "idPrestataire = "+selectedEvent.idPrestataire }} <!--todo affichage du nom du prestataire-->
+<!--                  {{getPrestataireByIdPrestataire(selectedEvent.idPrestataire)}}-->
+<!--                  <br>-->
+<!--                  {{ "idPrestataire = "+selectedEvent.idPrestataire }} &lt;!&ndash;todo affichage du nom du prestataire&ndash;&gt;-->
                 </v-card-text>
                 <v-card-text>
                   <form v-if="currentlyEditing !== selectedEvent.id">

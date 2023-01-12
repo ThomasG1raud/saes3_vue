@@ -52,7 +52,8 @@ export default {
   display: flex;
   justify-content: end;
   width: 100%;
-  height: 830px;
+  /*height: 830px;*/
+  height: 100vh;
   background-image: url("@/assets/imageVitrinePrincipal.jpg");
   background-repeat: no-repeat;
   background-size: cover;

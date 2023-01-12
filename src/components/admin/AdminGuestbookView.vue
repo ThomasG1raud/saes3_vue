@@ -32,6 +32,9 @@
           </td>
           <td>{{ item.date }}</td>
           <td>{{ item.text }}</td>
+          <td class="text-name-prestataire">
+            {{ currentPrestataire(item.idPrestataire).name }}
+          </td>
           <td class="text-is-prestataire">
             <v-icon :color="item.idComptePost ? 'green' : 'red'">
               {{ item.idComptePost ? "mdi-check" : "mdi-cancel" }}
@@ -47,12 +50,9 @@
           </td>
         </tr>
       </template>
-      <template v-slot:header="{ item }">
-        <div>
-          {{ item }}
-        </div>
-      </template>
+
     </v-data-table>
+
     <v-container v-else class="mt-5">
       <v-alert v-if="this.idPrestataire"
                border="bottom"
@@ -115,6 +115,12 @@ export default {
         value: 'comment'
       },
       {
+        text: "Nom du prestataire",
+        sortable: false,
+        align: "center",
+        value: "name_prestataire"
+      },
+      {
         text: "Is prestataire",
         sortable: true,
         align: "center",
@@ -132,10 +138,13 @@ export default {
     curentComments() {
       if (!this.idPrestataire) return this.getAllComment();
       return this.getAllComment().filter(comment => parseInt(comment.idPrestataire) === parseInt(this.idPrestataire));
+    },
+    currentPrestataire(idPrestataire) {
+      return this.getInfoPrestataireByIdPrestataire(parseInt(idPrestataire));
     }
   },
   methods: {
-    ...mapGetters(["getAllComment"]),
+    ...mapGetters(["getAllComment", "getInfoPrestataireByIdPrestataire"]),
     ...mapActions(["deleteComment"]),
     removeComment(idComment) {
       if (!confirm("Are you sure to delete ?")) return;
@@ -187,13 +196,8 @@ td.name {
 td.text-is-prestataire {
   min-width: 150px;
 }
-
-tr.prestataire {
-  background-color: rgb(0, 0, 256, 0.1);
-}
-
-tr.prestataire:hover {
-  background-color: rgb(0, 0, 256, 0.2) !important;
+td.text-name-prestataire {
+  min-width: 190px;
 }
 
 @keyframes displayZoom {

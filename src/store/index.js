@@ -51,7 +51,7 @@ export default new Vuex.Store({
         allComment: [
             {
                 id: 4,
-                name: "tony.camillio@gmail.com",
+                name: "Tony Camillio",
                 email: "tony.camillio@gmail.com",
                 note: 5,
                 date: "2022-12-30",
