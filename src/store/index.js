@@ -55,7 +55,7 @@ export default new Vuex.Store({
                 email: "tony.camillio@gmail.com",
                 note: 5,
                 date: "2022-12-30",
-                text: "Très bon prestataiire",
+                text: "Très bon prestataire",
                 idPrestataire: 3,
                 idComptePost: 3
             },
@@ -107,7 +107,7 @@ export default new Vuex.Store({
         allPrestataire: [
             {
                 name: 'Tom Stilinski',
-                text: 'Venez dégustez nos suculent rotis à la proche.',
+                text: 'Venez dégusté nos suculents rôtis à la broche.',
                 imagePrestataire: 'images_prestataire/prestataire_1.jpg',
                 nomStand: 'La Rotisserie',
                 idStand: 8,
@@ -119,7 +119,7 @@ export default new Vuex.Store({
             },
             {
                 name: 'Mike Carted',
-                text: "Venner vous initier au façonnage du métal cheaud pour la créaction d'outils du cotitien et des armes de combats.",
+                text: "Vennez vous initier au façonnage du métal chaud pour la créaction d'outils du quotitien ou encore des armes de combats.",
                 imagePrestataire: 'images_prestataire/prestataire_2.jpg',
                 nomStand: 'La Forge',
                 idStand: 3,
@@ -131,7 +131,7 @@ export default new Vuex.Store({
             },
             {
                 name: 'Tony Camillio',
-                text: 'Venez découvrir nos arms et armures. Vous pouriez également tester des armures en cote de mailles.',
+                text: 'Venez découvrir nos armes et armures, avec les yeux comme avec les mains.',
                 imagePrestataire: 'images_prestataire/prestataire_3.jpg',
                 nomStand: 'Armurie Médiéval',
                 idStand: 6,
@@ -143,7 +143,7 @@ export default new Vuex.Store({
             },
             {
                 name: 'Anthony Griffin',
-                text: 'Vennez pour nous aider à reconstruire le chateau.',
+                text: 'Vennez découvrir l`art ancestrale de la charpentrie et aidez nous à restaurer notre chateau',
                 imagePrestataire: 'images_prestataire/prestataire_4.jpg',
                 nomStand: 'Charpente',
                 idStand: 5,
@@ -155,7 +155,7 @@ export default new Vuex.Store({
             },
             {
                 name: 'Angelo Wheeler',
-                text: "Venez vous initier au souflage du verre et créer votre verre paronel et vennez également découvrir le travail de l'artisant pour la confection des vitraux.",
+                text: "Venez vous initier au souflage du verre et apprenez à créer votre propre verrerie. Vous pourrez également découvrir comment sont confectionnés les vitraux.",
                 imagePrestataire: 'images_prestataire/prestataire_5.jpg',
                 nomStand: 'Mâitre Verrier',
                 idStand: 2,
@@ -167,7 +167,7 @@ export default new Vuex.Store({
             },
             {
                 name: 'Pablo Meyer',
-                text: 'Le tavernier vous ferra découvri ces meilleurs cues.',
+                text: 'Le tavernier vous ferra gouter a ses meilleurs crues tout comme à la bonne recette traditionnel du pot au feu.',
                 imagePrestataire: 'images_prestataire/prestataire_6.jpg',
                 nomStand: 'La Taverne',
                 idStand: 4,
@@ -179,7 +179,7 @@ export default new Vuex.Store({
             },
             {
                 name: 'Jon Karlos',
-                text: 'Venez assistez nos combats et joures équestres..',
+                text: 'Venez assistez à nos combats et joutes équestres.',
                 imagePrestataire: 'images_prestataire/prestataire_7.jpg',
                 nomStand: 'Duel médiéval',
                 idStand: 9,
@@ -191,7 +191,7 @@ export default new Vuex.Store({
             },
             {
                 name: 'Alexis Clerck',
-                text: "Venez déguster mos mets. Le troubadour vous conmtera les histoires de l'époques.",
+                text: "Venez déguster mos délicieux mets pendant que le troubadour vous contera les histoires de l'époque.",
                 imagePrestataire: 'images_prestataire/prestataire_8.jpg',
                 nomStand: 'Le banquait des troubadours',
                 idStand: 7,
