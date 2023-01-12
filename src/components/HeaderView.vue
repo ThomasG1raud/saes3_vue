@@ -1,17 +1,19 @@
 <template>
   <header>
     <nav>
-      <div>
-        <p>id:{{getAccountId}}</p>
-        <p>connected:{{getConnected}}</p>
-      </div>
-      <div class="item">
-        <select id="connected-selected">
-          <option value="0" @click="logout" :selected="getConnected===0">Vitrine</option>
-          <option value="1" @click="loginPrestataire" :selected="getConnected===1">Prestataire</option>
-          <option value="2" @click="loginAdmin" :selected="getConnected===2">Admin</option>
-        </select>
-      </div>
+<!--      <div>-->
+<!--        <div>-->
+<!--          <p>id:{{getAccountId}}</p>-->
+<!--          <p>connected:{{getConnected}}</p>-->
+<!--        </div>-->
+<!--        <div class="item">-->
+<!--          <select id="connected-selected">-->
+<!--            <option value="0" @click="logout" :selected="getConnected===0">Vitrine</option>-->
+<!--            <option value="1" @click="loginPrestataire" :selected="getConnected===1">Prestataire</option>-->
+<!--            <option value="2" @click="loginAdmin" :selected="getConnected===2">Admin</option>-->
+<!--          </select>-->
+<!--        </div>-->
+<!--      </div>-->
 <!--      Login with prestataire-->
       <div class="div-nav" v-if="getConnected === 1">
         <router-link class="item" to="/">

@@ -118,7 +118,7 @@ export default {
     ],
     textRules: [
       v => !!v || 'Text is required',
-      v => (v && v.length >= 50) || 'The text must be at least 50 characters',
+      v => (v && v.length >= 20) || 'The text must be at least 20 characters',
     ],
     passwordRules: [
       v => !!v || 'Password is required',

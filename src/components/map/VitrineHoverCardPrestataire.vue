@@ -1,5 +1,5 @@
 <template>
-  <div class="d-contents">
+  <div class="d-contents" id="test">
     <div class="card" v-if="idStand">
       <div class="d-contents">
         <div class="image">
