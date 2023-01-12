@@ -147,7 +147,7 @@ export default new Vuex.Store({
                 imagePrestataire: 'images_prestataire/prestataire_4.jpg',
                 nomStand: 'Charpente',
                 idStand: 5,
-                type: 'spectacle',
+                type: 'activite',
                 email: 'anthony.griffin@gmail.com',
                 siren: '535870213',
                 id: 4,
