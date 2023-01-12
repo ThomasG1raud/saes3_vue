@@ -23,7 +23,9 @@
       </l-map>
     </div>
     <VitrineHoverCardPrestataire :id-stand="hoverIdStand"/>
-    <router-view/>
+    <div id="infoPrestataireMap">
+      <router-view/>
+    </div>
   </div>
 </template>
 
@@ -222,5 +224,8 @@ export default {
   display: flex;
   height: 100%;
   position: relative;
+}
+#infoPrestataireMap {
+  width: 30%;
 }
 </style>

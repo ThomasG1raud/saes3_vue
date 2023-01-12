@@ -3,8 +3,8 @@
     <div id="divForm">
       <div id="map">
         <MapView @value-changed="changeAssigner"
-            :height="700" :width="800"
-            :zoomRatio="-1" :base-url="'/admin/assigned'"
+                 :height="540" :width="910" :zoom-bound="1.3"
+                 :zoomRatio="-1" :base-url="'/admin/assigned'"
         ></MapView>
       </div>
     </div>

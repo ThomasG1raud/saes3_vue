@@ -67,6 +67,8 @@
                   <div class="flex-grow-1"></div>
                 </v-toolbar>
                 <v-card-text tag="h1">
+                  {{getPrestataireByIdPrestataire(selectedEvent.idPrestataire)}}
+                  <br>
                   {{ "idPrestataire = "+selectedEvent.idPrestataire }} <!--todo affichage du nom du prestataire-->
                 </v-card-text>
                 <v-card-text>
@@ -158,10 +160,13 @@ export default {
     },
     getEvents() {
       return this.getAllHoraire()
+    },
+    getPrestataireByIdPrestataire(idPrestataire) {
+      return this.getInfoPrestataireByIdPrestataire(parseInt(idPrestataire))
     }
   },
   methods: {
-    ...mapGetters(["getAllHoraire"]),
+    ...mapGetters(["getAllHoraire", "getInfoPrestataireByIdPrestataire"]),
     viewDay ({ date }) {
       this.focus = date
       this.type = 'day'
