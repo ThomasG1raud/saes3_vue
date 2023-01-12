@@ -21,7 +21,7 @@
         </router-link>
         <router-link class="item" :to="'/prestataire/profil/'+getAccountId">Profil</router-link>
         <router-link class="item" :to="'/prestataire/calendrier/'+getAccountId">Calendrier</router-link>
-        <router-link class="item" to="/prestataire/statistique">Statistique</router-link>
+<!--        <router-link class="item" to="/prestataire/statistique">Statistique</router-link>-->
         <router-link class="item" :to="'/map/'+getStandId(getAccountId)">Map</router-link>
         <div class="item">
           <button class="btn" @click="logout">Se déconnecter</button>

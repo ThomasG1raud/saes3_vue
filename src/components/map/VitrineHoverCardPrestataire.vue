@@ -1,5 +1,5 @@
 <template>
-  <div class="d-contents" id="test">
+  <div class="d-contents">
     <div class="card" v-if="idStand">
       <div class="d-contents">
         <div class="image">
@@ -81,12 +81,14 @@ export default {
 .card {
   position: absolute;
   z-index: 1000;
-  width: 50%;
-  right: -20%;
+  height: 80%;
+  width: 40%;
+  right: -8%; /*130px*/
+  top: 10%;
   background-color: var(--background);
   animation: 250ms displayZoom;
 
-  height: 100%;
+  /*height: 100%;*/
   margin-right: 10px;
   display: flex;
   flex-direction: column;
