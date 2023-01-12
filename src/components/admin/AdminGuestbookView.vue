@@ -174,10 +174,6 @@ export default {
   background-color: var(--background);
 }
 
-td.name {
-  width: 200px;
-}
-
 .alert-star {
   display: flex;
   margin: auto;
@@ -193,6 +189,16 @@ td.name {
   opacity: 0;
 }
 
+tr.prestataire {
+  background-color: rgb(0, 0, 256, 0.1);
+}
+
+tr.prestataire:hover {
+  background-color: rgb(0, 0, 256, 0.2) !important;
+}
+td.name {
+  width: 200px;
+}
 td.text-is-prestataire {
   min-width: 150px;
 }
