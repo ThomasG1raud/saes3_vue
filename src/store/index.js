@@ -30,10 +30,10 @@ export default new Vuex.Store({
             {
                 id: 2,
                 idPrestataire: 7,
-                name: "Spectacle",
-                details: "C'est un Spectacle",
-                start: "2023-01-19T16:30",
-                end: "2023-01-19T16:30",
+                name: "Duel médiéval",
+                details: "Venez assistez à nos combats et joutes équestres.",
+                start: "2023-01-12T14:30",
+                end: "2023-01-12T16:30",
                 timed: false,
                 color: "var(--primary)"
             },
@@ -85,7 +85,7 @@ export default new Vuex.Store({
                 email: "tom.stilinski@gmail.com",
                 note: 5,
                 date: "2022-12-20",
-                text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+                text: "Très souriant.",
                 idPrestataire: 1,
                 idComptePost: 1
             }
