@@ -17,9 +17,6 @@
             </router-link>
           </h2>
           <router-link class="underline" to="/calendrier">
-            <button class="btn" v-if="!curentPrestatireHoraire.length">
-              Ajouter un horaire
-            </button>
             <p v-for="(horaire, index) in curentPrestatireHoraire" :key="index">
               {{horaire.name}} : {{ horaire.start.substr(11, 5) }} - {{ horaire.end.substr(11, 5) }} <!--todo affichage corecte de la date-->
             </p>
@@ -82,7 +79,7 @@ export default {
       return this.getInfoPrestataireByIdStand(this.idStand)
     },
     curentPrestatireHoraire() {
-      return this.getAllHoraireByIdPrestataire(this.idPrestataire)
+      return this.getAllHoraireByIdPrestataire(this.curentPrestataire.id)
     }
   }
 }

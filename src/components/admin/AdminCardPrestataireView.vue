@@ -93,7 +93,7 @@ export default {
       return this.getInfoPrestataireByIdStand(this.idStand)
     },
     curentPrestatireHoraire() {
-      return this.getAllHoraireByIdPrestataire(this.curentPrestataire.idPrestataire)
+      return this.getAllHoraireByIdPrestataire(this.curentPrestataire.id)
     }
   },
   methods: {
