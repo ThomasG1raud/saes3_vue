@@ -143,7 +143,7 @@ export default new Vuex.Store({
             },
             {
                 name: 'Anthony Griffin',
-                text: 'Vennez découvrir l`art ancestrale de la charpentrie et aidez nous à restaurer notre chateau',
+                text: 'Vennez découvrir l\'art ancestrale de la charpentrie et aidez nous à restaurer notre chateau',
                 imagePrestataire: 'images_prestataire/prestataire_4.jpg',
                 nomStand: 'Charpente',
                 idStand: 5,

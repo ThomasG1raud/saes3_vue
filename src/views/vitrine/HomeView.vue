@@ -3,7 +3,9 @@
     <div class="imagePrincipal">
     </div>
     <div id="carre">
-      <h1 id="title">PARC MÉDIÉVAL</h1>
+      <h1 id="title">
+        Le royaume oublié
+      </h1>
     </div>
     <section>
       <div class="grid" id="grid">
@@ -63,8 +65,10 @@ export default {
 #title {
   font-size: 80px;
   font-family: myFirstFont, Arial sans-serif;
-  rotate: -45deg;
   color: black;
+  transform: rotate(-45deg) translateY(25px);
+  /*translate: 20px;*/
+  /*rotate: -45deg;*/
 }
 
 #carre {
